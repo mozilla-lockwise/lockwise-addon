@@ -1,0 +1,15 @@
+__pycache__
+/coverage/
+/dist/
+/docs/api.md
+/node_modules/
+/site/
+/temp/
+/*.xpi
+/addon.env
+.DS_Store
+.cache
+.tox
+*.log
+*.pyc
+.pytest_cache
