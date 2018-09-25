@@ -8,9 +8,18 @@
     "firefox": ">= 63"
   },
   "scripts": {
+    "build": "webpack",
+    "clean": "git clean -dfX dist *.xpi",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Lockbox Team <lockbox-dev@mozilla.com>",
   "license": "MPL-2.0",
-  "devDependencies": {}
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.5.2",
+    "cross-env": "^5.2.0",
+    "json-templater": "^1.2.0",
+    "web-ext": "^2.9.1",
+    "webpack": "^4.20.1",
+    "webpack-cli": "^3.1.1"
+  }
 }

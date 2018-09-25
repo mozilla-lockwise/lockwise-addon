@@ -1,0 +1,137 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+## common
+
+document =
+  .title = Lockbox Entries
+
+all-items-get-started =
+  When you add an entry, it automatically shows up here.
+
+all-items-no-results = No results
+
+item-fields-title = Name
+item-fields-title-input =
+  .placeholder = e.g. primary bank
+item-fields-origin = Website Address
+item-fields-origin-input =
+  .placeholder = www.example.com
+item-fields-username = Username
+item-fields-username-input =
+  .placeholder = name@example.com
+item-fields-copy-username =
+  .title = Copy the username to the clipboard
+item-fields-password = Password
+item-fields-copy-password =
+  .title = Copy the password to the clipboard
+item-fields-notes = Notes
+
+item-summary-new-title = New entry
+item-summary-title =
+  { $length ->
+     [0]     (no site name)
+    *[other] { $title }
+  }
+
+item-summary-new-username = (enter your login details)
+item-summary-username =
+  { $length ->
+     [0]     (no username)
+    *[other] { $username }
+  }
+
+item-summary-copy-username = Copy Username
+  .title = Copy the username to the clipboard
+item-summary-copy-password = Copy Password
+  .title = Copy the password to the clipboard
+
+item-filter =
+  .placeholder = Search Lockbox
+  .aria-label = Search Lockbox
+
+## manage
+
+add-item-button = +
+  .title = New entry
+
+send-feedback-button = Provide Feedback
+
+toolbar-go-home = Home
+toolbar-open-faq = FAQ
+
+breadcrumbs-item-new = New entry
+breadcrumbs-item =
+  { $length ->
+     [0]     (no site name)
+    *[other] { $title }
+  }
+
+account-summary-avatar =
+  .alt = User Avatar
+account-summary-account = Account
+account-summary-options = Preferences
+account-summary-signout = Sign Out
+
+intro-page-step-1 =
+  Save username and password info to create a { product-title } entry.
+
+  .title = Add login info to { product-title }
+
+intro-page-step-2 =
+  Click the { product-title } icon to see all the entries you've saved.
+
+  .title = Go straight to your logins
+
+intro-page-step-3 =
+  Copy an entry's info to sign in right from Firefox.
+
+  .title = Sign in from { product-title }
+
+homepage-title = { product-tagline }
+
+homepage-linkaccount-title = Add Serious Security & Convenience
+homepage-linkaccount-description =
+    Now create a Firefox account – or add { product-title } to an existing
+    account – to protect your logins with the strongest encryption
+    available and sync your { product-title } info across devices.
+
+homepage-linkaccount-action-create = Create Account
+homepage-linkaccount-action-signin = { product-action-signin }
+
+homepage-accountlinked-title = Your logins are locked down tight!
+homepage-accountlinked-description =
+    { product-title } uses the strongest encryption available to
+    protect your logins – even for banking and other critical sites.
+
+item-details-heading-view = Entry Details
+item-details-heading-new = Create New Entry
+item-details-heading-edit = Edit Entry Details
+
+item-details-edit = Edit
+item-details-delete = Delete
+
+item-details-save-new = Create Entry
+item-details-save-existing = Save
+item-details-cancel = Cancel
+
+## popup
+
+manage-lockbox-button = Manage Lockbox
+
+no-results-banner = No entries found for current website.
+
+item-details-panel-title = Entry Details
+
+navigate-panel-backwards = Go back
+
+## dialogs
+
+modal-cancel-editing = Unsaved changes exist. Discard them?
+  .confirmLabel = Discard Changes
+  .cancelLabel = Go Back
+
+modal-delete = Delete this Entry?
+  .confirmLabel = Delete
+  .cancelLabel = Cancel
