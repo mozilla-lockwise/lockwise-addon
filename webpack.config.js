@@ -15,6 +15,7 @@ module.exports = {
   entry: {
     "background": "./background/index.js"
   },
+  devtool: "source-map",
   output: {
     filename: "[name].js",
     path: PATH.resolve(__dirname, "dist"),
