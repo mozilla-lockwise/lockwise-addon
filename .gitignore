@@ -5,8 +5,7 @@ __pycache__
 /node_modules/
 /site/
 /temp/
-/*.xpi
-/addon.env
+/addons
 .DS_Store
 .cache
 .tox
