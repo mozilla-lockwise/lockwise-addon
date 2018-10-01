@@ -4,16 +4,16 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-const PATH = require("path")
-const CopyWebpackPlugin = require("copy-webpack-plugin")
-const JSONTemplater = require("json-templater")
-const pkg = require("./package.json")
+const PATH = require("path");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const JSONTemplater = require("json-templater");
+const pkg = require("./package.json");
 
 module.exports = {
   mode: "development",
   context: PATH.resolve(__dirname, "src"),
   entry: {
-    "background": "./background/index.js"
+    "background": "./background/index.js",
   },
   devtool: "source-map",
   output: {
@@ -24,10 +24,10 @@ module.exports = {
     new CopyWebpackPlugin([
       {
         from: "locales/",
-        to: "locales/"
-      }
+        to: "locales/",
+      },
     ], {
-      ignore: ["README*"]
+      ignore: ["README*"],
     }),
     new CopyWebpackPlugin([
       {
@@ -38,8 +38,8 @@ module.exports = {
           content = JSONTemplater.object(content, pkg);
           content = JSON.stringify(content, null, "  ");
           return content;
-        }
-      }
-    ])
-  ]
+        },
+      },
+    ]),
+  ],
 };

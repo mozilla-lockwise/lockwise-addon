@@ -9,7 +9,7 @@ module.exports = {
     pref: [
       "toolkit.telemetry.enabled=true",
       "toolkit.telemetry.server=https://127.0.0.1/telemetry-dummy/",
-      "xpinstall.signatures.required=false"
+      "xpinstall.signatures.required=false",
     ],
   },
 };
