@@ -10,8 +10,11 @@
   "scripts": {
     "build": "webpack",
     "clean": "git clean -dfX addons dist",
+    "distclean": "git clean -dfX .",
     "prepackage": "npm run clean && npm run build",
     "package": "web-ext build --source-dir ./dist --artifacts-dir ./addons",
+    "prerun": "npm run build",
+    "run": "web-ext run --source-dir ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Lockbox Team <lockbox-dev@mozilla.com>",
