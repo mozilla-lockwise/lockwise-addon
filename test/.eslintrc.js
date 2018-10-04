@@ -4,8 +4,9 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-import updateBrowserAction from "./browser-action";
-
-Promise.resolve().then(async () => {
-  await updateBrowserAction();
-});
+module.exports = {
+  env: {
+    mocha: true,
+  },
+  extends: "../.eslintrc.js",
+};
