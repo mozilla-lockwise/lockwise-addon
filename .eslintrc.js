@@ -4,7 +4,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
- let extraPlugins = [];
+let extraPlugins = [];
 if (process.env.STRICT_LINT !== "1") {
   extraPlugins.push("only-warn");
 }
