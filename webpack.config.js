@@ -7,7 +7,17 @@
 const PATH = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const JSONTemplater = require("json-templater");
+const webpack = require("webpack");
+
 const pkg = require("./package.json");
+const NODE_ENV = (() => {
+  if (process.env.NODE_ENV) {
+    return process.env.NODE_ENV.toLowerCase();
+  } else if (process.env.NODE_SUGGESTED_ENV) {
+    return process.env.NODE_SUGGESTED_ENV.toLowerCase();
+  }
+  return "development";
+})();
 
 module.exports = {
   mode: "development",
@@ -47,5 +57,8 @@ module.exports = {
         },
       },
     ]),
+    new webpack.EnvironmentPlugin({
+      NODE_ENV,
+    }),
   ],
 };
