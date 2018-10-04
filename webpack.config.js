@@ -22,8 +22,9 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin([
-      { from: "locales/", to: "locales/" },
+      { from: "fonts/", to: "fonts/" },
       { from: "icons/", to: "icons/" },
+      { from: "locales/", to: "locales/" },
     ], {
       ignore: ["README*"],
     }),
