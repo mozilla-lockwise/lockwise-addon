@@ -10,6 +10,9 @@ end_of_line = lf
 indent_style = space
 insert_final_newline = true
 
+[.{babelrc,editorconfig,eslintrc.js}]
+indent_size = 2
+
 [**.{js,json,yml}]
 indent_size = 2
 

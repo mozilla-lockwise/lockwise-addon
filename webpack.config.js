@@ -20,6 +20,13 @@ module.exports = {
     filename: "[name].js",
     path: PATH.resolve(__dirname, "dist"),
   },
+  module: {
+    rules: [{
+      test: /\.js$/,
+      exclude: /node_modules/,
+      use: "babel-loader",
+    }],
+  },
   plugins: [
     new CopyWebpackPlugin([
       { from: "fonts/", to: "fonts/" },
