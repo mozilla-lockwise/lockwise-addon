@@ -21,7 +21,9 @@
     "prerun": "npm run build",
     "run": "web-ext run --source-dir ./dist",
     "pretest": "npm run autolint && npm run clean:coverage",
-    "test": "cross-env NODE_ENV=test karma start --single-run"
+    "test": "cross-env NODE_ENV=test karma start --single-run",
+    "preintegration": "npm run build",
+    "integration": "cross-env NODE_ENV=test MOZ_HEADLESS=1 mocha --timeout 10000 test/integration"
   },
   "author": "Lockbox Team <lockbox-dev@mozilla.com>",
   "license": "MPL-2.0",
@@ -55,6 +57,7 @@
     "sinon": "^6.3.5",
     "sinon-chai": "^3.2.0",
     "web-ext": "^2.9.1",
+    "webextensions-geckodriver": "^0.4.0",
     "webpack": "^4.20.1",
     "webpack-cli": "^3.1.1"
   }
