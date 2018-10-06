@@ -35,18 +35,23 @@
     "@babel/plugin-syntax-object-rest-spread": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "async-wait-until": "^1.2.4",
     "babel-loader": "^8.0.4",
     "babel-plugin-istanbul": "^5.0.1",
     "babel-plugin-rewire": "^1.2.0",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
+    "chai-enzyme": "^1.0.0-beta.1",
     "copy-webpack-plugin": "^4.5.2",
     "cross-env": "^5.2.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
     "eslint": "^5.6.1",
     "eslint-plugin-mozilla": "^0.16.1",
     "eslint-plugin-no-unsanitized": "^3.0.2",
     "eslint-plugin-only-warn": "^1.0.1",
     "eslint-plugin-react": "^7.11.1",
+    "fetch-mock": "^7.0.7",
     "json-templater": "^1.2.0",
     "karma": "^3.0.0",
     "karma-coverage": "^1.1.2",
@@ -70,5 +75,14 @@
         "toolkit.telemetry.server=https://127.0.0.1/telemetry-dummy/"
       ]
     }
+  },
+  "dependencies": {
+    "fluent": "^0.8.1",
+    "fluent-intl-polyfill": "^0.1.0",
+    "fluent-langneg": "^0.1.0",
+    "fluent-react": "^0.8.1",
+    "prop-types": "^15.6.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
   }
 }
