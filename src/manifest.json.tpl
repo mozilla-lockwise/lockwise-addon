@@ -2,8 +2,11 @@
   "manifest_version": 2,
   "name": "{{title}}",
   "version": "{{version}}",
-
   "description": "{{description}}",
+  "icons": {
+    "48": "icons/lb_locked.svg",
+    "96": "icons/lb_locked.svg"
+  },
 
   "applications": {
     "gecko": {
