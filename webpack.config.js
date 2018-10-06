@@ -19,13 +19,23 @@ const NODE_ENV = (() => {
   return "development";
 })();
 
+const BABEL_OPTS = (() => {
+  let opts = {};
+
+  if (NODE_ENV != "production") {
+    opts.retainLines = true;
+  }
+
+  return opts;
+})();
+
 module.exports = {
   mode: "development",
   context: PATH.resolve(__dirname, "src"),
   entry: {
     "background": "./background/index.js",
   },
-  devtool: "source-map",
+  devtool: (NODE_ENV !== "production") ? "inline-source-map" : "source-map",
   output: {
     filename: "[name].js",
     path: PATH.resolve(__dirname, "dist"),
@@ -34,7 +44,10 @@ module.exports = {
     rules: [{
       test: /\.js$/,
       exclude: /node_modules/,
-      use: "babel-loader",
+      use: {
+        loader: "babel-loader",
+        options: BABEL_OPTS,
+      },
     }],
   },
   plugins: [
