@@ -8,8 +8,9 @@
     "firefox": ">= 63"
   },
   "scripts": {
-    "autolint": "npm run :autolint:js",
+    "autolint": "npm run :autolint:js && npm run :autolint:css",
     ":autolint:js": "eslint .",
+    ":autolint:css": "stylelint {docs,src}/**/*.css",
     "lint": "cross-env STRICT_LINT=1 npm run autolint",
     "prebuild": "npm run autolint && npm run clean:build",
     "build": "webpack",
@@ -60,9 +61,12 @@
     "karma-mocha-reporter": "^2.2.5",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^3.0.5",
+    "mini-css-extract-plugin": "^0.4.3",
     "mocha": "^5.2.0",
     "sinon": "^6.3.5",
     "sinon-chai": "^3.2.0",
+    "stylelint": "^9.6.0",
+    "stylelint-config-recommended": "^2.1.0",
     "web-ext": "^2.9.1",
     "webextensions-geckodriver": "^0.4.0",
     "webpack": "^4.20.1",

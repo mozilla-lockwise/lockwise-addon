@@ -7,6 +7,7 @@
 const PATH = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const JSONTemplater = require("json-templater");
+const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require("webpack");
 
 const pkg = require("./package.json");
@@ -41,14 +42,32 @@ module.exports = {
     path: PATH.resolve(__dirname, "dist"),
   },
   module: {
-    rules: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      use: {
-        loader: "babel-loader",
-        options: BABEL_OPTS,
+    rules: [
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          (NODE_ENV === "production") ? MiniCSSExtractPlugin.loader : "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+              camelCase: "dashes",
+              importLoaders: 1,
+              localIdentName: "[name]__[local]___[hash:base64:5]",
+            },
+          },
+        ],
       },
-    }],
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: BABEL_OPTS,
+        },
+      },
+    ],
   },
   plugins: [
     new CopyWebpackPlugin([
@@ -73,5 +92,6 @@ module.exports = {
     new webpack.EnvironmentPlugin({
       NODE_ENV,
     }),
+    new MiniCSSExtractPlugin(),
   ],
 };
