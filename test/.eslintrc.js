@@ -9,4 +9,10 @@ module.exports = {
     mocha: true,
   },
   extends: "../.eslintrc.js",
+  plugins: [
+    "mocha",
+  ],
+  rules: {
+    "mocha/no-exclusive-tests": "error",
+  },
 };
