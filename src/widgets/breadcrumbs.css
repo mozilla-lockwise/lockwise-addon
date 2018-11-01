@@ -1,0 +1,22 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+.breadcrumbs {
+  font-size: 15px;
+}
+
+.crumb {
+  font-size: 15px;
+}
+
+.crumb:not(:first-child)::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 9px;
+  background-image: url(/icons/chevron-right.svg);
+  background-repeat: no-repeat;
+  background-size: 5px 9px;
+  margin: 0 16px;
+}

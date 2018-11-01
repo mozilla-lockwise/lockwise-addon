@@ -1,0 +1,42 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+.link {
+  border: 0;
+  padding: 0;
+  text-decoration: none;
+  color: #0060df;
+  background: transparent;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.link::-moz-focus-inner {
+  border: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.link:active {
+  color: #003eaa;
+  text-decoration: underline;
+}
+
+.link:focus {
+  box-shadow: 0 0 0 2px #0a84ff, 0 0 0 6px rgba(10, 132, 255, 0.3);
+}
+
+.external::after {
+  background-image: url(/icons/external-link.svg);
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  content: "";
+  display: inline-block;
+  height: 16px;
+  margin: -.3rem .15rem 0 .25rem;
+  vertical-align: middle;
+  width: 16px;
+}
