@@ -45,6 +45,7 @@
     "chai-enzyme": "^1.0.0-beta.1",
     "copy-webpack-plugin": "^4.5.2",
     "cross-env": "^5.2.0",
+    "css-loader": "^1.0.1",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
     "eslint": "^5.6.1",
@@ -87,6 +88,7 @@
     "fluent-react": "^0.8.1",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "style-loader": "^0.23.1"
   }
 }
