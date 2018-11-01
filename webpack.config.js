@@ -94,4 +94,10 @@ module.exports = {
     }),
     new MiniCSSExtractPlugin(),
   ],
+  resolve: {
+    alias: {
+      src: PATH.resolve(__dirname, "src"),
+      test: PATH.resolve(__dirname, "test"),
+    },
+  },
 };

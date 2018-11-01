@@ -5,9 +5,9 @@
 import chai, { expect } from "chai";
 import chaiAsPromised from "chai-as-promised";
 import sinonChai from "sinon-chai";
-import "../mocks/browser";
+import "test/unit/mocks/browser";
 
-import updateBrowserAction from "../../../src/background/browser-action";
+import updateBrowserAction from "src/background/browser-action";
 
 chai.use(chaiAsPromised);
 chai.use(sinonChai);

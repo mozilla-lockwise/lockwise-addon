@@ -11,8 +11,8 @@ import { Localized } from "fluent-react";
 import React from "react";
 import sinon from "sinon";
 
-import { mount } from "./enzyme";
-import AppLocalizationProvider from "../../src/l10n";
+import { mount } from "test/unit/enzyme";
+import AppLocalizationProvider from "src/l10n";
 
 chai.use(chaiAsPromised);
 chai.use(chaiEnzyme());
