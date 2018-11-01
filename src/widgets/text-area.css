@@ -1,0 +1,24 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+.text-area {
+  padding: 8px;
+  font: caption;
+  font-size: 13px;
+  color: #0c0c0d;
+  background-color: #ffffff;
+  border: 1px solid rgba(12, 12, 13, 0.3);
+  border-radius: 2px;
+}
+
+.text-area:hover {
+  border-color: rgba(12, 12, 13, 0.5);
+}
+
+.text-area:focus {
+  border-color: #0a84ff;
+  /* Note: This is adapted from the Photon button spec, since the input fields
+     spec doesn't define this. */
+  box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.3);
+}

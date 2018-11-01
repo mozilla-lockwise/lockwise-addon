@@ -1,0 +1,29 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+.scrolling-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.scrolling-list:-moz-focusring {
+  outline-style: none;
+}
+
+.styled-item {
+  color: #0c0c0d;
+  background-color: #f9f9fa;
+}
+
+.scrolling-list > .styled-item[data-selected] {
+  background-color: #b1b1b3;
+}
+
+.scrolling-list:focus > .styled-item[data-selected] {
+  color: #ffffff;
+  background-color: #0060df;
+}

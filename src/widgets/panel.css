@@ -1,0 +1,134 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+.panel {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-header.floating-border::after,
+.panel-banner.floating-border::after,
+.panel-footer.floating-border::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  z-index: 5;
+  background-color: #d7d7db;
+}
+
+.panel-header {
+  display: flex;
+  position: relative;
+  align-items: center;
+  font-weight: 500;
+  background: #ededf0;
+  height: 30px;
+  padding: 12px;
+}
+
+.panel-banner {
+  position: relative;
+  text-align: center;
+  padding: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #737373;
+  background-color: #ffffff;
+}
+
+.panel-header.normal-border,
+.panel-banner.normal-border {
+  border-bottom: 1px solid #d7d7db;
+}
+
+.panel-header.floating-border::after,
+.panel-banner.floating-border::after {
+  bottom: -1px;
+}
+
+.panel-header-toolbar {
+  flex: 1;
+  padding: 0;
+}
+
+.panel-body {
+  flex: 1;
+  display: grid;
+  overflow: hidden;
+  background-color: #ededf0;
+}
+
+.panel-body.scroll {
+  display: block;
+  overflow-y: auto;
+}
+
+.panel-footer {
+  display: flex;
+  position: relative;
+  align-items: center;
+  min-height: 40px;
+}
+
+.panel-footer.normal-border {
+  border-top: 1px solid #d7d7db;
+}
+
+.panel-footer.floating-border::before {
+  top: -1px;
+}
+
+.panel-footer-button {
+  flex: 1;
+  height: 40px;
+  padding: 0 16px;
+  font-size: 13px;
+}
+
+.panel-footer-button:focus {
+  box-shadow: inset 0 0 0 2px #0a84ff;
+}
+
+.panel-footer-button + .panel-footer-button {
+  border-inline-start: 1px solid #d7d7db;
+}
+
+.primary-theme {
+  color: #ffffff;
+  background-color: #0060df;
+  /* This color is the equivalent of #0060df overlaid by
+     rgba(12, 12, 13, 0.3). */
+  box-shadow: 0 -1px #03469e;
+}
+
+.primary-theme:focus {
+  box-shadow: 0 -1px #03469e, inset 0 0 0 2px #0a84ff;
+}
+
+.normal-theme {
+  color: #262626;
+  background-color: #f9f9fa;
+}
+
+.primary-theme:not([disabled]):hover {
+  background-color: #003eaa;
+}
+
+.normal-theme:not([disabled]):hover {
+  background-color: #d7d7db;
+}
+
+.primary-theme:not([disabled]):active:hover {
+  background-color: #002275;
+}
+
+.normal-theme:not([disabled]):active:hover {
+  background-color: #b1b1b3;
+}

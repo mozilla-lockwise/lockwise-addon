@@ -1,0 +1,19 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+.modal-dialog {
+  padding: 1.5em 1.5em 1em;
+  font-size: 22px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.modal-dialog > menu {
+  margin: 1.5em 0 0 0;
+  padding: 0;
+}
+
+.modal-dialog > menu > button + button {
+  margin-inline-start: 2.5ch;
+}
