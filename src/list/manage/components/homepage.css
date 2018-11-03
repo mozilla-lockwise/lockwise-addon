@@ -1,0 +1,30 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+.homepage {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  margin: 3em;
+}
+
+.homepage > h1,
+.homepage > h2,
+.homepage > p {
+  color: #0c0c0d;
+  letter-spacing: 0.2px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.homepage h1 {
+  font-size: 17px;
+  font-weight: 300;
+  font-style: italic;
+  text-transform: lowercase;
+}
+
+.homepage > img {
+  max-width: 279px;
+}

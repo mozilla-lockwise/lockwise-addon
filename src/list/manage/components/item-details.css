@@ -1,0 +1,21 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+.item-details {
+  padding: 1em 4.6em 4.6em;
+  background-color: #f9f9fa;
+}
+
+.item-details > h1 {
+  font-weight: 300;
+  font-size: 22px;
+  margin: 0 0 1.5em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #d7d7db;
+}
+
+.buttons {
+  margin-top: 1em;
+  padding: 1em 0;
+}

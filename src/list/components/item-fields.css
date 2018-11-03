@@ -1,0 +1,42 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+.item-fields {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr);
+  max-width: 360px;
+}
+
+.item-fields > label,
+.item-fields > .field {
+  display: contents;
+}
+
+.input {
+  max-width: 242px;
+}
+
+.password {
+  max-width: 258px;
+}
+
+.notes {
+  min-height: 60px;
+}
+
+.notes-read-only {
+  min-height: 73px;
+}
+
+.first-label {
+  margin-top: 0;
+}
+
+.inline-button {
+  display: flex;
+}
+
+.inline-button > *:first-child {
+  flex: 1;
+}

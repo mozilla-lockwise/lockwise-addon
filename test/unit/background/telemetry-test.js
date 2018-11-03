@@ -32,26 +32,32 @@ describe("background > telemetry", () => {
       "startup": {
         methods: ["startup"],
         objects: ["addon", "webextension"],
+        extra_keys: [],
       },
       "iconClick": {
         methods: ["iconClick"],
         objects: ["toolbar"],
+        extra_keys: [],
       },
       "displayView": {
         methods: ["render"],
         objects: ["manage", "doorhanger"],
+        extra_keys: [],
       },
       "itemAdding": {
         methods: ["itemAdding"],
         objects: ["manage"],
+        extra_keys: [],
       },
       "itemUpdating": {
         methods: ["itemUpdating"],
         objects: ["manage"],
+        extra_keys: [],
       },
       "itemDeleting": {
         methods: ["itemDeleting"],
         objects: ["manage"],
+        extra_keys: [],
       },
       "itemAdded": {
         methods: ["itemAdded"],
@@ -71,10 +77,12 @@ describe("background > telemetry", () => {
       "itemSelected": {
         methods: ["itemSelected"],
         objects: ["manage", "doorhanger"],
+        extra_keys: [],
       },
       "addClick": {
         methods: ["addClick"],
         objects: ["manage"],
+        extra_keys: [],
       },
       "datastore": {
         methods: ["added", "updated", "deleted"],
@@ -84,14 +92,17 @@ describe("background > telemetry", () => {
       "feedback": {
         methods: ["feedbackClick"],
         objects: ["manage"],
+        extra_keys: [],
       },
       "faq": {
         methods: ["faqClick"],
         objects: ["manage"],
+        extra_keys: [],
       },
       "itemCopied": {
         methods: ["usernameCopied", "passwordCopied"],
         objects: ["manage", "doorhanger"],
+        extra_keys: [],
       },
     });
     expect(spyScalars).to.have.been.calledWith("lockboxv1", {

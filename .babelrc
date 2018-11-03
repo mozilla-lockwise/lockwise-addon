@@ -5,9 +5,7 @@
       "@babel/preset-env",
       {
         "targets": {
-          "browsers": [
-            "firefox >= 63"
-          ]
+          "firefox": "63"
         },
         "useBuiltIns": "usage",
         "modules": false
@@ -19,11 +17,6 @@
     "@babel/plugin-syntax-async-generators"
   ],
   "env": {
-    "production": {
-      "presets": [
-        "minify"
-      ]
-    },
     "test": {
       "plugins": [
         "istanbul",

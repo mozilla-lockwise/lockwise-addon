@@ -8,6 +8,7 @@ const PATH = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const JSONTemplater = require("json-templater");
 const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
+const HTMLWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 
 const pkg = require("./package.json");
@@ -35,8 +36,10 @@ module.exports = {
   context: PATH.resolve(__dirname, "src"),
   entry: {
     "background": "./background/index.js",
+    "list/manage/index": "./list/manage/index.js",
+    "list/popup/index": "./list/popup/index.js",
   },
-  devtool: (NODE_ENV !== "production") ? "inline-source-map" : "source-map",
+  devtool: "cheap-source-map",
   output: {
     filename: "[name].js",
     path: PATH.resolve(__dirname, "dist"),
@@ -73,6 +76,7 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: "fonts/", to: "fonts/" },
       { from: "icons/", to: "icons/" },
+      { from: "images/", to: "images/" },
       { from: "locales/", to: "locales/" },
     ], {
       ignore: ["README*"],
@@ -89,6 +93,20 @@ module.exports = {
         },
       },
     ]),
+    new HTMLWebpackPlugin({
+      template: "template.ejs",
+      filename: "list/manage/index.html",
+      chunks: ["list/manage/index"],
+      inject: false,
+      icon: "/icons/lb_locked.svg",
+    }),
+    new HTMLWebpackPlugin({
+      template: "template.ejs",
+      filename: "list/popup/index.html",
+      chunks: ["list/popup/index"],
+      inject: false,
+      icon: "/icons/lb_locked.svg",
+    }),
     new webpack.EnvironmentPlugin({
       NODE_ENV,
     }),

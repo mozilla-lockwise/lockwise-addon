@@ -1,0 +1,21 @@
+<!doctype html>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <% const path = require("path");
+       const dir = path.dirname(htmlWebpackPlugin.options.filename);
+       for (let css of htmlWebpackPlugin.files.css) {
+    %>
+    <link href="<%- path.relative(dir, css) %>" rel="stylesheet">
+    <% } for (let js of htmlWebpackPlugin.files.js) { %>
+    <script src="<%- path.relative(dir, js) %>" defer></script>
+    <% } %>
+    <link href="<%- htmlWebpackPlugin.options.icon %>" rel="shortcut icon" type="image/svg"/>
+  </head>
+  <body>
+    <main id="content"></main>
+  </body>
+</html>
