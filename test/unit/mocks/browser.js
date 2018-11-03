@@ -182,4 +182,43 @@ window.browser = {
   windows: {
     update() {},
   },
+
+  telemetry: {
+    _records: [],
+
+    _events: {},
+    registerEvents(category, events) {
+      if (category in this._events) {
+        throw new Error("Attempt to register event that is already registered.");
+      }
+      this._events[category] = events;
+    },
+    recordEvent(category, method, object, value, extra) {
+      const key = `event:${category}`;
+      let pings = this._records[key] || {};
+      pings.push({
+        method,
+        value,
+        extra,
+      });
+      this._records[key] = pings;
+    },
+
+    _scalars: {},
+    registerScalars(category, scalars) {
+      if (category in this._scalars) {
+        throw new Error("Attempt to register scalar that is already registered.");
+      }
+      this._scalars[category] = scalars;
+    },
+    scalarSet(name, value) {
+      const key = `scalar:${name}`;
+      let record = this._records[key] || {};
+      record = {
+        ...record,
+        value,
+      };
+      this._records[key] = record;
+    },
+  },
 };
