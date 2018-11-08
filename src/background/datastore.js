@@ -4,6 +4,8 @@
 
 import UUID from "uuid";
 
+import telemetry from "./telemetry";
+
 function convertInfo2Item(info) {
   let title;
   try {
@@ -30,7 +32,6 @@ function convertInfo2Item(info) {
       password: info.password,
       usernameField: info.usernameField,
       passwordField: info.passwordField,
-      notes: "",
     },
   };
   return item;
@@ -86,7 +87,7 @@ async function recordMetric(method, itemid, fields) {
       fields,
     };
   }
-  browser.telemetry.recordEvent(method, "datastore", extra);
+  telemetry.recordEvent(method, "datastore", extra);
 }
 
 class DataStore {
@@ -133,15 +134,15 @@ class DataStore {
       info.formSubmitURL = info.hostname;
     }
     // TODO: call logins API
-    info = {
+    let added = {
       ...info,
       guid: UUID(),
       timeCreated: Date.now(),
       timePasswordChanged: Date.now(),
     };
-    this._all[info.guid] = info;
+    this._all[added.guid] = added;
 
-    added = convertInfo2Item(info);
+    added = convertInfo2Item(added);
     recordMetric("added", added.id);
 
     return added;
@@ -163,6 +164,7 @@ class DataStore {
       ...info,
       timePasswordChanged: Date.now(),
     };
+    this._all[updated.guid] = updated;
 
     updated = convertInfo2Item(updated);
     recordMetric("updated", item.id);
@@ -172,8 +174,6 @@ class DataStore {
   async remove(id) {
     const item = await this.get(id);
     if (item) {
-      const login = convertItem2Info(item);
-
       // TODO: call API
       delete this._all[item.id];
 

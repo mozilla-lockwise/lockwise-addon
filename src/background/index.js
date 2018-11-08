@@ -5,7 +5,11 @@
  */
 
 import updateBrowserAction from "./browser-action";
+import initializeMessagePorts from "./message-ports";
+import { initializeTelemetry } from "./telemetry";
 
 Promise.resolve().then(async () => {
+  initializeTelemetry();
+  initializeMessagePorts();
   await updateBrowserAction();
 });

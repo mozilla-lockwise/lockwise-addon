@@ -4,7 +4,7 @@
 
 const TELEMETRY_CATEGORY = "lockboxv1";
 
-export default function initializeTelemetry() {
+export function initializeTelemetry() {
   try {
     browser.telemetry.registerEvents(TELEMETRY_CATEGORY, {
       "startup": {
@@ -99,3 +99,13 @@ export default function initializeTelemetry() {
     }
   }
 }
+
+const exported = {
+  recordEvent(method, object, extra) {
+    return browser.telemetry.recordEvent(TELEMETRY_CATEGORY, method, object, null, extra || null);
+  },
+  scalarSet(name, value) {
+    return browser.telemetry.scalarSet(`${TELEMETRY_CATEGORY}.${name}`, value);
+  },
+};
+export default exported;
