@@ -38,7 +38,7 @@
   "permissions": [
     "tabs",
     "clipboardWrite",
-    "mozillaAddon",
+    "mozillaAddons",
     "telemetry"
   ]
 }
