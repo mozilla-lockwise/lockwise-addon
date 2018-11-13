@@ -36,8 +36,8 @@ module.exports = {
   context: PATH.resolve(__dirname, "src"),
   entry: {
     "background": "./background/index.js",
-    "list/manage/index": "./list/manage/index.js",
-    "list/popup/index": "./list/popup/index.js",
+    "list/manage": "./list/manage/index.js",
+    "list/popup": "./list/popup/index.js",
   },
   devtool: "cheap-source-map",
   output: {
@@ -95,15 +95,15 @@ module.exports = {
     ]),
     new HTMLWebpackPlugin({
       template: "template.ejs",
-      filename: "list/manage/index.html",
-      chunks: ["list/manage/index"],
+      filename: "list/manage.html",
+      chunks: ["list/manage"],
       inject: false,
       icon: "/icons/lb_locked.svg",
     }),
     new HTMLWebpackPlugin({
       template: "template.ejs",
-      filename: "list/popup/index.html",
-      chunks: ["list/popup/index"],
+      filename: "list/popup.html",
+      chunks: ["list/popup"],
       inject: false,
       icon: "/icons/lb_locked.svg",
     }),

@@ -56,7 +56,7 @@ export class SingletonView {
 }
 
 const views = {
-  manage: new SingletonView("/list/manage/index.html"),
+  manage: new SingletonView("/list/manage.html"),
 };
 
 export async function openView(name) {

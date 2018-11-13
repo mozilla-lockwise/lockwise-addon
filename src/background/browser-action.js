@@ -19,7 +19,7 @@ function uninstallPopup() {
 }
 
 function installEntriesAction() {
-  return installPopup("list/popup/index.html");
+  return installPopup("list/popup.html");
 }
 
 export default async function updateBrowserAction() {
