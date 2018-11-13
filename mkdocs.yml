@@ -1,0 +1,24 @@
+site_name: Lockbox Extension
+site_description: Documentation for the Firefox extension
+theme: readthedocs
+repo_url: https://github.com/linuxwolf/lockbox-addon
+
+extra_css:
+- css/extra.css
+
+markdown_extensions:
+- attr_list
+- admonition
+
+pages:
+- 'Introduction': 'index.md'
+- 'Release Notes': 'release-notes.md'
+- 'Contribute': 'contributing.md'
+- 'Telemetry and Metrics': 'metrics.md'
+- 'Developer Guides':
+  - 'Build and Install': 'developer/install.md'
+  - 'Release Instructions': 'developer/releases.md'
+  - 'Directory Structure': 'developer/directory-structure.md'
+  - 'Test Plan': 'developer/test-plan.md'
+  - 'Test Plan - Accessibility': 'developer/test-plan-accessibility.md'
+  - 'Test Plan - Telemetry': 'developer/test-plan-telemetry.md'
