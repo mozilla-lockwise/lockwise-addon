@@ -2,7 +2,7 @@
   "title": "Lockbox",
   "name": "lockbox",
   "id": "lockbox@mozilla.com",
-  "version": "2.0.0",
+  "version": "2.0.0-alpha",
   "description": "Take your passwords everywhere.",
   "engines": {
     "firefox": ">= 63"
