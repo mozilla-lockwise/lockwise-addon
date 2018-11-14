@@ -16,10 +16,12 @@ jobs:
         - npm run lint
         - npm audit || true
     - stage: test
+      name: "Unit tests"
       <<: *node
       script: npm run test
       after_success: npm run codecov
     - stage: test
+      name: "Integration tests"
       <<: *node
       script: npm run integration
     - stage: deploy
@@ -41,7 +43,7 @@ jobs:
       name: "Deploy release"
       <<: *node
       if: tag =~ ^\d.\d.\d
-      script: npm run package
+      script: NODE_ENV=production npm run package
       deploy:
         provider: releases
         on:
