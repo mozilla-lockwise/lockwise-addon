@@ -1,0 +1,53 @@
+_aliases:
+  - &node
+    addons:
+      firefox: latest
+    language: node_js
+    node_js: stable
+
+cache: npm
+
+sudo: required
+jobs:
+  include:
+    - stage: checks
+      <<: *node
+      script:
+        - npm run lint
+        - npm audit || true
+    - stage: test
+      <<: *node
+      script: npm run test
+      after_success: npm run codecov
+    - stage: test
+      <<: *node
+      script: npm run integration
+    - stage: deploy
+      name: "Deploy docs"
+      if: branch = master
+      <<: *node
+      python: '3.6'
+      before_install:
+        - pip install --user mkdocs
+      script: npm run doc
+      deploy:
+        provider: pages
+        on:
+          branch: master
+        skip-cleanup: true
+        github-token: $GITHUB_TOKEN
+        local_dir: site
+    - stage: deploy
+      name: "Deploy release"
+      <<: *node
+      if: tag =~ ^\d.\d.\d
+      script: npm run package
+      deploy:
+        provider: releases
+        on:
+          tags: true
+        skip_cleanup: true
+        file_glob: true
+        file: addons/*
+        api-key: $GITHUB_TOKEN
+

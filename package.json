@@ -19,7 +19,7 @@
     "clean:build": "git clean -dfX dist",
     "clean:package": "git clean -dfX addons",
     "clean:coverage": "git clean -dfX coverage",
-    "clean:doc": "git clean -dfX site",
+    "clean:doc": "git clean -dfX site docs",
     "clean": "npm run clean:build && npm run clean:doc && npm run clean:package && npm run clean:coverage",
     "distclean": "git clean -dfX .",
     "prepackage": "npm run build && npm run clean:package",
@@ -29,7 +29,8 @@
     "pretest": "npm run autolint && npm run clean:coverage",
     "test": "cross-env NODE_ENV=test karma start --single-run",
     "preintegration": "npm run build",
-    "integration": "cross-env NODE_ENV=test MOZ_HEADLESS=1 mocha --timeout 10000 test/integration"
+    "integration": "cross-env NODE_ENV=test MOZ_HEADLESS=1 mocha --timeout 10000 test/integration",
+    "codecov": "codecov"
   },
   "author": "Lockbox Team <lockbox-dev@mozilla.com>",
   "license": "MPL-2.0",
@@ -46,6 +47,7 @@
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "chai-enzyme": "^1.0.0-beta.1",
+    "codecov": "^3.1.0",
     "copy-webpack-plugin": "^4.5.2",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.1",

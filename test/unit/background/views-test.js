@@ -77,7 +77,7 @@ describe("background > views", () => {
       await views.openView("manage");
       await views.openView("manage");
       expect(browser.tabs.mockAllTabs.map((i) => i.url)).to.deep.equal([
-        "/list/manage/index.html",
+        "/list/manage.html",
       ]);
     });
   });

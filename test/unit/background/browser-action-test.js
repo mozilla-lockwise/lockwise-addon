@@ -16,7 +16,7 @@ describe("background > browser action", () => {
   it("opens popup", async () => {
     await updateBrowserAction();
     await expect(browser.browserAction.getPopup()).to.eventually.equal(
-      browser.extension.getURL("list/popup/index.html")
+      browser.extension.getURL("list/popup.html")
     );
   });
 });
