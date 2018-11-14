@@ -7,7 +7,6 @@
 const PATH = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const JSONTemplater = require("json-templater");
-const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 
@@ -24,12 +23,17 @@ const NODE_ENV = (() => {
 const BABEL_OPTS = (() => {
   let opts = {};
 
-  if (NODE_ENV != "production") {
+  if (NODE_ENV !== "production") {
     opts.retainLines = true;
   }
 
   return opts;
 })();
+
+const extraCopy = [];
+if (NODE_ENV === "production") {
+  extraCopy.push({ from: "locales/locales.json", to: "locales/locales.json" });
+}
 
 module.exports = {
   mode: "development",
@@ -50,7 +54,7 @@ module.exports = {
         test: /\.css$/,
         exclude: /node_modules/,
         use: [
-          (NODE_ENV === "production") ? MiniCSSExtractPlugin.loader : "style-loader",
+          "style-loader",
           {
             loader: "css-loader",
             options: {
@@ -74,10 +78,12 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin([
-      { from: "fonts/", to: "fonts/" },
-      { from: "icons/", to: "icons/" },
-      { from: "images/", to: "images/" },
-      { from: "locales/", to: "locales/" },
+      { from: "fonts/" },
+      { from: "icons/" },
+      { from: "images/" },
+      { from: "locales/en-US" },
+      { from: "locales/**/*.ftl" },
+      ...extraCopy,
     ], {
       ignore: ["README*"],
     }),
@@ -110,7 +116,6 @@ module.exports = {
     new webpack.EnvironmentPlugin({
       NODE_ENV,
     }),
-    new MiniCSSExtractPlugin(),
   ],
   resolve: {
     alias: {
