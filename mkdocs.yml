@@ -15,6 +15,7 @@ pages:
 - 'Release Notes': 'release-notes.md'
 - 'Contribute': 'contributing.md'
 - 'Telemetry and Metrics': 'metrics.md'
+- 'Mozilla Security': 'SECURITY.md'
 - 'Developer Guides':
   - 'Build and Install': 'developer/install.md'
   - 'Release Instructions': 'developer/releases.md'
