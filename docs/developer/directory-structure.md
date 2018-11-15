@@ -46,7 +46,7 @@ End-to-end integration tests operating on a compiled version of the add-on runni
 
 Unit tests testing individual components of the source code. These are writen in Javascript using Mocha/Chai and run via Karma. The subdirectories of this directory match the subdirectories of `src/webextension`.
 
-[background-readme]: https://github.com/linuxwolf/lockbox-addon/blob/master/src/background/README.md
-[list-readme]: https://github.com/linuxwolf/lockbox-addon/blob/master/src/list/README.md
-[locales-readme]: https://github.com/linuxwolf/lockbox-addon/blob/master/src/locales/README.md
-[widgets-readme]: https://github.com/linuxwolf/lockbox-addon/blob/master/src/widgets/README.md
+[background-readme]: https://github.com/mozilla-lockbox/lockbox-addon/blob/master/src/background/README.md
+[list-readme]: https://github.com/mozilla-lockbox/lockbox-addon/blob/master/src/list/README.md
+[locales-readme]: https://github.com/mozilla-lockbox/lockbox-addon/blob/master/src/locales/README.md
+[widgets-readme]: https://github.com/mozilla-lockbox/lockbox-addon/blob/master/src/widgets/README.md
