@@ -15,7 +15,7 @@ Before a release can be made, the following must be done:
 
 * All of the [checklist items](#checklist) are complete
 * You are an administrator of the project `lockbox-extension`
-* Your local git working copy has a remote named `upstream` pointing to `git@github.com:linuxwolf/lockbox-addon.git`
+* Your local git working copy has a remote named `upstream` pointing to `git@github.com:mozilla-lockbox/lockbox-addon.git`
 
 To generate the next release binary:
 
@@ -71,5 +71,5 @@ The resulting files deployed are:
 
 **IMPORTANT:** Test Pilot reports the status of build, signing, and deployment of its artifacts on the IRC channel **#testpilot-bots**.  Be sure to join the channel prior to pushing the `production` branch to GitHub in order to receive the status updates.
 
-[production-compare]: https://github.com/linuxwolf/lockbox-addon/compare/production...master
-[releases]: https://github.com/linuxwolf/lockbox-addon/releases
+[production-compare]: https://github.com/mozilla-lockbox/lockbox-addon/compare/production...master
+[releases]: https://github.com/mozilla-lockbox/lockbox-addon/releases

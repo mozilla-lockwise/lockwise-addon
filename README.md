@@ -30,10 +30,10 @@ version 2.0][license-link].
 
 Note that some test fixtures use source code from third-party services, and are not subject to this license.
 
-[travisci-image]: https://travis-ci.org/linuxwolf/lockbox-addon.svg?branch=master
-[travisci-link]: https://travis-ci.org/linuxwolf/lockbox-addon
-[codecov-image]: https://codecov.io/gh/linuxwolf/lockbox-addon/branch/master/graph/badge.svg
-[codecov-link]: https://codecov.io/gh/linuxwolf/lockbox-addon
+[travisci-image]: https://travis-ci.org/mozilla-lockbox/lockbox-addon.svg?branch=master
+[travisci-link]: https://travis-ci.org/mozilla-lockbox/lockbox-addon
+[codecov-image]: https://codecov.io/gh/mozilla-lockbox/lockbox-addon/branch/master/graph/badge.svg
+[codecov-link]: https://codecov.io/gh/mozilla-lockbox/lockbox-addon
 [waffle-image]: https://badge.waffle.io/mozilla-lockbox/lockbox-extension.svg?columns=In%20Progress
 [waffle-link]: https://waffle.io/mozilla-lockbox/lockbox-extension
 [docs-link]: docs/
