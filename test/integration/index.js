@@ -4,15 +4,13 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-const PATH = require("path");
-const chai = require("chai");
-const chaiAsPromised = require("chai-as-promised");
-const webExtensionsGeckoDriver = require("webextensions-geckodriver");
+import chai, { expect } from "chai";
+import PATH from "path";
+import chaiAsPromised from "chai-as-promised";
+import webExtensionsGeckoDriver, { webdriver } from "webextensions-geckodriver";
 
-const { expect } = chai;
 chai.use(chaiAsPromised);
 
-const { webdriver } = webExtensionsGeckoDriver;
 const manifest = PATH.resolve(__dirname, "../../dist/manifest.json");
 const ident = "lockbox_mozilla_com";
 
@@ -20,7 +18,9 @@ describe("Lockbox functional testing", () => {
   let driver, helper;
 
   before(async () => {
-    const webext = await webExtensionsGeckoDriver(manifest);
+    const webext = await webExtensionsGeckoDriver(manifest, {
+      webExt: { artifactsDir: PATH.resolve("../../addons/") },
+    });
     driver = webext.geckodriver;
     helper = {
       toolbar() {

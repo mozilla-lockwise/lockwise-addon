@@ -29,7 +29,7 @@
     "pretest": "npm run autolint && npm run clean:coverage",
     "test": "cross-env NODE_ENV=test karma start --single-run",
     "preintegration": "npm run build",
-    "integration": "cross-env NODE_ENV=test MOZ_HEADLESS=1 mocha --timeout 10000 test/integration",
+    "integration": "cross-env NODE_ENV=test MOZ_HEADLESS=1 mocha --require @babel/register --timeout 10000 test/integration",
     "codecov": "codecov"
   },
   "author": "Lockbox Team <lockbox-dev@mozilla.com>",
@@ -40,6 +40,7 @@
     "@babel/plugin-syntax-object-rest-spread": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
     "async-wait-until": "^1.2.4",
     "babel-loader": "^8.0.4",
     "babel-plugin-istanbul": "^5.0.1",
