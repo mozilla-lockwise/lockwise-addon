@@ -5,6 +5,7 @@
  */
 
 const PATH = require("path");
+const FILE = require("fs").promises;
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const JSONTemplater = require("json-templater");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
@@ -30,9 +31,25 @@ const BABEL_OPTS = (() => {
   return opts;
 })();
 
-const extraCopy = [];
-if (NODE_ENV === "production") {
-  extraCopy.push({ from: "locales/locales.json", to: "locales/locales.json" });
+const DEFAULT_LOCALE = "en-US";
+async function transformLocalesJSON(content, from) {
+  if (PATH.basename(from) !== "locales.json") {
+    return content;
+  }
+  if (NODE_ENV === "production") {
+    return content;
+  }
+
+  const localeDir = PATH.dirname(from);
+  let locales = await FILE.readdir(localeDir, { withFileTypes: true }).
+                      then((ents) => ents.filter((e) => e.isDirectory())).
+                      then((ents) => ents.map((e) => e.name));
+  locales = [DEFAULT_LOCALE].concat(locales).reduce((acc, l) => {
+    if (!acc.includes(l)) { acc.push(l); }
+    return acc;
+  }, []);
+
+  return JSON.stringify(locales);
 }
 
 module.exports = {
@@ -43,7 +60,7 @@ module.exports = {
     "list/manage": "./list/manage/index.js",
     "list/popup": "./list/popup/index.js",
   },
-  devtool: "cheap-source-map",
+  devtool: false,
   output: {
     filename: "[name].js",
     path: PATH.resolve(__dirname, "dist"),
@@ -78,12 +95,10 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin([
-      { from: "fonts/" },
-      { from: "icons/" },
-      { from: "images/" },
-      { from: "locales/en-US" },
-      { from: "locales/**/*.ftl" },
-      ...extraCopy,
+      { from: "fonts/", to: "fonts/" },
+      { from: "icons/", to: "icons/" },
+      { from: "images/", to: "images/" },
+      { from: "locales/", to: "locales/", transform: transformLocalesJSON },
     ], {
       ignore: ["README*"],
     }),
