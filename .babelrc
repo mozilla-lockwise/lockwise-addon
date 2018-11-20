@@ -5,10 +5,9 @@
       "@babel/preset-env",
       {
         "targets": {
-          "firefox": "63"
-        },
-        "useBuiltIns": "usage",
-        "modules": false
+          "firefox": "63",
+          "node": "10",
+        }
       }
     ]
   ],
