@@ -78,7 +78,7 @@ This section describes which components will be the focus of the test team.
 
 #### Alpha and Beta
 
-##### [Lockbox Extension](https://github.com/linuxwolf/lockbox-addon)
+##### [Lockbox Extension](https://github.com/mozilla-lockbox/lockbox-addon)
 
 * Desktop - Windows 10, macOS [latest]
 
@@ -99,7 +99,7 @@ This section describes which components will be the focus of the test team.
 
 In Q3 we ideated on a focal point for the team to begin work on, the below list are these high level stories.
 
-Future work will be tracked in github through [the use of epics](https://github.com/linuxwolf/lockbox-addon/issues?utf8=%E2%9C%93&q=label%3Aepic%20) and their dependendent user stories.
+Future work will be tracked in github through [the use of epics](https://github.com/mozilla-lockbox/lockbox-addon/issues?utf8=%E2%9C%93&q=label%3Aepic%20) and their dependendent user stories.
 
 * As a Firefox Account user, I can set it up in 5 clicks or less, and retrieve and fill my credentials in 3 clicks or less.
 * As a security conscious user, I understand the value of the password manager, what it is going to do for me without making me feel overwhelmed. I'm notified of the password manager when I'm ready to make the most use of it, and I can set up and access my accounts as easily as writing them down in a document or notebook.
@@ -118,7 +118,7 @@ Future work will be tracked in github through [the use of epics](https://github.
 
 * Test case creation - [TestRail](https://testrail.stage.mozaws.net/index.php?/projects/overview/51)
 * Manual test case execution - [TestRail](https://testrail.stage.mozaws.net/index.php?/projects/overview/51)
-* Bug management - [GitHub issues](https://github.com/linuxwolf/lockbox-addon/issues)
+* Bug management - [GitHub issues](https://github.com/mozilla-lockbox/lockbox-addon/issues)
 * Test automation - FoxPuppet and Selenium
 
 ### Other Things
