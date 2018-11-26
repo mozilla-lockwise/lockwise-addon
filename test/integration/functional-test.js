@@ -5,25 +5,23 @@
  */
 
 import chai, { expect } from "chai";
-import PATH from "path";
 import chaiAsPromised from "chai-as-promised";
-import webExtensionsGeckoDriver, { webdriver } from "webextensions-geckodriver";
+import getWebExtension from "./driver";
 
 chai.use(chaiAsPromised);
 
-const manifest = PATH.resolve(__dirname, "../../dist/manifest.json");
 const ident = "lockbox_mozilla_com";
 
 describe("Lockbox functional testing", () => {
-  let driver, helper;
+  let webext, helper;
 
   before(async () => {
-    const webext = await webExtensionsGeckoDriver(manifest, {
-      webExt: { artifactsDir: PATH.resolve("../../addons/") },
-    });
-    driver = webext.geckodriver;
+    webext = await getWebExtension();
+    await webext.start();
     helper = {
-      toolbar() {
+      async toolbar() {
+        const { driver, webdriver } = webext;
+
         return driver.wait(webdriver.until.elementLocated(
           webdriver.By.id(`${ident}-browser-action`)
         ), 1000);
@@ -32,10 +30,13 @@ describe("Lockbox functional testing", () => {
   });
 
   it("has a toolbar button", async () => {
+    await webext.inChrome();
     const button = await helper.toolbar();
     expect(button.getAttribute("tooltiptext")).eventually.to.equal("Lockbox");
   });
   it("opens the doorhanger", async () => {
+    await webext.inChrome();
+    const { driver, webdriver } = webext;
     const button = await helper.toolbar();
     button.click();
     const doorhanger = await driver.wait(webdriver.until.elementLocated(
@@ -45,6 +46,6 @@ describe("Lockbox functional testing", () => {
   });
 
   after(() => {
-    driver.quit();
+    webext.stop();
   });
 });

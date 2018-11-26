@@ -11,7 +11,6 @@ const JSONTemplater = require("json-templater");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 
-const pkg = require("./package.json");
 const NODE_ENV = (() => {
   if (process.env.NODE_ENV) {
     return process.env.NODE_ENV.toLowerCase();
@@ -19,6 +18,17 @@ const NODE_ENV = (() => {
     return process.env.NODE_SUGGESTED_ENV.toLowerCase();
   }
   return "development";
+})();
+
+const PKG = (() => {
+  const csp_scripts = (NODE_ENV === "test") ? "'unsafe-eval'" : "";
+  const csp_objects = (NODE_ENV === "test") ? "'unsafe-eval'" : "";
+  const pkg = require("./package.json");
+  return {
+    ...pkg,
+    csp_scripts,
+    csp_objects,
+  };
 })();
 
 const BABEL_OPTS = (() => {
@@ -108,7 +118,7 @@ module.exports = {
         to: "manifest.json",
         transform: (content, path) => {
           content = JSON.parse(content);
-          content = JSONTemplater.object(content, pkg);
+          content = JSONTemplater.object(content, PKG);
           content = JSON.stringify(content, null, "  ");
           return content;
         },
