@@ -6,10 +6,13 @@
 
 import getWebExtension from "./driver";
 import AxeBuilder from "axe-webdriverjs";
-import chai from "chai";
+import chai, { expect } from "chai";
 import chaiAsPromised from "chai-as-promised";
+import chaiAxe from "./chai-axe";
+import createHelper from "./helper";
 
 chai.use(chaiAsPromised);
+chai.use(chaiAxe);
 
 describe("accessibility", () => {
   let webext;
@@ -18,18 +21,7 @@ describe("accessibility", () => {
   before(async () => {
     webext = await getWebExtension();
     await webext.start();
-
-    helper = {
-      async home() {
-        const url = webext.url("/list/manage.html");
-        const { driver, webdriver } = webext;
-        await driver.get(url);
-
-        return driver.wait(webdriver.until.elementLocated(
-          webdriver.By.css("main#content")
-        ), 1000);
-      },
-    };
+    helper = createHelper(webext);
   });
   after(async () => {
     await webext.stop();
@@ -40,9 +32,12 @@ describe("accessibility", () => {
   });
 
   it("tests homepage", async () => {
-    await helper.home();
+    await helper.management();
 
     return AxeBuilder(webext.driver).
-      analyze();
+      analyze().
+      then(results => {
+        expect(results).violations("critial").to.deep.equal([]);
+      });
   });
 });

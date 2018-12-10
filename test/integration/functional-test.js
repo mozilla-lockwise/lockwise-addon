@@ -7,6 +7,7 @@
 import chai, { expect } from "chai";
 import chaiAsPromised from "chai-as-promised";
 import getWebExtension from "./driver";
+import createHelper from "./helper";
 
 chai.use(chaiAsPromised);
 
@@ -18,15 +19,7 @@ describe("Lockbox functional testing", () => {
   before(async () => {
     webext = await getWebExtension();
     await webext.start();
-    helper = {
-      async toolbar() {
-        const { driver, webdriver } = webext;
-
-        return driver.wait(webdriver.until.elementLocated(
-          webdriver.By.id(`${ident}-browser-action`)
-        ), 1000);
-      },
-    };
+    helper = createHelper(webext);
   });
 
   it("has a toolbar button", async () => {
