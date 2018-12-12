@@ -29,7 +29,7 @@
     "pretest": "npm run autolint && npm run clean:coverage",
     "test": "cross-env NODE_ENV=test karma start --single-run",
     "preintegration": "cross-env NODE_ENV=test npm run build",
-    "integration": "cross-env NODE_ENV=test MOZ_HEADLESS=1 mocha --require @babel/register --timeout 10000 test/integration/**/*-test.js",
+    "integration": "cross-env NODE_ENV=test mocha --require @babel/register --timeout 10000 test/integration/**/*-test.js",
     "codecov": "codecov"
   },
   "author": "Lockbox Team <lockbox-dev@mozilla.com>",

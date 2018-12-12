@@ -7,6 +7,7 @@
 import "geckodriver";
 
 import PATH from "path";
+import { env } from "process";
 import WebExtUtil from "web-ext";
 import webdriver from "selenium-webdriver";
 import firefox from "selenium-webdriver/firefox";
@@ -17,10 +18,21 @@ const DEFAULT_PREFS = {
   "devtools.debugger.remote-enabled": true,
 };
 
+// Lockbox specific environment variables ...
+const ENV_BINARY = "LOCKBOX_FIREFOX_BINARY";
+const ENV_HEADLESS = "LOCKBOX_FIREFOX_HEADLESS";
+
 export class WebExtensionDriver {
   constructor(manifest, opts) {
     this.manifest = manifest;
-    this.options = { ...opts };
+
+    const envOpts =  {
+      binary: env[ENV_BINARY] || undefined,
+      headless: env[ENV_HEADLESS] || undefined,
+    };
+    this.options = {
+      ...envOpts,
+      ...opts };
   }
 
   async initialize() {
@@ -79,6 +91,35 @@ export class WebExtensionDriver {
 
     // build the driver driver
     let fxOpts = new firefox.Options();
+
+    // locate Firefox ...
+    let fxBinary;
+    if (this.options.binary) {
+      fxBinary = firefox.Channel[this.options.binary.toUpperCase()] || fxBinary;
+    } else {
+      let choices = [
+        firefox.Channel.NIGHTLY,
+        firefox.Channel.AURORA,
+        firefox.Channel.BETA,
+        firefox.Channel.RELEASE,
+      ];
+      fxBinary = await Promise.all(choices.map((channel) => {
+        return channel.locate().
+                       then(() => channel).
+                       catch(() => null);
+      })).then((channels) => {
+        let found = null;
+        for (let idx = 0; !found && idx < channels.length; idx++ ) {
+          found = channels[idx];
+        }
+        return found;
+      });
+    }
+    fxOpts.setBinary(fxBinary);
+
+    if (this.options.headless === "1") {
+      fxOpts.addArguments("--headless");
+    }
 
     let fxPrefs = this.options.preferences || {};
     fxPrefs = {
