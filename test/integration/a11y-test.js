@@ -37,7 +37,7 @@ describe("accessibility", () => {
     return AxeBuilder(webext.driver).
       analyze().
       then(results => {
-        expect(results).violations("critial").to.deep.equal([]);
+        expect(results).violations("critical").to.deep.equal([]);
       });
   });
 });

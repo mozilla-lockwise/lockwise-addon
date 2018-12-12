@@ -59,6 +59,7 @@ export class WebExtensionDriver {
 
   get driver() { return this.webext && this.webext.driver; }
   get id() { return this.webext && this.webext.id; }
+  get baseURL() { return (this.webext && this.webext.baseURL) || ""; }
 
   url(path) {
     if (!this.running) {
@@ -68,7 +69,7 @@ export class WebExtensionDriver {
       path = "";
     }
 
-    return `${this.webext.baseURL}${path}`;
+    return `${this.baseURL}${path}`;
   }
 
   async inContent() {
