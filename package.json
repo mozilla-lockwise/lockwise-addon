@@ -25,7 +25,7 @@
     "prepackage": "npm run build && npm run clean:package",
     "package": "web-ext build --source-dir ./dist --artifacts-dir ./addons",
     "prerun": "npm run build",
-    "run": "cross-env web-ext run --source-dir ./dist ${npm_config_webext_runflags}",
+    "run": "cross-env-shell web-ext run --source-dir ./dist ${npm_config_webext_runflags}",
     "pretest": "npm run autolint && npm run clean:coverage",
     "test": "cross-env NODE_ENV=test karma start --single-run",
     "preintegration": "npm run build",
