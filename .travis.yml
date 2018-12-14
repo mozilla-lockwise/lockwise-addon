@@ -1,7 +1,7 @@
 _aliases:
   - &node
     addons:
-      firefox: latest
+      firefox: latest-unsigned
     language: node_js
     node_js: stable
 

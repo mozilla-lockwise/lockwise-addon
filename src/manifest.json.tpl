@@ -8,6 +8,9 @@
     "96": "icons/lb_locked.svg"
   },
 
+
+  "content_security_policy": "script-src 'self' {{testing_csp_scripts}} ; object-src 'self' {{testing_csp_objects}}",
+
   "applications": {
     "gecko": {
       "id": "{{id}}",

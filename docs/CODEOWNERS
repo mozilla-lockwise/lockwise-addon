@@ -1,17 +1,13 @@
 # lockbox-extension code owners
 # https://help.github.com/articles/about-codeowners/
 
-# integration tests and related config are maintained by PI
-/test/integration/          @mozilla-lockbox/product-integrity
-
 # test plans are maintained by PI
 /docs/developer/test-plan*  @mozilla-lockbox/product-integrity
 
 # metrics docs are maintained by Leif
 /docs/metrics.md            @irrationalagent 
 
-# unit tests and related config are maintained by engineering
-/test/unit/                 @mozilla-lockbox/desktop-engineering
+# tests and related config are maintained by engineering
 /test/                      @mozilla-lockbox/desktop-engineering
 
 # source code and all other docs are maintained by engineering
