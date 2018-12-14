@@ -77,6 +77,24 @@ example data) using Firefox Nightly, you can just run (without adding flags):
 npm run run
 ```
 
+## Running the extension with file watchers
+
+To **run the extension with reloading on file change**:
+
+```sh
+npm run watch
+```
+
+This command will run the extension in Firefox. Additionally, it will start
+watch processes that will do the following on any file change:
+
+* run JS and CSS linting
+* rebuild the extension
+* reload the extension in the browser
+
+Note that you will need to set `webext_runflags` to specify flags for running
+Firefox, as this command does not accept any options.
+
 ## Testing the extension
 
 There are two forms of autmomated testing present: unit (test individual classes as much in isolation to everything else -- including the browser internals) and integration.
