@@ -9,7 +9,7 @@
   },
 
 
-  "content_security_policy": "script-src 'self' {{csp_scripts}} ; object-src 'self' {{csp_objects}}",
+  "content_security_policy": "script-src 'self' {{testing_csp_scripts}} ; object-src 'self' {{testing_csp_objects}}",
 
   "applications": {
     "gecko": {

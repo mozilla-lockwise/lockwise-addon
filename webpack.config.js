@@ -21,13 +21,13 @@ const NODE_ENV = (() => {
 })();
 
 const PKG = (() => {
-  const csp_scripts = (NODE_ENV === "test") ? "'unsafe-eval'" : "";
-  const csp_objects = (NODE_ENV === "test") ? "'unsafe-eval'" : "";
+  const testing_csp_scripts = (NODE_ENV === "test") ? "'unsafe-eval'" : "";
+  const testing_csp_objects = (NODE_ENV === "test") ? "'unsafe-eval'" : "";
   const pkg = require("./package.json");
   return {
     ...pkg,
-    csp_scripts,
-    csp_objects,
+    testing_csp_scripts,
+    testing_csp_objects,
   };
 })();
 
