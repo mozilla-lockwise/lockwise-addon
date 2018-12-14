@@ -38,6 +38,17 @@
     }
   },
 
+  "experiment_apis": {
+    "logins": {
+      "schema": "experiments/logins/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "script": "experiments/logins/api.js",
+        "paths": [["experiments", "logins"]]
+      }
+    }
+  },
+
   "permissions": [
     "tabs",
     "clipboardRead",

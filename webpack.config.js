@@ -109,6 +109,7 @@ module.exports = {
       { from: "icons/", to: "icons/" },
       { from: "images/", to: "images/" },
       { from: "locales/", to: "locales/", transform: transformLocalesJSON },
+      { from: "experiments/", to: "experiments/" },
     ], {
       ignore: ["README*"],
     }),
@@ -149,3 +150,15 @@ module.exports = {
     },
   },
 };
+
+if (NODE_ENV === "test") {
+  // Include the test file for exercising the API in test mode
+  module.exports.plugins.push(
+    new CopyWebpackPlugin([
+      {
+        from: "../test/integration/test-pages/**/*",
+        to: "test/",
+      },
+    ]),
+  );
+}
