@@ -143,7 +143,7 @@ export class WebExtensionDriver {
     webext.id = await driver.installAddon(webext.extensionPath);
     webext.hostname = await driver.executeScript(`
       const Cu = Components.utils;
-      const Services = ChromeUtils.import("resource://gre/modules/Services.jsm");
+      ChromeUtils.defineModuleGetter(this, "Services", "resource://gre/modules/Services.jsm");
       const { WebExtensionPolicy } = Cu.getGlobalForObject(Services);
       return WebExtensionPolicy.getByID("${webext.id}").mozExtensionHostname;
     `);
