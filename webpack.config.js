@@ -109,6 +109,7 @@ module.exports = {
       { from: "icons/", to: "icons/" },
       { from: "images/", to: "images/" },
       { from: "locales/", to: "locales/", transform: transformLocalesJSON },
+      { from: "experiments/", to: "experiments/" },
     ], {
       ignore: ["README*"],
     }),

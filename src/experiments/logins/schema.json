@@ -1,0 +1,260 @@
+[
+  {
+    "namespace": "experiments.logins",
+    "description": "Firefox Lockbox internal API for accessing logins",
+    "types": [{
+      "id": "Mozilla-GUID",
+      "type": "string",
+      "description": "A GUID as created by nsIUUIDGenerator: a randomly-generated UUID, wrapped in curly braces. For example, '{d4e1a1f6-5ea0-40ee-bff5-da57982f21cf}'.",
+      "pattern": "^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$"
+    }, {
+      "id": "Login",
+      "type": "object",
+      "description": "Represents a login, with the union of properties defined in either nsILoginInfo or nsILoginMetaData.",
+      "properties": {
+        "guid": {
+          "$ref": "Mozilla-GUID",
+          "optional": false,
+          "description": "The Mozilla-GUID to uniquely identify the login. This can be any arbitrary string, but a format as created by nsIUUIDGenerator is recommended. For example, '{d4e1a1f6-5ea0-40ee-bff5-da57982f21cf}'. (From nsILoginMetaInfo.idl)"
+        },
+        "hostname": {
+          "type": "string",
+          "optional": false,
+          "description": "The hostname the login applies to. The hostname should be formatted as a URL. For example, 'https://site.com', 'http://site.com:1234', 'ftp://ftp.site.com'. (From nsILoginInfo.idl)"
+        },
+        "formSubmitURL": {
+          "type": "string",
+          "optional": true,
+          "default": null,
+          "description": "The URL a form-based login was submitted to. For logins obtained from HTML forms, this field is the |action| attribute from the |form| element, with the path removed. For example 'http://www.site.com'. Forms with no |action| attribute default to submitting to their origin URL, so we store that. For logins obtained from a HTTP or FTP protocol authentication, this field is NULL. (From nsILoginInfo.idl)"
+        },
+        "httpRealm": {
+          "type": "any",
+          "optional": false,
+          "default": null,
+          "description": "The HTTP Realm a login was requested for. When an HTTP server sends a 401 result, the WWW-Authenticate header includes a realm to identify the 'protection space.' See RFC2617. If the response sent has a missing or blank realm, the hostname is used instead. For logins obtained from HTML forms, this field is NULL. (From nsILoginInfo.idl) Note that a Login cannot have both a non-null httpRealm and a formSubmitURL."
+        },
+        "password": {
+          "type": "string",
+          "optional": false,
+          "description": "The password for the login. (From nsILoginInfo.idl)"
+        },
+        "passwordField": {
+          "type": "string",
+          "optional": false,
+          "description": "The |name| attribute for the password input field. For logins obtained from a HTTP or FTP protocol authentication, this field is an empty string. (From nsILoginInfo.idl)"
+        },
+        "timeCreated": {
+          "type": "number",
+          "optional": false,
+          "description": "The time, in Unix Epoch milliseconds, when the login was first created. (From nsILoginMetaInfo.idl)"
+        },
+        "timeLastUsed": {
+          "type": "number",
+          "optional": false,
+          "description": "The time, in Unix Epoch milliseconds, when the login was last submitted in a form or used to begin an HTTP auth session. (From nsILoginMetaInfo.idl)"
+        },
+        "timePasswordChanged": {
+          "type": "number",
+          "optional": false,
+          "description": "The time, in Unix Epoch milliseconds, when the login was last modified. Contrary to what the name may suggest, this attribute takes into account not only the password but also the username attribute. (From nsILoginMetaInfo.idl)"
+        },
+        "timesUsed": {
+          "type": "number",
+          "optional": false,
+          "description": "The number of times the login was submitted in a form or used to begin an HTTP auth session. (From nsILoginMetaInfo.idl)"
+        },
+        "username": {
+          "type": "string",
+          "optional": false,
+          "description": "The username for the login. (From nsILoginInfo.idl)"
+        },
+        "usernameField": {
+          "type": "string",
+          "optional": false,
+          "description": "The |name| attribute for the username input field. For logins obtained from a HTTP or FTP protocol authentication, this field is an empty string. (From nsILoginInfo.idl)"
+        }
+      }
+    }, {
+      "id": "LoginUpdate",
+      "type": "object",
+      "description": "Represents a Login with all fields optional except the Mozilla-GUID, so that updates only need to include updated fields. Note the additional convenience property 'timesUsedIncrement', which can be used to increment the 'timesUsed' value without having to check its existing value.",
+      "properties": {
+        "guid": {
+          "$ref": "Mozilla-GUID",
+          "optional": false,
+          "description": "See Login type for description."
+        },
+        "hostname": {
+          "type": "string",
+          "optional": true,
+          "description": "See Login type for description."
+        },
+        "formSubmitURL": {
+          "type": "string",
+          "optional": true,
+          "default": null,
+          "description": "See Login type for description."
+        },
+        "httpRealm": {
+          "type": "any",
+          "optional": true,
+          "description": "See Login type for description."
+        },
+        "password": {
+          "type": "string",
+          "optional": true,
+          "description": "See Login type for description."
+        },
+        "passwordField": {
+          "type": "string",
+          "optional": true,
+          "description": "See Login type for description."
+        },
+        "timeCreated": {
+          "type": "number",
+          "optional": true,
+          "description": "See Login type for description."
+        },
+        "timeLastUsed": {
+          "type": "number",
+          "optional": true,
+          "description": "See Login type for description."
+        },
+        "timePasswordChanged": {
+          "type": "number",
+          "optional": true,
+          "description": "See Login type for description."
+        },
+        "timesUsed": {
+          "type": "number",
+          "optional": true,
+          "description": "See Login type for description."
+        },
+        "timesUsedIncrement": {
+          "type": "number",
+          "optional": true,
+          "description": "Convenience property to allow the timesUsed value to be incremented without getting the Login first."
+        },
+        "username": {
+          "type": "string",
+          "optional": true,
+          "description": "See Login type for description."
+        },
+        "usernameField": {
+          "type": "string",
+          "optional": true,
+          "description": "See Login type for description."
+        }
+      }
+    }],
+    "events": [
+      {
+        "name": "onCreated",
+        "type": "function",
+        "description": "Fired when a Login is created. Event includes the newly-created Login.",
+        "parameters": [
+          {
+            "type": "object",
+            "name": "changeInfo",
+            "properties": {
+              "login": {
+                "$ref": "Login"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "onUpdated",
+        "type": "function",
+        "description": "Fired when an existing Login is updated. Event includes the updated Login.",
+        "parameters": [
+          {
+            "type": "object",
+            "name": "changeInfo",
+            "properties": {
+              "login": {
+                "$ref": "Login"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "onRemoved",
+        "type": "function",
+        "description": "Fired when a Login is deleted. Event includes the deleted Login.",
+        "parameters": [
+          {
+            "type": "object",
+            "name": "changeInfo",
+            "properties": {
+              "login": {
+                "$ref": "Login"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "onAllRemoved",
+        "type": "function",
+        "description": "Fired when all Logins are removed."
+      }
+    ],
+    "functions": [
+      {
+        "name": "getAll",
+        "type": "function",
+        "description": "Gets an array of all Logins. Returns a Promise for the (possibly empty) list of all Logins.",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "get",
+        "type": "function",
+        "description": "Gets a Login, given a Mozilla-GUID. Returns a Promise that resolves to the Login, if the Mozilla-GUID was found, or null, if it was not found.",
+        "async": true,
+        "parameters": [{
+          "name": "id",
+          "$ref": "Mozilla-GUID",
+          "description": "The Mozilla-GUID of the Login to retrieve."
+        }]
+      },
+      {
+        "name": "add",
+        "type": "function",
+        "description": "Creates a new Login. Returns a Promise that resolves to the newly-created Login, if successful. Rejects the returned Promise if the Mozilla-GUID already exists, or if required fields are missing or malformed.",
+        "async": true,
+        "parameters": [{
+          "name": "loginInfo",
+          "description": "Object containing required fields for a new Login.",
+          "$ref": "Login"
+        }]
+      },
+      {
+        "name": "update",
+        "type": "function",
+        "description": "Updates an existing Login (either nsILoginInfo or nsILoginMetaData fields). Requires passing the Mozilla-GUID and any fields to be updated. Note: use 'timesUsedIncrement' to increment 'timesUsed', rather than getting and checking the existing value first. Returns a Promise that resolves to the updated Login, if successful. Rejects the returned Promise if the Mozilla-GUID was not found, or if any fields were malformed.",
+        "async": true,
+        "parameters": [{
+          "name": "loginInfo",
+          "$ref": "LoginUpdate",
+          "description": "Object containing Mozilla-GUID and any fields to be updated."
+        }]
+      },
+      {
+        "name": "remove",
+        "type": "function",
+        "description": "Removes the Login identified by the Mozilla-GUID. Returns a Promise that resolves if the Login is successfully removed. Rejects the returned Promise if the Login was not found.",
+        "async": true,
+        "parameters": [{
+          "name": "id",
+          "$ref": "Mozilla-GUID",
+          "description": "The Mozilla-GUID of the Login to be removed."
+        }]
+      }
+    ]
+  }
+]
