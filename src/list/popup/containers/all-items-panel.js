@@ -24,6 +24,6 @@ export default connect(
   },
   (dispatch) => ({
     onClick: (id) => { dispatch(selectItem(id)); },
-    onCopy: (field) => { dispatch(copiedField(field)); },
+    onCopy: (field, toCopy) => { dispatch(copiedField(field, toCopy)); },
   }),
 )(ItemListPanel);

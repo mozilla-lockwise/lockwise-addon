@@ -19,17 +19,6 @@ chai.use(sinonChai);
 chai.use(chaiFocus);
 
 describe("widgets > <CopyToClipboardButton/>", () => {
-  let mockCopy;
-
-  beforeEach(() => {
-    mockCopy = sinon.spy();
-    CopyToClipboardButton.__Rewire__("copy", mockCopy);
-  });
-
-  afterEach(() => {
-    CopyToClipboardButton.__ResetDependency__("copy");
-  });
-
   it("render button", () => {
     const wrapper = mountWithL10n(<CopyToClipboardButton value="hi there"/>);
     expect(wrapper.find("button")).to.have.text("cOPy");
@@ -59,10 +48,9 @@ describe("widgets > <CopyToClipboardButton/>", () => {
     expect(wrapper.find("button")).to.have.text("custom label");
   });
 
-  it("copy fired", () => {
+  it("copy feedback displayed", () => {
     const wrapper = mountWithL10n(<CopyToClipboardButton value="hi there"/>);
     wrapper.find("button").simulate("click");
-    expect(mockCopy).to.have.callCount(1);
     expect(wrapper.find(Stack).prop("selectedIndex")).to.equal(1);
   });
 
@@ -72,7 +60,6 @@ describe("widgets > <CopyToClipboardButton/>", () => {
       <CopyToClipboardButton value="hi there" onCopy={onCopy}/>
     );
     wrapper.find("button").simulate("click");
-    expect(mockCopy).to.have.callCount(1);
     expect(onCopy).to.have.callCount(1);
   });
 
@@ -84,7 +71,6 @@ describe("widgets > <CopyToClipboardButton/>", () => {
 
     const wrapper = mountWithL10n(<CopyToClipboardButton value="hi there"/>);
     wrapper.find("button").simulate("click");
-    expect(mockCopy).to.have.callCount(1);
     expect(wrapper.find(Stack).prop("selectedIndex")).to.equal(0);
 
     window.setTimeout = realSetTimeout;

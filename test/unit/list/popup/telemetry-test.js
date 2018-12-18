@@ -6,7 +6,7 @@ import chai, { expect } from "chai";
 import sinon from "sinon";
 import sinonChai from "sinon-chai";
 
-import { SELECT_ITEM_COMPLETED, COPIED_FIELD } from "src/list/actions";
+import { SELECT_ITEM_COMPLETED, COPIED_FIELD_COMPLETED } from "src/list/actions";
 import telemetryLogger from "src/list/popup/telemetry";
 
 chai.use(sinonChai);
@@ -57,7 +57,7 @@ describe("list > popup > telemetryLogger middleware", () => {
 
   it("record telemetry for a copied field", async () => {
     telemetryLogger(store)(next)({
-      type: COPIED_FIELD,
+      type: COPIED_FIELD_COMPLETED,
       field: "username",
     });
     expect(listener).to.have.been.calledWith({

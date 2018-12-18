@@ -6,6 +6,7 @@ import openDataStore from "./datastore";
 import { openView, closeView } from "./views";
 import { makeItemSummary } from "../common";
 import telemetry from "./telemetry";
+import clipboard from "./clipboard";
 
 const ports = new Set();
 
@@ -64,6 +65,9 @@ export default function initializeMessagePorts() {
       return {};
     case "telemetry_scalar":
         telemetry.scalarSet(message.name, message.value);
+        return {};
+    case "copied_field":
+        await clipboard.copyToClipboard(message.field, message.toCopy);
         return {};
     default:
       return null;

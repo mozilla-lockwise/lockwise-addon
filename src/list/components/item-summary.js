@@ -28,7 +28,7 @@ function ItemSummaryCopyButtons({id, username, onCopy}) {
         <CopyToClipboardButton className={styles.copyButton}
                                buttonClassName={styles.copyButtonInner}
                                value={username}
-                               onCopy={() => onCopy("username")}>
+                               onCopy={toCopy => onCopy("username", toCopy)}>
           cOPy uSERNAMe
         </CopyToClipboardButton>
       </Localized>
@@ -36,7 +36,7 @@ function ItemSummaryCopyButtons({id, username, onCopy}) {
         <CopyToClipboardButton className={styles.copyButton}
                                buttonClassName={styles.copyButtonInner}
                                value={getPassword}
-                               onCopy={() => onCopy("password")}>
+                               onCopy={toCopy => onCopy("password", toCopy)}>
           cOPy pASSWORd
         </CopyToClipboardButton>
       </Localized>

@@ -279,10 +279,22 @@ describe("list > actions", () => {
     ]);
   });
 
-  it("copiedField() dispatched", () => {
-    store.dispatch(actions.copiedField("field"));
-    expect(store.getActions()).to.deep.equal([
-      { type: actions.COPIED_FIELD,
+  it("copiedField() dispatched", async () => {
+    browser.runtime.onMessage.addListener((msg) => {
+      if (msg.type === "copied_field") {
+        // item: {...item, field: "field", toCopy: "toCopy"}};
+        return {};
+      }
+      return null;
+    });
+
+    await store.dispatch(actions.copiedField("field", "toCopy"));
+    const dispatched = store.getActions();
+    expect(dispatched).to.deep.equal([
+      { type: actions.COPIED_FIELD_STARTING,
+        actionId: dispatched[0].actionId },
+      { type: actions.COPIED_FIELD_COMPLETED,
+        actionId: dispatched[0].actionId,
         field: "field" },
     ]);
   });
