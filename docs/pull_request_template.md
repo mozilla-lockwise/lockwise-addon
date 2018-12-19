@@ -25,4 +25,4 @@ _(Optional: to clearly demonstrate the feature or fix to help with testing and r
   - optional: consider adding integration tests
 - [ ] request the "UX" team perform a design review (if/when applicable)
 - [ ] make sure CI builds are passing (e.g.: fix lint and other errors)
-- [ ] check on the [accessibility](https://mozilla-lockbox.github.io/lockbox-addon/accessibility/) of any added UI
+- [ ] check on the [accessibility](https://mozilla-lockbox.github.io/lockbox-addon/developer/test-plan-accessibility/) of any added UI
