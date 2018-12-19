@@ -46,7 +46,7 @@ const ConnectedItemDetails = connect(
     fields: flattenItem(ownProps.item),
   }),
   (dispatch, ownProps) => ({
-    onCopy: (field) => { dispatch(copiedField(field)); },
+    onCopy: (field, toCopy) => { dispatch(copiedField(field, toCopy)); },
     onEdit: () => { dispatch(editCurrentItem()); },
     onDelete: () => { dispatch(requestRemoveItem(ownProps.item.id)); },
   })

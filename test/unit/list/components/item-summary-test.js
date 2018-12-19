@@ -10,8 +10,6 @@ import React from "react";
 import sinon from "sinon";
 import sinonChai from "sinon-chai";
 
-import CopyToClipboardButton from
-       "src/widgets/copy-to-clipboard-button";
 import mountWithL10n from "test/unit/mocks/l10n";
 import { NEW_ITEM_ID } from "src/list/common";
 import ItemSummary from "src/list/components/item-summary";
@@ -56,12 +54,10 @@ describe("list > components > <ItemSummary/>", () => {
   });
 
   describe("verbose", () => {
-    let wrapper, mockCopy, onCopy;
+    let wrapper, onCopy;
 
     beforeEach(() => {
-      mockCopy = sinon.spy();
       onCopy = sinon.spy();
-      CopyToClipboardButton.__Rewire__("copy", mockCopy);
 
       wrapper = mountWithL10n(
         <ItemSummary verbose id="1" title="title"
@@ -75,7 +71,6 @@ describe("list > components > <ItemSummary/>", () => {
 
     afterEach(() => {
       browser.runtime.onMessage.mockClearListener();
-      CopyToClipboardButton.__ResetDependency__("copy");
     });
 
     it("render item verbosely", () => {
@@ -90,15 +85,13 @@ describe("list > components > <ItemSummary/>", () => {
 
     it("copy username", () => {
       wrapper.find("button").at(0).simulate("click");
-      expect(mockCopy).to.have.been.calledWith("whudson@uscmc.mil");
-      expect(onCopy).to.have.been.calledWith("username");
+      expect(onCopy).to.have.been.calledWith("username", "whudson@uscmc.mil");
     });
 
     it("copy password", async () => {
       wrapper.find("button").at(1).simulate("click");
-      await waitUntil(() => mockCopy.callCount === 1);
-      expect(mockCopy).to.have.been.calledWith("g4m3_0v3r");
-      expect(onCopy).to.have.been.calledWith("password");
+      await waitUntil(() => onCopy.callCount === 1);
+      expect(onCopy).to.have.been.calledWith("password", "g4m3_0v3r");
     });
   });
 });
