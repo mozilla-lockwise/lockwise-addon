@@ -16,7 +16,7 @@ const ConnectedItemDetailsPanel = connect(
     fields: flattenItem(ownProps.item),
   }),
   (dispatch) => ({
-    onCopy: (field) => { dispatch(copiedField(field)); },
+    onCopy: (field, toCopy) => { dispatch(copiedField(field, toCopy)); },
     onBack: () => { dispatch(selectItem(null)); },
   })
 )(ItemDetailsPanel);

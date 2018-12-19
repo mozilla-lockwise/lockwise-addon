@@ -131,7 +131,7 @@ describe("list > manage > telemetryLogger middleware", () => {
 
   it("record telemetry for a copied field", async () => {
     telemetryLogger(store)(next)({
-      type: actions.COPIED_FIELD,
+      type: actions.COPIED_FIELD_COMPLETED,
       field: "username",
     });
     expect(listener).to.have.been.calledWith({

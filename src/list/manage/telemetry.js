@@ -41,7 +41,7 @@ export default (store) => (next) => (action) => {
                               {itemid: action.item.id});
       }
       break;
-    case actions.COPIED_FIELD:
+    case actions.COPIED_FIELD_COMPLETED:
       telemetry.recordEvent(`${action.field}Copied`, "manage");
       break;
     case actions.START_NEW_ITEM:

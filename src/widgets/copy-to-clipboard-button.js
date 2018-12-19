@@ -5,7 +5,6 @@
 import { Localized } from "fluent-react";
 import PropTypes from "prop-types";
 import React from "react";
-import copy from "copy-to-clipboard";
 
 import { classNames } from "../common";
 import Button from "./button";
@@ -47,12 +46,11 @@ export default class CopyToClipboardButton extends React.Component {
     const {value, timeout, onCopy} = this.props;
 
     const toCopy = value instanceof Function ? await value() : value;
-    copy(toCopy);
-
     this.setState({copied: true});
     setTimeout(() => this.setState({copied: false}), timeout);
+
     if (onCopy) {
-      onCopy();
+      onCopy(toCopy);
     }
   }
 

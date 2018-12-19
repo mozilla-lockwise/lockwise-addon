@@ -50,7 +50,7 @@ export function ItemFields({fields, onCopy}) {
           </FieldText>
           <Localized id="item-fields-copy-username">
             <CopyToClipboardButton value={fields.username}
-                                   onCopy={() => onCopy("username")}/>
+                                   onCopy={toCopy => onCopy("username", toCopy)}/>
           </Localized>
         </div>
       </div>
@@ -64,7 +64,7 @@ export function ItemFields({fields, onCopy}) {
           </FieldText>
           <Localized id="item-fields-copy-password">
             <CopyToClipboardButton value={fields.password}
-                                   onCopy={() => onCopy("password")}/>
+                                   onCopy={toCopy => onCopy("password", toCopy)}/>
           </Localized>
         </div>
       </div>

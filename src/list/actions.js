@@ -19,7 +19,8 @@ export const REMOVE_ITEM_COMPLETED = Symbol("REMOVE_ITEM_COMPLETED");
 export const SELECT_ITEM_STARTING = Symbol("SELECT_ITEM_STARTING");
 export const SELECT_ITEM_COMPLETED = Symbol("SELECT_ITEM_COMPLETED");
 
-export const COPIED_FIELD = Symbol("COPIED_FIELD");
+export const COPIED_FIELD_STARTING = Symbol("COPIED_FIELD_STARTING");
+export const COPIED_FIELD_COMPLETED = Symbol("COPIED_FIELD_COMPLETED");
 
 export const START_NEW_ITEM = Symbol("START_NEW_ITEM");
 export const EDIT_CURRENT_ITEM = Symbol("EDIT_CURRENT_ITEM");
@@ -224,9 +225,30 @@ function selectItemCompleted(actionId, item) {
   };
 }
 
-export function copiedField(field) {
+export function copiedField(field, toCopy) {
+  return async (dispatch) => {
+    const actionId = nextActionId++;
+    dispatch(copiedFieldStarting(actionId));
+    await browser.runtime.sendMessage({
+      type: "copied_field",
+      field,
+      toCopy,
+    });
+    dispatch(copiedFieldCompleted(actionId, field));
+  };
+}
+
+function copiedFieldStarting(actionId) {
   return {
-    type: COPIED_FIELD,
+    type: COPIED_FIELD_STARTING,
+    actionId,
+  };
+}
+
+function copiedFieldCompleted(actionId, field) {
+  return {
+    type: COPIED_FIELD_COMPLETED,
+    actionId,
     field,
   };
 }
