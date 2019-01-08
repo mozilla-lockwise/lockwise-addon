@@ -5,7 +5,8 @@
   "version": "2.0.0-alpha",
   "description": "Take your passwords everywhere.",
   "engines": {
-    "firefox": ">= 63"
+    "firefox": ">= 63",
+    "node" : ">=10.15.0"
   },
   "scripts": {
     "autolint": "npm run :autolint:js && npm run :autolint:css",
