@@ -11,6 +11,7 @@ import "test/unit/mocks/browser";
 import openDataStore from "src/background/datastore";
 import initializeMessagePorts from "src/background/message-ports";
 import telemetry from "src/background/telemetry";
+import clipboard from "src/background/clipboard";
 
 chai.use(chaiAsPromised);
 chai.use(sinonChai);
@@ -170,6 +171,22 @@ describe("background > message ports", () => {
     expect(spied.called).to.be.true;
     expect(spied).to.have.been.calledWith("method", "object",
                                           {extra: "value"});
+    spied.restore();
+  });
+
+  it("handles copied_field", async () => {
+    const spied = sinon.stub(clipboard, "copyToClipboard").resolves(true);
+    const result = await browser.runtime.sendMessage({
+      type: "copied_field",
+      field: "testField",
+      toCopy: "textToCopy",
+    });
+
+    expect(result).to.deep.equal({});
+    expect(spied.called).to.be.true;
+    expect(spied.lastCall.args[0]).to.equal("testField");
+    expect(spied.lastCall.args[1]).to.equal("textToCopy");
+
     spied.restore();
   });
 

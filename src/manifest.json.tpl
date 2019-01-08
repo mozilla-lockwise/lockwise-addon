@@ -40,6 +40,7 @@
 
   "permissions": [
     "tabs",
+    "clipboardRead",
     "clipboardWrite",
     "mozillaAddons",
     "telemetry"
