@@ -70,6 +70,22 @@ this.logins = class extends ExtensionAPI {
             const updatedLogin = getLogin(loginInfo.guid);
             return updatedLogin;
           },
+          touch(id) {
+            const login = getLogin(id);
+            if (!login) {
+              throw new ExtensionError(`Touch failed: Login not found with ID ${id}`);
+            }
+            try {
+              const updates = LoginHelper.newPropertyBag({
+                guid: login.guid,
+                timesUsedIncrement: 1,
+                timeLastUsed: Date.now(),
+              });
+              Services.logins.modifyLogin(login, updates);
+            } catch (ex) {
+              throw new ExtensionError(ex);
+            }
+          },
           remove(id) {
             const login = getLogin(id);
             if (!login) {

@@ -240,6 +240,17 @@
         }]
       },
       {
+        "name": "touch",
+        "type": "function",
+        "description": "Convenience method to update the last used time, and increment the used count, for the given Login. Returns a Promise that resolves if the Login was successfully updated. Rejects the returned Promise if the Login was not found.",
+        "async": true,
+        "parameters": [{
+          "name": "id",
+          "type": "string",
+          "description": "The ID of the Login to be updated."
+        }]
+      },
+      {
         "name": "remove",
         "type": "function",
         "description": "Removes the Login identified by the Login ID. Returns a Promise that resolves if the Login is successfully removed. Rejects the returned Promise if the Login was not found.",
