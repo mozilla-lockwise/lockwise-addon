@@ -5,7 +5,7 @@
     "types": [{
       "id": "Login",
       "type": "object",
-      "description": "Represents a login, with the union of properties defined in either nsILoginInfo or nsILoginMetaData.",
+      "description": "Represents a login, with the union of properties defined in either nsILoginInfo or nsILoginMetaInfo.",
       "properties": {
         "guid": {
           "type": "string",
@@ -231,7 +231,7 @@
       {
         "name": "update",
         "type": "function",
-        "description": "Updates an existing Login (either nsILoginInfo or nsILoginMetaData fields). Requires passing the Login ID and any fields to be updated. Note: use 'timesUsedIncrement' to increment 'timesUsed', rather than getting and checking the existing value first. Returns a Promise that resolves to the updated Login, if successful. Rejects the returned Promise if the Login ID was not found, or if any fields were malformed.",
+        "description": "Updates an existing Login (either nsILoginInfo or nsILoginMetaInfo fields). Requires passing the Login ID and any fields to be updated. Note: use 'timesUsedIncrement' to increment 'timesUsed', rather than getting and checking the existing value first. Returns a Promise that resolves to the updated Login, if successful. Rejects the returned Promise if the Login ID was not found, or if any fields were malformed.",
         "async": true,
         "parameters": [{
           "name": "loginInfo",
