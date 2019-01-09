@@ -3,19 +3,14 @@
     "namespace": "experiments.logins",
     "description": "Firefox Lockbox internal API for accessing logins",
     "types": [{
-      "id": "Mozilla-GUID",
-      "type": "string",
-      "description": "A GUID as created by nsIUUIDGenerator: a randomly-generated UUID, wrapped in curly braces. For example, '{d4e1a1f6-5ea0-40ee-bff5-da57982f21cf}'.",
-      "pattern": "^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$"
-    }, {
       "id": "Login",
       "type": "object",
       "description": "Represents a login, with the union of properties defined in either nsILoginInfo or nsILoginMetaData.",
       "properties": {
         "guid": {
-          "$ref": "Mozilla-GUID",
+          "type": "string",
           "optional": false,
-          "description": "The Mozilla-GUID to uniquely identify the login. This can be any arbitrary string, but a format as created by nsIUUIDGenerator is recommended. For example, '{d4e1a1f6-5ea0-40ee-bff5-da57982f21cf}'. (From nsILoginMetaInfo.idl)"
+          "description": "The unique identifier for the login. This can be any arbitrary string, but a format as created by nsIUUIDGenerator is recommended. For example, '{d4e1a1f6-5ea0-40ee-bff5-da57982f21cf}'. (From nsILoginMetaInfo.idl)"
         },
         "hostname": {
           "type": "string",
@@ -78,10 +73,10 @@
     }, {
       "id": "LoginUpdate",
       "type": "object",
-      "description": "Represents a Login with all fields optional except the Mozilla-GUID, so that updates only need to include updated fields. Note the additional convenience property 'timesUsedIncrement', which can be used to increment the 'timesUsed' value without having to check its existing value.",
+      "description": "Represents a Login with all fields optional except the ID, so that updates only need to include updated fields. Note the additional convenience property 'timesUsedIncrement', which can be used to increment the 'timesUsed' value without having to check its existing value.",
       "properties": {
         "guid": {
-          "$ref": "Mozilla-GUID",
+          "type": "string",
           "optional": false,
           "description": "See Login type for description."
         },
@@ -214,18 +209,18 @@
       {
         "name": "get",
         "type": "function",
-        "description": "Gets a Login, given a Mozilla-GUID. Returns a Promise that resolves to the Login, if the Mozilla-GUID was found, or null, if it was not found.",
+        "description": "Gets a Login, given a Login ID. Returns a Promise that resolves to the Login, if the Login ID was found, or null, if it was not found.",
         "async": true,
         "parameters": [{
           "name": "id",
-          "$ref": "Mozilla-GUID",
-          "description": "The Mozilla-GUID of the Login to retrieve."
+          "type": "string",
+          "description": "The ID of the Login to retrieve."
         }]
       },
       {
         "name": "add",
         "type": "function",
-        "description": "Creates a new Login. Returns a Promise that resolves to the newly-created Login, if successful. Rejects the returned Promise if the Mozilla-GUID already exists, or if required fields are missing or malformed.",
+        "description": "Creates a new Login. Returns a Promise that resolves to the newly-created Login, if successful. Rejects the returned Promise if the Login ID already exists, or if required fields are missing or malformed.",
         "async": true,
         "parameters": [{
           "name": "loginInfo",
@@ -236,23 +231,23 @@
       {
         "name": "update",
         "type": "function",
-        "description": "Updates an existing Login (either nsILoginInfo or nsILoginMetaData fields). Requires passing the Mozilla-GUID and any fields to be updated. Note: use 'timesUsedIncrement' to increment 'timesUsed', rather than getting and checking the existing value first. Returns a Promise that resolves to the updated Login, if successful. Rejects the returned Promise if the Mozilla-GUID was not found, or if any fields were malformed.",
+        "description": "Updates an existing Login (either nsILoginInfo or nsILoginMetaData fields). Requires passing the Login ID and any fields to be updated. Note: use 'timesUsedIncrement' to increment 'timesUsed', rather than getting and checking the existing value first. Returns a Promise that resolves to the updated Login, if successful. Rejects the returned Promise if the Login ID was not found, or if any fields were malformed.",
         "async": true,
         "parameters": [{
           "name": "loginInfo",
           "$ref": "LoginUpdate",
-          "description": "Object containing Mozilla-GUID and any fields to be updated."
+          "description": "Object containing Login ID and any fields to be updated."
         }]
       },
       {
         "name": "remove",
         "type": "function",
-        "description": "Removes the Login identified by the Mozilla-GUID. Returns a Promise that resolves if the Login is successfully removed. Rejects the returned Promise if the Login was not found.",
+        "description": "Removes the Login identified by the Login ID. Returns a Promise that resolves if the Login is successfully removed. Rejects the returned Promise if the Login was not found.",
         "async": true,
         "parameters": [{
           "name": "id",
-          "$ref": "Mozilla-GUID",
-          "description": "The Mozilla-GUID of the Login to be removed."
+          "type": "string",
+          "description": "The ID of the Login to be removed."
         }]
       }
     ]

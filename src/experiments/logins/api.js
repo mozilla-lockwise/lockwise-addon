@@ -49,7 +49,7 @@ this.logins = class extends ExtensionAPI {
           },
           add(loginInfo) {
             if (getLogin(loginInfo.guid)) {
-              throw new ExtensionError(`Add failed: Login already exists with GUID ${loginInfo.guid}`);
+              throw new ExtensionError(`Add failed: Login already exists with ID ${loginInfo.guid}`);
             }
             try {
               const login = LoginHelper.vanillaObjectToLogin(loginInfo);
@@ -63,7 +63,7 @@ this.logins = class extends ExtensionAPI {
           update(loginInfo) {
             const login = getLogin(loginInfo.guid);
             if (!login) {
-              throw new ExtensionError(`Update failed: Login not found with GUID ${loginInfo.guid}`);
+              throw new ExtensionError(`Update failed: Login not found with ID ${loginInfo.guid}`);
             }
             const loginAndMetaData = LoginHelper.newPropertyBag(loginInfo);
             Services.logins.modifyLogin(login, loginAndMetaData);
@@ -73,7 +73,7 @@ this.logins = class extends ExtensionAPI {
           remove(id) {
             const login = getLogin(id);
             if (!login) {
-              throw new ExtensionError(`Remove failed: Login not found with GUID ${id}`);
+              throw new ExtensionError(`Remove failed: Login not found with ID ${id}`);
             }
             try {
               Services.logins.removeLogin(LoginHelper.vanillaObjectToLogin(login));
