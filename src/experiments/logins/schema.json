@@ -150,9 +150,9 @@
     }],
     "events": [
       {
-        "name": "onCreated",
+        "name": "onAdded",
         "type": "function",
-        "description": "Fired when a Login is created. Event includes the newly-created Login.",
+        "description": "Fired when a Login is added. Event includes the newly-created Login.",
         "parameters": [
           {
             "type": "object",

@@ -47,7 +47,6 @@ this.logins = class extends ExtensionAPI {
             const login = getLogin(id);
             return login;
           },
-          // TODO: should this be called create(), or should the event name be changed to onAdded?
           add(loginInfo) {
             if (getLogin(loginInfo.guid)) {
               throw new ExtensionError(`Add failed: Login already exists with GUID ${loginInfo.guid}`);
@@ -82,7 +81,7 @@ this.logins = class extends ExtensionAPI {
               throw new ExtensionError(ex);
             }
           },
-          onCreated: new EventManager(context, "logins.onCreated", fire => {
+          onAdded: new EventManager(context, "logins.onAdded", fire => {
             const callback = (value) => {
               fire.async(value);
             };
