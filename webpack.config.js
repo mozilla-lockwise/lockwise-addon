@@ -150,3 +150,15 @@ module.exports = {
     },
   },
 };
+
+if (NODE_ENV === "test") {
+  // Include the test file for exercising the API in test mode
+  module.exports.plugins.push(
+    new CopyWebpackPlugin([
+      {
+        from: "../test/integration/test-pages/**/*",
+        to: "test/",
+      },
+    ], {debug: 'debug'}),
+  );
+}

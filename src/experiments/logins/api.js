@@ -54,21 +54,25 @@ this.logins = class extends ExtensionAPI {
             try {
               const login = LoginHelper.vanillaObjectToLogin(loginInfo);
               Services.logins.addLogin(login);
+              const createdLogin = getLogin(loginInfo.guid);
+              return createdLogin;
             } catch (ex) {
               throw new ExtensionError(ex);
             }
-            const createdLogin = getLogin(loginInfo.guid);
-            return createdLogin;
           },
           update(loginInfo) {
             const login = getLogin(loginInfo.guid);
             if (!login) {
               throw new ExtensionError(`Update failed: Login not found with ID ${loginInfo.guid}`);
             }
-            const loginAndMetaData = LoginHelper.newPropertyBag(loginInfo);
-            Services.logins.modifyLogin(login, loginAndMetaData);
-            const updatedLogin = getLogin(loginInfo.guid);
-            return updatedLogin;
+            try {
+              const loginAndMetaData = LoginHelper.newPropertyBag(loginInfo);
+              Services.logins.modifyLogin(login, loginAndMetaData);
+              const updatedLogin = getLogin(loginInfo.guid);
+              return updatedLogin;
+            } catch (ex) {
+              throw new ExtensionError(ex);
+            }
           },
           touch(id) {
             const login = getLogin(id);
@@ -82,6 +86,8 @@ this.logins = class extends ExtensionAPI {
                 timeLastUsed: Date.now(),
               });
               Services.logins.modifyLogin(login, updates);
+              const updatedLogin = getLogin(loginInfo.guid);
+              return updatedLogin;
             } catch (ex) {
               throw new ExtensionError(ex);
             }
