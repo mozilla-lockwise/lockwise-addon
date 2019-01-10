@@ -7,7 +7,6 @@
 import getWebExtension from "./driver";
 import chai, { expect } from "chai";
 import chaiAsPromised from "chai-as-promised";
-import createHelper from "./helper";
 
 chai.use(chaiAsPromised);
 
@@ -23,7 +22,7 @@ const mockLogin = {
   usernameField: "username",
   passwordField: "password",
   username: "creativeusername",
-  password: "p455w0rd"
+  password: "p455w0rd",
 };
 
 describe("logins API", () => {
@@ -49,7 +48,7 @@ describe("logins API", () => {
         usernameField: "username",
         passwordField: "password",
         username: "creativeusername",
-        password: "p455w0rd"
+        password: "p455w0rd",
       };
       const login = LoginHelper.vanillaObjectToLogin(mockLogin);
       Services.logins.addLogin(login);
@@ -66,7 +65,7 @@ describe("logins API", () => {
 
   const loadTestPage = async () => {
     await webext.inContent();
-    await driver.get(webext.url('/test/integration/test-pages/logins-api.html'));
+    await driver.get(webext.url("/test/integration/test-pages/logins-api.html"));
   };
 
   const clickButton = async (id) => {
@@ -107,7 +106,7 @@ describe("logins API", () => {
   it("browser.experiments.logins.add should add a new login", async () => {
     await webext.inChrome();
     const initialLogins = await getLogins();
-    expect(initialLogins).to.be.an('array').that.is.empty;
+    expect(initialLogins).to.be.an("array").that.is.empty;
 
     await loadTestPage();
     await clickButton("add");
@@ -125,7 +124,7 @@ describe("logins API", () => {
 
     await webext.inChrome();
     const results = await getLogins();
-    expect(results).to.be.an('array').that.is.empty;
+    expect(results).to.be.an("array").that.is.empty;
   });
 
   it("browser.experiments.logins.get should return the login", async () => {
@@ -137,7 +136,7 @@ describe("logins API", () => {
     const results = await driver.wait(until.elementLocated(
       By.id("get-results")
     ), 1000);
-    await driver.wait(until.elementTextContains(results, 'guid'), 5000);
+    await driver.wait(until.elementTextContains(results, "guid"), 5000);
     const output = await results.getText();
     expect(JSON.parse(output)).to.deep.equal(mockLogin);
   });
@@ -151,7 +150,7 @@ describe("logins API", () => {
     const results = await driver.wait(until.elementLocated(
       By.id("get-all-results")
     ), 1000);
-    await driver.wait(until.elementTextContains(results, 'guid'), 5000);
+    await driver.wait(until.elementTextContains(results, "guid"), 5000);
     const output = await results.getText();
     expect(JSON.parse(output)).to.deep.equal([mockLogin]);
   });

@@ -159,6 +159,6 @@ if (NODE_ENV === "test") {
         from: "../test/integration/test-pages/**/*",
         to: "test/",
       },
-    ], {debug: 'debug'}),
+    ]),
   );
 }

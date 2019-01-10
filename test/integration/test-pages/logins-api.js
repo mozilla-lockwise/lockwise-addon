@@ -10,7 +10,7 @@ const mockLogin = {
   usernameField: "username",
   passwordField: "password",
   username: "creativeusername",
-  password: "p455w0rd"
+  password: "p455w0rd",
 };
 
 // Returns a function that logs to a DOM element.
