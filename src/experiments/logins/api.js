@@ -86,7 +86,7 @@ this.logins = class extends ExtensionAPI {
                 timeLastUsed: Date.now(),
               });
               Services.logins.modifyLogin(login, updates);
-              const updatedLogin = getLogin(loginInfo.guid);
+              const updatedLogin = getLogin(login.guid);
               return updatedLogin;
             } catch (ex) {
               throw new ExtensionError(ex);
