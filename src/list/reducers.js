@@ -37,7 +37,13 @@ export function cacheReducer(state = {items: [], currentItem: null}, action) {
   case actions.ADD_ITEM_COMPLETED:
     return {
       ...state,
-      items: [...state.items, makeItemSummary(action.item)],
+      items: [
+        // HACK: add dispatched via Logins API events may be a duplicate
+        // of an add we just completed in this UI - this filter makes it
+        // idempotent
+        ...state.items.filter(x => x.id != action.item.id),
+        makeItemSummary(action.item),
+      ],
       ...maybeAddCurrentItem(state, action),
     };
   case actions.UPDATE_ITEM_COMPLETED:

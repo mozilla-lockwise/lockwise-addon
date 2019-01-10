@@ -10,7 +10,7 @@ import clipboard from "./clipboard";
 
 const ports = new Set();
 
-function broadcast(message, excludedSender) {
+export function broadcast(message, excludedSender) {
   for (let p of ports) {
     if (!excludedSender || p.sender.contextId !== excludedSender.contextId) {
       p.postMessage(message);

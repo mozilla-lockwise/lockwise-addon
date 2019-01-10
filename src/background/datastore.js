@@ -4,9 +4,10 @@
 
 import UUID from "uuid";
 
+import { broadcast } from "./message-ports";
 import telemetry from "./telemetry";
 
-function convertInfo2Item(info) {
+export function convertInfo2Item(info) {
   let title;
   try {
     title = (new URL(info.hostname)).host;
@@ -36,7 +37,7 @@ function convertInfo2Item(info) {
   };
   return item;
 }
-function convertItem2Info(item) {
+export function convertItem2Info(item) {
   // dropped on the floor (for now ...)
   // * title
   // * tags
@@ -133,13 +134,16 @@ class DataStore {
       // assume formSubmitURL === hostname
       info.formSubmitURL = info.hostname;
     }
-    // TODO: call logins API
+
     let added = {
       ...info,
       guid: UUID(),
+      timesUsed: 0,
+      timeLastUsed: Date.now(),
       timeCreated: Date.now(),
       timePasswordChanged: Date.now(),
     };
+    await browser.experiments.logins.add(added);
     this._all[added.guid] = added;
 
     added = convertInfo2Item(added);
@@ -159,11 +163,11 @@ class DataStore {
       throw new Error(`no existing item for ${id}`);
     }
 
-    // TODO: call API
     let updated = {
       ...info,
       timePasswordChanged: Date.now(),
     };
+    await browser.experiments.logins.update(updated);
     this._all[updated.guid] = updated;
 
     updated = convertInfo2Item(updated);
@@ -174,7 +178,7 @@ class DataStore {
   async remove(id) {
     const item = await this.get(id);
     if (item) {
-      // TODO: call API
+      await browser.experiments.logins.remove(item.id);
       delete this._all[item.id];
 
       recordMetric("deleted", item.id);
@@ -182,12 +186,56 @@ class DataStore {
     return item || null;
   }
 
+  // TODO: Until issue #21 is resolved, this stuff handles raw info from the
+  // API rather than UI items.
+
+  loadInfo(logins) {
+    this._all = {};
+    for (let login of logins) {
+      this._all[login.guid] = login;
+    }
+  }
+
+  addInfo(info) {
+    this._all[info.guid] = info;
+    const item = convertInfo2Item(info);
+    broadcast({ type: "added_item", item });
+  }
+
+  updateInfo(info) {
+    this._all[info.guid] = info;
+    const item = convertInfo2Item(info);
+    broadcast({ type: "updated_item", item });
+  }
+
+  removeInfo(info) {
+    delete this._all[info.guid];
+    broadcast({ type: "removed_item", id: info.guid });
+  }
 }
 
 let bootstrap;
-export default async function openDataStore() {
+export async function openDataStore() {
   if (!bootstrap) {
     bootstrap = new DataStore();
   }
   return bootstrap;
 }
+
+export async function closeDataStore() {
+  bootstrap = null;
+}
+
+export async function initializeDataStore() {
+  const { logins } = browser.experiments;
+
+  const entries = await logins.getAll();
+  const dataStore = await openDataStore();
+  dataStore.loadInfo(entries);
+
+  logins.onAdded.addListener(({ login }) => dataStore.addInfo(login));
+  logins.onUpdated.addListener(({ login }) => dataStore.updateInfo(login));
+  logins.onRemoved.addListener(({ login }) => dataStore.removeInfo(login));
+}
+
+export default openDataStore;
