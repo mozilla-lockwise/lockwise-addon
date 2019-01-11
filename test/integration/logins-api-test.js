@@ -161,8 +161,9 @@ describe("logins API", () => {
     await loadTestPage();
     await clickButton("update");
 
+    await getLogins();
     const logins = await getLogins();
-    expect(logins[0].username).to.equal(mockLogin.username);
+    expect(logins[0].username).to.equal("updated");
   });
 
   it("browser.experiments.logins.touch should update the timesUsed and lastTimeUsed values", async () => {
