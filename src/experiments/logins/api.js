@@ -39,6 +39,12 @@ this.logins = class extends ExtensionAPI {
       experiments: {
         logins: {
           // See schema.json for function documentation.
+          // The Firefox internal code throws if the wrong type is passed into
+          // the LoginManager methods. To reduce the odds of those mistakes,
+          // this code follows the following naming convention:
+          //   - fooLogin = login as vanilla JS object
+          //   - fooLoginInfo = login as nsILoginInfo
+          //   - fooBag = (subset of) login fields as nsIPropertyBag
           getAll() {
             const logins = getLogins();
             return logins;
@@ -47,29 +53,46 @@ this.logins = class extends ExtensionAPI {
             const login = getLogin(id);
             return login;
           },
-          add(loginInfo) {
-            if (getLogin(loginInfo.guid)) {
-              throw new ExtensionError(`Add failed: Login already exists with ID ${loginInfo.guid}`);
+          add(login) {
+            if (getLogin(login.guid)) {
+              throw new ExtensionError(`Add failed: Login already exists with ID ${login.guid}`);
             }
             try {
-              const login = LoginHelper.vanillaObjectToLogin(loginInfo);
-              Services.logins.addLogin(login);
-              const createdLogin = getLogin(loginInfo.guid);
-              return createdLogin;
+              const loginInfo = LoginHelper.vanillaObjectToLogin(login);
+              Services.logins.addLogin(loginInfo);
+              const addedLogin = getLogin(login.guid);
+              return addedLogin;
             } catch (ex) {
               throw new ExtensionError(ex);
             }
           },
-          update(loginInfo) {
-            const login = getLogin(loginInfo.guid);
-            if (!login) {
-              throw new ExtensionError(`Update failed: Login not found with ID ${loginInfo.guid}`);
+          update(newLogin) {
+            if (!("guid" in newLogin)) {
+              throw new ExtensionError(`Update failed: ID is required`);
+            }
+            // The addons framework code always supplies null values for missing keys,
+            // so filter those out.
+            // TODO: Could this cause subtle bugs? Would anyone ever want to update a field to be null? If so, maybe default to 'NULL" (the string), or undefined.
+            for (let key in newLogin) {
+              if (newLogin[key] === null) {
+                delete newLogin[key];
+              }
+            }
+            const oldLogin = getLogin(newLogin.guid);
+            if (!oldLogin) {
+              throw new ExtensionError(`Update failed: Login not found with ID ${newLogin.guid}`);
             }
             try {
-              const loginAndMetaData = LoginHelper.newPropertyBag(loginInfo);
-              Services.logins.modifyLogin(login, loginAndMetaData);
-              const updatedLogin = getLogin(loginInfo.guid);
-              return updatedLogin;
+              const updatedLogin = {};
+              Object.assign(updatedLogin, oldLogin, newLogin);
+              if ("timesUsedIncrement" in newLogin) {
+                delete updatedLogin.timesUsed;
+              }
+              const updatedLoginBag = LoginHelper.newPropertyBag(updatedLogin);
+              const oldLoginInfo = LoginHelper.vanillaObjectToLogin(oldLogin);
+              Services.logins.modifyLogin(oldLoginInfo, updatedLoginBag);
+              const finalLogin = getLogin(newLogin.guid);
+              return finalLogin;
             } catch (ex) {
               throw new ExtensionError(ex);
             }
@@ -80,13 +103,14 @@ this.logins = class extends ExtensionAPI {
               throw new ExtensionError(`Touch failed: Login not found with ID ${id}`);
             }
             try {
-              const updates = LoginHelper.newPropertyBag({
+              const updateBag = LoginHelper.newPropertyBag({
                 guid: login.guid,
                 timesUsedIncrement: 1,
                 timeLastUsed: Date.now(),
               });
-              Services.logins.modifyLogin(login, updates);
-              const updatedLogin = getLogin(login.guid);
+              const loginInfo = LoginHelper.vanillaObjectToLogin(login);
+              Services.logins.modifyLogin(loginInfo, updateBag);
+              const updatedLogin = getLogin(id);
               return updatedLogin;
             } catch (ex) {
               throw new ExtensionError(ex);
@@ -98,7 +122,8 @@ this.logins = class extends ExtensionAPI {
               throw new ExtensionError(`Remove failed: Login not found with ID ${id}`);
             }
             try {
-              Services.logins.removeLogin(LoginHelper.vanillaObjectToLogin(login));
+              const loginInfo = LoginHelper.vanillaObjectToLogin(login);
+              Services.logins.removeLogin(loginInfo);
             } catch (ex) {
               throw new ExtensionError(ex);
             }
@@ -132,8 +157,8 @@ this.logins = class extends ExtensionAPI {
                   return;
                 }
                 subject.QueryInterface(Ci.nsIArrayExtensions);
-                const newLogin = subject.GetElementAt(1);
-                const login = LoginHelper.loginToVanillaObject(newLogin);
+                const newLoginInfo = subject.GetElementAt(1);
+                const login = LoginHelper.loginToVanillaObject(newLoginInfo);
                 callback({ login });
               },
             };

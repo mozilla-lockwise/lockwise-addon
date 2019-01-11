@@ -236,7 +236,7 @@
         "parameters": [{
           "name": "loginInfo",
           "$ref": "LoginUpdate",
-          "description": "Object containing Login ID and any fields to be updated."
+          "description": "Object containing Login ID and any nsILoginInfo or nsILoginMetaInfo fields to be updated."
         }]
       },
       {
