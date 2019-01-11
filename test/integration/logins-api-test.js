@@ -100,7 +100,7 @@ describe("logins API", () => {
   });
 
   after(async () => {
-    await driver.quit();
+    await webext.stop();
   });
 
   it("browser.experiments.logins.add should add a new login", async () => {
