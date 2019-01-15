@@ -1,0 +1,35 @@
+<!doctype html>
+<meta charset="utf-8">
+<h1>Logins API Test File</h1>
+<p>This file allows the browser.experiments.logins.* API methods to be
+   called by programmatically clicking buttons. The results of the
+   API invocation can then be verified in the parent process, by calling
+   LoginManager methods. The return values can be checked by looking at
+   the results logged in the named &lt;pre&gt; fields.
+
+<p>Click the Add button to add the test login.
+  <button id="add">Add</button>
+  <pre id="add-results"></pre>
+
+<p>Click the Get button to get the login with the test ID.
+  <button id="get">Get</button>
+  <pre id="get-results"></pre>
+
+<p>Click the Get All button to get all logins.
+  <button id="get-all">Get All</button>
+  <pre id="get-all-results"></pre>
+
+<p>Click the Remove button to remove the test login.
+  <button id="remove">Remove</button>
+  <pre id="remove-results"></pre>
+
+<p>Click the Update button to modify the test login, setting the username to 'updated'.
+  <button id="update">Update</button>
+  <pre id="update-results"></pre>
+
+<p>Click the Touch button to modify the test login, updating its timeLastUsed and
+   incrementing its timesUsed counter.
+  <button id="touch">Touch</button>
+  <pre id="touch-results"></pre>
+
+<script src="logins-api.js"></script>

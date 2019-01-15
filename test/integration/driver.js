@@ -16,6 +16,7 @@ const DEFAULT_PREFS = {
   "xpinstall.signatures.required": false,
   "devtools.chrome.enabled": true,
   "devtools.debugger.remote-enabled": true,
+  "extensions.legacy.enabled": true,
 };
 
 // Lockbox specific environment variables ...

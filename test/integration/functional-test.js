@@ -38,7 +38,7 @@ describe("Lockbox functional testing", () => {
     expect(doorhanger).to.not.be.null;
   });
 
-  after(() => {
-    webext.stop();
+  after(async () => {
+    await webext.stop();
   });
 });
