@@ -197,10 +197,16 @@ window.browser = {
 
   experiments: {
     logins: {
-      async getAll(item) { return []; },
-      async add(item) { },
-      async update(item) { },
-      async remove(id) { },
+      async getAll() { return []; },
+      async add(login) {
+        browser.experiments.logins.onAdded.getListener()({ login });
+      },
+      async update(login) {
+        browser.experiments.logins.onUpdated.getListener()({ login });
+      },
+      async remove(guid) {
+        browser.experiments.logins.onRemoved.getListener()({ login: { guid } });
+      },
       onAdded: new MockListener(),
       onUpdated: new MockListener(),
       onRemoved: new MockListener(),

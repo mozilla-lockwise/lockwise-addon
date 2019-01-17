@@ -144,7 +144,6 @@ class DataStore {
       timePasswordChanged: Date.now(),
     };
     await browser.experiments.logins.add(added);
-    this._all[added.guid] = added;
 
     added = convertInfo2Item(added);
     recordMetric("added", added.id);
@@ -168,7 +167,6 @@ class DataStore {
       timePasswordChanged: Date.now(),
     };
     await browser.experiments.logins.update(updated);
-    this._all[updated.guid] = updated;
 
     updated = convertInfo2Item(updated);
     recordMetric("updated", item.id);
@@ -179,8 +177,6 @@ class DataStore {
     const item = await this.get(id);
     if (item) {
       await browser.experiments.logins.remove(item.id);
-      delete this._all[item.id];
-
       recordMetric("deleted", item.id);
     }
     return item || null;
@@ -208,9 +204,9 @@ class DataStore {
     broadcast({ type: "updated_item", item });
   }
 
-  removeInfo(info) {
-    delete this._all[info.guid];
-    broadcast({ type: "removed_item", id: info.guid });
+  removeInfo({ guid }) {
+    delete this._all[guid];
+    broadcast({ type: "removed_item", id: guid });
   }
 }
 

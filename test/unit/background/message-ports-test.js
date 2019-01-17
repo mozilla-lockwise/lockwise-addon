@@ -8,7 +8,11 @@ import sinon from "sinon";
 import sinonChai from "sinon-chai";
 
 import "test/unit/mocks/browser";
-import openDataStore from "src/background/datastore";
+import {
+  initializeDataStore,
+  openDataStore,
+  closeDataStore,
+} from "src/background/datastore";
 import initializeMessagePorts from "src/background/message-ports";
 import telemetry from "src/background/telemetry";
 import clipboard from "src/background/clipboard";
@@ -17,29 +21,28 @@ chai.use(chaiAsPromised);
 chai.use(sinonChai);
 
 describe("background > message ports", () => {
-  let itemId, selfMessagePort, otherMessagePort, selfListener, otherListener;
+  let itemId, otherMessagePort, otherListener;
 
   before(async () => {
+    await initializeDataStore();
     await openDataStore();
     initializeMessagePorts();
 
-    selfMessagePort = browser.runtime.connect();
     otherMessagePort = browser.runtime.connect(undefined, {mockPrimary: false});
   });
 
-  after(() => {
+  after(async () => {
     // Clear the listeners set in <src/webextension/background/messagePorts.js>.
     browser.runtime.onConnect.mockClearListener();
     browser.runtime.onMessage.mockClearListener();
+    await closeDataStore();
   });
 
   beforeEach(() => {
-    selfMessagePort.onMessage.addListener(selfListener = sinon.spy());
     otherMessagePort.onMessage.addListener(otherListener = sinon.spy());
   });
 
   afterEach(() => {
-    selfMessagePort.onMessage.mockClearListener();
     otherMessagePort.onMessage.mockClearListener();
   });
 
@@ -80,7 +83,6 @@ describe("background > message ports", () => {
     itemId = result.item.id;
 
     expect(result.item).to.deep.include(item);
-    expect(selfListener).to.have.callCount(0);
     expect(otherListener).to.have.callCount(1);
     expect(otherListener.args[0][0].type).to.equal("added_item");
     expect(otherListener.args[0][0].item).to.deep.include(item);
@@ -105,7 +107,6 @@ describe("background > message ports", () => {
     });
 
     expect(result.item).to.deep.include(item);
-    expect(selfListener).to.have.callCount(0);
     expect(otherListener).to.have.callCount(1);
     expect(otherListener.args[0][0].type).to.equal("updated_item");
     expect(otherListener.args[0][0].item).to.deep.include(item);
@@ -150,7 +151,6 @@ describe("background > message ports", () => {
     });
 
     expect(result).to.deep.equal({});
-    expect(selfListener).to.have.callCount(0);
     expect(otherListener).to.have.callCount(1);
     expect(otherListener).to.be.calledWith({
       type: "removed_item",

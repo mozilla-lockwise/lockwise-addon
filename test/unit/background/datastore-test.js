@@ -22,11 +22,25 @@ describe("background > datastore", () => {
   let store;
 
   beforeEach(async () => {
-    for (let name of LOGINS_METHODS) {
-      sinon.stub(browser.experiments.logins, name);
-    }
     const infos = Object.values(SAMPLE_INFOS);
-    browser.experiments.logins.getAll.resolves(infos);
+    sinon.stub(browser.experiments.logins, "getAll").resolves(infos);
+
+    sinon
+      .stub(browser.experiments.logins, "add")
+      .callsFake(login =>
+        browser.experiments.logins.onAdded.getListener()({ login }),
+      );
+    sinon
+      .stub(browser.experiments.logins, "update")
+      .callsFake(login =>
+        browser.experiments.logins.onUpdated.getListener()({ login }),
+      );
+    sinon
+      .stub(browser.experiments.logins, "remove")
+      .callsFake(guid =>
+        browser.experiments.logins.onRemoved.getListener()({ login: { guid } }),
+      );
+
     await initializeDataStore();
     store = await openDataStore();
   });
@@ -242,6 +256,10 @@ const SAMPLE_INFOS = {
     password: "FOOpass",
     usernameField: "username",
     passwordField: "password",
+    timesUsed: 1,
+    timeLastUsed: new Date("2019-01-03T12:00:00Z"),
+    timePasswordChanged: new Date("2019-01-02T12:00:00Z"),
+    timeCreated: new Date("2019-01-01T12:00:00Z"),
   },
   BAR: {
     guid: "BAR",
@@ -252,6 +270,10 @@ const SAMPLE_INFOS = {
     password: "BARpass",
     usernameField: "username",
     passwordField: "password",
+    timesUsed: 0,
+    timeLastUsed: new Date("2019-01-04T12:00:00Z"),
+    timePasswordChanged: new Date("2019-01-03T12:00:00Z"),
+    timeCreated: new Date("2019-01-02T12:00:00Z"),
   },
   BAZ: {
     guid: "BAZ",
@@ -262,5 +284,9 @@ const SAMPLE_INFOS = {
     password: "BAZpass",
     usernameField: "username",
     passwordField: "password",
+    timesUsed: 3,
+    timeLastUsed: new Date("2019-01-05T12:00:00Z"),
+    timePasswordChanged: new Date("2019-01-05T11:00:00Z"),
+    timeCreated: new Date("2019-01-05T10:00:00Z"),
   },
 };
