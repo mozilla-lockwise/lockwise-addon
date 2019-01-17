@@ -44,19 +44,16 @@ export default function initializeMessagePorts() {
     case "add_item":
       return openDataStore().then(async (ds) => {
         const item = await ds.add(message.item);
-        broadcast({type: "added_item", item}, sender);
         return {item};
       });
     case "update_item":
       return openDataStore().then(async (ds) => {
         const item = await ds.update(message.item);
-        broadcast({ type: "updated_item", item }, sender);
         return { item };
       });
     case "remove_item":
       return openDataStore().then(async (ds) => {
         await ds.remove(message.id);
-        broadcast({type: "removed_item", id: message.id}, sender);
         return {};
       });
 
