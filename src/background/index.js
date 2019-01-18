@@ -7,9 +7,11 @@
 import updateBrowserAction from "./browser-action";
 import initializeMessagePorts from "./message-ports";
 import { initializeTelemetry } from "./telemetry";
+import { initializeDataStore } from "./datastore";
 
 Promise.resolve().then(async () => {
   initializeTelemetry();
   initializeMessagePorts();
+  await initializeDataStore();
   await updateBrowserAction();
 });

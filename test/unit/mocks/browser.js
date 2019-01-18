@@ -22,6 +22,10 @@ class MockListener {
     }
   }
 
+  getListener() {
+    return this._listener;
+  }
+
   mockClearListener() {
     this._listener = null;
   }
@@ -189,5 +193,23 @@ window.browser = {
 
     registerScalars(category, scalars) {},
     scalarSet(name, value) {},
+  },
+
+  experiments: {
+    logins: {
+      async getAll() { return []; },
+      async add(login) {
+        browser.experiments.logins.onAdded.getListener()({ login });
+      },
+      async update(login) {
+        browser.experiments.logins.onUpdated.getListener()({ login });
+      },
+      async remove(guid) {
+        browser.experiments.logins.onRemoved.getListener()({ login: { guid } });
+      },
+      onAdded: new MockListener(),
+      onUpdated: new MockListener(),
+      onRemoved: new MockListener(),
+    },
   },
 };
