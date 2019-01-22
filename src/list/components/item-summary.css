@@ -36,6 +36,7 @@
 .subtitle {
   font-size: 13px;
   font-weight: 400;
+  color: #737373;
 }
 
 .copy-buttons {
@@ -66,4 +67,22 @@
 
 .copy-button-inner:active:hover {
   background-color: #d7d7db;
+}
+
+/* panel specific styles*/
+.item-summary-container-panel::before {
+  display: none;
+}
+
+.item-summary-container-panel::before:hover {
+  content: "";
+  float: right;
+  position: relative;
+  width: 18px;
+  height: 18px;
+  margin: 32px 20px;
+  background-image: url(/icons/info.svg);
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  z-index: 2;
 }

@@ -10,19 +10,20 @@ import { connect } from "react-redux";
 import { filterItems } from "../actions";
 import FilterInput from "../../widgets/filter-input";
 
-function ItemFilter({inputRef, ...props}) {
+function ItemFilter({inputRef, panel, ...props}) {
   return (
     <Localized id="item-filter" attrs={{
       "aria-label": true, "placeholder": true,
     }}>
       <FilterInput {...props} aria-label="fILTER…" placeholder="fILTEr…"
-                   ref={inputRef}/>
+                   ref={inputRef} panel={panel} />
     </Localized>
   );
 }
 
 ItemFilter.propTypes = {
   inputRef: PropTypes.func,
+  panel: PropTypes.bool
 };
 
 export default connect(

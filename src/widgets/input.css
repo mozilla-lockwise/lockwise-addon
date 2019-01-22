@@ -7,6 +7,11 @@
   src: url("/fonts/fira-mono-regular.woff");
 }
 
+:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
+
 .monospace {
   font-family: "Fira Sans Mono";
 }
@@ -145,6 +150,21 @@ input::placeholder {
 
 .filter input {
   padding-left: 32px;
+}
+
+.filter-panel.input-wrapper,
+.filter-panel input {
+  height: 50px;
+  border: none;
+}
+
+.filter-panel input {
+  margin-left: 10px;
+}
+
+.filter-panel::before {
+  top: 16px;
+  left: 20px;
 }
 
 .filter button {

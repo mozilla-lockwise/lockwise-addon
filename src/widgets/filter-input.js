@@ -17,6 +17,7 @@ export default class FilterInput extends React.Component {
       onChange: PropTypes.func,
       value: PropTypes.string,
       disabled: PropTypes.bool,
+      panel: PropTypes.bool
     };
   }
 
@@ -25,6 +26,7 @@ export default class FilterInput extends React.Component {
       className: "",
       value: "",
       disabled: false,
+      panel: false
     };
   }
 
@@ -54,15 +56,16 @@ export default class FilterInput extends React.Component {
 
   render() {
     // eslint-disable-next-line no-unused-vars
-    const {className, onChange, value, disabled, ...props} = this.props;
+    const {className, onChange, value, disabled, panel, ...props} = this.props;
 
     return (
       <div className={classNames([
-             styles.filter, styles.inputWrapper, disabled && styles.disabled,
+           (panel ? styles.filterPanel : null),
+           styles.filter, styles.inputWrapper, disabled && styles.disabled,
              className,
            ])}>
         <input {...props} type="search" disabled={disabled}
-               value={this.state.value}
+               value={this.state.value} panel={panel}
                onChange={(e) => this.updateValue(e.target.value)}
                ref={(element) => this.inputElement = element}/>
         <Localized id="filter-input-clear" attrs={{title: true}}>

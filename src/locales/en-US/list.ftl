@@ -48,8 +48,8 @@ item-summary-copy-password = Copy Password
   .title = Copy the password to the clipboard
 
 item-filter =
-  .placeholder = Search Lockbox
-  .aria-label = Search Lockbox
+  .placeholder = Search Logins
+  .aria-label = Search Logins
 
 ## manage
 
@@ -105,7 +105,7 @@ homepage-accountlinked-description =
     { product-title } uses the strongest encryption available to
     protect your logins – even for banking and other critical sites.
 
-item-details-heading-view = Entry Details
+item-details-heading-view = Login Details
 item-details-heading-new = Create New Entry
 item-details-heading-edit = Edit Entry Details
 
@@ -119,6 +119,8 @@ item-details-cancel = Cancel
 ## popup
 
 manage-lockbox-button = Manage Lockbox
+
+default-banner = Recently used entries. Select to launch.
 
 no-results-banner = No entries found for current website.
 

@@ -11,6 +11,8 @@ import Panel, { PanelHeader, PanelBanner, PanelBody, PanelFooter,
 import ItemList, { ItemListPlaceholder } from "../../components/item-list";
 import ItemFilter from "../../containers/item-filter";
 
+import styles from "./item-list-panel.css";
+
 const MAX_VERBOSE_ITEMS = 2;
 
 class PopupItemList extends React.Component {
@@ -35,10 +37,10 @@ class PopupItemList extends React.Component {
   render() {
     const {items, ...props} = this.props;
     const {selected} = this.state;
-    const verbose = items.length <= MAX_VERBOSE_ITEMS;
+    // const verbose = items.length <= MAX_VERBOSE_ITEMS;
 
     return (
-      <ItemList {...props} items={items} verbose={verbose} selected={selected}
+        <ItemList {...props} panel={true} items={items} verbose={false} selected={selected}
                 onChange={(s) => this.handleChange(s)}/>
     );
   }
@@ -67,28 +69,40 @@ export default function ItemListPanel({inputRef, noResultsBanner, ...props}) {
     topBorder = "none";
   } else {
     list = <PopupItemList {...props}/>;
+    topBorder = "normal";
 
     if (noResultsBanner) {
-      topBorder = "normal";
       banner = (
         <Localized id="no-results-banner">
           <PanelBanner border="floating">no rESULTs</PanelBanner>
         </Localized>
       );
+    // } else if (list.props.items.length > 0 && list.props.items.length < ) {
+    //   banner = (
+    //       <Localized id="default-banner">
+    //       <PanelBanner border="floating">rECENTLy uSEd eNTRIEs</PanelBanner>
+    //       </Localized>
+    //   );
     } else {
-      topBorder = "floating";
+      console.log("inputREF and list count", inputRef.value, list.length);
+
+      banner = (
+        <Localized id="default-banner">
+          <PanelBanner border="floating">rECENTLy uSEd eNTRIEs</PanelBanner>
+        </Localized>
+      );
     }
   }
 
   return (
     <Panel>
-      <PanelHeader border={topBorder}>
-        <ItemFilter inputRef={inputRef}/>
+      <PanelHeader border={topBorder} className={styles.panelHeader}>
+        <ItemFilter inputRef={inputRef} panel={true}/>
       </PanelHeader>
 
       {banner}
 
-      <PanelBody scroll={false}>
+      <PanelBody scroll={false} className={styles.panelBody}>
         {list}
       </PanelBody>
 

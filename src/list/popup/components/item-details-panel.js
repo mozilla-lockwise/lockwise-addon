@@ -15,8 +15,8 @@ export default function ItemDetailsPanel({fields, onCopy, onBack}) {
   return (
     <Panel>
       <Localized id="item-details-panel-title">
-        <PanelHeader onBack={onBack}>
-          eNTRy dETAILs
+        <PanelHeader onBack={onBack} className={styles.panelHeader}>
+          lOGIn dETAILs
         </PanelHeader>
       </Localized>
 

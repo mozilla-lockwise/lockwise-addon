@@ -14,6 +14,7 @@ export default class Input extends React.Component {
     return {
       className: PropTypes.string,
       monospace: PropTypes.bool,
+      panel: PropTypes.bool
     };
   }
 
@@ -21,6 +22,7 @@ export default class Input extends React.Component {
     return {
       className: "",
       monospace: false,
+      panel: false
     };
   }
 
@@ -32,10 +34,11 @@ export default class Input extends React.Component {
   }
 
   render() {
-    const { className, monospace, ...props } = this.props;
+    const { className, monospace, panel, ...props } = this.props;
     return (
       <input {...props} className={classNames([
-        styles.input, monospace && styles.monospace, className,
+        (panel ? styles.inputPanel : styles.input),
+         monospace && styles.monospace, className,
       ])} ref={(element) => this.inputElement = element} />
     );
   }
