@@ -64,15 +64,15 @@ export default function ItemSummary({className, id, title, username, verbose,
   const titleId = `item-summary-${idModifier}title`;
   const usernameId = `item-summary-${idModifier}username`;
   return (
-    <div className={styles.itemSummaryContainer}>
+    <div className={styles.itemSummaryContainer} data-item-id={id}>
       <div className={classNames([styles.itemSummary, className])}>
         <Localized id={titleId} $title={trimmedTitle}
                    $length={trimmedTitle.length}>
-          <div className={styles.title}>no tITLe</div>
+          <div data-name="title" className={styles.title}>no tITLe</div>
         </Localized>
         <Localized id={usernameId} $username={trimmedUsername}
                    $length={trimmedUsername.length}>
-          <div className={styles.subtitle}>no uSERNAMe</div>
+          <div data-name="subtitle" className={styles.subtitle}>no uSERNAMe</div>
         </Localized>
       </div>
       {verbose && <ItemSummaryCopyButtons id={id} username={username}

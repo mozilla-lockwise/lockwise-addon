@@ -14,7 +14,7 @@ import styles from "./item-list.css";
 export default function ItemList({items, itemClassName, verbose, onCopy,
                                   ...props}) {
   return (
-    <ScrollingList {...props} className={styles.itemList}
+    <ScrollingList {...props} className={"itemList " + styles.itemList}
                    itemClassName={classNames([
                      styles.item, verbose && styles.verbose, itemClassName,
                    ])} data={items} styledItems={false}>
@@ -48,7 +48,7 @@ ItemList.defaultProps = {
 
 export function ItemListPlaceholder({children}) {
   return (
-    <div className={styles.empty}>
+    <div className={"itemListEmpty " + styles.empty}>
       {children}
     </div>
   );

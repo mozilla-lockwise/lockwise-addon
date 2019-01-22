@@ -35,21 +35,7 @@ describe("logins API", () => {
   const addLogin = async () => {
     await webext.inChrome();
     await driver.executeScript(`
-      // XXX For some reason, template substitution doesn't work with selenium
-      const mockLogin = {
-        guid: "{33535344-9cdb-8c4a-ae10-5849d0a2f04a}",
-        timeCreated: 1546291981955,
-        timeLastUsed: 1546291981955,
-        timePasswordChanged: 1546291981955,
-        timesUsed: 1,
-        hostname: "https://example.com",
-        httpRealm: null,
-        formSubmitURL: "https://example.com",
-        usernameField: "username",
-        passwordField: "password",
-        username: "creativeusername",
-        password: "p455w0rd",
-      };
+      const mockLogin = ${JSON.stringify(mockLogin)};
       const login = LoginHelper.vanillaObjectToLogin(mockLogin);
       Services.logins.addLogin(login);
     `);
