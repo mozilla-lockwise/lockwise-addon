@@ -1,0 +1,94 @@
+[
+  {
+    "namespace": "experiments.sync",
+    "description": "Firefox Lockbox internal API for accessing Firefox Accounts/Sync state.",
+    "types": [
+      {
+        "id": "SyncType",
+        "type": "string",
+        "enum": ["addons", "addresses", "bookmarks", "creditcards", "history", "passwords", "prefs", "tabs"],
+        "description": "Represents different types of data that users can choose to sync across devices. Based on sync engine prefs in Firefox. Note that 'passwords' actually means logins."
+      },
+      {
+        "id": "SyncState",
+        "type": "boolean",
+        "description": "True if the user has enabled sync for the particular SyncType, false otherwise."
+      },
+      {
+        "id": "SyncStatus",
+        "type": "string",
+        "enum": ["error", "ok"],
+        "description": "Status of the user's login in Firefox. If the state is 'error', the user is logged in, but needs to take action to fix something, either a stale login or an unverified email. If the state is 'ok', the user is successfully logged in to Sync. Note: this is a string, not a boolean, in case we want to differentiate particular error states in the future."
+      },
+      {
+        "id": "UserProfileInfo",
+        "type": "object",
+        "description": "Firefox Accounts/Sync user profile info relevant to Lockbox.",
+        "properties": {
+          "id": {
+            "type": "string",
+            "optional": false,
+            "description": "User's Firefox Account uid as a string."
+          },
+          "email": {
+            "type": "string",
+            "optional": false,
+            "description": "User's primary email as a string."
+          },
+          "displayName": {
+            "type": "any",
+            "optional": true,
+            "description": "User's display name as a string, or null if no display name has been set."
+          },
+          "avatar": {
+            "type": "any",
+            "optional": true,
+            "description": "URL of user's avatar as a string, or null if the login is in an error state. If the user hasn't added an avatar to their Firefox Account, the avatar will be the default URL, https://firefoxusercontent.com/00000000000000000000000000000000."
+          },
+          "status": {
+            "$ref": "SyncStatus",
+            "description": "Current Sync login status."
+          }
+        }
+      }
+    ],
+    "events": [
+      {
+        "name": "onUserProfileChanged",
+        "type": "function",
+        "description": "Event fired when the user profile changes due to a FxA/Sync status change. Event includes the updated UserProfileInfo object, or null if the user is logged out.",
+        "parameters": [
+          {
+            "type": "object",
+            "name": "changeInfo",
+            "properties": {
+              "login": {
+                "type": "any"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "functions": [
+      {
+        "name": "getCurrentState",
+        "type": "function",
+        "description": "Given a SyncType, returns a Promise that resolves to the SyncState for that type.",
+        "async": true,
+        "parameters": [{
+          "name": "type",
+          "$ref": "SyncType",
+          "description": "SyncType to check."
+        }]
+      },
+      {
+        "name": "getUserProfileInfo",
+        "type": "function",
+        "description": "Returns a Promise that resolves to the UserProfileInfo, if the user is logged in, or null otherwise.",
+        "async": true,
+        "parameters": []
+      }
+    ]
+  }
+]
