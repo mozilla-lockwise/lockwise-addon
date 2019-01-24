@@ -208,6 +208,11 @@ class DataStore {
     delete this._all[guid];
     broadcast({ type: "removed_item", id: guid });
   }
+
+  removeAll() {
+    this._all = {};
+    broadcast({ type: "removed_all" });
+  }
 }
 
 let bootstrap;
@@ -232,6 +237,7 @@ export async function initializeDataStore() {
   logins.onAdded.addListener(({ login }) => dataStore.addInfo(login));
   logins.onUpdated.addListener(({ login }) => dataStore.updateInfo(login));
   logins.onRemoved.addListener(({ login }) => dataStore.removeInfo(login));
+  logins.onAllRemoved.addListener(() => dataStore.removeAll());
 }
 
 export default openDataStore;
