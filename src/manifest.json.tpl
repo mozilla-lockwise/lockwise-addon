@@ -46,6 +46,14 @@
         "script": "experiments/logins/api.js",
         "paths": [["experiments", "logins"]]
       }
+    },
+    "sync": {
+      "schema": "experiments/sync/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "script": "experiments/sync/api.js",
+        "paths": [["experiments", "sync"]]
+      }
     }
   },
 

@@ -1,0 +1,21 @@
+<!doctype html>
+<meta charset="utf-8">
+<h1>Sync API Test File</h1>
+<p>This file allows the browser.experiments.sync.* API methods to be
+   called by programmatically clicking buttons. The return values can
+   be checked by looking at the results logged in the named &lt;pre&gt; fields.
+
+<p>Click the Get Profile Info button to add the test login.
+  <button id="get-profile-info">Get Profile Info</button>
+  <pre id="get-profile-info-results"></pre>
+
+<p>Click the Register Listener button to register an onUserProfileChanged listener.
+   Any events will be appended to a list in the results field.
+  <button id="register-listener">Register Listener</button>
+  <pre id="register-listener-results">[]</pre>
+
+  <p>Click the Check Passwords Pref button to check the value of the <pre>services.sync.engine.passwords</pre> preference.
+  <button id="check-passwords-pref">Check Passwords Pref</button>
+  <pre id="check-passwords-pref-results"></pre>
+
+<script src="sync-api.js"></script>
