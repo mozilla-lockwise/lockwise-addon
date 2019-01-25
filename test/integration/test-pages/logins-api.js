@@ -55,3 +55,24 @@ document.querySelector("#touch").addEventListener("click", () => {
   browser.experiments.logins.touch(mockLogin.guid).
     then(log, log);
 });
+
+const events = [];
+document.querySelector("#register-listeners").addEventListener("click", () => {
+  const log = getLogger("register-listeners");
+  const makeEventHandler = (eventName) => {
+    return (login) => {
+      events.push([eventName, login]);
+      log(events);
+    };
+  };
+  browser.experiments.logins.onAdded.addListener(makeEventHandler("onAdded"));
+  browser.experiments.logins.onUpdated.addListener(makeEventHandler("onUpdated"));
+  browser.experiments.logins.onRemoved.addListener(makeEventHandler("onRemoved"));
+});
+document.querySelector("#clear-register-listeners-results").addEventListener("click", () => {
+  const log = getLogger("register-listeners");
+  while (events.length) {
+    events.pop();
+  }
+  log(events);
+});
