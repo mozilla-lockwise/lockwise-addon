@@ -2,7 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { addedItem, updatedItem, removedItem } from "./actions";
+import {
+  addedItem,
+  updatedItem,
+  removedItem,
+  removedAllItems,
+} from "./actions";
 
 let messagePort;
 
@@ -20,6 +25,9 @@ export default function initializeMessagePorts(store) {
       break;
     case "removed_item":
       store.dispatch(removedItem(message.id));
+      break;
+    case "removed_all":
+      store.dispatch(removedAllItems());
       break;
     }
   });

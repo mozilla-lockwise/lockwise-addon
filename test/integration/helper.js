@@ -17,6 +17,15 @@ export default function createHelper(webext) {
         webdriver.By.id(`${ident}-browser-action`)
       ), 1000);
     },
+    async popup() {
+      const url = webext.url("/list/popup.html");
+      const { driver, webdriver } = webext;
+      await driver.get(url);
+
+      return driver.wait(webdriver.until.elementLocated(
+        webdriver.By.css("main#content")
+      ), 1000);
+    },
     async management() {
       const url = webext.url("/list/manage.html");
       const { driver, webdriver } = webext;

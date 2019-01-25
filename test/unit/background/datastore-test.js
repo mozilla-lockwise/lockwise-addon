@@ -16,7 +16,12 @@ import {
 } from "src/background/datastore";
 
 const LOGINS_METHODS = ["getAll", "add", "update", "remove"];
-const LOGINS_EVENTS = ["Added", "Updated", "Removed"].map(name => `on${name}`);
+const LOGINS_EVENTS = [
+  "Added",
+  "Updated",
+  "Removed",
+  "AllRemoved",
+].map(name => `on${name}`);
 
 describe("background > datastore", () => {
   let store;
@@ -131,6 +136,33 @@ describe("background > datastore", () => {
 
     const resultItem = await store.get("BAR");
     expect(resultItem).to.equal(null);
+  });
+
+  it("handles onAllRemoved event from Logins API", async () => {
+    const info = {
+      title: "QUUX title",
+      hostname: "http://quux.example.com",
+      formSubmitURL: "http://quux.example.com",
+      httpRealm: null,
+      username: "QUUXuser",
+      password: "QUUXpass",
+      usernameField: "username",
+      passwordField: "password",
+    };
+    const item = convertInfo2Item(info);
+
+    // TODO: Issue #21 should do away with item/info conversion
+    const addedItem = await store.add(item);
+
+    const beforeItem = await store.get(addedItem.id);
+    expect(beforeItem).to.deep.equal(addedItem);
+
+    const allRemovedListener =
+      browser.experiments.logins.onAllRemoved.getListener();
+    allRemovedListener();
+
+    const afterItem = await store.get(addedItem.id);
+    expect(afterItem).to.be.null;
   });
 
   it("allows an item to be fetched", async () => {

@@ -28,6 +28,7 @@ export default class Button extends React.Component {
     return {
       theme: PropTypes.oneOf(Object.keys(THEME_CLASS_NAME)),
       size: PropTypes.oneOf(Object.keys(SIZE_CLASS_NAME)),
+      id: PropTypes.string,
       className: PropTypes.string,
     };
   }
@@ -36,6 +37,7 @@ export default class Button extends React.Component {
     return {
       theme: "normal",
       size: "normal",
+      id: "",
       className: "",
     };
   }
@@ -45,9 +47,9 @@ export default class Button extends React.Component {
   }
 
   render() {
-    const {className, theme, size, ...props} = this.props;
+    const {id, className, theme, size, ...props} = this.props;
     return (
-      <button {...props} className={classNames([
+      <button {...props} id={id} className={classNames([
                 styles.button, THEME_CLASS_NAME[theme],
                 SIZE_CLASS_NAME[size], className,
               ])} ref={(element) => this.buttonElement = element}/>

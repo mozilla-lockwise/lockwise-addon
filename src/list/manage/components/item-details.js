@@ -17,7 +17,7 @@ import styles from "./item-details.css";
 
 export default function ItemDetails({fields, onCopy, onEdit, onDelete}) {
   return (
-    <div className={styles.itemDetails}>
+    <div id="itemDetails" className={styles.itemDetails}>
       <Localized id={"item-details-heading-view"}>
         <h1>iTEm dETAILs</h1>
       </Localized>

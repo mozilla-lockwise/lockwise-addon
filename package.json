@@ -6,7 +6,7 @@
   "description": "Take your passwords everywhere.",
   "engines": {
     "firefox": ">= 63",
-    "node" : ">=10.15.0"
+    "node": ">=10.15.0"
   },
   "scripts": {
     "autolint": "npm run :autolint:js && npm run :autolint:css",
@@ -84,6 +84,7 @@
     "npm-run-all": "^4.1.5",
     "onchange": "^5.2.0",
     "redux-mock-store": "^1.5.3",
+    "selenium-webdriver": "^4.0.0-alpha.1",
     "sinon": "^6.3.5",
     "sinon-chai": "^3.2.0",
     "stylelint": "^9.6.0",

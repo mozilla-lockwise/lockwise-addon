@@ -16,6 +16,8 @@ export const UPDATE_ITEM_COMPLETED = Symbol("UPDATE_ITEM_COMPLETED");
 export const REMOVE_ITEM_STARTING = Symbol("REMOVE_ITEM_STARTING");
 export const REMOVE_ITEM_COMPLETED = Symbol("REMOVE_ITEM_COMPLETED");
 
+export const REMOVED_ALL_ITEMS = Symbol("REMOVED_ALL_ITEMS");
+
 export const SELECT_ITEM_STARTING = Symbol("SELECT_ITEM_STARTING");
 export const SELECT_ITEM_COMPLETED = Symbol("SELECT_ITEM_COMPLETED");
 
@@ -177,6 +179,12 @@ function removeItemCompleted(actionId, id) {
     type: REMOVE_ITEM_COMPLETED,
     actionId,
     id,
+  };
+}
+
+export function removedAllItems() {
+  return {
+    type: REMOVED_ALL_ITEMS,
   };
 }
 

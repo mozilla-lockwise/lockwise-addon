@@ -63,6 +63,8 @@ export function cacheReducer(state = {items: [], currentItem: null}, action) {
       items: state.items.filter((x) => x.id !== action.id),
       ...maybeRemoveCurrentItem(state, action),
     };
+  case actions.REMOVED_ALL_ITEMS:
+    return { ...state, items: [], currentItem: null };
   case actions.SELECT_ITEM_COMPLETED:
     return {...state, currentItem: action.item};
   case actions.START_NEW_ITEM:
