@@ -23,6 +23,53 @@ const LOGINS_EVENTS = [
   "AllRemoved",
 ].map(name => `on${name}`);
 
+const cmpAlphaBy = name => (a, b) => a[name].localeCompare(b[name]);
+
+const SAMPLE_INFOS = {
+  FOO: {
+    guid: "FOO",
+    title: "FOO title",
+    hostname: "https://foo.example.com",
+    httpRealm: null,
+    username: "FOOuser",
+    password: "FOOpass",
+    usernameField: "username",
+    passwordField: "password",
+    timesUsed: 1,
+    timeLastUsed: new Date("2019-01-03T12:00:00Z"),
+    timePasswordChanged: new Date("2019-01-02T12:00:00Z"),
+    timeCreated: new Date("2019-01-01T12:00:00Z"),
+  },
+  BAR: {
+    guid: "BAR",
+    title: "BAR title",
+    hostname: "https://www.bar.example.com",
+    httpRealm: null,
+    username: "BARuser",
+    password: "BARpass",
+    usernameField: "username",
+    passwordField: "password",
+    timesUsed: 0,
+    timeLastUsed: new Date("2019-01-04T12:00:00Z"),
+    timePasswordChanged: new Date("2019-01-03T12:00:00Z"),
+    timeCreated: new Date("2019-01-02T12:00:00Z"),
+  },
+  BAZ: {
+    guid: "BAZ",
+    title: "BAZ title",
+    hostname: "http://baz.example.com",
+    httpRealm: null,
+    username: "BAZuser",
+    password: "BAZpass",
+    usernameField: "username",
+    passwordField: "password",
+    timesUsed: 3,
+    timeLastUsed: new Date("2019-01-05T12:00:00Z"),
+    timePasswordChanged: new Date("2019-01-05T11:00:00Z"),
+    timeCreated: new Date("2019-01-05T10:00:00Z"),
+  },
+};
+
 describe("background > datastore", () => {
   let store;
 
@@ -274,51 +321,38 @@ describe("background > datastore", () => {
     expect(apiRemove.callCount).to.equal(1);
     expect(apiRemove.lastCall.lastArg).to.equal(id);
   });
+
+  describe("hostname to title conversion", () => {
+    let info = Object.assign({}, SAMPLE_INFOS.FOO);
+    it("removes the initial 'https://' part of a hostname", () => {
+      info.hostname = "https://example.com";
+      const item = convertInfo2Item(info);
+      expect(item.title).to.equal("example.com");
+    });
+    it("removes the initial 'http://' part of a hostname", () => {
+      info.hostname = "http://example.com";
+      const item = convertInfo2Item(info);
+      expect(item.title).to.equal("example.com");
+    });
+    it("removes the 'www' subdomain", () => {
+      info.hostname = "http://www.example.com";
+      const item = convertInfo2Item(info);
+      expect(item.title).to.equal("example.com");
+    });
+    it("removes the 'www1' subdomain", () => {
+      info.hostname = "http://www1.example.com";
+      const item = convertInfo2Item(info);
+      expect(item.title).to.equal("example.com");
+    });
+    it("does not remove the 'foo' subdomain", () => {
+      info.hostname = "http://foo.example.com";
+      const item = convertInfo2Item(info);
+      expect(item.title).to.equal("foo.example.com");
+    });
+    it("does not remove the '.com' public suffix", () => {
+      info.hostname = "https://www.example.com";
+      const item = convertInfo2Item(info);
+      expect(item.title.endsWith(".com")).to.be.true;
+    });
+  });
 });
-
-const cmpAlphaBy = name => (a, b) => a[name].localeCompare(b[name]);
-
-const SAMPLE_INFOS = {
-  FOO: {
-    guid: "FOO",
-    title: "FOO title",
-    hostname: "https://foo.example.com",
-    httpRealm: null,
-    username: "FOOuser",
-    password: "FOOpass",
-    usernameField: "username",
-    passwordField: "password",
-    timesUsed: 1,
-    timeLastUsed: new Date("2019-01-03T12:00:00Z"),
-    timePasswordChanged: new Date("2019-01-02T12:00:00Z"),
-    timeCreated: new Date("2019-01-01T12:00:00Z"),
-  },
-  BAR: {
-    guid: "BAR",
-    title: "BAR title",
-    hostname: "https://www.bar.example.com",
-    httpRealm: null,
-    username: "BARuser",
-    password: "BARpass",
-    usernameField: "username",
-    passwordField: "password",
-    timesUsed: 0,
-    timeLastUsed: new Date("2019-01-04T12:00:00Z"),
-    timePasswordChanged: new Date("2019-01-03T12:00:00Z"),
-    timeCreated: new Date("2019-01-02T12:00:00Z"),
-  },
-  BAZ: {
-    guid: "BAZ",
-    title: "BAZ title",
-    hostname: "http://baz.example.com",
-    httpRealm: null,
-    username: "BAZuser",
-    password: "BAZpass",
-    usernameField: "username",
-    passwordField: "password",
-    timesUsed: 3,
-    timeLastUsed: new Date("2019-01-05T12:00:00Z"),
-    timePasswordChanged: new Date("2019-01-05T11:00:00Z"),
-    timeCreated: new Date("2019-01-05T10:00:00Z"),
-  },
-};
