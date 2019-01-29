@@ -37,7 +37,7 @@ export default class Button extends React.Component {
     return {
       theme: "normal",
       size: "normal",
-      id: "",
+      id: null,
       className: "",
     };
   }

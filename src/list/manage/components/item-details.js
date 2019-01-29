@@ -24,10 +24,10 @@ export default function ItemDetails({fields, onCopy, onEdit, onDelete}) {
       <ItemFields fields={fields} onCopy={onCopy}/>
       <Toolbar className={styles.buttons}>
         <Localized id="item-details-edit">
-          <Button onClick={() => onEdit()}>eDIt</Button>
+          <Button id="editItemButton" onClick={() => onEdit()}>eDIt</Button>
         </Localized>
         <Localized id="item-details-delete">
-          <Button onClick={() => onDelete()}>dELETe</Button>
+          <Button id="deleteItemButton" onClick={() => onDelete()}>dELETe</Button>
         </Localized>
       </Toolbar>
     </div>

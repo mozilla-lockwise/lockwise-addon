@@ -17,9 +17,15 @@ const ident = "lockbox_mozilla_com";
 const makeSelectors = ({ By }) => ({
   panelButton: By.id(`PanelUI-webext-${ident}-browser-action-view`),
   addItemButton: By.id("addItemButton"),
+  deleteItemButton: By.id("deleteItemButton"),
+  editItemButton: By.id("editItemButton"),
+  editItemCancelButton: By.id("editItemCancelButton"),
+  confirmDialogConfirmButton: By.css(".dialogConfirm"),
+  confirmDialogCancelButton: By.css(".dialogCancel"),
+  editItemForm: By.id("editItemForm"),
   newItemForm: By.id("newItemForm"),
-  newItemFormField: name => By.css(`#newItemForm input[name=${name}]`),
-  newItemFormSubmit: By.css("#newItemForm button[type=submit]"),
+  itemFormField: name => By.css(`input[name=${name}]`),
+  itemFormSubmit: By.css("button[type=submit]"),
   itemDetails: name => By.css(`span[data-name=${name}]`),
   itemListEmpty: By.css(".itemListEmpty"),
   itemList: By.css(".itemList"),
@@ -84,17 +90,6 @@ describe("add-on UI", () => {
     await webext.inContent();
   };
 
-  const getLogins = async () => {
-    await webext.inChrome();
-    const logins = await driver.executeScript(`
-      return Services.logins
-        .getAllLogins()
-        .map(LoginHelper.loginToVanillaObject);
-    `);
-    await webext.inContent();
-    return logins;
-  };
-
   before(async () => {
     webext = await getWebExtension();
     await webext.start();
@@ -128,12 +123,13 @@ describe("add-on UI", () => {
     it("opens the doorhanger", async () => {
       await webext.inChrome();
       const button = await helper.toolbar();
+      await button.click();
+
       const doorhanger = await driver.wait(
         until.elementLocated(selectors.panelButton),
         1000,
       );
       expect(doorhanger).to.not.be.null;
-      button.click();
     });
   });
 
@@ -147,13 +143,13 @@ describe("add-on UI", () => {
       await clearLogins();
     });
 
-    it("can add a new item", async () => {
-      const expected = {
-        origin: "https://foo.example.com",
-        username: "testUser",
-        password: "testPassword",
-      };
+    const itemToAdd = {
+      origin: "https://foo.example.com",
+      username: "testUser",
+      password: "testPassword",
+    };
 
+    const addItem = async (itemToAdd, doSubmit = true) => {
       // Click the "+" button to add a new item.
       const addButton = await waitFor(selectors.addItemButton);
       expect(addButton).to.not.be.null;
@@ -165,19 +161,25 @@ describe("add-on UI", () => {
 
       // Grab the new item form fields.
       const fields = {
-        origin: await waitFor(selectors.newItemFormField("origin")),
-        username: await waitFor(selectors.newItemFormField("username")),
-        password: await waitFor(selectors.newItemFormField("password")),
+        origin: await waitFor(selectors.itemFormField("origin")),
+        username: await waitFor(selectors.itemFormField("username")),
+        password: await waitFor(selectors.itemFormField("password")),
       };
 
-      // Fill out the fields with expected item details.
+      // Fill out the fields with itemToAdd item details.
       for (let [name, field] of Object.entries(fields)) {
-        await field.sendKeys(expected[name]);
+        await field.sendKeys(itemToAdd[name]);
       }
 
-      // Submit the fields.
-      const submitButton = await waitFor(selectors.newItemFormSubmit);
-      await submitButton.click();
+      if (doSubmit) {
+        // Submit the fields.
+        const submitButton = await waitFor(selectors.itemFormSubmit);
+        await submitButton.click();
+      }
+    };
+
+    it("can add a new item", async () => {
+      await addItem(itemToAdd);
 
       // Verify visible Entry Details
       const resultElements = {
@@ -186,19 +188,139 @@ describe("add-on UI", () => {
       };
       for (let [name, el] of Object.entries(resultElements)) {
         const text = await el.getText();
-        expect(text).to.equal(expected[name]);
+        expect(text).to.equal(itemToAdd[name]);
       }
 
       // Verify visible info in the item list.
       const listItemSubtitle = await waitFor(selectors.listItemSelectedSubtitle);
-      expect(await listItemSubtitle.getText()).to.equal(expected.username);
+      expect(await listItemSubtitle.getText()).to.equal(itemToAdd.username);
+    });
 
-      // Finally, ensure that our added item is found in Firefox
-      const listItemContainer = await waitFor(selectors.listItemContainer);
-      const itemId = await listItemContainer.getAttribute("data-item-id");
-      expect(
-        (await getLogins()).filter(login => login.guid == itemId).length,
-      ).to.equal(1);
+    it("can cancel adding a new item without input", async () => {
+      const addButton = await waitFor(selectors.addItemButton);
+      expect(addButton).to.not.be.null;
+      await addButton.click();
+
+      const cancelButton = await waitFor(selectors.editItemCancelButton);
+      await cancelButton.click();
+
+      await waitUntilMissing(selectors.newItemForm);
+    });
+
+    it("requires confirmation to cancel adding a new item with input", async () => {
+      await addItem(itemToAdd, false);
+
+      const cancelButton = await waitFor(selectors.editItemCancelButton);
+      await cancelButton.click();
+
+      const confirmButton = await waitFor(selectors.confirmDialogConfirmButton);
+      await confirmButton.click();
+
+      await waitUntilMissing(selectors.newItemForm);
+    });
+
+    const editedFields = {
+      origin: "https://bar.example.com",
+      username: "userEdited",
+      password: "passwordEdited",
+    };
+
+    const commonModify = async (doEdit = true) => {
+      await addItem(itemToAdd);
+
+      // Verify visible info in the item list.
+      const listItem = await waitFor(selectors.listItemContainer);
+      await listItem.click();
+
+      const editItemButton = await waitFor(selectors.editItemButton);
+      await editItemButton.click();
+
+      const editItemForm = await waitFor(selectors.editItemForm);
+      expect(editItemForm).to.not.be.null;
+
+      if (doEdit) {
+        const fields = {
+          origin: await waitFor(selectors.itemFormField("origin")),
+          username: await waitFor(selectors.itemFormField("username")),
+          password: await waitFor(selectors.itemFormField("password")),
+        };
+
+        for (let [name, field] of Object.entries(fields)) {
+          await field.clear();
+          await field.sendKeys(editedFields[name]);
+        }
+      }
+    };
+
+    const commonModifyVerify = async (itemData) => {
+      // Verify visible Entry Details
+      const resultElements = {
+        origin: await waitFor(selectors.itemDetails("origin")),
+        username: await waitFor(selectors.itemDetails("username")),
+      };
+      for (let [name, el] of Object.entries(resultElements)) {
+        const text = await el.getText();
+        expect(text).to.equal(itemData[name]);
+      }
+
+      // Verify visible info in the item list.
+      const listItemSubtitle = await waitFor(selectors.listItemSelectedSubtitle);
+      expect(await listItemSubtitle.getText()).to.equal(itemData.username);
+    };
+
+    it("can cancel modification of an existing item without changes", async () => {
+      await commonModify(false);
+
+      const cancelButton = await waitFor(selectors.editItemCancelButton);
+      await cancelButton.click();
+
+      await commonModifyVerify(itemToAdd);
+    });
+
+    it("requires confirmation to cancel modification of an existing item with changes", async () => {
+      await commonModify();
+
+      const cancelButton = await waitFor(selectors.editItemCancelButton);
+      await cancelButton.click();
+
+      const confirmButton = await waitFor(selectors.confirmDialogConfirmButton);
+      await confirmButton.click();
+
+      await commonModifyVerify(itemToAdd);
+    });
+
+    it("can modify an existing item", async () => {
+      await commonModify();
+
+      const submitButton = await waitFor(selectors.itemFormSubmit);
+      await submitButton.click();
+
+      await commonModifyVerify(editedFields);
+    });
+
+    const commonItemDelete = async () => {
+      await addItem(itemToAdd);
+
+      // Verify visible info in the item list.
+      const listItem = await waitFor(selectors.listItemContainer);
+      await listItem.click();
+
+      const deleteItemButton = await waitFor(selectors.deleteItemButton);
+      await deleteItemButton.click();
+    };
+
+    it("can delete an existing item", async () => {
+      await commonItemDelete();
+      const confirmButton = await waitFor(selectors.confirmDialogConfirmButton);
+      await confirmButton.click();
+      await waitUntilMissing(selectors.listItemContainer);
+    });
+
+    it("can cancel deleting an existing item", async () => {
+      await commonItemDelete();
+      const cancelButton = await waitFor(selectors.confirmDialogCancelButton);
+      await cancelButton.click();
+      await waitFor(selectors.listItemContainer);
     });
   });
 
@@ -231,7 +353,7 @@ describe("add-on UI", () => {
       await waitFor(selectors.itemList);
 
       const listItem = await waitFor(selectors.itemListFirstItem);
-      listItem.click();
+      await listItem.click();
 
       // Verify visible Entry Details
       const resultElements = {
@@ -252,7 +374,7 @@ describe("add-on UI", () => {
 
       // Click the button, wait for a new tab to appear.
       const beforeHandles = await driver.getAllWindowHandles();
-      manageButton.click();
+      await manageButton.click();
       const newHandle = await driver.wait(
         async () =>
           (await driver.getAllWindowHandles())
