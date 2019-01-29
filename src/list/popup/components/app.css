@@ -5,8 +5,8 @@
 body {
   padding: 0;
   margin: 0;
-  width: 280px;
-  height: 360px;
+  width: 300px;
+  height: 339px;
   color: #0c0c0d;
   background-color: white;
   font: caption;
@@ -17,4 +17,8 @@ body {
 body > main,
 .app {
   height: 100%;
+}
+
+.app .panel-footer-button {
+  color: blue;
 }

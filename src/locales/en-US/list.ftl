@@ -118,9 +118,14 @@ item-details-cancel = Cancel
 
 ## popup
 
-manage-lockbox-button = Manage Lockbox
+manage-lockbox-button = Open Lockbox
+
+list-detail-button = Open Website
 
 default-banner = Recently used entries. Select to launch.
+
+# count is the number of items matching the filter
+filtered-banner = {$count} entries found
 
 no-results-banner = No entries found for current website.
 

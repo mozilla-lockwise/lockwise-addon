@@ -13,8 +13,6 @@ import ItemFilter from "../../containers/item-filter";
 
 import styles from "./item-list-panel.css";
 
-const MAX_VERBOSE_ITEMS = 2;
-
 class PopupItemList extends React.Component {
   static get propTypes() {
     return {
@@ -37,7 +35,6 @@ class PopupItemList extends React.Component {
   render() {
     const {items, ...props} = this.props;
     const {selected} = this.state;
-    // const verbose = items.length <= MAX_VERBOSE_ITEMS;
 
     return (
         <ItemList {...props} panel={true} items={items} verbose={false} selected={selected}
@@ -46,7 +43,8 @@ class PopupItemList extends React.Component {
   }
 }
 
-export default function ItemListPanel({inputRef, noResultsBanner, ...props}) {
+export default function ItemListPanel({inputRef, noResultsBanner,
+                                       isFiltering, ...props}) {
   const openManager = () => {
     browser.runtime.sendMessage({
       type: "open_view",
@@ -74,21 +72,20 @@ export default function ItemListPanel({inputRef, noResultsBanner, ...props}) {
     if (noResultsBanner) {
       banner = (
         <Localized id="no-results-banner">
-          <PanelBanner border="floating">no rESULTs</PanelBanner>
+          <PanelBanner border="floating" className={styles.panelBanner}>no rESULTs</PanelBanner>
         </Localized>
       );
-    // } else if (list.props.items.length > 0 && list.props.items.length < ) {
-    //   banner = (
-    //       <Localized id="default-banner">
-    //       <PanelBanner border="floating">rECENTLy uSEd eNTRIEs</PanelBanner>
-    //       </Localized>
-    //   );
+    } else if (isFiltering) {
+      const count = props.items.length;
+      banner = (
+          <Localized id="filtered-banner" $count={count}>
+            <PanelBanner border="floating"> {count} eNTRIEs fOUNd</PanelBanner>
+          </Localized>
+      );
     } else {
-      console.log("inputREF and list count", inputRef.value, list.length);
-
       banner = (
         <Localized id="default-banner">
-          <PanelBanner border="floating">rECENTLy uSEd eNTRIEs</PanelBanner>
+          <PanelBanner border="floating" className={styles.panelBanner}>rECENTLy uSEd eNTRIEs</PanelBanner>
         </Localized>
       );
     }
@@ -97,7 +94,7 @@ export default function ItemListPanel({inputRef, noResultsBanner, ...props}) {
   return (
     <Panel>
       <PanelHeader border={topBorder} className={styles.panelHeader}>
-        <ItemFilter inputRef={inputRef} panel={true}/>
+        <ItemFilter inputRef={inputRef} className={styles.filterPanel} />
       </PanelHeader>
 
       {banner}
@@ -108,8 +105,8 @@ export default function ItemListPanel({inputRef, noResultsBanner, ...props}) {
 
       <PanelFooter border="floating">
         <Localized id="manage-lockbox-button">
-          <PanelFooterButton onClick={openManager}>
-            mANAGe lOCKBox
+          <PanelFooterButton onClick={openManager} className={styles.panelFooterButton}>
+            oPEn lOCKBox
           </PanelFooterButton>
         </Localized>
       </PanelFooter>

@@ -5,3 +5,52 @@
 .panel-body {
   background: #ededf0;
 }
+
+.panel-footer-button {
+  color: #f9f9fa;
+  cursor: pointer;
+  background: #4a4a4f;
+  font-size: 13px;
+}
+
+.panel-footer-button:hover {
+  color: #f9f9fa;
+  background: #2a2a2e !important;
+}
+
+.panel-header {
+  background: #ffffff;
+}
+
+.panel-banner {
+  background: #d7d7db;
+  color: #2a2a2e;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.filter-panel {
+  background: #ffffff;
+  height: 50px;
+  border: 0;
+}
+
+.filter-panel::before {
+  top: 16px;
+  left: 2px;
+}
+
+.filter-panel .input-wrapper {
+  height: 50px;
+  border: none;
+}
+
+.filter-panel input {
+  margin-left: -5px;
+  font-size: 15px;
+  font-weight: normal;
+  color: #737373;
+
+  height: 50px;
+  border: none;
+}

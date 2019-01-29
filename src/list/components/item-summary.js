@@ -47,11 +47,11 @@ function ItemSummaryCopyButtons({id, username, onCopy}) {
 ItemSummaryCopyButtons.propTypes = {
   id: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
-  onCopy: PropTypes.func.isRequired
+  onCopy: PropTypes.func.isRequired,
 };
 
 export default function ItemSummary({className, id, title, username, verbose,
-                                     onCopy, panel}) {
+                                     onCopy}) {
   // istanbul ignore next
   if (id === NEW_ITEM_ID && verbose) {
     throw new Error("verbose <ItemSummary/> cannot be used with new items");
@@ -74,6 +74,7 @@ export default function ItemSummary({className, id, title, username, verbose,
                    $length={trimmedUsername.length}>
           <div data-name="subtitle" className={styles.subtitle}>no uSERNAMe</div>
         </Localized>
+        <div className={styles.info}></div>
       </div>
       {verbose && <ItemSummaryCopyButtons id={id} username={username}
                                           onCopy={onCopy}/>}
@@ -88,7 +89,6 @@ ItemSummary.propTypes = {
   username: PropTypes.string,
   verbose: PropTypes.bool,
   onCopy: PropTypes.func,
-  panel: PropTypes.bool
 };
 
 ItemSummary.defaultProps = {
@@ -97,5 +97,4 @@ ItemSummary.defaultProps = {
   title: "",
   username: "",
   verbose: false,
-  panel: false
 };

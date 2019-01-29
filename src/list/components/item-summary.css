@@ -2,22 +2,33 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-.item-summary-container::before {
-  content: "";
-  float: right;
-  position: relative;
-  width: 5px;
-  height: 9px;
-  margin: 32px 20px;
-  background-image: url(/icons/chevron-right.svg);
-  background-repeat: no-repeat;
-  background-size: 5px 9px;
-  z-index: 2;
+.item-summary-container {
+  cursor: pointer;
 }
 
 .item-summary {
-  padding: 16px 20px;
-  font-size: 15px;
+  padding: 9px 15px;
+  position: relative;
+}
+
+.info {
+  position: absolute;
+  right: 10px;
+  top: -3px;
+  width: 18px;
+  height: 18px;
+  margin: 20px;
+  background-image: url(/icons/info.svg);
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  background-position: 50%;
+  padding: 5px;
+  border-radius: 2px;
+}
+
+.info:hover {
+  background-color: rgba(12, 12, 13, 0.1);
+  background-image: url(/icons/info-dark.svg);
 }
 
 .title,
@@ -30,7 +41,9 @@
 }
 
 .title {
-  font-weight: bold;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0c0c0d;
 }
 
 .subtitle {
@@ -59,30 +72,4 @@
 
 .copy-button-inner:focus {
   box-shadow: inset 0 0 0 2px #0a84ff;
-}
-
-.copy-button-inner:hover {
-  background-color: #ededf0;
-}
-
-.copy-button-inner:active:hover {
-  background-color: #d7d7db;
-}
-
-/* panel specific styles*/
-.item-summary-container-panel::before {
-  display: none;
-}
-
-.item-summary-container-panel::before:hover {
-  content: "";
-  float: right;
-  position: relative;
-  width: 18px;
-  height: 18px;
-  margin: 32px 20px;
-  background-image: url(/icons/info.svg);
-  background-repeat: no-repeat;
-  background-size: 18px 18px;
-  z-index: 2;
 }

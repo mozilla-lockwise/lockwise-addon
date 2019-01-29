@@ -29,17 +29,18 @@
   align-items: center;
   font-weight: 500;
   background: #ededf0;
-  height: 50px;
+  height: 30px;
+  padding: 12px;
 }
 
 .panel-banner {
   position: relative;
   text-align: center;
   padding: 6px;
-  font-size: 12px;
-  opacity: 0.8;
-  color: #38383d;
-  background-color: #ededf0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #737373;
+  background-color: #ffffff;
 }
 
 .panel-header.normal-border,
@@ -69,13 +70,6 @@
   overflow-y: auto;
 }
 
-.panel-message {
-  background: #ededf0;
-  color: #ffffff;
-  font-size: 12px;
-  opacity: 0.8;
-}
-
 .panel-footer {
   display: flex;
   position: relative;
@@ -96,7 +90,6 @@
   height: 40px;
   padding: 0 16px;
   font-size: 13px;
-  cursor: pointer;
 }
 
 .panel-footer-button:focus {
@@ -120,8 +113,8 @@
 }
 
 .normal-theme {
-  color: #737373;
-  background-color: #E7E7E7;
+  color: #262626;
+  background-color: #f9f9fa;
 }
 
 .primary-theme:not([disabled]):hover {
@@ -129,7 +122,7 @@
 }
 
 .normal-theme:not([disabled]):hover {
-  background-color: #d1d1d1;
+  background-color: #d7d7db;
 }
 
 .primary-theme:not([disabled]):active:hover {
@@ -137,5 +130,5 @@
 }
 
 .normal-theme:not([disabled]):active:hover {
-  background-color: #d1d1d1;
+  background-color: #b1b1b3;
 }
