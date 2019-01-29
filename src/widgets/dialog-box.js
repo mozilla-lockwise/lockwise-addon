@@ -40,7 +40,7 @@ export default class DialogBox extends React.Component {
           {children}
         </div>
         <menu>
-          {buttons.map(({label, theme}, i) => {
+          {buttons.map(({name, label, theme}, i) => {
             let extraProps = {};
             if (i === 0) {
               if (!theme) {
@@ -53,6 +53,7 @@ export default class DialogBox extends React.Component {
 
             return (
               <Button {...extraProps} key={i} theme={theme}
+                      className={`dialog${name}`}
                       onClick={() => { onClick(i); onClose(); }}>
                 {label}
               </Button>
@@ -68,8 +69,8 @@ export function ConfirmDialog({confirmLabel, cancelLabel, theme, onConfirm,
                                ...props}) {
   return (
     <DialogBox {...props} buttons={[
-                 {label: confirmLabel, theme},
-                 {label: cancelLabel},
+                 {name: "Confirm", label: confirmLabel, theme},
+                 {name: "Cancel", label: cancelLabel},
                ]}
                onClick={(i) => { if (i === 0) { onConfirm(); } }}/>
   );

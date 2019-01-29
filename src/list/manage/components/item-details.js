@@ -27,7 +27,7 @@ export default function ItemDetails({fields, onCopy, onEdit, onDelete}) {
           <Button onClick={() => onEdit()}>eDIt</Button>
         </Localized>
         <Localized id="item-details-delete">
-          <Button onClick={() => onDelete()}>dELETe</Button>
+          <Button id="itemDelete" onClick={() => onDelete()}>dELETe</Button>
         </Localized>
       </Toolbar>
     </div>

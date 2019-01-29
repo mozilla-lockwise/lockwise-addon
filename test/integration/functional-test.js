@@ -17,6 +17,9 @@ const ident = "lockbox_mozilla_com";
 const makeSelectors = ({ By }) => ({
   panelButton: By.id(`PanelUI-webext-${ident}-browser-action-view`),
   addItemButton: By.id("addItemButton"),
+  deleteItemButton: By.id("itemDelete"),
+  confirmDialogConfirmButton: By.css(".dialogConfirm"),
+  confirmDialogCancelButton: By.css(".dialogCancel"),
   newItemForm: By.id("newItemForm"),
   newItemFormField: name => By.css(`#newItemForm input[name=${name}]`),
   newItemFormSubmit: By.css("#newItemForm button[type=submit]"),
@@ -147,13 +150,7 @@ describe("add-on UI", () => {
       await clearLogins();
     });
 
-    it("can add a new item", async () => {
-      const expected = {
-        origin: "https://foo.example.com",
-        username: "testUser",
-        password: "testPassword",
-      };
-
+    const addItem = async (expected) => {
       // Click the "+" button to add a new item.
       const addButton = await waitFor(selectors.addItemButton);
       expect(addButton).to.not.be.null;
@@ -178,6 +175,15 @@ describe("add-on UI", () => {
       // Submit the fields.
       const submitButton = await waitFor(selectors.newItemFormSubmit);
       await submitButton.click();
+    };
+
+    it("can add a new item", async () => {
+      const expected = {
+        origin: "https://foo.example.com",
+        username: "testUser",
+        password: "testPassword",
+      };
+      await addItem(expected);
 
       // Verify visible Entry Details
       const resultElements = {
@@ -192,13 +198,36 @@ describe("add-on UI", () => {
       // Verify visible info in the item list.
       const listItemSubtitle = await waitFor(selectors.listItemSelectedSubtitle);
       expect(await listItemSubtitle.getText()).to.equal(expected.username);
+    });
 
-      // Finally, ensure that our added item is found in Firefox
-      const listItemContainer = await waitFor(selectors.listItemContainer);
-      const itemId = await listItemContainer.getAttribute("data-item-id");
-      expect(
-        (await getLogins()).filter(login => login.guid == itemId).length,
-      ).to.equal(1);
+    const commonItemDelete = async () => {
+      const expected = {
+        origin: "https://foo.example.com",
+        username: "testUser",
+        password: "testPassword",
+      };
+      await addItem(expected);
+
+      // Verify visible info in the item list.
+      const listItem = await waitFor(selectors.listItemContainer);
+      listItem.click();
+
+      const deleteItemButton = await waitFor(selectors.deleteItemButton);
+      deleteItemButton.click();
+    };
+
+    it("can delete an existing item", async () => {
+      await commonItemDelete();
+      const confirmButton = await waitFor(selectors.confirmDialogConfirmButton);
+      confirmButton.click();
+      await waitUntilMissing(selectors.listItemContainer);
+    });
+
+    it("can cancel deleting an existing item", async () => {
+      await commonItemDelete();
+      const confirmButton = await waitFor(selectors.confirmDialogCancelButton);
+      confirmButton.click();
+      await waitFor(selectors.listItemContainer);
     });
   });
 
