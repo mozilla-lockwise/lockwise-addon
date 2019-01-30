@@ -127,6 +127,11 @@ default-banner = Recently used entries. Select to launch.
 # count is the number of items matching the filter
 filtered-banner = {$count} entries found
 
+filtered-banner = { $count ->
+  [one]   {$count} entry found
+ *[other] { $count } entries found
+}
+
 no-results-banner = No entries found for current website.
 
 item-details-panel-title = Entry Details

@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 .panel-body {
-  background: #ededf0;
+  background: #F2F2F4;
 }
 
 .panel-footer-button {
@@ -20,6 +20,7 @@
 
 .panel-header {
   background: #ffffff;
+  height: 25px;
 }
 
 .panel-banner {
@@ -31,7 +32,7 @@
 
 .filter-panel {
   background: #ffffff;
-  height: 50px;
+  height: 48px;
   border: 0;
 }
 

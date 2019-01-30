@@ -79,7 +79,7 @@ export default function ItemListPanel({inputRef, noResultsBanner,
       const count = props.items.length;
       banner = (
           <Localized id="filtered-banner" $count={count}>
-            <PanelBanner border="floating"> {count} eNTRIEs fOUNd</PanelBanner>
+            <PanelBanner border="floating" className={styles.panelBanner}> {count} eNTRIEs fOUNd</PanelBanner>
           </Localized>
       );
     } else {

@@ -13,21 +13,25 @@
 
 .info {
   position: absolute;
-  right: 10px;
+  right: 0px;
   top: -3px;
   width: 18px;
   height: 18px;
   margin: 20px;
+  margin-right: 12px;
   background-image: url(/icons/info.svg);
   background-repeat: no-repeat;
   background-size: 18px 18px;
   background-position: 50%;
-  padding: 5px;
+  padding: 7px;
   border-radius: 2px;
 }
 
 .info:hover {
   background-color: rgba(12, 12, 13, 0.1);
+}
+
+.item-summary:hover .info {
   background-image: url(/icons/info-dark.svg);
 }
 
