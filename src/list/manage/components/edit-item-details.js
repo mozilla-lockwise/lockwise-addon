@@ -64,6 +64,7 @@ export default class EditItemDetails extends React.Component {
 
     return (
       <form className={classNames([styles.itemDetails, styles.editing])}
+            id={newItem ? "newItemForm" : "editItemForm"}
             onSubmit={(e) => {
               e.preventDefault();
               onSave(saveState);

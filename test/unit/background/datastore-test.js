@@ -16,7 +16,59 @@ import {
 } from "src/background/datastore";
 
 const LOGINS_METHODS = ["getAll", "add", "update", "remove"];
-const LOGINS_EVENTS = ["Added", "Updated", "Removed"].map(name => `on${name}`);
+const LOGINS_EVENTS = [
+  "Added",
+  "Updated",
+  "Removed",
+  "AllRemoved",
+].map(name => `on${name}`);
+
+const cmpAlphaBy = name => (a, b) => a[name].localeCompare(b[name]);
+
+const SAMPLE_INFOS = {
+  FOO: {
+    guid: "FOO",
+    title: "FOO title",
+    hostname: "https://foo.example.com",
+    httpRealm: null,
+    username: "FOOuser",
+    password: "FOOpass",
+    usernameField: "username",
+    passwordField: "password",
+    timesUsed: 1,
+    timeLastUsed: new Date("2019-01-03T12:00:00Z"),
+    timePasswordChanged: new Date("2019-01-02T12:00:00Z"),
+    timeCreated: new Date("2019-01-01T12:00:00Z"),
+  },
+  BAR: {
+    guid: "BAR",
+    title: "BAR title",
+    hostname: "https://www.bar.example.com",
+    httpRealm: null,
+    username: "BARuser",
+    password: "BARpass",
+    usernameField: "username",
+    passwordField: "password",
+    timesUsed: 0,
+    timeLastUsed: new Date("2019-01-04T12:00:00Z"),
+    timePasswordChanged: new Date("2019-01-03T12:00:00Z"),
+    timeCreated: new Date("2019-01-02T12:00:00Z"),
+  },
+  BAZ: {
+    guid: "BAZ",
+    title: "BAZ title",
+    hostname: "http://baz.example.com",
+    httpRealm: null,
+    username: "BAZuser",
+    password: "BAZpass",
+    usernameField: "username",
+    passwordField: "password",
+    timesUsed: 3,
+    timeLastUsed: new Date("2019-01-05T12:00:00Z"),
+    timePasswordChanged: new Date("2019-01-05T11:00:00Z"),
+    timeCreated: new Date("2019-01-05T10:00:00Z"),
+  },
+};
 
 describe("background > datastore", () => {
   let store;
@@ -133,6 +185,33 @@ describe("background > datastore", () => {
     expect(resultItem).to.equal(null);
   });
 
+  it("handles onAllRemoved event from Logins API", async () => {
+    const info = {
+      title: "QUUX title",
+      hostname: "http://quux.example.com",
+      formSubmitURL: "http://quux.example.com",
+      httpRealm: null,
+      username: "QUUXuser",
+      password: "QUUXpass",
+      usernameField: "username",
+      passwordField: "password",
+    };
+    const item = convertInfo2Item(info);
+
+    // TODO: Issue #21 should do away with item/info conversion
+    const addedItem = await store.add(item);
+
+    const beforeItem = await store.get(addedItem.id);
+    expect(beforeItem).to.deep.equal(addedItem);
+
+    const allRemovedListener =
+      browser.experiments.logins.onAllRemoved.getListener();
+    allRemovedListener();
+
+    const afterItem = await store.get(addedItem.id);
+    expect(afterItem).to.be.null;
+  });
+
   it("allows an item to be fetched", async () => {
     // TODO: Issue #21 should do away with item/info conversion
     const expectedItem = convertInfo2Item(SAMPLE_INFOS.FOO);
@@ -242,51 +321,38 @@ describe("background > datastore", () => {
     expect(apiRemove.callCount).to.equal(1);
     expect(apiRemove.lastCall.lastArg).to.equal(id);
   });
+
+  describe("hostname to title conversion", () => {
+    let info = Object.assign({}, SAMPLE_INFOS.FOO);
+    it("removes the initial 'https://' part of a hostname", () => {
+      info.hostname = "https://example.com";
+      const item = convertInfo2Item(info);
+      expect(item.title).to.equal("example.com");
+    });
+    it("removes the initial 'http://' part of a hostname", () => {
+      info.hostname = "http://example.com";
+      const item = convertInfo2Item(info);
+      expect(item.title).to.equal("example.com");
+    });
+    it("removes the 'www' subdomain", () => {
+      info.hostname = "http://www.example.com";
+      const item = convertInfo2Item(info);
+      expect(item.title).to.equal("example.com");
+    });
+    it("removes the 'www1' subdomain", () => {
+      info.hostname = "http://www1.example.com";
+      const item = convertInfo2Item(info);
+      expect(item.title).to.equal("example.com");
+    });
+    it("does not remove the 'foo' subdomain", () => {
+      info.hostname = "http://foo.example.com";
+      const item = convertInfo2Item(info);
+      expect(item.title).to.equal("foo.example.com");
+    });
+    it("does not remove the '.com' public suffix", () => {
+      info.hostname = "https://www.example.com";
+      const item = convertInfo2Item(info);
+      expect(item.title.endsWith(".com")).to.be.true;
+    });
+  });
 });
-
-const cmpAlphaBy = name => (a, b) => a[name].localeCompare(b[name]);
-
-const SAMPLE_INFOS = {
-  FOO: {
-    guid: "FOO",
-    title: "FOO title",
-    hostname: "https://foo.example.com",
-    httpRealm: null,
-    username: "FOOuser",
-    password: "FOOpass",
-    usernameField: "username",
-    passwordField: "password",
-    timesUsed: 1,
-    timeLastUsed: new Date("2019-01-03T12:00:00Z"),
-    timePasswordChanged: new Date("2019-01-02T12:00:00Z"),
-    timeCreated: new Date("2019-01-01T12:00:00Z"),
-  },
-  BAR: {
-    guid: "BAR",
-    title: "BAR title",
-    hostname: "https://www.bar.example.com",
-    httpRealm: null,
-    username: "BARuser",
-    password: "BARpass",
-    usernameField: "username",
-    passwordField: "password",
-    timesUsed: 0,
-    timeLastUsed: new Date("2019-01-04T12:00:00Z"),
-    timePasswordChanged: new Date("2019-01-03T12:00:00Z"),
-    timeCreated: new Date("2019-01-02T12:00:00Z"),
-  },
-  BAZ: {
-    guid: "BAZ",
-    title: "BAZ title",
-    hostname: "http://baz.example.com",
-    httpRealm: null,
-    username: "BAZuser",
-    password: "BAZpass",
-    usernameField: "username",
-    passwordField: "password",
-    timesUsed: 3,
-    timeLastUsed: new Date("2019-01-05T12:00:00Z"),
-    timePasswordChanged: new Date("2019-01-05T11:00:00Z"),
-    timeCreated: new Date("2019-01-05T10:00:00Z"),
-  },
-};

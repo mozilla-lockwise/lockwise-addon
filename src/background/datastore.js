@@ -15,7 +15,7 @@ export function convertInfo2Item(info) {
     title = info.hostname;
   }
   title = title.replace(/^http(s)?:\/\//, "").
-                replace(/^www\./, "");
+                replace(/^www\d*\./, "");
 
   const id = info.guid;
   const origins = [ info.hostname, info.formSubmitURL ].
@@ -208,6 +208,11 @@ class DataStore {
     delete this._all[guid];
     broadcast({ type: "removed_item", id: guid });
   }
+
+  removeAll() {
+    this._all = {};
+    broadcast({ type: "removed_all" });
+  }
 }
 
 let bootstrap;
@@ -232,6 +237,7 @@ export async function initializeDataStore() {
   logins.onAdded.addListener(({ login }) => dataStore.addInfo(login));
   logins.onUpdated.addListener(({ login }) => dataStore.updateInfo(login));
   logins.onRemoved.addListener(({ login }) => dataStore.removeInfo(login));
+  logins.onAllRemoved.addListener(() => dataStore.removeAll());
 }
 
 export default openDataStore;

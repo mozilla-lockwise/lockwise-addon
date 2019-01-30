@@ -210,6 +210,7 @@ window.browser = {
       onAdded: new MockListener(),
       onUpdated: new MockListener(),
       onRemoved: new MockListener(),
+      onAllRemoved: new MockListener(),
     },
   },
 };

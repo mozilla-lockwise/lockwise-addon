@@ -15,7 +15,7 @@ import styles from "./add-item.css";
 function AddItem({disabled, onAddItem}) {
   return (
     <Localized id="add-item-button">
-      <Button theme="primary" className={styles.addItem} disabled={disabled}
+      <Button theme="primary" id="addItemButton" className={styles.addItem} disabled={disabled}
               onClick={onAddItem}>
         aDd iTEm
       </Button>
