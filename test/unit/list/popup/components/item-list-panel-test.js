@@ -56,7 +56,6 @@ describe("list > popup > components > <ItemListPanel/>", () => {
       expect(wrapper).to.have.descendants(ItemFilter);
       expect(wrapper.find(ItemSummary)).to.have.length(0);
       expect(wrapper).to.have.descendants(ItemListPlaceholder);
-      expect(wrapper).not.to.have.descendants(PanelBanner);
     });
 
     it("open manager", () => {
@@ -87,7 +86,7 @@ describe("list > popup > components > <ItemListPanel/>", () => {
     it("render panel", () => {
       expect(wrapper).to.have.descendants(ItemFilter);
       expect(wrapper.find(ItemSummary)).to.have.length(3);
-      expect(wrapper).not.to.have.descendants(PanelBanner);
+      expect(wrapper).to.have.descendants(PanelBanner);
     });
   });
 

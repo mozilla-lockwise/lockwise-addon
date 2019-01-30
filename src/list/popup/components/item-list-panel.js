@@ -37,8 +37,8 @@ class PopupItemList extends React.Component {
     const {selected} = this.state;
 
     return (
-        <ItemList {...props} panel={true} items={items} verbose={false} selected={selected}
-                onChange={(s) => this.handleChange(s)}/>
+        <ItemList {...props} panel={true} items={items} selected={selected}
+                  onChange={(s) => this.handleChange(s)}/>
     );
   }
 }

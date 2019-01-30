@@ -11,17 +11,16 @@ import ScrollingList from "../../widgets/scrolling-list";
 
 import styles from "./item-list.css";
 
-export default function ItemList({items, itemClassName, verbose, onCopy,
-                                  panel, ...props}) {
+export default function ItemList({items, itemClassName, panel, ...props}) {
   return (
     <ScrollingList {...props} className={"itemList " + styles.itemList}
                    itemClassName={classNames([
-                     styles.item, verbose && styles.verbose, itemClassName,
+                     styles.item, itemClassName,
                    ])} data={items} styledItems={false}>
       {({id, title, username}) => {
         return (
           <ItemSummary className={styles.itemSummary} id={id} title={title}
-          username={username} verbose={verbose} onCopy={onCopy} panel={panel}/>
+          username={username} panel={panel}/>
         );
       }}
     </ScrollingList>
@@ -37,14 +36,11 @@ ItemList.propTypes = {
     }).isRequired
   ).isRequired,
   itemClassName: PropTypes.string,
-  verbose: PropTypes.bool,
   panel: PropTypes.bool,
-  onCopy: PropTypes.func,
 };
 
 ItemList.defaultProps = {
   itemClassName: "",
-  verbose: false,
 };
 
 export function ItemListPlaceholder({children}) {

@@ -18,7 +18,3 @@ body > main,
 .app {
   height: 100%;
 }
-
-.app .panel-footer-button {
-  color: blue;
-}

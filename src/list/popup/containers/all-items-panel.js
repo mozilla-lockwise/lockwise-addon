@@ -5,7 +5,7 @@
 import { connect } from "react-redux";
 
 import ItemListPanel from "../components/item-list-panel";
-import { selectItem, copiedField } from "../../actions";
+import { selectItem } from "../../actions";
 import { parseFilterString, filterItem } from "../../filter";
 const collator = new Intl.Collator();
 
@@ -25,6 +25,5 @@ export default connect(
   },
   (dispatch) => ({
     onClick: (id) => { dispatch(selectItem(id)); },
-    onCopy: (field, toCopy) => { dispatch(copiedField(field, toCopy)); },
   }),
 )(ItemListPanel);

@@ -70,8 +70,3 @@
 .item-list:focus .item[data-selected] .item-summary::after {
   background-color: #0a84ff;
 }
-
-.verbose + .verbose {
-  margin-top: 4px;
-  border-top: 1px solid #d7d7db;
-}
