@@ -18,10 +18,14 @@ ChromeUtils.defineModuleGetter(this, "Services",
 
 const { ExtensionError } = ExtensionUtils;
 
+const isValidLogin = (login) => {
+  return !(login.hostname || "").startsWith("chrome://");
+};
+
 const getLogins = () => {
   const logins = Services.logins.
     getAllLogins().
-    filter((l) => !(l.hostname || "").startsWith("chrome://")).
+    filter(isValidLogin).
     map(LoginHelper.loginToVanillaObject);
   return logins;
 };
@@ -139,6 +143,9 @@ this.logins = class extends ExtensionAPI {
                 }
                 subject.QueryInterface(Ci.nsILoginMetaInfo).QueryInterface(Ci.nsILoginInfo);
                 const login = LoginHelper.loginToVanillaObject(subject);
+                if (!isValidLogin(login)) {
+                  return;
+                }
                 callback({ login });
               },
             };
@@ -159,6 +166,9 @@ this.logins = class extends ExtensionAPI {
                 subject.QueryInterface(Ci.nsIArrayExtensions);
                 const newLoginInfo = subject.GetElementAt(1);
                 const login = LoginHelper.loginToVanillaObject(newLoginInfo);
+                if (!isValidLogin(login)) {
+                  return;
+                }
                 callback({ login });
               },
             };
@@ -178,6 +188,9 @@ this.logins = class extends ExtensionAPI {
                 }
                 subject.QueryInterface(Ci.nsILoginMetaInfo).QueryInterface(Ci.nsILoginInfo);
                 const login = LoginHelper.loginToVanillaObject(subject);
+                if (!isValidLogin(login)) {
+                  return;
+                }
                 callback({ login });
               },
             };

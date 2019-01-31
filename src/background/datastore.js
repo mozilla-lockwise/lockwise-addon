@@ -15,7 +15,7 @@ export function convertInfo2Item(info) {
     title = info.hostname;
   }
   title = title.replace(/^http(s)?:\/\//, "").
-                replace(/^www\./, "");
+                replace(/^www\d*\./, "");
 
   const id = info.guid;
   const origins = [ info.hostname, info.formSubmitURL ].
