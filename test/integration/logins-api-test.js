@@ -24,6 +24,20 @@ const mockLogin = {
   username: "creativeusername",
   password: "p455w0rd",
 };
+const mockSyncLogin = {
+  guid: "{11111111-9cdb-8c4a-ae10-5849d0a2f04a}",
+  timeCreated: 1546291981955,
+  timeLastUsed: 1546291981955,
+  timePasswordChanged: 1546291981955,
+  timesUsed: 1,
+  hostname: "chrome://FirefoxAccounts",
+  httpRealm: "Firefox Accounts credentials",
+  formSubmitURL: null,
+  usernameField: "",
+  passwordField: "",
+  username: "14c73624237046f0964ac092194a6a23",
+  password: "{long complicated sync object}",
+};
 
 describe("logins API", () => {
   let webext;
@@ -35,9 +49,42 @@ describe("logins API", () => {
   const addLogin = async () => {
     await webext.inChrome();
     await driver.executeScript(`
-      const mockLogin = ${JSON.stringify(mockLogin)};
-      const login = LoginHelper.vanillaObjectToLogin(mockLogin);
-      Services.logins.addLogin(login);
+      const login = ${JSON.stringify(mockLogin)};
+      const loginInfo = LoginHelper.vanillaObjectToLogin(login);
+      Services.logins.addLogin(loginInfo);
+    `);
+  };
+
+  // The sync login shouldn't be exposed to the API, so it has to be added,
+  // updated, and removed from the chrome side.
+  const addSyncLogin = async () => {
+    await webext.inChrome();
+    await driver.executeScript(`
+      const syncLogin = ${JSON.stringify(mockSyncLogin)};
+      const syncLoginInfo = LoginHelper.vanillaObjectToLogin(syncLogin);
+      Services.logins.addLogin(syncLoginInfo);
+    `);
+  };
+
+  const removeSyncLogin = async () => {
+    await webext.inChrome();
+    await driver.executeScript(`
+      const syncLogin = ${JSON.stringify(mockSyncLogin)};
+      const syncLoginInfo = LoginHelper.vanillaObjectToLogin(syncLogin);
+      Services.logins.removeLogin(syncLoginInfo);
+    `);
+  };
+
+  const updateSyncLogin = async () => {
+    await webext.inChrome();
+    await driver.executeScript(`
+      const oldSyncLogin = ${JSON.stringify(mockSyncLogin)};
+      const newSyncLogin = Object.assign({}, oldSyncLogin, {
+        username: "updated",
+      });
+      const oldSyncLoginInfo = LoginHelper.vanillaObjectToLogin(oldSyncLogin);
+      const newSyncLoginInfo = LoginHelper.vanillaObjectToLogin(newSyncLogin);
+      Services.logins.modifyLogin(oldSyncLoginInfo, newSyncLoginInfo);
     `);
   };
 
@@ -60,6 +107,16 @@ describe("logins API", () => {
       By.id(id)
     ), 1000);
     await btn.click();
+  };
+
+  const getListenerResults = async () => {
+    await webext.inContent();
+    const results = await driver.wait(until.elementLocated(
+      By.id("register-listeners-results")
+    ), 5000);
+    await driver.wait(until.elementTextContains(results, "["), 5000);
+    const output = await results.getText();
+    return output;
   };
 
   before(async () => {
@@ -127,18 +184,34 @@ describe("logins API", () => {
     expect(JSON.parse(output)).to.deep.equal(mockLogin);
   });
 
-  it("browser.experiments.logins.getAll should return the login in an array", async () => {
-    await addLogin();
+  describe("browser.experiments.logins.getAll", () => {
+    it("should return the login in an array", async () => {
+      await addLogin();
 
-    await loadTestPage();
-    await clickButton("get-all");
+      await loadTestPage();
+      await clickButton("get-all");
 
-    const results = await driver.wait(until.elementLocated(
-      By.id("get-all-results")
-    ), 1000);
-    await driver.wait(until.elementTextContains(results, "guid"), 5000);
-    const output = await results.getText();
-    expect(JSON.parse(output)).to.deep.equal([mockLogin]);
+      const results = await driver.wait(until.elementLocated(
+        By.id("get-all-results")
+      ), 1000);
+      await driver.wait(until.elementTextContains(results, "guid"), 5000);
+      const output = await results.getText();
+      expect(JSON.parse(output)).to.deep.equal([mockLogin]);
+    });
+    it("should filter out the sync login", async () => {
+      await addLogin();
+      await addSyncLogin();
+
+      await loadTestPage();
+      await clickButton("get-all");
+
+      const results = await driver.wait(until.elementLocated(
+        By.id("get-all-results")
+      ), 1000);
+      await driver.wait(until.elementTextContains(results, "guid"), 5000);
+      const output = await results.getText();
+      expect(JSON.parse(output)).to.deep.equal([mockLogin]);
+    });
   });
 
   it("browser.experiments.logins.update should update the username", async () => {
@@ -160,5 +233,91 @@ describe("logins API", () => {
 
     const logins = await getLogins();
     expect(logins[0].timesUsed).to.equal(2);
+  });
+
+  describe("browser.experiments.logins.onAdded", () => {
+    it("should fire if the mock login is added", async () => {
+      await loadTestPage();
+      await clickButton("register-listeners");
+
+      await addLogin();
+
+      const output = JSON.parse(await getListenerResults());
+      expect(output.length).to.equal(1);
+      expect(output[0]).to.deep.equal(["onAdded", { login: mockLogin }]);
+    });
+
+    it("should not fire if the mock sync login is added", async () => {
+      await loadTestPage();
+      await clickButton("register-listeners");
+
+      // If this is working correctly, nothing will happen when the sync login
+      // is added--but getListenerResults() will then time out, because the
+      // results element in the DOM will never have anything inserted into it.
+      // To avoid hitting the timeout each time, instead add a regular login
+      // after adding the sync login, then verify that the results list only
+      // contains one event (the "onAdded" event for the regular login).
+      await addSyncLogin();
+      await addLogin();
+
+      const output = JSON.parse(await getListenerResults());
+      expect(output.length).to.equal(1);
+      expect(output[0]).to.deep.equal(["onAdded", { login: mockLogin }]);
+    });
+  });
+
+  describe("browser.experiments.logins.onUpdated", () => {
+    it("should fire if the mock login is updated", async () => {
+      await loadTestPage();
+      await addLogin();
+      await clickButton("register-listeners");
+
+      await clickButton("update");
+
+      const output = JSON.parse(await getListenerResults());
+      expect(output.length).to.equal(1);
+      const expected = Object.assign({}, mockLogin, { username: "updated"});
+      expect(output[0]).to.deep.equal(["onUpdated", { login: expected }]);
+    });
+
+    it("should not fire if the mock sync login is updated", async () => {
+      await loadTestPage();
+      await addSyncLogin();
+      await clickButton("register-listeners");
+
+      await updateSyncLogin();
+      await addLogin();
+
+      const output = JSON.parse(await getListenerResults());
+      expect(output.length).to.equal(1);
+      expect(output[0]).to.deep.equal(["onAdded", { login: mockLogin }]);
+    });
+  });
+
+  describe("browser.experiments.logins.onRemoved", () => {
+    it("should fire if the mock login is removed", async () => {
+      await loadTestPage();
+      await addLogin();
+      await clickButton("register-listeners");
+
+      await clickButton("remove");
+
+      const output = JSON.parse(await getListenerResults());
+      expect(output.length).to.equal(1);
+      expect(output[0]).to.deep.equal(["onRemoved", { login: mockLogin }]);
+    });
+
+    it("should not fire if the mock sync login is removed", async () => {
+      await loadTestPage();
+      await addSyncLogin();
+      await clickButton("register-listeners");
+
+      await removeSyncLogin();
+      await addLogin();
+
+      const output = JSON.parse(await getListenerResults());
+      expect(output.length).to.equal(1);
+      expect(output[0]).to.deep.equal(["onAdded", { login: mockLogin }]);
+    });
   });
 });
