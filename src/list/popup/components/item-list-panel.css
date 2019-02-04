@@ -50,8 +50,11 @@
   margin-left: -5px;
   font-size: 15px;
   font-weight: normal;
-  color: #737373;
-
+  color: #171718;
   height: 50px;
   border: none;
+}
+
+input::placeholder {
+  color: #0C0C0D;
 }
