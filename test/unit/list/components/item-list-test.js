@@ -34,17 +34,6 @@ describe("list > components > <ItemList/>", () => {
 
   it("render all items", () => {
     expect(wrapper.find(ItemSummary)).to.have.length(3);
-    wrapper.find(ItemSummary).forEach((i) => {
-      expect(i).to.have.prop("verbose", false);
-    });
-  });
-
-  it("render all items verbosely", () => {
-    wrapper.setProps({verbose: true});
-    expect(wrapper.find(ItemSummary)).to.have.length(3);
-    wrapper.find(ItemSummary).forEach((i) => {
-      expect(i).to.have.prop("verbose", true);
-    });
   });
 
   it("correct item is selected", () => {

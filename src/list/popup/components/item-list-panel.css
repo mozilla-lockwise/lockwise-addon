@@ -1,0 +1,60 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+.panel-body {
+  background: #F2F2F4;
+}
+
+.panel-footer-button {
+  color: #f9f9fa;
+  cursor: pointer;
+  background: #4a4a4f;
+  font-size: 13px;
+}
+
+.panel-footer-button:hover {
+  color: #f9f9fa;
+  background: #2a2a2e !important;
+}
+
+.panel-header {
+  background: #ffffff;
+  height: 25px;
+}
+
+.panel-banner {
+  background: #d7d7db;
+  color: #2a2a2e;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.filter-panel {
+  background: #ffffff;
+  height: 48px;
+  border: 0;
+}
+
+.filter-panel::before {
+  top: 16px;
+  left: 2px;
+}
+
+.filter-panel .input-wrapper {
+  height: 50px;
+  border: none;
+}
+
+.filter-panel input {
+  margin-left: -5px;
+  font-size: 15px;
+  font-weight: normal;
+  color: #171718;
+  height: 50px;
+  border: none;
+}
+
+input::placeholder {
+  color: #0C0C0D;
+}

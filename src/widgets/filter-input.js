@@ -58,7 +58,8 @@ export default class FilterInput extends React.Component {
 
     return (
       <div className={classNames([
-             styles.filter, styles.inputWrapper, disabled && styles.disabled,
+             styles.filter, styles.inputWrapper,
+             disabled && styles.disabled,
              className,
            ])}>
         <input {...props} type="search" disabled={disabled}

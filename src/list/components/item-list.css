@@ -8,7 +8,7 @@
   padding: 40px;
   overflow: hidden;
   overflow-wrap: break-word;
-  color: #4a4a4f;
+  color: #737373;
   font-size: 15px;
   line-height: 1.5;
   letter-spacing: 0.2px;
@@ -25,17 +25,18 @@
 }
 
 .item .item-summary:hover {
-  background-color: rgba(10, 132, 255, 0.07);
+  background-color: #ededf0;
 }
 
 .item .item-summary:active {
-  background-color: rgba(10, 132, 255, 0.12);
+  background-color: #e7e7e7;
 }
 
 .item[data-selected] .item-summary {
   position: relative;
-  background-color: rgba(10, 132, 255, 0.12);
-  box-shadow: 0 -1px 0 rgba(10, 132, 255, 0.4), 0 1px 0 rgba(10, 132, 255, 0.4);
+  background-color: #e7e7e7;
+  box-shadow: 0 -1px 0 #e7e7e7, 0 1px 0 #e7e7e7;
+  cursor: pointer;
 }
 
 /* Provide borders at the top and bottom of selected items. These are ::before
@@ -68,9 +69,4 @@
 .item-list:focus .item[data-selected] .item-summary::before,
 .item-list:focus .item[data-selected] .item-summary::after {
   background-color: #0a84ff;
-}
-
-.verbose + .verbose {
-  margin-top: 4px;
-  border-top: 1px solid #d7d7db;
 }

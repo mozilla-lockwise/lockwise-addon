@@ -28,7 +28,7 @@ describe("list > popup > components > <ItemDetailsPanel/>", () => {
   beforeEach(() => {
     onBack = sinon.spy();
     wrapper = mountWithL10n(
-      <ItemDetailsPanel fields={fields} onCopy={() => {}} onBack={onBack}/>
+      <ItemDetailsPanel fields={fields} onBack={onBack}/>
     );
   });
 

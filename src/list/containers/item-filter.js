@@ -16,7 +16,7 @@ function ItemFilter({inputRef, ...props}) {
       "aria-label": true, "placeholder": true,
     }}>
       <FilterInput {...props} aria-label="fILTER…" placeholder="fILTEr…"
-                   ref={inputRef}/>
+                   ref={inputRef} />
     </Localized>
   );
 }

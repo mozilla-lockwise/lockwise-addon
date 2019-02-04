@@ -35,7 +35,8 @@ export default class Input extends React.Component {
     const { className, monospace, ...props } = this.props;
     return (
       <input {...props} className={classNames([
-        styles.input, monospace && styles.monospace, className,
+        styles.input,
+         monospace && styles.monospace, className,
       ])} ref={(element) => this.inputElement = element} />
     );
   }
