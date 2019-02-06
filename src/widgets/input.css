@@ -40,6 +40,11 @@ input::placeholder {
   border-color: rgba(12, 12, 13, 0.5);
 }
 
+.input:not([disabled]):focus,
+.input-wrapper:not(.disabled):focus-within {
+  border-color: #0a84ff;
+}
+
 .input-wrapper {
   display: flex;
 }
