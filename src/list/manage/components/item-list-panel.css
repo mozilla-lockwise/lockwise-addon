@@ -5,3 +5,8 @@
 .filter-toolbar > * + * {
   margin-inline-start: 8px;
 }
+
+.panel-header {
+  composes: panel-header from "../../../widgets/panel.css";
+  background: #fff;
+}

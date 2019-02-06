@@ -33,7 +33,8 @@ export default function ItemListPanel({className, inputRef, totalItemCount,
 
   return (
     <aside className={className}>
-      <PanelHeader border={hasItems ? "floating" : "none"}
+      <PanelHeader className={styles.panelHeader}
+                   border={hasItems ? "floating" : "none"}
                    toolbarClassName={styles.filterToolbar}>
         <ItemFilter inputRef={inputRef}/>
         <AddItem/>
