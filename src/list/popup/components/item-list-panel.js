@@ -11,7 +11,7 @@ import Panel, { PanelHeader, PanelBanner, PanelBody, PanelFooter,
 import ItemList, { ItemListPlaceholder } from "../../components/item-list";
 import ItemFilter from "../../containers/item-filter";
 
-const MAX_VERBOSE_ITEMS = 2;
+import styles from "./item-list-panel.css";
 
 class PopupItemList extends React.Component {
   static get propTypes() {
@@ -35,16 +35,16 @@ class PopupItemList extends React.Component {
   render() {
     const {items, ...props} = this.props;
     const {selected} = this.state;
-    const verbose = items.length <= MAX_VERBOSE_ITEMS;
 
     return (
-      <ItemList {...props} items={items} verbose={verbose} selected={selected}
-                onChange={(s) => this.handleChange(s)}/>
+        <ItemList {...props} panel={true} items={items} selected={selected}
+                  onChange={(s) => this.handleChange(s)}/>
     );
   }
 }
 
-export default function ItemListPanel({inputRef, noResultsBanner, ...props}) {
+export default function ItemListPanel({inputRef, noResultsBanner,
+                                       isFiltering, ...props}) {
   const openManager = () => {
     browser.runtime.sendMessage({
       type: "open_view",
@@ -67,35 +67,46 @@ export default function ItemListPanel({inputRef, noResultsBanner, ...props}) {
     topBorder = "none";
   } else {
     list = <PopupItemList {...props}/>;
+    topBorder = "normal";
 
     if (noResultsBanner) {
-      topBorder = "normal";
       banner = (
         <Localized id="no-results-banner">
-          <PanelBanner border="floating">no rESULTs</PanelBanner>
+          <PanelBanner border="floating" className={styles.panelBanner}>no rESULTs</PanelBanner>
         </Localized>
       );
+    } else if (isFiltering) {
+      const count = props.items.length;
+      banner = (
+          <Localized id="filtered-banner" $count={count}>
+            <PanelBanner border="floating" className={styles.panelBanner}> {count} eNTRIEs fOUNd</PanelBanner>
+          </Localized>
+      );
     } else {
-      topBorder = "floating";
+      banner = (
+        <Localized id="default-banner">
+          <PanelBanner border="floating" className={styles.panelBanner}>rECENTLy uSEd eNTRIEs</PanelBanner>
+        </Localized>
+      );
     }
   }
 
   return (
     <Panel>
-      <PanelHeader border={topBorder}>
-        <ItemFilter inputRef={inputRef}/>
+      <PanelHeader border={topBorder} className={styles.panelHeader}>
+        <ItemFilter inputRef={inputRef} className={styles.filterPanel} />
       </PanelHeader>
 
       {banner}
 
-      <PanelBody scroll={false}>
+      <PanelBody scroll={false} className={styles.panelBody}>
         {list}
       </PanelBody>
 
       <PanelFooter border="floating">
         <Localized id="manage-lockbox-button">
-          <PanelFooterButton onClick={openManager}>
-            mANAGe lOCKBox
+          <PanelFooterButton onClick={openManager} className={styles.panelFooterButton}>
+            oPEn lOCKBox
           </PanelFooterButton>
         </Localized>
       </PanelFooter>

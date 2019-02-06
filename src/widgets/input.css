@@ -41,16 +41,6 @@ input::placeholder {
   border-color: rgba(12, 12, 13, 0.5);
 }
 
-.input:focus,
-.input:focus:hover,
-.input-wrapper:focus-within,
-.input-wrapper:focus-within:hover {
-  border-color: #0a84ff;
-  /* Note: This is adapted from the Photon button spec, since the input fields
-     spec doesn't define this. */
-  box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.3);
-}
-
 .input-wrapper {
   display: flex;
 }
@@ -141,6 +131,10 @@ input::placeholder {
   position: absolute;
   top: 7px;
   left: 8px;
+}
+
+.filter:focus-within::before {
+  background-image: url(/icons/search-focused.svg);
 }
 
 .filter input {

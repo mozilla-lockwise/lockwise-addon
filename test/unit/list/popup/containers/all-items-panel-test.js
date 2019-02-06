@@ -63,9 +63,6 @@ describe("list > popup > containers > <AllItemsPanel/>", () => {
 
     it("render items", () => {
       expect(wrapper.find(ItemSummary)).to.have.length(3);
-      wrapper.find(ItemSummary).forEach((i) => {
-        expect(i).to.have.prop("verbose", false);
-      });
     });
 
     it("selectItem() dispatched", () => {
@@ -97,7 +94,6 @@ describe("list > popup > containers > <AllItemsPanel/>", () => {
 
     it("render items", () => {
       expect(wrapper.find(ItemSummary)).to.have.length(1);
-      expect(wrapper.find(ItemSummary)).to.have.prop("verbose", true);
     });
   });
 });

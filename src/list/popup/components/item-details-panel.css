@@ -4,4 +4,22 @@
 
 .panel-body {
   padding: 1em;
+  background: #F9F9FA;
+}
+
+.panel-header {
+  background: #fff;
+  text-align: center;
+}
+
+.panel-header .edit-btn {
+  display: block;
+  background-image: url(/icons/edit.svg);
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  height: 16px;
+  width: 16px;
+  position: absolute;
+  top: 16px;
+  right: 8px;
 }
