@@ -197,6 +197,8 @@ window.browser = {
 
   experiments: {
     logins: {
+      async getLoginSavingEnabled() { },
+      async setLoginSavingEnabled() { },
       async getAll() { return []; },
       async add(login) {
         browser.experiments.logins.onAdded.getListener()({ login });

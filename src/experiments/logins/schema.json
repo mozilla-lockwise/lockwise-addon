@@ -200,6 +200,32 @@
     ],
     "functions": [
       {
+        "name": "getLoginSavingEnabled",
+        "type": "function",
+        "description": "Reports whether or not saving login information is enabled for a host.",
+        "async": true,
+        "parameters": [{
+          "name": "aHost",
+          "type": "string",
+          "description": "The origin for which to check the status of login saving"
+        }]
+      },
+      {
+        "name": "setLoginSavingEnabled",
+        "type": "function",
+        "description": "Enables or disables storing logins for a specified host. When login storing is disabled, the Login Manager won't prompt the user to store logins for that host. Existing logins are not affected.",
+        "async": true,
+        "parameters": [{
+          "name": "aHost",
+          "type": "string",
+          "description": "The origin for which to modify the login saving permission"
+        },{
+          "name": "isEnabled",
+          "type": "boolean",
+          "description": "The value to which to set login saving for the origin"
+        }]
+      },
+      {
         "name": "getAll",
         "type": "function",
         "description": "Gets an array of all Logins. Returns a Promise for the (possibly empty) list of all Logins.",

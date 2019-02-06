@@ -49,6 +49,20 @@ this.logins = class extends ExtensionAPI {
           //   - fooLogin = login as vanilla JS object
           //   - fooLoginInfo = login as nsILoginInfo
           //   - fooBag = (subset of) login fields as nsIPropertyBag
+          getLoginSavingEnabled(origin) {
+            try {
+              return Services.logins.getLoginSavingEnabled(origin);
+            } catch (ex) {
+              throw new ExtensionError(ex);
+            }
+          },
+          setLoginSavingEnabled(origin, isEnabled) {
+            try {
+              return Services.logins.setLoginSavingEnabled(origin, isEnabled);
+            } catch (ex) {
+              throw new ExtensionError(ex);
+            }
+          },
           getAll() {
             const logins = getLogins();
             return logins;
