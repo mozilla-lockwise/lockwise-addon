@@ -10,3 +10,7 @@
   composes: panel-header from "../../../widgets/panel.css";
   background: #fff;
 }
+
+.item-filter {
+  background: #f3f3f5;
+}
