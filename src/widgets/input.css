@@ -17,7 +17,6 @@
   width: -moz-available;
   background-color: #ffffff;
   border: 1px solid rgba(12, 12, 13, 0.3);
-  border-radius: 2px;
 }
 
 .input[disabled],
