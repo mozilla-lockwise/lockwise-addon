@@ -52,7 +52,7 @@ input::placeholder {
 .input-wrapper > input {
   flex: 1;
   padding: 0 8px;
-  font-size: 13px;
+  font-size: 15px;
   width: 0;
   min-width: 0;
   border: 0;
@@ -90,7 +90,7 @@ input::placeholder {
   /* This lines up our labels with the text in <input> elements. */
   margin-top: 7px;
   min-height: 25px;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: bold;
   -moz-user-select: text;
   overflow: hidden;
