@@ -49,6 +49,7 @@ item-summary-copy-password = Copier Mot de passe
 
 item-filter =
   .placeholder = Recherche Lockbox
+  .aria-label = Recherche Lockbox
 
 ## manage
 

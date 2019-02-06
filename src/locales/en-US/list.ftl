@@ -48,8 +48,8 @@ item-summary-copy-password = Copy Password
   .title = Copy the password to the clipboard
 
 item-filter =
-  .placeholder = Search Logins
-  .aria-label = Search Logins
+  .placeholder = Search Lockbox
+  .aria-label = Search Lockbox
 
 ## manage
 
