@@ -28,14 +28,14 @@ item-fields-copy-password =
   .title = Copy the password to the clipboard
 item-fields-notes = Notes
 
-item-summary-new-title = New entry
+item-summary-new-title = New Entry
 item-summary-title =
   { $length ->
      [0]     (no site name)
     *[other] { $title }
   }
 
-item-summary-new-username = (enter your login details)
+item-summary-new-username = Enter your login credentials
 item-summary-username =
   { $length ->
      [0]     (no username)
