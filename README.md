@@ -4,7 +4,7 @@
 
 # Firefox Lockbox for Desktop
 
-The Android application repository for [Firefox Lockbox][org-website].
+The Firefox Addon repository for [Firefox Lockbox][org-website].
 
 ## [Documentation][docs-link]
 
