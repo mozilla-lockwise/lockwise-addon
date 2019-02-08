@@ -20,6 +20,10 @@
   width: 9px;
 }
 
+.info.new-item {
+  background-image: none;
+}
+
 .info.panel {
   right: 0px;
   top: -3px;
