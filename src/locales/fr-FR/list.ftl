@@ -53,7 +53,7 @@ item-filter =
 
 ## manage
 
-add-item-button = +
+add-item-button =
   .title = Nouvel enregistrement
 
 send-feedback-button = Fournir retour utilisateur
