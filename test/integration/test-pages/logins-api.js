@@ -76,3 +76,18 @@ document.querySelector("#clear-register-listeners-results").addEventListener("cl
   }
   log(events);
 });
+
+const changeSaving = val => {
+  const origin = window.location.origin;
+  const log = getLogger("saving");
+  browser.experiments.logins
+    .setLoginSavingEnabled(origin, val)
+    .then(() =>
+      browser.experiments.logins
+        .getLoginSavingEnabled(origin))
+    .then(log, log);
+};
+document.querySelector("#enable-saving")
+  .addEventListener("click", () => changeSaving(true));
+document.querySelector("#disable-saving")
+  .addEventListener("click", () => changeSaving(false));

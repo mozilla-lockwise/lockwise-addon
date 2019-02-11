@@ -46,6 +46,20 @@ describe("logins API", () => {
   let By;
   let until;
 
+  const enableRememberSignons = async () => {
+    await webext.inChrome();
+    await driver.executeScript(`
+      Services.prefs.setBoolPref("signon.rememberSignons", true);
+    `);
+  };
+
+  const disableRememberSignons = async () => {
+    await webext.inChrome();
+    await driver.executeScript(`
+      Services.prefs.setBoolPref("signon.rememberSignons", false);
+    `);
+  };
+
   const addLogin = async () => {
     await webext.inChrome();
     await driver.executeScript(`
@@ -233,6 +247,45 @@ describe("logins API", () => {
 
     const logins = await getLogins();
     expect(logins[0].timesUsed).to.equal(2);
+  });
+
+  describe("browser.experiments.logins.{set,get}LoginSavingEnabled", () => {
+    const commonTest = async (button, expected) => {
+      await loadTestPage();
+      await clickButton(button ? "enable-saving" : "disable-saving");
+      const results = await driver.wait(until.elementLocated(
+        By.id("saving-results")
+      ), 1000);
+      await driver.wait(
+        until.elementTextContains(
+          results,
+          expected ? "true" : "false"
+        ),
+        5000
+      );
+    };
+    describe("with pref signon.rememberSignons = true", () => {
+      before(async () => {
+        await enableRememberSignons();
+      });
+      after(async () => {
+        await disableRememberSignons();
+      });
+      it("disables login saving for origin when given false", async () => {
+        await commonTest(false, false);
+      });
+      it("enables login saving for origin when given true", async () => {
+        await commonTest(true, true);
+      });
+    });
+    describe("with pref signon.rememberSignons = false", () => {
+      before(async () => {
+        await disableRememberSignons();
+      });
+      it("does not enable login saving for origin when given true", async () => {
+        await commonTest(true, false);
+      });
+    });
   });
 
   describe("browser.experiments.logins.onAdded", () => {

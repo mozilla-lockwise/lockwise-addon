@@ -8,8 +8,10 @@ import updateBrowserAction from "./browser-action";
 import initializeMessagePorts from "./message-ports";
 import { initializeTelemetry } from "./telemetry";
 import { initializeDataStore } from "./datastore";
+import { initializeEnvironment } from "./environment";
 
 Promise.resolve().then(async () => {
+  await initializeEnvironment();
   initializeTelemetry();
   initializeMessagePorts();
   await initializeDataStore();
