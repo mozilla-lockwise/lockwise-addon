@@ -79,7 +79,7 @@ Services.telemetry.registerEvents("event_category", {
 For our purposes, we will use the `extra` field for a few purposes:
 
 - To log the UUID of the item that has been added or changed (e.g. `"item_id": UUID`)
-- To log the fields that are modified when an item is updated in the datastore (e.g. `"fields": "username,passsword,address"` (because the value has to be a string we will have to concat the fields that were updated somehow)
+- To log the fields that are modified when an item is updated in the datastore (e.g. `"fields": "username,passsword,hostname"` (because the value has to be a string we will have to concat the fields that were updated somehow)
 
 Once an event is registered, we can record it with:
 
@@ -131,9 +131,9 @@ All events are currently implemented under the **category: lockbox-addon**. The 
 
 1. `startup` fires when the webextension is loaded. **objects**: webextension. Note that this event fires whenever the browser is started, so is not indicative of direct user interaction with Lockbox. **value** is null.
 
-2. `click` fires when someone clicks on one of the UI elements listed **objects**: `toolbar`, `get_mobile`, `faq`, `account_settings`, `give_feedback`, `settings_menu` (or whatever the menu is that contains links to account settings, faq, etc). **value** is null.
+2. `click` fires when someone clicks on one of the UI elements listed **objects**: `toolbar`, `get_mobile`, `faq`, `account_settings`, `give_feedback`, `settings_menu`, `reconnect_sync`, `signin_sync` (or whatever the menu is that contains links to account settings, faq, etc). **value** is null.
 
-3. `show` events fire when various UI elements are rendered shown to the user. **objects**: `item_list_manager`, `item_list_doorhanger`, `item_detail_doorhanger` `item_detail_manager`, `new_item`, `item_edit`, `delete_confirm`, `connect_another_device`, `reconnect_sync` **value** should be a boolean for `item_list_*` events indicating whether any logins are in the login list (e.g. `False` if the list is empty).
+3. `show` events fire when various UI elements are rendered shown to the user. **objects**: `item_list_manager`, `item_list_doorhanger`, `item_detail_doorhanger` `item_detail_manager`, `new_item`, `item_edit`, `delete_confirm`, `connect_another_device` (referring to the dialog displayed after a user clicks on the button to learn about the mobile apps) **value** should be a boolean for `item_list_*` events indicating whether any logins are in the login list (e.g. `False` if the list is empty).
 
 4. `item_add`, `item_update`, `item_delete` fire after a successful adding, editing or deleting of a credential. **objects**: manager, doorhanger (contingent on where the user initiated the action). item GUID should be in the extra field. **value** is null
 
