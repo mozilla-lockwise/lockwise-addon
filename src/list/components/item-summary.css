@@ -20,7 +20,7 @@
   width: 9px;
 }
 
-.info.new-item {
+li[data-selected] .info {
   background-image: none;
 }
 

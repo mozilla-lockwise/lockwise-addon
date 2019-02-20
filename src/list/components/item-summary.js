@@ -31,7 +31,9 @@ export default function ItemSummary({className, id, title, username, panel}) {
                    $length={trimmedUsername.length}>
           <div data-name="subtitle" className={styles.subtitle}>no uSERNAMe</div>
         </Localized>
-        <span className={`${styles.info} ${panel ? styles.panel : null} ${isNew ? styles.newItem : null}`}></span>
+        {!isNew &&
+           <span className={classNames([styles.info, panel ? styles.panel : ""])}></span>
+        }
       </div>
     </div>
   );
