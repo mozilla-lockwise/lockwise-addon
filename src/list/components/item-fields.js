@@ -11,10 +11,9 @@ import FieldText from "../../widgets/field-text";
 import Input from "../../widgets/input";
 import LabelText from "../../widgets/label-text";
 import PasswordInput from "../../widgets/password-input";
+import PasswordText from "../../widgets/password-text";
 
 import styles from "./item-fields.css";
-
-const PASSWORD_DOT = "\u25cf";
 
 const fieldsPropTypes = PropTypes.shape({
   origin: PropTypes.string.isRequired,
@@ -59,9 +58,7 @@ export function ItemFields({fields, onCopy}) {
           <LabelText>pASSWORd</LabelText>
         </Localized>
         <div className={styles.inlineButton}>
-          <FieldText monospace data-name="password">
-            {PASSWORD_DOT.repeat(fields.password.length)}
-          </FieldText>
+          <PasswordText data-name="password" value={fields.password} />
           <Localized id="item-fields-copy-password">
             <CopyToClipboardButton value={fields.password}
                                    onCopy={toCopy => onCopy("password", toCopy)}/>

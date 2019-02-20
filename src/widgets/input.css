@@ -47,6 +47,7 @@ input::placeholder {
 
 .input-wrapper {
   display: flex;
+  position: relative;
 }
 
 .input-wrapper > input {
@@ -64,6 +65,7 @@ input::placeholder {
   cursor: not-allowed;
 }
 
+.password-text button,
 .input-wrapper button {
   white-space: nowrap;
   text-align: center;
@@ -72,7 +74,28 @@ input::placeholder {
   border: 0;
   color: #0060df;
   background-color: transparent;
-  padding: 4px 8px;
+  padding: 4px 8px 4px 12px;
+}
+
+.password-text {
+  width: 136px;
+  min-height: 23px;
+  font-size: 17px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.32;
+  letter-spacing: 0.2px;
+  color: #0c0c0d;
+  overflow-wrap: anywhere;
+}
+
+.password-text-long {
+  width: 300px;
+}
+
+.password-text button {
+  position: inherit;
 }
 
 .input-wrapper button:active {
@@ -103,9 +126,18 @@ input::placeholder {
   font-size: 13px;
 }
 
+.password button {
+  position: absolute;
+  right: 0;
+  background: rgba(255, 255, 255, 1.0);
+}
+
+.password-text button::before,
 .password button::before {
+  cursor: pointer;
   background-repeat: no-repeat;
   background-size: 16px 16px;
+  background-position: 0 2px;
   content: "";
   display: inline-block;
   height: 16px;
