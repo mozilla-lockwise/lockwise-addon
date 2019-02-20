@@ -62,13 +62,13 @@ The events that we will record will conform to the structure expected by the tel
 The API takes care of the timestamp for us. We just need to define `category`, `method`, `object` and `extra` (`value` is optional and we won't use it).
 
 
-Events are defined by **registering** them using a call to `Services.telemetry.registerEvents(category, eventData)`.
+Events are defined by **registering** them using a call to `browser.telemetry.registerEvents(category, eventData)`.
 
 Here's a breakdown of how a to register a typical event:
 
 
 ```javascript
-Services.telemetry.registerEvents("event_category", {
+browser.telemetry.registerEvents("event_category", {
     "event_name": {
         methods: ["click", ... ], // types of events that can occur
         objects: ["a_button", ... ], // objects event can occur on
@@ -83,7 +83,7 @@ For our purposes, we will use the `extra` field for a few purposes:
 
 Once an event is registered, we can record it with:
 
-`Services.telemetry.recordEvent(category, method, object, value, extra)`
+`browser.telemetry.recordEvent(category, method, object, value, extra)`
 
 Note: The semantics of `value` is contingent on the event being recorded, see list below.
 
@@ -94,9 +94,9 @@ See the Events section for specific examples of event registration and recording
 We use the js api for scalar recording as well. Here registration happens with the following syntax:
 
 ```javascript
-Services.telemetry.registerScalars(category, {
+browser.telemetry.registerScalars(category, {
 	"scalar_name": {
-		kind: services.Telemetry.SCALAR_TYPE_COUNT, // SCALAR_TYPE_COUNT, SCALAR_TYPE_BOOLEAN. or SCALAR_TYPE_STRING
+		kind: browser.Telemetry.SCALAR_TYPE_COUNT, // SCALAR_TYPE_COUNT, SCALAR_TYPE_BOOLEAN. or SCALAR_TYPE_STRING
 		keyed: false,
 		record_on_release: false, // NEEDS TO BE SET TO RECORD ON RELEASE CHANNEL
 		expired: false,
@@ -105,7 +105,7 @@ Services.telemetry.registerScalars(category, {
 We set scalar values in the following way:
 
 ```javascript
-Services.telemetry.scalarSet(
+browser.telemetry.scalarSet(
 	"category.scalar_name", value
 );
 ```
@@ -117,13 +117,10 @@ We can also use `scalarAdd` to increment a scalar value by some amount.
 
 These are the metrics we currently collect regarding the state of the user's login storage.
 
-- `loginCount` (SCALAR_TYPE_COUNT). Current count of the number of items in the user's login storage. If possible, this scalar should be set upon opening either the doorhanger or full extension interface.
+- `loginCount` (SCALAR_TYPE_COUNT). Current count of the number of items in the user's login storage. If possible, this scalar should be set upon opening either the doorhanger or full extension interface. It need not be set "in the background" in the absence of any user interaction with the app.
 
-- `loginsAccessedAllTime` (SCALAR_TYPE_COUNT). Running total of logins accessed (copied, revealed) through the extension interface or doorhanger. Should never be reset.
+- `loginsAccessed` (SCALAR_TYPE_COUNT). Total of logins accessed (copied, revealed) during the last telemetry session.
 
-- `loginsAccessed` (SCALAR_TYPE_COUNT). Total of logins accessed (copied, revealed) since last ping through the extension interface or doorhanger. TODO: in native code scalars are automatically reset when a new ping is cut. Will that happen for us?
-
-Note that if the preceding two scalars are going to cause engineering headaches its possible to obtain equivalent values from the event telemetry (its just more work).
 
 ## List of Planned Metrics Events
 
@@ -139,11 +136,11 @@ All events are currently implemented under the **category: lockbox-addon**. The 
 
 5. `item_selected` fires when a user clicks an item in the itemlist. **objects** manager, doorhanger  **value** is null
 
-6. `copy_password` and `copy_username` fire when a user copies their username or password from an item. **objects**: `item_detail_manager`, `item_detail_doorhanger` **value** is null
+6. `copy_password` and `copy_username` fire when a user copies their username or password from an item. **objects**: `item_detail_manager`, `item_detail_doorhanger` **value** is null. item GUID should be in the extra field.
 
-7. `reveal_password` fires when a user reveals a password from within the item detail view. **objects**: `item_detail_manager`, `item_detail_doorhanger` **value** is null
+7. `reveal_password` fires when a user reveals a password from within the item detail view. **objects**: `item_detail_manager`, `item_detail_doorhanger` **value** is null item GUID should be in the extra field.
 
-8. `open_website` fires when a user clicks to open a credential's associated web address. **objects**: `item_detail_manager`, `item_detail_doorhanger` **value** is null
+8. `open_website` fires when a user clicks to open a credential's associated web address. **objects**: `item_detail_manager`, `item_detail_doorhanger` **value** is null item GUID should be in the extra field.
 
 
 
@@ -152,6 +149,6 @@ All events are currently implemented under the **category: lockbox-addon**. The 
 
 ## References
 
-Docs for the Public JS API that allows us to log events thru an add-on:
+Docs for the Mozilla privileged JS API that allows us to log events thru an add-on:
 
 [Telemetry Public JS API](https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/telemetry/collection/events.html#the-api)
