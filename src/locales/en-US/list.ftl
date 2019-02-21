@@ -28,14 +28,14 @@ item-fields-copy-password =
   .title = Copy the password to the clipboard
 item-fields-notes = Notes
 
-item-summary-new-title = New entry
+item-summary-new-title = New Entry
 item-summary-title =
   { $length ->
      [0]     (no site name)
     *[other] { $title }
   }
 
-item-summary-new-username = (enter your login details)
+item-summary-new-username = Enter your login credentials
 item-summary-username =
   { $length ->
      [0]     (no username)
@@ -48,12 +48,12 @@ item-summary-copy-password = Copy Password
   .title = Copy the password to the clipboard
 
 item-filter =
-  .placeholder = Search Logins
-  .aria-label = Search Logins
+  .placeholder = Search Lockbox
+  .aria-label = Search Lockbox
 
 ## manage
 
-add-item-button = +
+add-item-button =
   .title = New entry
 
 send-feedback-button = Provide Feedback

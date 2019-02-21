@@ -5,3 +5,14 @@
 .filter-toolbar > * + * {
   margin-inline-start: 8px;
 }
+
+.panel-header {
+  composes: panel-header from "../../../widgets/panel.css";
+  background: #fff;
+}
+
+.item-filter {
+  composes: item-filter from "../../../widgets/panel.css";
+  background: #f3f3f5;
+  height: 32px;
+}
