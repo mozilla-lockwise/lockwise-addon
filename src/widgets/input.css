@@ -32,7 +32,7 @@
 }
 
 input::placeholder {
-  color: #737373;
+  color: #4a4a4f;
 }
 
 .input:not([disabled]):hover,
