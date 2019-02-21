@@ -62,7 +62,7 @@
   flex: 1;
   display: grid;
   overflow: hidden;
-  background-color: #ededf0;
+  background-color: #f2f2f4;
 }
 
 .panel-body.scroll {
