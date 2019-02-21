@@ -84,32 +84,19 @@ this.logins = class extends ExtensionAPI {
               throw new ExtensionError(ex);
             }
           },
-          update(newLogin) {
-            if (!("guid" in newLogin)) {
+          update(updatedLogin) {
+            if (!("guid" in updatedLogin)) {
               throw new ExtensionError(`Update failed: ID is required`);
             }
-            // The addons framework code always supplies null values for missing keys,
-            // so filter those out.
-            // TODO: Could this cause subtle bugs? Would anyone ever want to update a field to be null? If so, maybe default to 'NULL" (the string), or undefined.
-            for (let key in newLogin) {
-              if (newLogin[key] === null) {
-                delete newLogin[key];
-              }
-            }
-            const oldLogin = getLogin(newLogin.guid);
+            const oldLogin = getLogin(updatedLogin.guid);
             if (!oldLogin) {
-              throw new ExtensionError(`Update failed: Login not found with ID ${newLogin.guid}`);
+              throw new ExtensionError(`Update failed: Login not found with ID ${updatedLogin.guid}`);
             }
             try {
-              const updatedLogin = {};
-              Object.assign(updatedLogin, oldLogin, newLogin);
-              if ("timesUsedIncrement" in newLogin) {
-                delete updatedLogin.timesUsed;
-              }
-              const updatedLoginBag = LoginHelper.newPropertyBag(updatedLogin);
+              const updatedLoginInfo = LoginHelper.vanillaObjectToLogin(updatedLogin);
               const oldLoginInfo = LoginHelper.vanillaObjectToLogin(oldLogin);
-              Services.logins.modifyLogin(oldLoginInfo, updatedLoginBag);
-              const finalLogin = getLogin(newLogin.guid);
+              Services.logins.modifyLogin(oldLoginInfo, updatedLoginInfo);
+              const finalLogin = getLogin(updatedLogin.guid);
               return finalLogin;
             } catch (ex) {
               throw new ExtensionError(ex);

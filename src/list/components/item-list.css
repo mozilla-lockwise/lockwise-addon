@@ -34,8 +34,7 @@
 
 .item[data-selected] .item-summary {
   position: relative;
-  background-color: #e7e7e7;
-  box-shadow: 0 -1px 0 #e7e7e7, 0 1px 0 #e7e7e7;
+  background-color: #ededf0;
   cursor: pointer;
 }
 
@@ -54,7 +53,7 @@
   right: 0;
   width: 100%;
   height: 1px;
-  background-color: #99bff2;
+  background-color: #d7d7db;
   z-index: 10;
 }
 
@@ -66,7 +65,24 @@
   bottom: -1px;
 }
 
-.item-list:focus .item[data-selected] .item-summary::before,
-.item-list:focus .item[data-selected] .item-summary::after {
+/* Stick with the pseudoelement pattern for the big blue left border for the
+   selected item. Give it a higher z-index than the top/bottom borders, so
+   the blue bar is the full height of the item, matching the mocks. */
+
+.item[data-selected] {
+  position: relative;
+}
+
+.item[data-selected]::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
   background-color: #0a84ff;
+  z-index: 11;
+  margin-top: -1px;
+  margin-bottom: -1px;
 }

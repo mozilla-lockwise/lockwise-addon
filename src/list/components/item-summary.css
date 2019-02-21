@@ -12,7 +12,19 @@
 }
 
 .info {
+  background: url(/icons/chevron-right.svg) no-repeat;
   position: absolute;
+  right: 12px;
+  top: 25px;
+  height: 9px;
+  width: 9px;
+}
+
+li[data-selected] .info {
+  background-image: none;
+}
+
+.info.panel {
   right: 0px;
   top: -3px;
   width: 18px;
@@ -27,11 +39,11 @@
   border-radius: 2px;
 }
 
-.info:hover {
+.info.panel:hover {
   background-color: rgba(12, 12, 13, 0.1);
 }
 
-.item-summary:hover .info {
+.item-summary:hover .info.panel {
   background-image: url(/icons/info-dark.svg);
 }
 

@@ -16,7 +16,8 @@ export default function ItemSummary({className, id, title, username, panel}) {
   const trimmedTitle = title.trim();
   const trimmedUsername = username.trim();
 
-  const idModifier = id === NEW_ITEM_ID ? "new-" : "";
+  const isNew = id === NEW_ITEM_ID;
+  const idModifier = isNew ? "new-" : "";
   const titleId = `item-summary-${idModifier}title`;
   const usernameId = `item-summary-${idModifier}username`;
   return (
@@ -30,7 +31,9 @@ export default function ItemSummary({className, id, title, username, panel}) {
                    $length={trimmedUsername.length}>
           <div data-name="subtitle" className={styles.subtitle}>no uSERNAMe</div>
         </Localized>
-        {panel && <span className={styles.info}></span>}
+        {!isNew &&
+           <span className={classNames([styles.info, panel ? styles.panel : ""])}></span>
+        }
       </div>
     </div>
   );

@@ -43,12 +43,10 @@ document.querySelector("#remove").addEventListener("click", () => {
 });
 document.querySelector("#update").addEventListener("click", () => {
   const log = getLogger("update");
-  const loginUpdates = {
-    guid: mockLogin.guid,
-    username: "updated",
-  };
-  browser.experiments.logins.update(loginUpdates).
-    then(log, log);
+  browser.experiments.logins.get(mockLogin.guid)
+    .then(login =>
+      browser.experiments.logins.update({ ...login, username: "updated" }))
+    .then(log, log);
 });
 document.querySelector("#touch").addEventListener("click", () => {
   const log = getLogger("touch");

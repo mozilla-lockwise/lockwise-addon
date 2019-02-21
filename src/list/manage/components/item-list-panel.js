@@ -6,11 +6,10 @@ import { Localized } from "fluent-react";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { PanelHeader, PanelBody, PanelFooter } from "../../../widgets/panel";
+import { PanelHeader, PanelBody } from "../../../widgets/panel";
 import AddItem from "../containers/add-item";
 import ItemList, { ItemListPlaceholder } from "../../components/item-list";
 import ItemFilter from "../../containers/item-filter";
-import SendFeedback from "../containers/send-feedback";
 
 import styles from "./item-list-panel.css";
 
@@ -33,19 +32,17 @@ export default function ItemListPanel({className, inputRef, totalItemCount,
 
   return (
     <aside className={className}>
-      <PanelHeader border={hasItems ? "floating" : "none"}
+      <PanelHeader className={styles.panelHeader}
+                   border={hasItems ? "floating" : "none"}
                    toolbarClassName={styles.filterToolbar}>
-        <ItemFilter inputRef={inputRef}/>
+        <ItemFilter className={styles.itemFilter}
+                    inputRef={inputRef}/>
         <AddItem/>
       </PanelHeader>
 
       <PanelBody scroll={false}>
         {list}
       </PanelBody>
-
-      <PanelFooter border="floating">
-        <SendFeedback/>
-      </PanelFooter>
     </aside>
   );
 }

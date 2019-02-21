@@ -17,7 +17,6 @@
   width: -moz-available;
   background-color: #ffffff;
   border: 1px solid rgba(12, 12, 13, 0.3);
-  border-radius: 2px;
 }
 
 .input[disabled],
@@ -33,12 +32,17 @@
 }
 
 input::placeholder {
-  color: #737373;
+  color: #4a4a4f;
 }
 
 .input:not([disabled]):hover,
 .input-wrapper:not(.disabled):hover {
   border-color: rgba(12, 12, 13, 0.5);
+}
+
+.input:not([disabled]):focus,
+.input-wrapper:not(.disabled):focus-within {
+  border-color: #0a84ff;
 }
 
 .input-wrapper {
@@ -48,7 +52,7 @@ input::placeholder {
 .input-wrapper > input {
   flex: 1;
   padding: 0 8px;
-  font-size: 13px;
+  font-size: 15px;
   width: 0;
   min-width: 0;
   border: 0;
@@ -86,7 +90,7 @@ input::placeholder {
   /* This lines up our labels with the text in <input> elements. */
   margin-top: 7px;
   min-height: 25px;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: bold;
   -moz-user-select: text;
   overflow: hidden;
