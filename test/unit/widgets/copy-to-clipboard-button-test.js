@@ -10,7 +10,6 @@ import sinonChai from "sinon-chai";
 
 import chaiFocus from "test/unit/chai-focus";
 import mountWithL10n from "test/unit/mocks/l10n";
-import Stack from "src/widgets/stack";
 import CopyToClipboardButton from
        "src/widgets/copy-to-clipboard-button";
 
@@ -23,9 +22,9 @@ describe("widgets > <CopyToClipboardButton/>", () => {
     const wrapper = mountWithL10n(<CopyToClipboardButton value="hi there"/>);
     expect(wrapper.find("button")).to.have.text("cOPy");
     expect(wrapper.find("button").prop("className")).to.match(
-      /^\S*button\S* \S*ghost-theme\S* \S*normal-size\S* \S*copy-button\S*$/
+      /^\S*button\S* \S*normal-theme\S* \S*normal-size\S* \S*copy-button\S*$/
     );
-    expect(wrapper.find(Stack).prop("selectedIndex")).to.equal(0);
+    expect(wrapper.find("button")).to.have.lengthOf(1);
   });
 
   it("render label", () => {
@@ -36,7 +35,7 @@ describe("widgets > <CopyToClipboardButton/>", () => {
     }).find("span");
     expect(label).to.have.text("cOPIEd");
     expect(label.prop("className")).to.match(/\S*copied-label\S*$/);
-    expect(wrapper.find(Stack).prop("selectedIndex")).to.equal(1);
+    expect(wrapper.find("button")).to.have.lengthOf(0);
   });
 
   it("render button with custom label", () => {
@@ -51,7 +50,7 @@ describe("widgets > <CopyToClipboardButton/>", () => {
   it("copy feedback displayed", () => {
     const wrapper = mountWithL10n(<CopyToClipboardButton value="hi there"/>);
     wrapper.find("button").simulate("click");
-    expect(wrapper.find(Stack).prop("selectedIndex")).to.equal(1);
+    expect(wrapper.find("button")).to.have.lengthOf(0);
   });
 
   it("onCopy fired", () => {
@@ -71,7 +70,7 @@ describe("widgets > <CopyToClipboardButton/>", () => {
 
     const wrapper = mountWithL10n(<CopyToClipboardButton value="hi there"/>);
     wrapper.find("button").simulate("click");
-    expect(wrapper.find(Stack).prop("selectedIndex")).to.equal(0);
+    expect(wrapper.find("button")).to.have.lengthOf(1);
 
     window.setTimeout = realSetTimeout;
   });
@@ -81,10 +80,9 @@ describe("widgets > <CopyToClipboardButton/>", () => {
       <CopyToClipboardButton className="foo" buttonClassName="bar"
                              value="hi there"/>
     );
-    expect(wrapper.find("section")).to.have.prop("className", "foo");
     expect(wrapper.find("button").prop("className")).to.match(
-      /^\S*button\S* \S*ghost-theme\S* \S*normal-size\S* \S*copy-button\S* bar$/
+      /^\S*button\S* \S*normal-theme\S* \S*normal-size\S* \S*copy-button\S* foo bar$/
     );
-    expect(wrapper.find(Stack).prop("selectedIndex")).to.equal(0);
+    expect(wrapper.find("button")).to.have.lengthOf(1);
   });
 });
