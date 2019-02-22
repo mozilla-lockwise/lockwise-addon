@@ -220,7 +220,6 @@ describe("add-on UI", () => {
     });
 
     const editedFields = {
-      origin: "https://bar.example.com",
       username: "userEdited",
       password: "passwordEdited",
     };
@@ -240,7 +239,6 @@ describe("add-on UI", () => {
 
       if (doEdit) {
         const fields = {
-          origin: await waitFor(selectors.itemFormField("origin")),
           username: await waitFor(selectors.itemFormField("username")),
           password: await waitFor(selectors.itemFormField("password")),
         };
@@ -255,7 +253,6 @@ describe("add-on UI", () => {
     const commonModifyVerify = async (itemData) => {
       // Verify visible Entry Details
       const resultElements = {
-        origin: await waitFor(selectors.itemDetails("origin")),
         username: await waitFor(selectors.itemDetails("username")),
       };
       for (let [name, el] of Object.entries(resultElements)) {
@@ -322,6 +319,34 @@ describe("add-on UI", () => {
       await cancelButton.click();
       await waitFor(selectors.listItemContainer);
     });
+
+    const commonEditingDelete = async () => {
+      await addItem(itemToAdd);
+
+      const listItem = await waitFor(selectors.listItemContainer);
+      await listItem.click();
+
+      const editItemButton = await waitFor(selectors.editItemButton);
+      await editItemButton.click();
+
+      const deleteItemButton = await waitFor(selectors.deleteItemButton);
+      await deleteItemButton.click();
+    };
+
+    it("can delete an existing item while editing", async () => {
+      await commonEditingDelete();
+      const confirmButton = await waitFor(selectors.confirmDialogConfirmButton);
+      await confirmButton.click();
+      await waitUntilMissing(selectors.listItemContainer);
+    });
+
+    it("can cancel deleting an existing item while editing", async () => {
+      await commonEditingDelete();
+      const cancelButton = await waitFor(selectors.confirmDialogCancelButton);
+      await cancelButton.click();
+      await waitFor(selectors.listItemContainer);
+    });
+
   });
 
   describe("doorhanger", () => {

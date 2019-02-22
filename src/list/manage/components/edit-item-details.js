@@ -23,6 +23,7 @@ export default class EditItemDetails extends React.Component {
       itemId: PropTypes.string,
       onSave: PropTypes.func.isRequired,
       onCancel: PropTypes.func.isRequired,
+      onDelete: PropTypes.func.isRequired,
     };
   }
 
@@ -57,7 +58,7 @@ export default class EditItemDetails extends React.Component {
   }
 
   render() {
-    const {onSave, onCancel} = this.props;
+    const {fields: { title }, onSave, onCancel, onDelete} = this.props;
     const {itemId, ...saveState} = this.state;
     const newItem = itemId === null;
 
@@ -68,9 +69,25 @@ export default class EditItemDetails extends React.Component {
               e.preventDefault();
               onSave(saveState);
             }}>
-        <Localized id={`item-details-heading-${newItem ? "new" : "edit"}`}>
-          <h1>eDIt iTEm</h1>
-        </Localized>
+        <header>
+          {newItem ? (
+            <Localized id={`item-details-heading-new`}>
+              <h1>nEw iTEm</h1>
+            </Localized>
+          ) : (
+            <React.Fragment>
+              <h1>{title}</h1>
+              <Toolbar className={styles.buttons}>
+                <Localized id="item-details-delete">
+                  <Button id="deleteItemButton"
+                    className={styles.deleteButton}
+                    type="button"
+                    theme={"ghost"} onClick={() => onDelete()}>dELETe</Button>
+                </Localized>
+              </Toolbar>
+            </React.Fragment>
+          )}
+        </header>
         <EditItemFields fields={this.state}
                         onChange={(e) => this.handleChange(e)}/>
         <Toolbar className={styles.buttons}>

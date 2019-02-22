@@ -21,8 +21,9 @@
 
 .input[disabled],
 .input-wrapper.disabled {
-  opacity: 0.7;
   cursor: not-allowed;
+  opacity: 0.6;
+  background-color: #ededf0;
 }
 
 .input {
@@ -52,7 +53,7 @@ input::placeholder {
 
 .input-wrapper > input {
   flex: 1;
-  padding: 0 8px;
+  padding: 0 36px 0 8px;
   font-size: 15px;
   width: 0;
   min-width: 0;
@@ -69,12 +70,16 @@ input::placeholder {
 .input-wrapper button {
   white-space: nowrap;
   text-align: center;
-  height: 30px;
+  height: 16px;
   font-size: 13px;
   border: 0;
   color: #0060df;
   background-color: transparent;
-  padding: 4px 8px 4px 12px;
+  padding: 0px 8px 0px 12px;
+}
+
+.input-wrapper button {
+  height: 30px;
 }
 
 .password-text {
@@ -124,7 +129,7 @@ input::placeholder {
 .label-text {
   color: #737373;
   font-size: 13px;
-  margin: 16px 0 4px 0;
+  margin: 32px 0 4px 0;
 }
 
 .password button {

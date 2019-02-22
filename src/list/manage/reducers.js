@@ -27,6 +27,7 @@ export function editorReducer(state = {
   case actions.EDITOR_CHANGED:
     return {...state, changed: true};
   case actions.CANCEL_EDITING:
+  case actions.REMOVE_ITEM_STARTING:
     return {...state, editing: false, changed: false};
   default:
     return state;
