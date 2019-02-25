@@ -20,21 +20,24 @@ const BORDER_CLASS_NAME = {
 };
 
 export function PanelHeader({className, toolbarClassName, border, onBack,
-                             children}) {
+                             children, isDetail}) {
   const imgSrc = browser.extension.getURL("/icons/arrowhead-left-16.svg");
+  const isDetailClassName = isDetail ? styles.panelHeaderToolbarDetail : null;
+
   return (
     <header className={classNames([
               styles.panelHeader, BORDER_CLASS_NAME[border], className,
             ])}>
       {onBack ? (
-        <Button theme="ghost" size="micro" onClick={onBack}>
+        <Button theme="ghost" size="micro" onClick={onBack}
+                className={styles.backButton}>
           <Localized id="panel-back-button" attrs={{alt: true}}>
             <img src={imgSrc} alt="go bACk"/>
           </Localized>
         </Button>
       ) : null}
       <Toolbar className={classNames([
-                 styles.panelHeaderToolbar, toolbarClassName,
+                 styles.panelHeaderToolbar, toolbarClassName, isDetailClassName,
                ])}>{children}</Toolbar>
     </header>
   );
@@ -46,6 +49,7 @@ PanelHeader.propTypes = {
   border: PropTypes.oneOf(Object.keys(BORDER_CLASS_NAME)),
   onBack: PropTypes.func,
   children: PropTypes.node,
+  isDetail: PropTypes.bool,
 };
 
 PanelHeader.defaultProps = {

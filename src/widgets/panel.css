@@ -58,6 +58,13 @@
   padding: 0;
 }
 
+.panel-header-toolbar-detail {
+  flex: 1;
+  padding: 0;
+  justify-content: center;
+  margin-left: -24px;
+}
+
 .panel-body {
   flex: 1;
   display: grid;
@@ -131,4 +138,8 @@
 
 .normal-theme:not([disabled]):active:hover {
   background-color: #b1b1b3;
+}
+
+.back-button {
+  z-index: 3;
 }

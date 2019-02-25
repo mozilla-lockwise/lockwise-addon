@@ -24,6 +24,7 @@ export default class CopyToClipboardButton extends React.Component {
       onCopy: PropTypes.func,
       className: PropTypes.string,
       buttonClassName: PropTypes.string,
+      isPopup: PropTypes.bool,
     };
   }
 
@@ -54,18 +55,20 @@ export default class CopyToClipboardButton extends React.Component {
   }
 
   render() {
-    let {title, children, className, buttonClassName} = this.props;
-
-    if (!children) {
+    let {title, children, className, buttonClassName, isPopup} = this.props;
+    const theme = isPopup ? "ghost" : "normal";
+    const isPopupClass = (isPopup ? styles.isPopup : null);
+    if (!children && !isPopup) {
       children = (
         <Localized id="copy-to-clipboard-button">
           <span>cOPy</span>
         </Localized>
       );
     }
+
     return !this.state.copied ? (
-      <Button className={classNames([
-              styles.copyButton, className, buttonClassName,
+      <Button theme={theme} className={classNames([
+              styles.copyButton, className, buttonClassName, isPopupClass,
             ])} title={title} onClick={() => this.handleCopy()}>
         {children}
       </Button>

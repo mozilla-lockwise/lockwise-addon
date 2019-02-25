@@ -34,7 +34,11 @@ describe("list > manage > components > <ItemDetails/>", () => {
   });
 
   it("render fields", () => {
-    for (let i in fields) {
+    // filter out title since it isn't actually included in the fields component
+    // anymore, but is displayed in at a higher in the document.
+    let clone = Object.assign({}, fields);
+    delete clone.title;
+    for (let i in clone) {
       if (i !== "password") {
         expect(wrapper.find(`[data-name="${i}"]`).filterWhere((x) => {
           return typeof x.type() !== "string";

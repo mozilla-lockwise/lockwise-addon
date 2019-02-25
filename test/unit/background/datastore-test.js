@@ -64,9 +64,6 @@ const SAMPLE_INFOS = {
     usernameField: "username",
     passwordField: "password",
     timesUsed: 3,
-    timeLastUsed: new Date("2019-01-05T12:00:00Z"),
-    timePasswordChanged: new Date("2019-01-05T11:00:00Z"),
-    timeCreated: new Date("2019-01-05T10:00:00Z"),
   },
 };
 
@@ -195,6 +192,9 @@ describe("background > datastore", () => {
       password: "QUUXpass",
       usernameField: "username",
       passwordField: "password",
+      timeCreated: Date.now(),
+      timeLastUsed: Date.now(),
+      timePasswordChanged: Date.now(),
     };
     const item = convertInfo2Item(info);
 
@@ -229,6 +229,10 @@ describe("background > datastore", () => {
       password: "QUUXpass",
       usernameField: "username",
       passwordField: "password",
+      timeLastUsed: Date.now(),
+      timePasswordChanged: Date.now(),
+      timeCreated: Date.now(),
+      timesUsed: 0,
     };
     const item = convertInfo2Item(info);
 
@@ -238,6 +242,7 @@ describe("background > datastore", () => {
       ...item,
       id: addedItem.id,
     };
+
     expect(addedItem).to.deep.equal(expectedItem);
 
     const resultItem = await store.get(addedItem.id);
@@ -250,21 +255,16 @@ describe("background > datastore", () => {
       // TODO: Issue #21 should do away with item/info conversion
       // A double conversion - semi-reflects what happens.
       ...convertItem2Info(item),
+      timesUsed: 0,
       guid: addedItem.id,
     };
 
-    const {
-      timesUsed,
-      timeLastUsed,
-      timeCreated,
-      timePasswordChanged,
-      ...resultApiInfo
-    } = apiAdd.lastCall.lastArg;
+    const resultApiInfo = apiAdd.lastCall.lastArg;
 
-    expect(timesUsed).to.equal(0);
-    expect(timeLastUsed).to.not.be.undefined;
-    expect(timeCreated).to.not.be.undefined;
-    expect(timePasswordChanged).to.not.be.undefined;
+    expect(resultApiInfo.timesUsed).to.equal(0);
+    expect(resultApiInfo.timeLastUsed).to.not.be.undefined;
+    expect(resultApiInfo.timeCreated).to.not.be.undefined;
+    expect(resultApiInfo.timePasswordChanged).to.not.be.undefined;
     expect(resultApiInfo).to.deep.equal(expectedApiInfo);
   });
 
@@ -281,6 +281,10 @@ describe("background > datastore", () => {
     };
 
     const updatedItem = await store.update(expectedItem);
+
+    // update password change date for deep equal check
+    expectedItem.timePasswordChanged = updatedItem.timePasswordChanged;
+
     expect(updatedItem).to.deep.equal(expectedItem);
 
     const fetchedItem = await store.get(id);
@@ -289,6 +293,8 @@ describe("background > datastore", () => {
     const apiUpdate = browser.experiments.logins.update;
     expect(apiUpdate.callCount).to.equal(1);
 
+    const resultApiInfo = apiUpdate.lastCall.lastArg;
+
     const expectedApiInfo = {
       // TODO: Issue #21 should do away with item/info conversion
       // A double conversion - semi-reflects what happens.
@@ -296,12 +302,7 @@ describe("background > datastore", () => {
       guid: expectedItem.id,
     };
 
-    const {
-      timePasswordChanged,
-      ...resultApiInfo
-    } = apiUpdate.lastCall.lastArg;
-
-    expect(timePasswordChanged).to.not.be.undefined;
+    expect(resultApiInfo.timePasswordChanged).to.not.be.undefined;
     expect(resultApiInfo).to.deep.equal(expectedApiInfo);
   });
 

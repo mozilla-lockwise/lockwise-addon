@@ -13,7 +13,6 @@ module.exports = (config) => {
         flags: ["-headless"],
       },
     },
-
     files: [
       "test/unit/**/*-test.js",
     ],

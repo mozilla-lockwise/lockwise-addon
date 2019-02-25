@@ -7,15 +7,51 @@
   background-color: #f9f9fa;
 }
 
-.item-details > h1 {
-  font-weight: 300;
-  font-size: 22px;
-  margin: 0 0 1.5em;
-  padding-bottom: 1em;
-  border-bottom: 1px solid #d7d7db;
+.item-details menu {
+  float: right;
 }
 
-.buttons {
-  margin-top: 1em;
-  padding: 1em 0;
+.clear {
+  clear: both;
+}
+
+.item-details menu > button {
+  margin-top: 0px;
+}
+
+.item-details h1 {
+  display: inline;
+  font-size: 33px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.edit-button {
+  background-image: url(/icons/edit.svg);
+  background-position: 25% 8px;
+  background-repeat: no-repeat;
+  padding-left: 25px;
+}
+
+.delete-button {
+  background-image: url(/icons/delete.svg);
+  background-position: 15% 8px;
+  background-repeat: no-repeat;
+  padding-left: 25px;
+}
+
+hr {
+  color: #d7d7db;
+}
+
+.metadata {
+  color: #737373;
+  font-size: 13px;
+}
+
+.metadata hr {
+  width: 40px;
+  color: #d7d7db;
+  float: left;
+  margin-top: 50px;
 }

@@ -9,6 +9,7 @@ import React from "react";
 import CopyToClipboardButton from "../../widgets/copy-to-clipboard-button";
 import FieldText from "../../widgets/field-text";
 import Input from "../../widgets/input";
+import Button from "../../widgets/button";
 import LabelText from "../../widgets/label-text";
 import PasswordInput from "../../widgets/password-input";
 import PasswordText from "../../widgets/password-text";
@@ -16,28 +17,50 @@ import PasswordText from "../../widgets/password-text";
 import styles from "./item-fields.css";
 
 const fieldsPropTypes = PropTypes.shape({
+  isPopup: PropTypes.bool,
   origin: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
 });
 
-export function ItemFields({fields, onCopy}) {
+export function ItemFields({fields, onCopy, isPopup}) {
+  const openWebsite = (url) => {
+    browser.runtime.sendMessage({
+      type: "open_site",
+      url,
+    });
+    window.close();
+  };
+  const originEl = isPopup ? (
+      <h4 className={styles.popupOrigin}>{new URL(fields.origin).host}</h4>
+  ) : (
+      <a className={styles.originLink} onClick={() => openWebsite(fields.origin)}>{fields.origin}</a>
+  );
+
+  const originLabel = isPopup ? null : (
+      <Localized id="item-fields-origin">
+      <LabelText>oRIGIn</LabelText>
+      </Localized>
+  );
+
+  const launchButton = isPopup ? null : (
+      <Button theme="normal" title={"launch"}
+              onClick={() => openWebsite(fields.origin)}>
+      <Localized id="item-fields-origin-button">
+      <span>lAUNCh</span>
+      </Localized>
+      </Button>
+  );
+
   return (
     <div className={styles.itemFields}>
       <div className={styles.field}>
-        <Localized id="item-fields-title">
-          <LabelText className={styles.firstLabel}>tITLe</LabelText>
-        </Localized>
-        <FieldText data-name="title">{fields.title}</FieldText>
-      </div>
-      <div className={styles.field}>
-        <Localized id="item-fields-origin">
-          <LabelText>oRIGIn</LabelText>
-        </Localized>
-        <FieldText data-name="origin">
-          {fields.origin}
-        </FieldText>
+        {originLabel}
+        <div className={styles.inlineButton}>
+          <FieldText data-name="origin">{originEl}</FieldText>
+          {launchButton}
+        </div>
       </div>
       <div className={styles.field}>
         <Localized id="item-fields-username">
@@ -48,7 +71,7 @@ export function ItemFields({fields, onCopy}) {
             {fields.username}
           </FieldText>
           <Localized id="item-fields-copy-username">
-            <CopyToClipboardButton value={fields.username}
+            <CopyToClipboardButton value={fields.username} isPopup={isPopup}
                                    onCopy={toCopy => onCopy("username", toCopy)}/>
           </Localized>
         </div>
@@ -60,7 +83,7 @@ export function ItemFields({fields, onCopy}) {
         <div className={styles.inlineButton}>
           <PasswordText data-name="password" value={fields.password} />
           <Localized id="item-fields-copy-password">
-            <CopyToClipboardButton value={fields.password}
+            <CopyToClipboardButton value={fields.password} isPopup={isPopup}
                                    onCopy={toCopy => onCopy("password", toCopy)}/>
           </Localized>
         </div>
@@ -71,6 +94,7 @@ export function ItemFields({fields, onCopy}) {
 
 ItemFields.propTypes = {
   fields: fieldsPropTypes,
+  isPopup: PropTypes.bool,
   onCopy: PropTypes.func.isRequired,
 };
 
@@ -96,12 +120,6 @@ export class EditItemFields extends React.Component {
 
     return (
       <div className={styles.itemFields}>
-        <label>
-          <Localized id="item-fields-title">
-            <LabelText className={styles.firstLabel}>tITLe</LabelText>
-          </Localized>
-          <FieldText data-name="title">{fields.title}</FieldText>
-        </label>
         <label>
           <Localized id="item-fields-origin">
             <LabelText>oRIGIn</LabelText>

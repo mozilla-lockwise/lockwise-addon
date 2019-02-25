@@ -17,23 +17,19 @@ chai.use(chaiEnzyme());
 chai.use(sinonChai);
 
 describe("list > manage > components > <EditItemDetails/>", () => {
-  const readOnly = [ "title" ];
   const blankFields = {
-    title: "",
     origin: "",
     username: "",
     password: "",
   };
 
   const originalFields = {
-    title: "title",
     origin: "origin",
     username: "username",
     password: "password",
   };
 
   const updatedFields = {
-    title: "title",
     origin: "new origin",
     username: "new username",
     password: "new password",
@@ -56,7 +52,6 @@ describe("list > manage > components > <EditItemDetails/>", () => {
 
     it("form fields unfilled", () => {
       for (let i in blankFields) {
-        if (readOnly.includes(i)) { continue; }
         expect(wrapper.find(`[name="${i}"]`).filterWhere((x) => {
           return typeof x.type() !== "string";
         })).to.have.prop("value", blankFields[i]);
@@ -71,7 +66,6 @@ describe("list > manage > components > <EditItemDetails/>", () => {
 
     it("onSave called after editing", () => {
       for (let i in updatedFields) {
-        if (readOnly.includes(i)) { continue; }
         simulateTyping(wrapper.find(`[name="${i}"]`).filterWhere((x) => {
           return typeof x.type() === "string";
         }), updatedFields[i]);
@@ -81,7 +75,6 @@ describe("list > manage > components > <EditItemDetails/>", () => {
 
       expect(onSave).to.have.been.calledWith({
         ...updatedFields,
-        title: "",
       });
     });
 
@@ -102,7 +95,6 @@ describe("list > manage > components > <EditItemDetails/>", () => {
 
     it("form fields filled", () => {
       for (let i in originalFields) {
-        if ( readOnly.includes(i)) { continue; }
         expect(wrapper.find(`[name="${i}"]`).filterWhere((x) => {
           return typeof x.type() !== "string";
         })).to.have.prop("value", originalFields[i]);
@@ -112,7 +104,6 @@ describe("list > manage > components > <EditItemDetails/>", () => {
     it("form fields updated", () => {
       wrapper.setProps({itemId: "2", fields: updatedFields});
       for (let i in updatedFields) {
-        if (readOnly.includes(i)) { continue; }
         expect(wrapper.find(`[name="${i}"]`).filterWhere((x) => {
           return typeof x.type() !== "string";
         })).to.have.prop("value", updatedFields[i]);
@@ -127,7 +118,6 @@ describe("list > manage > components > <EditItemDetails/>", () => {
 
     it("onSave called after editing", () => {
       for (let i in updatedFields) {
-        if (readOnly.includes(i)) { continue; }
         simulateTyping(wrapper.find(`[name="${i}"]`).filterWhere((x) => {
           return typeof x.type() === "string";
         }), updatedFields[i], {clear: true});

@@ -23,3 +23,8 @@
   top: 16px;
   right: 8px;
 }
+
+.panel-footer-button {
+  background: #2a2a2e !important;
+  color: #f9f9fa;
+}

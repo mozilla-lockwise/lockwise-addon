@@ -24,18 +24,18 @@ export default function ItemDetailsPanel({fields, onCopy, onBack}) {
   return (
     <Panel>
       <Localized id="item-details-panel-title">
-        <PanelHeader onBack={onBack} className={styles.panelHeader}>
+        <PanelHeader onBack={onBack} className={styles.panelHeader} isDetail={true}>
           lOGIn dETAILs
         </PanelHeader>
       </Localized>
 
       <PanelBody className={styles.panelBody}>
-        <ItemFields fields={fields} onCopy={onCopy}/>
+        <ItemFields fields={fields} onCopy={onCopy} isPopup={true}/>
       </PanelBody>
 
       <PanelFooter border="floating">
         <Localized id="list-detail-button">
-          <PanelFooterButton onClick={openWebsite} className={styles.panelFooterButton}>
+          <PanelFooterButton onClick={() => openWebsite(fields.origin)} className={styles.panelFooterButton}>
             oPEn wEBSITe
           </PanelFooterButton>
         </Localized>
