@@ -7,6 +7,7 @@ import {
   updatedItem,
   removedItem,
   removedAllItems,
+  updatedProfile,
 } from "./actions";
 
 let messagePort;
@@ -28,6 +29,9 @@ export default function initializeMessagePorts(store) {
       break;
     case "removed_all":
       store.dispatch(removedAllItems());
+      break;
+    case "profile_info":
+      store.dispatch(updatedProfile(message.profile));
       break;
     }
   });

@@ -6,6 +6,7 @@ import { Localized } from "fluent-react";
 import React from "react";
 import PropTypes from "prop-types";
 
+import { openWebsite } from "../../common";
 import Panel, { PanelHeader, PanelBody, PanelFooter,
                 PanelFooterButton } from "../../../widgets/panel";
 import { ItemFields } from "../../components/item-fields";
@@ -13,14 +14,6 @@ import { ItemFields } from "../../components/item-fields";
 import styles from "./item-details-panel.css";
 
 export default function ItemDetailsPanel({fields, onCopy, onBack}) {
-  const openWebsite = (url) => {
-    browser.runtime.sendMessage({
-      type: "open_site",
-      url,
-    });
-    window.close();
-  };
-
   return (
     <Panel>
       <Localized id="item-details-panel-title">

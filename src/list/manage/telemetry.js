@@ -47,12 +47,6 @@ export default (store) => (next) => (action) => {
     case actions.START_NEW_ITEM:
       telemetry.recordEvent("addClick", "manage");
       break;
-    case actions.SEND_FEEDBACK:
-      telemetry.recordEvent("feedbackClick", "manage");
-      break;
-    case actions.OPEN_FAQ:
-      telemetry.recordEvent("faqClick", "manage");
-      break;
     }
   } catch (e) {
     // eslint-disable-next-line no-console

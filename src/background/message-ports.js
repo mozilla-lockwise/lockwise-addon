@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import openDataStore from "./datastore";
+import { getProfileInfo } from "./profile";
 import { openView, closeView } from "./views";
 import { makeItemSummary } from "../common";
 import telemetry from "./telemetry";
@@ -67,6 +68,8 @@ export default function initializeMessagePorts() {
     case "copied_field":
         await clipboard.copyToClipboard(message.field, message.toCopy);
         return {};
+    case "get_profile":
+        return getProfileInfo();
     default:
       return null;
     }

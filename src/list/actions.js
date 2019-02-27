@@ -2,8 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { version } from "../../package";
-
 export const LIST_ITEMS_STARTING = Symbol("LIST_ITEMS_STARTING");
 export const LIST_ITEMS_COMPLETED = Symbol("LIST_ITEMS_COMPLETED");
 
@@ -34,15 +32,16 @@ export const FILTER_ITEMS = Symbol("FILTER_ITEMS");
 export const SHOW_MODAL = Symbol("SHOW_MODAL");
 export const HIDE_MODAL = Symbol("HIDE_MODAL");
 
-export const SEND_FEEDBACK = Symbol("SEND_FEEDBACK");
-export const OPEN_FAQ = Symbol("OPEN_FAQ");
+export const SELECT_TAB_LOGINS = Symbol("SELECT_TAB_LOGINS");
+export const SELECT_TAB_MONITOR = Symbol("SELECT_TAB_MONITOR");
+
+export const GET_PROFILE = Symbol("GET_PROFILE");
+export const GET_PROFILE_STARTING = Symbol("GET_PROFILE_STARTING");
+export const UPDATED_PROFILE = Symbol("UPDATED_PROFILE");
 
 // The action ID is used for debugging to correlate async actions with each
 // other (i.e. FOO_STARTING and FOO_COMPLETED).
 let nextActionId = 0;
-
-const FEEDBACK_URL = "https://qsurvey.mozilla.com/s3/Lockbox-Input?ver=" + version;
-const FAQ_URL = "https://mozilla-lockbox.github.io/lockbox-extension/faqs/";
 
 export function listItems() {
   return async (dispatch) => {
@@ -318,16 +317,31 @@ export function hideModal() {
   };
 }
 
-export function sendFeedback() {
-  window.open(FEEDBACK_URL, "_blank");
+export function selectTabLogins() {
   return {
-    type: SEND_FEEDBACK,
+    type: SELECT_TAB_LOGINS,
   };
 }
 
-export function openFAQ() {
-  window.open(FAQ_URL, "_blank");
+export function selectTabMonitor() {
   return {
-    type: OPEN_FAQ,
+    type: SELECT_TAB_MONITOR,
+  };
+}
+
+export function getProfile() {
+  return async (dispatch) => {
+    dispatch(getProfileStarting());
+    const profile = await browser.runtime.sendMessage({ type: "get_profile" });
+    dispatch(getProfileCompleted(profile));
+  };
+}
+const getProfileStarting = () => ({ type: GET_PROFILE_STARTING });
+const getProfileCompleted = profile => updatedProfile(profile);
+
+export function updatedProfile(profile) {
+  return {
+    type: UPDATED_PROFILE,
+    profile,
   };
 }

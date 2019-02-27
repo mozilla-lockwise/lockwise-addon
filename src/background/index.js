@@ -9,11 +9,13 @@ import initializeMessagePorts from "./message-ports";
 import { initializeTelemetry } from "./telemetry";
 import { initializeDataStore } from "./datastore";
 import { initializeEnvironment } from "./environment";
+import { initializeProfileInfo } from "./profile";
 
 Promise.resolve().then(async () => {
   await initializeEnvironment();
   initializeTelemetry();
   initializeMessagePorts();
   await initializeDataStore();
+  await initializeProfileInfo();
   await updateBrowserAction();
 });
