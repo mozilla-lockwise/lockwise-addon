@@ -357,10 +357,10 @@ describe("add-on UI", () => {
 
       // Verify visible Entry Details
       const resultElements = {
-        title: await waitFor(selectors.itemDetails("title")),
+        origin: await waitFor(selectors.itemDetails("origin")),
         username: await waitFor(selectors.itemDetails("username")),
       };
-      expect(await resultElements.title.getText()).to.equal("example.com");
+      expect(await resultElements.origin.getText()).to.equal("example.com");
       expect(await resultElements.username.getText()).to.equal(mockLogin.username);
     });
 

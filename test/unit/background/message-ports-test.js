@@ -55,6 +55,15 @@ describe("background > message ports", () => {
     expect(result).to.deep.equal({});
   });
 
+  it('handle "open_site"', async () => {
+    const result = await browser.runtime.sendMessage({
+      type: "open_site",
+      url: "https://firefox.com",
+    });
+
+    expect(result).to.deep.equal({});
+  });
+
   it('handle "close_view"', async () => {
     const result = await browser.runtime.sendMessage({
       type: "close_view",

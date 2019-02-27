@@ -120,7 +120,6 @@ describe("list > manage > containers > <CurrentSelection/>", () => {
       const details = wrapper.find(EditItemDetails);
       expect(details).to.have.length(1);
       expect(details.prop("fields")).to.deep.equal({
-        title: "",
         origin: "",
         username: "",
         password: "",
@@ -145,10 +144,13 @@ describe("list > manage > containers > <CurrentSelection/>", () => {
       expect(store.getActions()[0]).to.deep.include({
         type: actions.ADD_ITEM_STARTING,
         item: {
-          title: "",
+          title: undefined,
           origins: [],
           id: undefined,
           realm: null,
+          timeCreated: undefined,
+          timeLastUsed: undefined,
+          timePasswordChanged: undefined,
           entry: {
             kind: "login",
             password: "",
@@ -191,6 +193,9 @@ describe("list > manage > containers > <CurrentSelection/>", () => {
         title: currentItem.title,
         origin: currentItem.origins[0],
         formURL: currentItem.origins[1] || "",
+        timeCreated: undefined,
+        timeLastUsed: undefined,
+        timePasswordChanged: undefined,
         realm: "",
         username: currentItem.entry.username,
         password: currentItem.entry.password,
@@ -219,6 +224,9 @@ describe("list > manage > containers > <CurrentSelection/>", () => {
           origins: ["origin-1.com"],
           id: "1",
           realm: null,
+          timeCreated: undefined,
+          timeLastUsed: undefined,
+          timePasswordChanged: undefined,
           entry: {
             kind: "login",
             password: "password 1",
@@ -272,6 +280,9 @@ describe("list > manage > containers > <CurrentSelection/>", () => {
         origin: "",
         formURL: "",
         realm: "",
+        timeCreated: undefined,
+        timeLastUsed: undefined,
+        timePasswordChanged: undefined,
         username: currentItem.entry.username,
         password: currentItem.entry.password,
       });

@@ -30,7 +30,6 @@ export default class EditItemDetails extends React.Component {
     return {
       itemId: null,
       fields: {
-        title: "",
         origin: "",
         username: "",
         password: "",

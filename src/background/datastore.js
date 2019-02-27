@@ -19,12 +19,19 @@ export function convertInfo2Item(info) {
 
   const id = info.guid;
   const origins = [ info.hostname, info.formSubmitURL ].
-      filter((u) => !!u);
+        filter((u) => !!u);
+
+  const timeLastUsed = info.timeLastUsed;
+  const timePasswordChanged = info.timePasswordChanged;
+  const timeCreated = info.timeCreated;
 
   let item = {
     id,
     title,
     origins,
+    timeLastUsed,
+    timePasswordChanged,
+    timeCreated,
     realm: info.httpRealm,
     tags: [],
     entry: {
@@ -37,6 +44,7 @@ export function convertInfo2Item(info) {
   };
   return item;
 }
+
 export function convertItem2Info(item) {
   // dropped on the floor (for now ...)
   // * title
@@ -63,6 +71,9 @@ export function convertItem2Info(item) {
   const password = item.entry.password;
   const usernameField = item.entry.usernameField || "";
   const passwordField = item.entry.passwordField || "";
+  const timeCreated = item.timeCreated;
+  const timeLastUsed = item.timeLastUsed;
+  const timePasswordChanged = item.timePasswordChanged;
 
   let info = {
     guid,
@@ -73,6 +84,9 @@ export function convertItem2Info(item) {
     password,
     usernameField,
     passwordField,
+    timeCreated,
+    timeLastUsed,
+    timePasswordChanged,
   };
 
   return info;
@@ -139,10 +153,20 @@ class DataStore {
       ...info,
       guid: UUID(),
       timesUsed: 0,
-      timeLastUsed: Date.now(),
-      timeCreated: Date.now(),
-      timePasswordChanged: Date.now(),
     };
+
+    if (!added.timeLastUsed) {
+      added.timeLastUsed = Date.now();
+    }
+
+    if (!added.timeCreated) {
+      added.timeCreated = Date.now();
+    }
+
+    if (!added.timePasswordChanged) {
+      added.timePasswordChanged = Date.now();
+    }
+
     await browser.experiments.logins.add(added);
 
     added = convertInfo2Item(added);

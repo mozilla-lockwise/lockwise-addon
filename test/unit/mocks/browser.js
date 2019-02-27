@@ -147,7 +147,9 @@ window.browser = {
     create({url}) {
       const tabInfo = {id: this._nextId++, windowId: 1, url};
       this._openedTabs.push(tabInfo);
-      return tabInfo;
+      return new Promise((resolve, reject) => {
+        return resolve(tabInfo);
+      });
     },
 
     remove(id) {
