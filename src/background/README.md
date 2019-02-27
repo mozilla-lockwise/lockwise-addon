@@ -10,6 +10,10 @@ Open the view named `name` in a new tab. Returns an empty object.
 
 Close the view named `name` if it's open. Returns an empty object.
 
+## `open_site`
+
+Open website passed as `url` in a new tab. Returns an empty object.
+
 ## `list_items`
 
 List all the items in the datastore. Returns an array of summaries of the items in the `items` field.

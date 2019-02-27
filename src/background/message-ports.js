@@ -30,7 +30,8 @@ export default function initializeMessagePorts() {
       return openView(message.name).then(() => ({}));
     case "close_view":
       return closeView(message.name).then(() => ({}));
-
+    case "open_site":
+      return browser.tabs.create({"url": message.url}).then(() => ({}));
     case "list_items":
       return openDataStore().then(async (ds) => {
         const entries = (await ds.list()).map(makeItemSummary);

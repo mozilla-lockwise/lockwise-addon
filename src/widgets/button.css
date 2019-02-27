@@ -8,6 +8,7 @@
   letter-spacing: 0.2px;
   line-height: 1;
   border: 0;
+  cursor: pointer;
 }
 
 .button > img {

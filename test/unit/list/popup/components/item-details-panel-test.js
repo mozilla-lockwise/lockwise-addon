@@ -17,27 +17,37 @@ chai.use(sinonChai);
 
 describe("list > popup > components > <ItemDetailsPanel/>", () => {
   const fields = {
-    title: "title",
-    origin: "origin",
+    origin: "https://firefox.com",
     username: "username",
     password: "password",
   };
+
+  const onCopy = () => {};
 
   let onBack, wrapper;
 
   beforeEach(() => {
     onBack = sinon.spy();
     wrapper = mountWithL10n(
-      <ItemDetailsPanel fields={fields} onBack={onBack}/>
+      <ItemDetailsPanel fields={fields} onBack={onBack} onCopy={onCopy}/>
     );
   });
 
   it("render fields", () => {
     for (let i in fields) {
       if (i !== "password") {
-        expect(wrapper.find(`[data-name="${i}"]`).filterWhere((x) => {
-          return typeof x.type() !== "string";
-        })).to.have.text(fields[i]);
+        if (i === "origin") {
+          // We display the origin as host in <ItemFilter/>
+          // when we are inside the panel. So check for that
+          // specifically here.
+          expect(wrapper.find(`[data-name="origin"]`).filterWhere((x) => {
+            return typeof x.type() !== "string";
+          })).to.have.text(new URL(fields[i]).host);
+        } else {
+          expect(wrapper.find(`[data-name="${i}"]`).filterWhere((x) => {
+            return typeof x.type() !== "string";
+          })).to.have.text(fields[i]);
+        }
       }
     }
   });

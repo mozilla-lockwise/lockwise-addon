@@ -12,12 +12,12 @@ all-items-get-started =
 
 all-items-no-results = No results
 
-item-fields-title = Name
 item-fields-title-input =
   .placeholder = e.g. primary bank
 item-fields-origin = Website Address
 item-fields-origin-input =
   .placeholder = www.example.com
+item-fields-origin-button = Launch
 item-fields-username = Username
 item-fields-username-input =
   .placeholder = name@example.com
@@ -105,7 +105,6 @@ homepage-accountlinked-description =
     { product-title } uses the strongest encryption available to
     protect your logins – even for banking and other critical sites.
 
-item-details-heading-view = Login Details
 item-details-heading-new = Create New Entry
 item-details-heading-edit = Edit Entry Details
 
@@ -115,6 +114,11 @@ item-details-delete = Delete
 item-details-save-new = Create Entry
 item-details-save-existing = Save
 item-details-cancel = Cancel
+
+
+item-details-created = Created: {$date}
+item-details-created = Last Modified: {$date}
+item-details-created = Last Used: {$date}
 
 ## popup
 
@@ -134,7 +138,7 @@ filtered-banner = { $count ->
 
 no-results-banner = No entries found for current website.
 
-item-details-panel-title = Entry Details
+item-details-panel-title = Login Details
 
 navigate-panel-backwards = Go back
 

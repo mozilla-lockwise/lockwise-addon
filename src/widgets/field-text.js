@@ -11,7 +11,7 @@ import styles from "./input.css";
 
 export default function FieldText({className, monospace, ...props}) {
   return (
-    <span {...props} className={classNames([
+      <span {...props} className={classNames([
             styles.fieldText, monospace && styles.monospace, className,
           ])}/>
   );

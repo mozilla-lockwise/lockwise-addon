@@ -1,6 +1,7 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 .copy-button {
   color: #0c0c0d;
 }
@@ -13,4 +14,12 @@
   min-width: 80px;
   font-size: 13px;
   color: #00c100;
+}
+
+.is-popup {
+  background-image: url(/icons/copy.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  float: right;
+  min-width: 26px;
 }

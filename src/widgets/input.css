@@ -104,17 +104,17 @@ input::placeholder {
 
 .field-text,
 .label-text {
-  color: #0c0c0d;
   letter-spacing: 0.2px;
   line-height: 1.5;
 }
 
 .field-text {
   /* This lines up our labels with the text in <input> elements. */
+  color: #0c0c0d;
   margin-top: 7px;
   min-height: 25px;
   font-size: 15px;
-  font-weight: bold;
+  font-weight: normal;
   -moz-user-select: text;
   overflow: hidden;
   overflow-wrap: break-word;
@@ -122,8 +122,9 @@ input::placeholder {
 }
 
 .label-text {
-  margin: 16px 0 4px 0;
+  color: #737373;
   font-size: 13px;
+  margin: 16px 0 4px 0;
 }
 
 .password button {

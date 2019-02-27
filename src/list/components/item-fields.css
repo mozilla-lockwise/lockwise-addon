@@ -13,6 +13,13 @@
   display: contents;
 }
 
+.origin-link {
+  color: #0060df;
+  cursor: pointer;
+  font-weight: normal;
+  text-decoration: none;
+}
+
 .input {
   max-width: 242px;
 }
@@ -39,4 +46,8 @@
 
 .inline-button > *:first-child {
   flex: 1;
+}
+
+.popup-origin {
+  margin: 2px;
 }
