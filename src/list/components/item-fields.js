@@ -101,13 +101,20 @@ ItemFields.propTypes = {
 export class EditItemFields extends React.Component {
   static get propTypes() {
     return {
+      itemId: PropTypes.string,
       fields: fieldsPropTypes.isRequired,
       onChange: PropTypes.func.isRequired,
     };
   }
 
   componentDidMount() {
-    this._firstField.focus();
+    // Focus the first editable field...
+    if (this.props.fields.itemId) {
+      // For existing items, the first field is disabled.
+      this._secondField.focus();
+    } else {
+      this._firstField.focus();
+    }
   }
 
   render() {
@@ -126,7 +133,8 @@ export class EditItemFields extends React.Component {
           </Localized>
           <Localized id="item-fields-origin-input" attrs={{placeholder: true}}>
             <Input className={styles.input} type="text"
-                   placeholder="wWw.eXAMPLe.cOm"
+                   disabled={!!fields.itemId}
+                   placeholder="hTTps://wWw.eXAMPLe.cOm"
                    {...controlledProps("origin")}
                    ref={(element) => this._firstField = element} />
           </Localized>
@@ -139,7 +147,8 @@ export class EditItemFields extends React.Component {
                      attrs={{placeholder: true}}>
             <Input className={styles.input} type="text"
                    placeholder="nAMe@eXAMPLe.cOm"
-                   {...controlledProps("username")}/>
+                   {...controlledProps("username")}
+                   ref={(element) => this._secondField = element} />
           </Localized>
         </label>
         <label>

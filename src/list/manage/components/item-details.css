@@ -7,8 +7,17 @@
   background-color: #f9f9fa;
 }
 
-.item-details menu {
+.item-details header {
+    border-bottom: 1px solid #d7d7db;
+    padding-bottom: 12px;
+}
+
+.item-details header menu {
   float: right;
+}
+
+.item-details > menu {
+  padding: 40px 0;
 }
 
 .clear {

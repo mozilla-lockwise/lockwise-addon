@@ -202,9 +202,9 @@ describe("list > manage > containers > <CurrentSelection/>", () => {
       });
     });
 
-    it("first field focused", () => {
-      const firstField = wrapper.find("input").at(0);
-      expect(firstField).to.be.focused();
+    it("second field focused (because first is disabled)", () => {
+      const firstEnabledField = wrapper.find("input").at(1);
+      expect(firstEnabledField).to.be.focused();
     });
 
     it("editorChanged() dispatched", () => {
