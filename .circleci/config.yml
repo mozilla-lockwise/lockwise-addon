@@ -1,0 +1,214 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/lockbox-addon
+    docker:
+      - image: circleci/node
+    steps:
+      - checkout
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@6.7'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install-npm
+          command: npm ci
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./*
+  test:
+    docker:
+      - image: circleci/node
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@6.7'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install-npm
+          command: npm ci
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Install test dependencies
+          command: |
+            GECKODRIVER_URL=$(
+              curl -s 'https://api.github.com/repos/mozilla/geckodriver/releases/latest' |
+              python -c "import sys, json; r = json.load(sys.stdin); print([a for a in r['assets'] if 'linux64' in a['name']][0]['browser_download_url']);"
+            );
+            curl -L -o geckodriver.tar.gz $GECKODRIVER_URL
+            gunzip -c geckodriver.tar.gz | tar xopf -
+            chmod +x geckodriver
+            sudo mv geckodriver /bin
+            geckodriver --version
+      - run:
+          name: Install Firefox
+          command: |
+            sudo apt-get install libgtk-3-dev libdbus-glib-1-2
+            sudo npm i -g get-firefox
+            get-firefox --branch nightly --platform linux --extract --target ~/
+            echo 'export PATH=~/firefox:$PATH' >> ~/.bashrc
+            source ~/.bashrc
+            firefox --version
+      - run:
+          name: test
+          command: npm test
+      - run:
+          name: coverage
+          command: npm run codecov
+      - run:
+          name: integration test
+          command: npm run integration
+  package-addon-staging:
+    docker:
+      - image: circleci/node
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@6.7'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install-npm
+          command: npm ci
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Package addon for staging
+          command: |
+            npm run package
+            npm run sign:stage
+      - store_artifacts:
+          path: /tmp/signed-stage.xpi
+          destination: signed-stage.xpi
+
+  package-addon-production:
+    docker:
+      - image: circleci/node
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@6.7'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install-npm
+          command: npm ci
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Package addon for production
+          command: |
+            npm run package
+            npm run sign:prod
+      - store_artifacts:
+          path: ~/project/addons/signed-prod.xpi
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./*
+  publish-github-release:
+    docker:
+      - image: cibuilds/github:0.10
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: "Publish Release on GitHub"
+          command: |
+            VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]')
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ~/project/addons/signed-prod.xpi
+  build-documentation:
+    docker:
+      - image: python:3.7
+      - image: node
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: "Publish Documentation"
+          command: |
+            pip install mkdocs
+            mkdocs build
+  docs-deploy:
+    docker:
+      - image: node
+    steps:
+      - checkout
+      - attach_workspace:
+          at: docs/
+      - run:
+          name: Install and configure dependencies
+          command: |
+            npm install -g --silent gh-pages@2.0.1
+            git config user.email "ci-build@lockbox.firefox.com"
+            git config user.name "ci-build"
+      - add_ssh_keys:
+          fingerprints:
+            - c2:21:3f:e9:91:96:62:b5:ec:db:96:3e:e1:fa:f2:e5
+      - run:
+          name: Deploy docs to gh-pages branch
+          command: gh-pages --dist docs/
+
+workflows:
+  version: 2
+  build_and_test_and_package_and_deploy_docs:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - build-documentation:
+          filters:
+            branches:
+              only:
+                - master
+      - docs-deploy:
+          requires:
+            - build-documentation
+          filters:
+            branches:
+              only:
+                - master
+      - package-addon-staging:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: /^\d+\.\d+\.\d+$/
+      - package-addon-production:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^\d+\.\d+\.\d+$/
+      - publish-github-release:
+          requires:
+            - package-addon-production
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^\d+\.\d+\.\d+$/
