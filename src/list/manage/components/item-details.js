@@ -24,21 +24,22 @@ export default function ItemDetails({fields, onCopy, onEdit, onDelete}) {
 
   return (
     <div id="itemDetails" className={styles.itemDetails}>
-      <div className="detail-title">
+      <header className="detail-title">
         <h1>{fields.title}</h1>
         <Toolbar className={styles.buttons}>
           <Localized id="item-details-edit">
             <Button id="editItemButton" className={styles.editButton}
+                    type="button"
                     theme={"ghost"} onClick={() => onEdit()}>eDIt</Button>
           </Localized>
           <Localized id="item-details-delete">
             <Button id="deleteItemButton" className={styles.deleteButton}
+                    type="button"
                     theme={"ghost"} onClick={() => onDelete()}>dELETe</Button>
           </Localized>
         </Toolbar>
-        <div className={styles.clear}></div>
-      </div>
-      <hr/>
+      </header>
+
       <ItemFields fields={fields} onCopy={onCopy} />
 
       <div className={styles.metadata}>

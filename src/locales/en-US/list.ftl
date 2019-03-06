@@ -16,7 +16,7 @@ item-fields-title-input =
   .placeholder = e.g. primary bank
 item-fields-origin = Website Address
 item-fields-origin-input =
-  .placeholder = www.example.com
+  .placeholder = https://www.example.com
 item-fields-origin-button = Launch
 item-fields-username = Username
 item-fields-username-input =
@@ -112,7 +112,7 @@ item-details-edit = Edit
 item-details-delete = Delete
 
 item-details-save-new = Create Entry
-item-details-save-existing = Save
+item-details-save-existing = Save Changes
 item-details-cancel = Cancel
 
 

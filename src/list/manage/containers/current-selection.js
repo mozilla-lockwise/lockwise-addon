@@ -37,6 +37,7 @@ const ConnectedEditItemDetails = connect(
       onChange: () => { dispatch(editorChanged()); },
       onSave,
       onCancel: () => { dispatch(requestCancelEditing()); },
+      onDelete: () => { dispatch(requestRemoveItem(ownProps.item.id)); },
     };
   },
 )(EditItemDetails);
