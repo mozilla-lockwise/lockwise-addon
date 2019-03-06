@@ -26,6 +26,10 @@ body > main,
   grid-template-columns: 1fr 3fr;
 }
 
+.app-main article {
+  padding-top: 28px;
+}
+
 .navigation {
   height: 48px;
   padding-inline-start: 4.6em;

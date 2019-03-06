@@ -6,12 +6,11 @@ import { Localized } from "fluent-react";
 import React from "react";
 import DocumentTitle from "react-document-title";
 
+import AppHeader from "../containers/app-header";
+import AppPanes from "../containers/app-panes";
 import AllItems from "../containers/all-items";
-import CurrentBreadcrumbs from "../containers/current-breadcrumbs";
 import CurrentSelection from "../containers/current-selection";
 import ModalRoot from "../containers/modals";
-import OpenFAQ from "../containers/open-faq";
-import Toolbar, { ToolbarSpace } from "../../../widgets/toolbar";
 
 import styles from "./app.css";
 
@@ -25,20 +24,29 @@ export default class App extends React.Component {
       <Localized id="document" attrs={{title: true}}>
         <DocumentTitle title="lOCKBOx eNTRIEs">
           <div className={styles.app}>
-            <section className={styles.appMain}>
-              <AllItems className={styles.aside}
-                        inputRef={(element) => {
-                          this._filterField = element;
-                        }}/>
-              <article>
-                <Toolbar className={styles.navigation}>
-                  <CurrentBreadcrumbs/>
-                  <ToolbarSpace/>
-                  <OpenFAQ/>
-                </Toolbar>
-                <CurrentSelection/>
-              </article>
-            </section>
+            <AppHeader />
+            <AppPanes>{{
+              logins: (
+                <section className={styles.appMain}>
+                  <AllItems className={styles.aside}
+                            inputRef={(element) => {
+                              this._filterField = element;
+                            }}/>
+                  <article>
+                    <CurrentSelection/>
+                  </article>
+                </section>
+              ),
+              /* TODO: Implement this as part of issue #15
+              monitor: (
+                <h1>
+                  <a href="https://github.com/mozilla-lockbox/lockbox-addon/issues/15">
+                    Monitor app content TBD in Issue #15
+                  </a>
+                </h1>
+              ),
+              */
+            }}</AppPanes>
             <ModalRoot/>
           </div>
         </DocumentTitle>

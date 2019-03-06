@@ -6,6 +6,7 @@ import { Localized } from "fluent-react";
 import PropTypes from "prop-types";
 import React from "react";
 
+import { openWebsite } from "../common";
 import CopyToClipboardButton from "../../widgets/copy-to-clipboard-button";
 import FieldText from "../../widgets/field-text";
 import Input from "../../widgets/input";
@@ -25,13 +26,6 @@ const fieldsPropTypes = PropTypes.shape({
 });
 
 export function ItemFields({fields, onCopy, isPopup}) {
-  const openWebsite = (url) => {
-    browser.runtime.sendMessage({
-      type: "open_site",
-      url,
-    });
-    window.close();
-  };
   const originEl = isPopup ? (
       <h4 className={styles.popupOrigin}>{new URL(fields.origin).host}</h4>
   ) : (
