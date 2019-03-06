@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Test Plan - Accessibility - Lockbox Extension</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Test Plan - Accessibility";
+    var mkdocs_page_input_path = "developer/test-plan-accessibility.md";
+    var mkdocs_page_url = "/developer/test-plan-accessibility/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Lockbox Extension</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Introduction</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../release-notes/">Release Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../contributing/">Contribute</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../metrics/">Telemetry and Metrics</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../SECURITY/">Mozilla Security</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Developer Guides</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../install/">Build and Install</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../releases/">Release Instructions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../directory-structure/">Directory Structure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../test-plan/">Test Plan</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Test Plan - Accessibility</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#manual-test-plan">Manual Test Plan</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#keyboard-navigation">Keyboard Navigation</a></li>
+        
+            <li><a class="toctree-l4" href="#page-structure">Page Structure</a></li>
+        
+            <li><a class="toctree-l4" href="#color">Color</a></li>
+        
+            <li><a class="toctree-l4" href="#ux-design-considerations">UX Design Considerations</a></li>
+        
+            <li><a class="toctree-l4" href="#tools-and-resources">Tools and Resources</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../test-plan-telemetry/">Test Plan - Telemetry</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Lockbox Extension</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Developer Guides &raquo;</li>
+        
+      
+    
+    <li>Test Plan - Accessibility</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/mozilla-lockbox/lockbox-addon/edit/master/docs/developer/test-plan-accessibility.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="manual-test-plan">Manual Test Plan</h1>
+<h2 id="keyboard-navigation">Keyboard Navigation</h2>
+<p><em>&lt; 3 hours</em></p>
+<p>Navigate the web content using only the keyboard:</p>
+<ul>
+<li>Tab Order:<code>TAB</code>, as well as <code>SHIFT + TAB</code>, follows a logical and intuitive order.</li>
+<li>All controls, links, buttons, etc., get focused.</li>
+<li>Focus should be visibly apparent.</li>
+<li>When a modal or pop up window opens, focus shifts to the pop up.</li>
+<li>Focus and tab order is constrained within the modal.</li>
+<li>Modal can be exited via keyboard.</li>
+<li>When a pop up window is closed, focus returns to a logical point.</li>
+<li>Ensure that all content that is visually hidden is also hidden from the keyboard and/or a screen reader. <em>Except content specifically for screen reader users.</em></li>
+<li>Firefox toolbar icon can be accessed by keyboard and screen reader users.</li>
+</ul>
+<h2 id="page-structure">Page Structure</h2>
+<p><em>3 hours</em></p>
+<ul>
+<li>Links and buttons have text that give context.</li>
+<li>All images contain alt text to describe the purpose or content of the image to a non-sighted user.</li>
+<li>A logical hierarchy of header tags has been used.</li>
+<li><a href="https://accessibility.oit.ncsu.edu/it-accessibility-at-nc-state/developers/accessibility-handbook/aria-landmarks/">ARIA landmark roles</a> have been utilized where applicable.</li>
+<li>ARIA attributes have been put into use.</li>
+<li>Any custom controls have been given the proper role attribute.<ul>
+<li>State changes are provided via <a href="http://www.w3.org/TR/wai-aria/states_and_properties#attrs_widgets_header">ARIA states</a>.</li>
+</ul>
+</li>
+<li>Form input fields and buttons have been labeled for screen reader users.</li>
+</ul>
+<h2 id="color">Color</h2>
+<p><em>&lt; 1 hour</em></p>
+<ul>
+<li>Text has sufficient color contrast against its background.</li>
+<li>Contrast ratio of 4.5:1 for normal text (less than 18 point or 14 point bold.)</li>
+<li>Contrast ratio of 3:1 for large text (at least 18 point or 14 point bold).</li>
+<li>Information conveyed via color is also available by other means.</li>
+<li>Buttons and links are visually apparent when they have focus.</li>
+<li>Focus remains apparent, and contrast remains sufficient, when simulating varying types of colorblindness.  <a href="https://www.toptal.com/designers/colorfilter">Color blind simulators</a></li>
+</ul>
+<h2 id="ux-design-considerations">UX Design Considerations</h2>
+<ul>
+<li>Interactions available with a mouse are also available using a keyboard.</li>
+<li>Information conveyed visually is also available by other means.</li>
+<li>Pop-ups and other state changes are announced to screen readers using appropriate ARIA attributes.</li>
+<li>Temporary on-screen events give users ample time to receive conveyed information.</li>
+<li>Animations are not excessively flashy, as this can cause seizures in some users.</li>
+</ul>
+<h2 id="tools-and-resources">Tools and Resources</h2>
+<p>Use a variety of testing tools to analyze pages:</p>
+<ul>
+<li>aXe developer tools by Deque</li>
+<li>Browser developer tools to inspect HTML for logical heading structure and ARIA roles</li>
+<li><a href="https://www.toptal.com/designers/colorfilter">Color blind simulators</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../test-plan-telemetry/" class="btn btn-neutral float-right" title="Test Plan - Telemetry">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../test-plan/" class="btn btn-neutral" title="Test Plan"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/mozilla-lockbox/lockbox-addon/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../test-plan/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../test-plan-telemetry/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>

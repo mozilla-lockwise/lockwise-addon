@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Release Instructions - Lockbox Extension</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Release Instructions";
+    var mkdocs_page_input_path = "developer/releases.md";
+    var mkdocs_page_url = "/developer/releases/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Lockbox Extension</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Introduction</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../release-notes/">Release Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../contributing/">Contribute</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../metrics/">Telemetry and Metrics</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../SECURITY/">Mozilla Security</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Developer Guides</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../install/">Build and Install</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Release Instructions</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#releases">Releases</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#checklist">Checklist</a></li>
+        
+            <li><a class="toctree-l4" href="#instructions">Instructions</a></li>
+        
+            <li><a class="toctree-l4" href="#extension-signing">Extension Signing</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../directory-structure/">Directory Structure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../test-plan/">Test Plan</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../test-plan-accessibility/">Test Plan - Accessibility</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../test-plan-telemetry/">Test Plan - Telemetry</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Lockbox Extension</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Developer Guides &raquo;</li>
+        
+      
+    
+    <li>Release Instructions</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/mozilla-lockbox/lockbox-addon/edit/master/docs/developer/releases.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="releases">Releases</h1>
+<h2 id="checklist">Checklist</h2>
+<p>Before a release can be made, the following must be done:</p>
+<ul>
+<li>Any user stories labeled as <code>epic</code> to be included in the release are approved by Product and PI</li>
+<li>All finished work is verified to work as expected and committed to <code>master</code></li>
+<li>Any unfinished work has been triaged and assigned to the appropriate milestone</li>
+<li>Product, Engineering, and PI have voiced approval to release (e.g., via Slack team channel)</li>
+</ul>
+<h2 id="instructions">Instructions</h2>
+<p><strong>NOTE:</strong> these instructions assume:</p>
+<ul>
+<li>All of the <a href="#checklist">checklist items</a> are complete</li>
+<li>You are an administrator of the project <code>lockbox-extension</code></li>
+<li>Your local git working copy has a remote named <code>upstream</code> pointing to <code>git@github.com:mozilla-lockbox/lockbox-addon.git</code></li>
+</ul>
+<p>To generate the next release binary:</p>
+<ol>
+<li>
+<p>Update "version" in package.json (and package-lock.json)</p>
+<ul>
+<li>we follow the <a href="http://semver.org/">semver</a> syntax</li>
+<li><em>Alpha</em> releases will be labeled with "-alpha" (e.g., "0.1.0-alpha")</li>
+<li><em>Beta</em> releases will be labeled with "-beta" (e.g., "1.0.0-beta")</li>
+<li><em>Stable</em> releases will <strong>not</strong> be labeled, and follow semver from the last Beta release (e.g., "1.0.0")</li>
+</ul>
+</li>
+<li>
+<p>Update <code>docs/release-notes.md</code>:</p>
+<ul>
+<li>latest release is at the top, under a second-level header</li>
+<li>each release includes the sub headings "What's New", "What's Fixed", and "Known Issues"</li>
+<li>consult with Product Management on wording if needed</li>
+</ul>
+</li>
+<li>
+<p>Commit and ultimately merge to <code>master</code> branch</p>
+</li>
+<li>
+<p>Create a pull request on GitHub <a href="https://github.com/mozilla-lockbox/lockbox-addon/compare/production...master">comparing changes from the <code>master</code> branch against/to <code>production</code></a></p>
+<ul>
+<li>Open the pull request so we can show the changes, CI status, and approvals</li>
+<li>Request an approval from the P.I. and Product representatives</li>
+<li>Once the release has been reviewed, tested, and approved to go live, merge and close the pull request</li>
+<li>Test Pilot's Jenkins will then build, sign, and deploy the extension (see <a href="#extension-signing">"Extension Signing"</a>)</li>
+</ul>
+</li>
+<li>
+<p>Tag the latest commit on <code>master</code> branch with an annotated version and push the tag:</p>
+<ul>
+<li><code>git tag -a -m "Release 0.1.0" 0.1.0</code></li>
+<li><code>git push upstream 0.1.0</code></li>
+<li>Travis-CI will build and generate a <a href="https://github.com/mozilla-lockbox/lockbox-addon/releases">GitHub Release</a></li>
+</ul>
+</li>
+<li>
+<p>Edit the resulting GitHub Release</p>
+<ul>
+<li>Set the <a href="https://github.com/mozilla-lockbox/lockbox-addon/releases">GitHub Release</a> title to match the version</li>
+<li>Set the GitHub Release notes to match the <code>docs/release-notes.md</code></li>
+<li>Download the signed add-on: <code>wget -O signed-addon.xpi https://testpilot.firefox.com/files/lockbox@mozilla.com/latest</code></li>
+<li>Attach to the GitHub Release the downloaded signed add-on</li>
+</ul>
+</li>
+<li>
+<p>Send an announcement to the team (e.g., via Slack team channel)</p>
+</li>
+</ol>
+<h2 id="extension-signing">Extension Signing</h2>
+<p>Learn about the Test Pilot extension deployment and hosting process here:<br />
+https://github.com/mozilla/testpilot/blob/master/docs/development/hosting.md</p>
+<p>This repository is in the <strong>"testpilot-mozillaextension"</strong> Jenkins pipeline.
+The CloudOps team manages access to, and can help report on, the status of the
+builds.</p>
+<p>The resulting files deployed are:</p>
+<ul>
+<li>Updates file for automatic browser extension updates: <a href="https://testpilot.firefox.com/files/lockbox@mozilla.com/updates.json">https://testpilot.firefox.com/files/lockbox@mozilla.com/updates.json</a></li>
+<li>Latest version of the signed extension XPI: <a href="https://testpilot.firefox.com/files/lockbox@mozilla.com/latest">https://testpilot.firefox.com/files/lockbox@mozilla.com/latest</a></li>
+</ul>
+<p><strong>IMPORTANT:</strong> Test Pilot reports the status of build, signing, and deployment of its artifacts on the IRC channel <strong>#testpilot-bots</strong>.  Be sure to join the channel prior to pushing the <code>production</code> branch to GitHub in order to receive the status updates.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../directory-structure/" class="btn btn-neutral float-right" title="Directory Structure">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../install/" class="btn btn-neutral" title="Build and Install"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/mozilla-lockbox/lockbox-addon/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../install/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../directory-structure/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>

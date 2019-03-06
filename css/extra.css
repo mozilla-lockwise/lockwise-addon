@@ -1,0 +1,30 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+h1 {
+  margin-bottom: 1em;
+}
+
+a.button-link {
+  display: block;
+  margin: .5em auto;
+  padding: 0.5em;
+  width: 12em;
+  color: white;
+  background-color: #717171;
+  border: 1px solid #717171;
+  border-radius: 4px;
+  text-align: center;
+}
+
+div.right {
+  float: right;
+  clear: right;
+  width: 40%;
+  padding-left: 2em;
+}
+
+.rst-content .admonition-title::before {
+  display: none !important;
+}

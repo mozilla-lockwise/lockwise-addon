@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Test Plan - Lockbox Extension</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Test Plan";
+    var mkdocs_page_input_path = "developer/test-plan.md";
+    var mkdocs_page_url = "/developer/test-plan/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Lockbox Extension</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Introduction</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../release-notes/">Release Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../contributing/">Contribute</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../metrics/">Telemetry and Metrics</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../SECURITY/">Mozilla Security</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Developer Guides</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../install/">Build and Install</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../releases/">Release Instructions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../directory-structure/">Directory Structure</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Test Plan</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#test-plan-lockbox-extension">Test Plan: lockbox-extension</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#ownership">Ownership</a></li>
+        
+            <li><a class="toctree-l4" href="#purpose">Purpose</a></li>
+        
+            <li><a class="toctree-l4" href="#timelines-and-milestones">Timelines and Milestones</a></li>
+        
+            <li><a class="toctree-l4" href="#testing-summary">Testing Summary</a></li>
+        
+            <li><a class="toctree-l4" href="#requirements-for-testing">Requirements for testing</a></li>
+        
+            <li><a class="toctree-l4" href="#test-strategy">Test Strategy</a></li>
+        
+            <li><a class="toctree-l4" href="#sign-off">Sign Off</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../test-plan-accessibility/">Test Plan - Accessibility</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../test-plan-telemetry/">Test Plan - Telemetry</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Lockbox Extension</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Developer Guides &raquo;</li>
+        
+      
+    
+    <li>Test Plan</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/mozilla-lockbox/lockbox-addon/edit/master/docs/developer/test-plan.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="test-plan-lockbox-extension">Test Plan: lockbox-extension</h1>
+<h2 id="ownership">Ownership</h2>
+<ul>
+<li>Product Integrity: Matt Brandt</li>
+<li>Product Manager: Sandy Sage</li>
+<li>Engineering Manager: Devin Reams</li>
+<li>Engineering Leads: Matthew Miller</li>
+</ul>
+<h2 id="purpose">Purpose</h2>
+<p>Test scope for Q3 and Q4 of the Lockbox Firefox extension. Q3 will take the project through the internal Alpha phase of the product to Q4 when the team will tune a product that we can ship as a limited Beta to external users via Test Pilot.</p>
+<h3 id="entry-criteria">Entry Criteria</h3>
+<ul>
+<li>QA has access to all PRDs, mocks, and related documents.</li>
+<li>A run script that installs the WebExtension for Firefox Nightly</li>
+<li>A compiled and signed extension for Firefox Beta and Release</li>
+<li>Staging and release channels</li>
+</ul>
+<h3 id="exit-criteria">Exit Criteria</h3>
+<ul>
+<li>All bugs against the features have been triaged</li>
+<li>All milestone features tagged as user stories and TxP have been resolved fixed and verified by Product Integrity</li>
+<li>Sign off criteria have been met</li>
+</ul>
+<h3 id="acceptance-criteria">Acceptance Criteria</h3>
+<p>This section broadly defines when the product is ready to ship</p>
+<ul>
+<li>QA has signed off</li>
+<li>Product confirms we are feature complete</li>
+<li>Engineering confirms we are feature complete</li>
+<li>a11y-review sign off</li>
+<li>Sec review completed and sign off</li>
+<li>All info is localized at least for a pre-defined set of locales</li>
+<li>All telemetry requirements are in place</li>
+<li>All the necessary PR and blog posts have been sent out</li>
+</ul>
+<h2 id="timelines-and-milestones">Timelines and Milestones</h2>
+<p>Alpha - estimated Q3 timeline</p>
+<ul>
+<li>July: lay the foundation for system add-on with embedded WebExtension development</li>
+<li>August: begin secure storage and front-end editor design and implementation</li>
+<li>September: finish editor and storage, package for release</li>
+</ul>
+<p>Beta - estimated Q4 timeline</p>
+<ul>
+<li>The team moves to 2 week sprints that include epics and user stories.</li>
+<li>Tracking of these user stories and associated features to take place in Github issues</li>
+<li>December: external "Beta" launch to public</li>
+</ul>
+<h2 id="testing-summary">Testing Summary</h2>
+<p>This section describes which components will be the focus of the test team.</p>
+<h3 id="in-scope">In Scope</h3>
+<ul>
+<li>Involvement standing up CI for unit test and integration testing</li>
+<li>Participate in code reviews</li>
+<li>Definition of user stories</li>
+<li>Authoring and executing manual test cases</li>
+<li>Authoring automated test cases, shared responsibility with the dev team</li>
+<li>Accessibility review</li>
+<li>Performance testing</li>
+</ul>
+<h3 id="out-of-scope">Out of Scope</h3>
+<ul>
+<li>Security testing<ul>
+<li>Internal - security group</li>
+<li>External - ekr and a published report</li>
+</ul>
+</li>
+<li>Testing for ESR</li>
+</ul>
+<h2 id="requirements-for-testing">Requirements for testing</h2>
+<h3 id="environments">Environments</h3>
+<h4 id="alpha-and-beta">Alpha and Beta</h4>
+<h5 id="lockbox-extension"><a href="https://github.com/mozilla-lockbox/lockbox-addon">Lockbox Extension</a></h5>
+<ul>
+<li>
+<p>Desktop - Windows 10, macOS [latest]</p>
+<ul>
+<li>Firefox</li>
+</ul>
+</li>
+</ul>
+<h5 id="lockbox-datastore"><a href="https://github.com/mozilla-lockbox/lockbox-datastore">Lockbox DataStore</a></h5>
+<ul>
+<li>Desktop</li>
+</ul>
+<h3 id="specifications">Specifications</h3>
+<ul>
+<li>Webextension (url)</li>
+<li>Datastore (url)</li>
+</ul>
+<h2 id="test-strategy">Test Strategy</h2>
+<h3 id="user-stories">User stories</h3>
+<p>In Q3 we ideated on a focal point for the team to begin work on, the below list are these high level stories.</p>
+<p>Future work will be tracked in github through <a href="https://github.com/mozilla-lockbox/lockbox-addon/issues?utf8=%E2%9C%93&amp;q=label%3Aepic%20">the use of epics</a> and their dependendent user stories.</p>
+<ul>
+<li>As a Firefox Account user, I can set it up in 5 clicks or less, and retrieve and fill my credentials in 3 clicks or less.</li>
+<li>As a security conscious user, I understand the value of the password manager, what it is going to do for me without making me feel overwhelmed. I'm notified of the password manager when I'm ready to make the most use of it, and I can set up and access my accounts as easily as writing them down in a document or notebook.</li>
+<li>When I log into websites and applications, I want to ensure my identity is protected, so only I can securely access my accounts with my identity.</li>
+<li>When I create a new account online I want to save the newly created credentials so I can quickly log in the next time I need access to that account.</li>
+<li>When I go to sign into an account, I want my account credentials to populate the form fields when available, and be accessible in one location when not.</li>
+<li>When I need to change my account credentials, I want to be able to access my credentials and update them with recovery options to restore previous account credentials.</li>
+<li>When I want to access my account on my mobile device, I want my account credentials accessible from when I saved them in the browser last, and vice versa, ideally without having to navigate to one location to then manually type in the credentials as viewable on screen.</li>
+</ul>
+<h3 id="builds">Builds</h3>
+<ul>
+<li>Currently builds are done on an as needed basis using the installation steps in the ReadMe and docs.</li>
+<li>Test Pilot build, signing and extension hosting pipeline for internal extension signing and distribution</li>
+</ul>
+<h3 id="testing-tools">Testing Tools</h3>
+<ul>
+<li>Test case creation - <a href="https://testrail.stage.mozaws.net/index.php?/projects/overview/51">TestRail</a></li>
+<li>Manual test case execution - <a href="https://testrail.stage.mozaws.net/index.php?/projects/overview/51">TestRail</a></li>
+<li>Bug management - <a href="https://github.com/mozilla-lockbox/lockbox-addon/issues">GitHub issues</a></li>
+<li>Test automation - FoxPuppet and Selenium</li>
+</ul>
+<h3 id="other-things">Other Things</h3>
+<ul>
+<li>Reverting to an older version of Firefox</li>
+<li>Commodity hardware that matches our target user segment</li>
+<li>Connectivity requirements &amp; user experience on a diverse range of networks</li>
+<li>Ensure keyboard only use of the application function (desktop only)</li>
+<li>Multi-stage workflows are logical and require as few interactions as possible.</li>
+<li>When appropriate provide indications of how far through the process the user is and how much further</li>
+<li>Avoidance of jargon and slang</li>
+<li>Important points and content are highlighted in some way</li>
+<li>User errors are clearly highlighted with help messages that suggest solutions</li>
+</ul>
+<h2 id="sign-off">Sign Off</h2>
+<h3 id="criteria">Criteria</h3>
+<ul>
+<li>
+<p>All test cases have been executed</p>
+</li>
+<li>
+<p>A sufficient level of automated test coverage has been achieved (measured by code coverage tools). Test coverage will also be measured against reduction of risk in the areas designated by the risk assessment plan.</p>
+</li>
+<li>
+<p>All blockers, criticals must be fixed and verified or have an agreed-upon timeline for being fixed (as determined by engineering/QA)</p>
+</li>
+</ul>
+<h3 id="checklist">Checklist</h3>
+<table>
+<thead>
+<tr>
+<th>Exit Criteria</th>
+<th>Owner</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Testing Prerequisites (specs, use cases)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Testing Infrastructure setup</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Test Plan Creation</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Test Cases Creation</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Full Functional Tests Execution</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Automation Coverage</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Performance Testing</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>All Defects Logged</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Critical/Blockers Fixed and Verified</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Product Team</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Engineering Team</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Metrics/Telemetry</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>A11y</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>l10n</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Security</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../test-plan-accessibility/" class="btn btn-neutral float-right" title="Test Plan - Accessibility">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../directory-structure/" class="btn btn-neutral" title="Directory Structure"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/mozilla-lockbox/lockbox-addon/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../directory-structure/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../test-plan-accessibility/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>

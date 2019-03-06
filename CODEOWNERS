@@ -1,0 +1,25 @@
+# lockbox-extension code owners
+# https://help.github.com/articles/about-codeowners/
+
+# test plans are maintained by PI
+/docs/developer/test-plan*  @mozilla-lockbox/product-integrity
+
+# metrics docs are maintained by Leif
+/docs/metrics.md            @irrationalagent 
+
+# tests and related config are maintained by engineering
+/test/                      @mozilla-lockbox/desktop-engineering
+
+# source code and all other docs are maintained by engineering
+/src/                       @mozilla-lockbox/desktop-engineering
+/docs/                      @mozilla-lockbox/desktop-engineering
+
+# release notes are maintained by the product owners
+/docs/release-notes.md      @mozilla-lockbox/product
+
+# include Flod for l10n string changes
+# @todo uncomment below after initial string freeze
+#src/locales/en-US/*.ftl    @flodolo
+
+# otherwise, everything is to be reviewed by the desktop team
+*                           @mozilla-lockbox/desktop-engineering

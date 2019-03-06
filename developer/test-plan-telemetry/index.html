@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Test Plan - Telemetry - Lockbox Extension</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Test Plan - Telemetry";
+    var mkdocs_page_input_path = "developer/test-plan-telemetry.md";
+    var mkdocs_page_url = "/developer/test-plan-telemetry/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Lockbox Extension</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Introduction</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../release-notes/">Release Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../contributing/">Contribute</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../metrics/">Telemetry and Metrics</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../SECURITY/">Mozilla Security</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Developer Guides</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../install/">Build and Install</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../releases/">Release Instructions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../directory-structure/">Directory Structure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../test-plan/">Test Plan</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../test-plan-accessibility/">Test Plan - Accessibility</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Test Plan - Telemetry</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#telemetry-test-plan-lockbox-extension">Telemetry Test Plan: Lockbox-extension</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#unit-tests">Unit tests</a></li>
+        
+            <li><a class="toctree-l4" href="#manual-tests">Manual tests</a></li>
+        
+            <li><a class="toctree-l4" href="#metrics-being-gathered">Metrics being gathered</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Lockbox Extension</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Developer Guides &raquo;</li>
+        
+      
+    
+    <li>Test Plan - Telemetry</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/mozilla-lockbox/lockbox-addon/edit/master/docs/developer/test-plan-telemetry.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="telemetry-test-plan-lockbox-extension">Telemetry Test Plan: Lockbox-extension</h1>
+<p>Given the importance the Lockbox team places on actionable user telemetry, ensuring confidence in the fidelity of that data is vital. Coverage aspects are broken into two distinct areas: test automation and manual testing.</p>
+<h2 id="unit-tests">Unit tests</h2>
+<p>When a new feature is developed or an additional user action needs to be recorded, the developer implementing the new telemetry event will add a unit test to ensure the action creates a ping.</p>
+<h2 id="manual-tests">Manual tests</h2>
+<h3 id="new-telemetry-events">New telemetry events</h3>
+<p>Once a new telemetry event is added to a feature and that event has a unit test, the telemetry ping will be manually inspected by either Leif Oines, Product Data Scientist or Product Integrity. The goal of this exercise it to ensure the new event and accompanying unit test are capturing the correct user behavior.</p>
+<h3 id="regression-testing">Regression testing</h3>
+<p>A small handful of smoke tests will manually be run prior to each release. Note, the team will rely on the underlying unit tests for comprehensive testing of event verification.</p>
+<p>Product Integrity will investigate options for automating these tests into the integration test suite. </p>
+<h2 id="metrics-being-gathered">Metrics being gathered</h2>
+<p>For a comprehensive list of metrics being gathered review the <a href="../../metrics/">Lockbox Telemetry Plan</a>.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../test-plan-accessibility/" class="btn btn-neutral" title="Test Plan - Accessibility"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/mozilla-lockbox/lockbox-addon/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../test-plan-accessibility/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>

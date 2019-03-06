@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Directory Structure - Lockbox Extension</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Directory Structure";
+    var mkdocs_page_input_path = "developer/directory-structure.md";
+    var mkdocs_page_url = "/developer/directory-structure/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Lockbox Extension</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Introduction</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../release-notes/">Release Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../contributing/">Contribute</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../metrics/">Telemetry and Metrics</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../SECURITY/">Mozilla Security</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Developer Guides</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../install/">Build and Install</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../releases/">Release Instructions</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Directory Structure</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#directory-structure">Directory Structure</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#docs">docs/</a></li>
+        
+            <li><a class="toctree-l4" href="#src">src/</a></li>
+        
+            <li><a class="toctree-l4" href="#test">test/</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../test-plan/">Test Plan</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../test-plan-accessibility/">Test Plan - Accessibility</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../test-plan-telemetry/">Test Plan - Telemetry</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Lockbox Extension</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Developer Guides &raquo;</li>
+        
+      
+    
+    <li>Directory Structure</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/mozilla-lockbox/lockbox-addon/edit/master/docs/developer/directory-structure.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="directory-structure">Directory Structure</h1>
+<p>The following provides a brief outline of the directory structure of this project.</p>
+<h2 id="docs"><code>docs/</code></h2>
+<p>Documentation that gets built and deploy to GitHub pages (you're reading it!).</p>
+<h2 id="src"><code>src/</code></h2>
+<p>This is where all of the source code for this project lives.</p>
+<h4 id="srcbackground"><code>src/background/</code></h4>
+<p>Any code meant to run in a background page lives here. For more information, see the <a href="https://github.com/mozilla-lockbox/lockbox-addon/blob/master/src/background/README.md"><code>README.md</code></a> in this directory.</p>
+<h4 id="srclist"><code>src/list/</code></h4>
+<p>Common code for all the list views in the extension, as well as the specific views themselves (in subdirectories). For more information, see the <a href="https://github.com/mozilla-lockbox/lockbox-addon/blob/master/src/list/README.md"><code>README.md</code></a> in this directory.</p>
+<h5 id="srclistmanage"><code>src/list/manage/</code></h5>
+<p>The full-tab management UI.</p>
+<h5 id="srclistpopup"><code>src/list/popup/</code></h5>
+<p>The "doorhanger" UI.</p>
+<h4 id="srclocales"><code>src/locales/</code></h4>
+<p>All the strings for each locale, in subdirectories with the locale name. For more information, see the <a href="https://github.com/mozilla-lockbox/lockbox-addon/blob/master/src/locales/README.md"><code>README.md</code></a> in this directory.</p>
+<h4 id="srcwidgets"><code>src/widgets/</code></h4>
+<p>All the common UI widgets used throughout the source. For more information, see the <a href="https://github.com/mozilla-lockbox/lockbox-addon/blob/master/src/widgets/README.md"><code>README.md</code></a> in this directory.</p>
+<h2 id="test"><code>test/</code></h2>
+<p>This is where all of the tests for this project live.</p>
+<h3 id="testintegration"><code>test/integration/</code></h3>
+<p>End-to-end integration tests operating on a compiled version of the add-on running in Firefox. These tests are written in Javascript using Mocha and <code>webextensions-geckodriver</code>.</p>
+<h3 id="testunit"><code>test/unit/</code></h3>
+<p>Unit tests testing individual components of the source code. These are writen in Javascript using Mocha/Chai and run via Karma. The subdirectories of this directory match the subdirectories of <code>src/webextension</code>.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../test-plan/" class="btn btn-neutral float-right" title="Test Plan">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../releases/" class="btn btn-neutral" title="Release Instructions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/mozilla-lockbox/lockbox-addon/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../releases/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../test-plan/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>

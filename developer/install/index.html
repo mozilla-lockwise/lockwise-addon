@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Build and Install - Lockbox Extension</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Build and Install";
+    var mkdocs_page_input_path = "developer/install.md";
+    var mkdocs_page_url = "/developer/install/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Lockbox Extension</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Introduction</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../release-notes/">Release Notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../contributing/">Contribute</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../metrics/">Telemetry and Metrics</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../SECURITY/">Mozilla Security</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Developer Guides</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <a class="current" href="./">Build and Install</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#installing-the-lockbox-addon">Installing the Lockbox Addon</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#installing-dependencies">Installing dependencies</a></li>
+        
+            <li><a class="toctree-l4" href="#building-the-source-code">Building the source code</a></li>
+        
+            <li><a class="toctree-l4" href="#building-the-extension">Building the extension</a></li>
+        
+            <li><a class="toctree-l4" href="#running-the-extension">Running the extension</a></li>
+        
+            <li><a class="toctree-l4" href="#running-the-extension-with-a-persistent-profile">Running the extension with a persistent profile</a></li>
+        
+            <li><a class="toctree-l4" href="#setting-npm-run-flags">Setting npm run flags</a></li>
+        
+            <li><a class="toctree-l4" href="#running-the-extension-with-file-watchers">Running the extension with file watchers</a></li>
+        
+            <li><a class="toctree-l4" href="#testing-the-extension">Testing the extension</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../releases/">Release Instructions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../directory-structure/">Directory Structure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../test-plan/">Test Plan</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../test-plan-accessibility/">Test Plan - Accessibility</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../test-plan-telemetry/">Test Plan - Telemetry</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Lockbox Extension</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Developer Guides &raquo;</li>
+        
+      
+    
+    <li>Build and Install</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/mozilla-lockbox/lockbox-addon/edit/master/docs/developer/install.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="installing-the-lockbox-addon">Installing the Lockbox Addon</h1>
+<h2 id="installing-dependencies">Installing dependencies</h2>
+<p>To <strong>install the project dependencies</strong>, you can run:</p>
+<pre><code class="sh">npm install
+</code></pre>
+
+<h2 id="building-the-source-code">Building the source code</h2>
+<p>To <strong>build the project</strong>, you can run:</p>
+<pre><code class="sh">npm run build
+</code></pre>
+
+<p>This puts all the necessary files in the <code>dist/</code> directory, which you can then
+temporarily load into Firefox (e.g. <code>about:debugging</code>).</p>
+<h2 id="building-the-extension">Building the extension</h2>
+<p>To <strong>build an extension .zip</strong>, you can run:</p>
+<pre><code class="sh">npm run package
+</code></pre>
+
+<p>This puts the addon bundle in the <code>addons/</code> directory.</p>
+<p>:warning: The resulting add-on is unsigned and likely won't work on release
+versions of Firefox. You can flip the <code>xpinstall.signatures.required</code> preference
+on other channels accordingly.</p>
+<h2 id="running-the-extension">Running the extension</h2>
+<p>To <strong>run the extension</strong> in Firefox, you can run:</p>
+<pre><code class="sh">npm run run -- -f nightly
+</code></pre>
+
+<p>This will automatically create a fresh new user profile that will not persist
+between runs. This means the data will be lost every time.</p>
+<h2 id="running-the-extension-with-a-persistent-profile">Running the extension with a persistent profile</h2>
+<p>To <strong>run the extension with a profile that persists</strong> between runs, you can
+create a new profile by browsing to <code>about:profiles</code>.</p>
+<p>Once you have a new profile created (no matter the location), you can tell jpm
+(via npm) to run using that profile <em>and</em> not to copy the profile temporarily
+so that any changes (e.g. adding new entries) will be saved:</p>
+<pre><code class="sh">npm run run -- -p PROFILE --keep-profile-changes
+</code></pre>
+
+<p>The PROFILE value may be a profile name or the path to the profile.</p>
+<p>Now, when you run using this profile, any data or settings you make to the
+browser itself or in Lockbox will be available for future runs.</p>
+<h2 id="setting-npm-run-flags">Setting npm run flags</h2>
+<p>To specify flags for <code>run</code> to use regularly, use <code>npm config set webext_runflags</code>:</p>
+<pre><code class="sh">npm config set webext_runflags=&quot;-f nightly -p PROFILE --keep-profile-changes&quot;
+</code></pre>
+
+<p>This way if you want to always test locally using an existing profile (with
+example data) using Firefox Nightly, you can just run (without adding flags):</p>
+<pre><code class="sh">npm run run
+</code></pre>
+
+<h2 id="running-the-extension-with-file-watchers">Running the extension with file watchers</h2>
+<p>To <strong>run the extension with reloading on file change</strong>:</p>
+<pre><code class="sh">npm run watch
+</code></pre>
+
+<p>This command will run the extension in Firefox. Additionally, it will start
+watch processes that will do the following on any file change:</p>
+<ul>
+<li>run JS and CSS linting</li>
+<li>rebuild the extension</li>
+<li>reload the extension in the browser</li>
+</ul>
+<p>Note that you will need to set <code>webext_runflags</code> to specify flags for running
+Firefox, as this command does not accept any options.</p>
+<h2 id="testing-the-extension">Testing the extension</h2>
+<p>There are two forms of autmomated testing present: unit (test individual classes as much in isolation to everything else -- including the browser internals) and integration.</p>
+<p>To run the unit tests, you can run:</p>
+<pre><code class="sh">npm run test
+</code></pre>
+
+<p>or simply</p>
+<pre><code class="sh">npm test
+</code></pre>
+
+<p>This runs tests using Firefox, but wholly as "web content" (what most web pages are).</p>
+<p>To run the integration tests, you can run:</p>
+<pre><code class="sh">npm run integration
+</code></pre>
+
+<p>This drives Firefox via Selenium, driving an instance of Firefox with this addon installed.</p>
+<p>By default, it searches for which Firefox by searching for one of the following channels (in this order):</p>
+<ul>
+<li>Nightly</li>
+<li>Aurora (Selenium's codename for Developer Edition)</li>
+<li>Beta</li>
+<li>Release</li>
+</ul>
+<p>You can tell it which Firefox to use by setting the <code>LOCKBOX_FIREFOX_BINARY</code> environment variable -- either as one of the channel names or the full path to the <code>firefox</code> binary:</p>
+<pre><code class="sh">LOCKBOX_FIREFOX_BINARY=beta npm run integration
+</code></pre>
+
+<p>By default, the integration tests are <strong>NOT</strong> run in headless mode -- each test will result in a Firefox window opening when it starts and closing when it ends.  You can run the integration tests in headless mode by setting the <code>LOCKBOX_FIREFOX_HEADLESS</code> environment variable to <code>1</code>:</p>
+<pre><code class="sh">LOCKBOX_FIREFOX_HEADLESS=1 npm run integration
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../releases/" class="btn btn-neutral float-right" title="Release Instructions">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../SECURITY/" class="btn btn-neutral" title="Mozilla Security"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/mozilla-lockbox/lockbox-addon/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../../SECURITY/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../releases/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>
