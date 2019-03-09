@@ -175,28 +175,6 @@ describe("list > manage > telemetryLogger middleware", () => {
       extra: undefined,
     });
   });
-  it("record telemetry for sending feedback", async () => {
-    telemetryLogger(store)(next)({
-      type: actions.SEND_FEEDBACK,
-    });
-    expect(listener).to.have.been.calledWith({
-      type: "telemetry_event",
-      method: "feedbackClick",
-      object: "manage",
-      extra: undefined,
-    });
-  });
-  it("record telemetry for sending feedback", async () => {
-    telemetryLogger(store)(next)({
-      type: actions.OPEN_FAQ,
-    });
-    expect(listener).to.have.been.calledWith({
-      type: "telemetry_event",
-      method: "faqClick",
-      object: "manage",
-      extra: undefined,
-    });
-  });
   it("don't record telemetry for a selected item missing", async () => {
     telemetryLogger(store)(next)({
       type: actions.SELECT_ITEM_COMPLETED,

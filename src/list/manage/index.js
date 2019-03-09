@@ -10,7 +10,7 @@ import thunk from "redux-thunk";
 
 import AppLocalizationProvider from "../../l10n";
 import App from "./components/app";
-import { listItems } from "../actions";
+import { listItems, getProfile } from "../actions";
 import reducer from "./reducers";
 import initializeMessagePorts from "../message-ports";
 import * as telemetry from "../../telemetry";
@@ -21,6 +21,7 @@ const store = createStore(reducer, undefined, applyMiddleware(
 ));
 store.dispatch(listItems());
 initializeMessagePorts(store);
+store.dispatch(getProfile());
 
 telemetry.recordEvent("render", "manage");
 

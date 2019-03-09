@@ -43,3 +43,13 @@ export function flattenItem(item) {
     password: item.entry.password,
   };
 }
+
+export const openWebsite = (url, closeWindow = true) => {
+  browser.runtime.sendMessage({
+    type: "open_site",
+    url,
+  });
+  if (closeWindow) {
+    window.close();
+  }
+};

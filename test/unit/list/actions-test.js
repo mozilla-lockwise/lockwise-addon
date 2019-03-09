@@ -5,7 +5,6 @@
 import chai, { expect } from "chai";
 import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
-import sinon from "sinon";
 import sinonChai from "sinon-chai";
 
 import "test/unit/mocks/browser";
@@ -362,25 +361,5 @@ describe("list > actions", () => {
     expect(store.getActions()).to.deep.equal([
       { type: actions.HIDE_MODAL },
     ]);
-  });
-
-  it("sendFeedback() dispatched", () => {
-    const windowOpen = sinon.stub(window, "open");
-    store.dispatch(actions.sendFeedback());
-    expect(windowOpen).to.have.callCount(1);
-    expect(store.getActions()).to.deep.equal([
-      { type: actions.SEND_FEEDBACK },
-    ]);
-    windowOpen.restore();
-  });
-
-  it("openFAQ() dispatched", () => {
-    const windowOpen = sinon.stub(window, "open");
-    store.dispatch(actions.openFAQ());
-    expect(windowOpen).to.have.callCount(1);
-    expect(store.getActions()).to.deep.equal([
-      { type: actions.OPEN_FAQ },
-    ]);
-    windowOpen.restore();
   });
 });

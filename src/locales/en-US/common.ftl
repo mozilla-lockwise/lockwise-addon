@@ -12,3 +12,19 @@ product-tagline = The simple way to store, retrieve and manage website login inf
 
 product-action-signin = Sign In
 product-action-prefs = Preferences
+
+header-logins-button =
+  Logins
+header-monitor-button =
+  Monitor
+
+profile-menu-account =
+  Account
+profile-menu-sign-in =
+  Sign in to Sync
+profile-menu-connect =
+  Connect a Device
+profile-menu-faq =
+  FAQ
+profile-menu-feedback =
+  Provide Feedback

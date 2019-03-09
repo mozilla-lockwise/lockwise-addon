@@ -216,5 +216,9 @@ window.browser = {
       onRemoved: new MockListener(),
       onAllRemoved: new MockListener(),
     },
+    sync: {
+      async getUserProfileInfo() { },
+      onUserProfileChanged: new MockListener(),
+    },
   },
 };

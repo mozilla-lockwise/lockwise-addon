@@ -5,6 +5,11 @@
 // Keep these in sync with <src/list/reducers.js>.
 
 export const initialState = {
+  app: {
+    selectedTab: "logins",
+    profile: null,
+    hasProfile: false,
+  },
   cache: {
     items: [],
     currentItem: null,
@@ -28,6 +33,11 @@ export const initialState = {
 };
 
 export const filledState = {
+  app: {
+    selectedTab: "logins",
+    profile: null,
+    hasProfile: false,
+  },
   cache: {
     items: [
       {id: "0", title: "title 0", username: "username 0",

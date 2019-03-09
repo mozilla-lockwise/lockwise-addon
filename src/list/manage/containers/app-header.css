@@ -1,0 +1,138 @@
+.app-header {
+  height: 55px;
+  flex-direction: row;
+  background-color: #ededf0;
+  border-bottom: 1px solid #d7d7db;
+}
+.app-header-title {
+  line-height: 55px;
+  margin: 0;
+  padding: 0;
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: -0.2px;
+  text-align: center;
+  color: var(--charcoal-grey);
+}
+.app-header-title b {
+  font-weight: 600;
+}
+.app-header-menu-tabs {
+  position: absolute;
+  height: 56px;
+  top: 0px;
+  left: 0;
+}
+.app-header-menu-tabs ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+}
+.app-header-menu-tabs button {
+  display: block;
+  width: 131px;
+  border: none;
+  background: transparent;
+  height: 56px;
+  text-transform: uppercase;
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  color: #0c0c0d;  
+  cursor: pointer;
+}
+.app-header-menu-tab-selected button {
+  font-weight: bold;
+  background: #fff;
+  border-left: solid 1px #d7d7db;
+  border-right: solid 1px #d7d7db;
+}
+.app-header-profile-status {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.app-header-profile-status button {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 55px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #38383d;
+}
+.app-header-profile-status button span {
+  padding: 0 7px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: normal;
+}
+.app-header-profile-status button img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: solid 1px #b1b1b3;
+}
+/* HACK via https://leaverou.github.io/bubbly/ */
+.app-header-profile-menu:after {
+  content: ''; 
+  position: absolute; 
+  top: 0; 
+  right: 14px; 
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-bottom-color: #fff;
+  border-top: 0;
+  margin-left: -10px;
+  margin-top: -8px;
+}
+.app-header-profile-menu {
+  position: absolute;
+  top: 51px;
+  right: 12px;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), inset 0 0.5px 0 0 #ffffff;
+  border: solid 0.5px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  background-color: #ffffff;
+}
+.app-header-profile-menu ul {
+  margin: 0;
+  padding: 8px 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+.app-header-profile-menu button {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: 16px 10px;
+  width: 100%;
+  text-align: left;
+  height: 36px;
+  padding: 0 16px 0 40px;
+  border: none;
+  cursor: pointer;
+}
+.app-header-profile-menu button:hover {
+  background-color: #ededf0;
+}
+.menu-sign-in {
+  background-image: url(/icons/icon-sync.svg);
+}
+.menu-account {
+  background-image: url(/icons/icon-account.svg);
+}
+.menu-connect {
+  background-image: url(/icons/icon-mobile.svg);
+}
+.menu-faq {
+  background-image: url(/icons/icon-faq.svg);
+}
+.menu-feedback {
+  background-image: url(/icons/icon-feedback.svg);
+}
