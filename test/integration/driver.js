@@ -31,6 +31,7 @@ export class WebExtensionDriver {
       binary: env[ENV_BINARY] || undefined,
       headless: env[ENV_HEADLESS] || undefined,
     };
+
     this.options = {
       ...envOpts,
       ...opts };
@@ -97,7 +98,7 @@ export class WebExtensionDriver {
     // locate Firefox ...
     let fxBinary;
     if (this.options.binary) {
-      fxBinary = firefox.Channel[this.options.binary.toUpperCase()] || fxBinary;
+      fxBinary = firefox.Channel[this.options.binary.toUpperCase()] || this.options.binary;
     } else {
       let choices = [
         firefox.Channel.NIGHTLY,
