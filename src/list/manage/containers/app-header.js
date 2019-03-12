@@ -7,7 +7,7 @@ import { Localized } from "fluent-react";
 import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
-import { openWebsite } from "../../common";
+import { openWebsite, openSyncPrefs } from "../../common";
 import { classNames } from "../../../common";
 import {
   selectTabLogins,
@@ -235,11 +235,7 @@ export default connect(
     onClickMenuConnect: () => {
       // TODO: Issue TBD
     },
-    onClickMenuAccount: () => {
-      // TODO: Issue #92 / Issue #61
-    },
-    onClickMenuSignIn: () => {
-      // TODO: Issue #92 / Issue #61
-    },
+    onClickMenuAccount: () => openSyncPrefs(),
+    onClickMenuSignIn: () => openSyncPrefs(),
   })
 )(AppHeader);
