@@ -54,6 +54,10 @@ describe("sync API", () => {
     return output;
   };
 
+  const openSyncPrefs = async () => {
+    await clickButton("open-sync-prefs");
+  };
+
   // Force an update of the UIState. This method exists on the UIState API to
   // aid with rapid state transitions during testing.
   const refreshUIState = async () => {
@@ -253,6 +257,32 @@ describe("sync API", () => {
       await refreshUIState();
       result = await getPasswordsPref();
       expect(JSON.parse(result)).to.be.true;
+    });
+  });
+
+  describe("browser.expermients.sync.openPreferences", () => {
+    it("should open FxA/sync preference page when not configured", async () => {
+      await setNotConfigured();
+      await loadTestPage();
+      await openSyncPrefs();
+
+      // TODO: verify page opened ...
+    });
+
+    it("should open FxA/sync preference page when signed-in", async () => {
+      await setLoggedIn();
+      await loadTestPage();
+      await openSyncPrefs();
+
+      // TODO: verify page opened ...
+    });
+
+    it("should open FxA/sync prefeerence page when there's a problem", async () => {
+      await setLoginFailed();
+      await loadTestPage();
+      await openSyncPrefs();
+
+      // TODO: verify page opened ...
     });
   });
 

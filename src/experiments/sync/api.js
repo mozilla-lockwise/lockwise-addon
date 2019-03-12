@@ -58,6 +58,10 @@ this.sync = class extends ExtensionAPI {
             const profileInfo = await getProfileInfo();
             return profileInfo;
           },
+          async openPreferences(entrypoint) {
+            const win = Services.wm.getMostRecentWindow("navigator:browser");
+            win.openPreferences("paneSync", { urlParams: { entrypoint } });
+          },
           onUserProfileChanged: new EventManager(context, "sync.onUserProfileChanged", async (fire) => {
             let oldValue = await getProfileInfo();
             const callback = (value) => {

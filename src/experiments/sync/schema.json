@@ -88,6 +88,17 @@
         "description": "Returns a Promise that resolves to the UserProfileInfo, if the user is logged in, or null otherwise.",
         "async": true,
         "parameters": []
+      },
+      {
+        "name": "openPreferences",
+        "type": "function",
+        "description": "Opens the Profile/Sync management page.",
+        "async": true,
+        "parameters": [{
+          "name": "entrypoint",
+          "type": "string",
+          "description": "The name of the entrypoint into the management page; e.g., the caller"
+        }]
       }
     ]
   }
