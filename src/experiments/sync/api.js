@@ -16,14 +16,14 @@ ChromeUtils.defineModuleGetter(this, "UIState",
 ChromeUtils.defineModuleGetter(this, "ObjectUtils",
                                "resource://gre/modules/ObjectUtils.jsm");
 
+// STATUS_LOGIN_FAILED means the password was changed on another device, and the
+// user needs to log in again.
+// STATUS_NOT_VERIFIED means the user has logged in with an unverified email.
+// In both cases, the user needs to take action elsewhere in Firefox.
+const FxAErrors = [UIState.STATUS_LOGIN_FAILED, UIState.STATUS_NOT_VERIFIED];
+
 const getProfileInfo = async () => {
   const uiState = UIState.get();
-  // STATUS_LOGIN_FAILED means the password was changed on another device, and the
-  // user needs to log in again.
-  // STATUS_NOT_VERIFIED means the user has logged in with an unverified email.
-  // In both cases, the user needs to take action elsewhere in Firefox.
-  const errors = [UIState.STATUS_LOGIN_FAILED, UIState.STATUS_NOT_VERIFIED];
-
   let profileInfo;
 
   // STATUS_NOT_CONFIGURED means the user is not logged in.
@@ -31,7 +31,7 @@ const getProfileInfo = async () => {
     profileInfo = null;
   } else { // UIState.STATUS_SIGNED_IN, the user is logged in and verified.
     const fxa = await UIState._internal.fxAccounts.getSignedInUser();
-    const isErrorStatus = errors.includes(uiState.status);
+    const isErrorStatus = FxAErrors.includes(uiState.status);
 
     profileInfo = {
       id: fxa && fxa.uid,
@@ -43,6 +43,16 @@ const getProfileInfo = async () => {
   }
 
   return profileInfo;
+};
+
+const openPrefs = async (origin, entrypoint) => {
+  const win = Services.wm.getMostRecentWindow("navigator:browser");
+
+  win.openPreferences("paneSync", { origin, urlParams: { entrypoint } });
+};
+const openSignIn = async (entrypoint) => {
+  // TODO: be smarter like browser?
+  return openPrefs("fxaError", entrypoint);
 };
 
 this.sync = class extends ExtensionAPI {
@@ -57,6 +67,21 @@ this.sync = class extends ExtensionAPI {
           async getUserProfileInfo() {
             const profileInfo = await getProfileInfo();
             return profileInfo;
+          },
+
+          async openPreferences(entrypoint) {
+            const uiState = UIState.get();
+
+            switch (uiState.status) {
+              case UIState.STATUS_SIGNED_IN:
+                return openPrefs("fxaSignedin", entrypoint);
+              case UIState.STATUS_NOT_VERIFIED:
+                return openPrefs("fxaError", entrypoint);
+              case UIState.STATUS_LOGIN_FAILED:
+                return openSignIn(entrypoint);
+            }
+
+            return openPrefs("fxa", entrypoint);
           },
           onUserProfileChanged: new EventManager(context, "sync.onUserProfileChanged", async (fire) => {
             let oldValue = await getProfileInfo();

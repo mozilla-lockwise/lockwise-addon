@@ -11,7 +11,7 @@ import chaiAsPromised from "chai-as-promised";
 chai.use(chaiAsPromised);
 
 describe("sync API", () => {
-  let webext, driver, webdriver, By, until;
+  let webext, driver, testpage, webdriver, By, until;
 
   const clickButton = async (id) => {
     await webext.inContent();
@@ -30,6 +30,7 @@ describe("sync API", () => {
   const loadTestPage = async () => {
     await webext.inContent();
     await driver.get(webext.url("/test/integration/test-pages/sync-api.html"));
+    testpage = await driver.getWindowHandle();
   };
 
 
@@ -52,6 +53,29 @@ describe("sync API", () => {
     await clickButton("check-passwords-pref");
     const output = await getResults("check-passwords-pref-results");
     return output;
+  };
+
+  const openSyncPrefs = async () => {
+    await clickButton("open-sync-prefs");
+  };
+
+  const findAndCloseSyncPrefs = async () => {
+    await webext.inContent();
+    let found = false;
+
+    let handles = await driver.getAllWindowHandles();
+    for (let h of handles) {
+      await driver.switchTo().window(h);
+      const url = await driver.getCurrentUrl();
+      if (url.startsWith("about:preferences") && url.endsWith("#sync")) {
+        found = true;
+        await driver.close();
+      }
+    }
+
+    await driver.switchTo().window(testpage);
+
+    return found;
   };
 
   // Force an update of the UIState. This method exists on the UIState API to
@@ -256,7 +280,40 @@ describe("sync API", () => {
     });
   });
 
+  describe("browser.experiments.sync.openPreferences", () => {
+    beforeEach(async () => {
+    });
+
+    it("should open FxA/sync preference page when not configured", async () => {
+      await setNotConfigured();
+      await loadTestPage();
+      await openSyncPrefs();
+      const found = await findAndCloseSyncPrefs();
+      expect(found).to.equal(true);
+    });
+
+    it("should open FxA/sync preference page when signed-in", async () => {
+      await setLoggedIn();
+      await loadTestPage();
+      await openSyncPrefs();
+      const found = await findAndCloseSyncPrefs();
+      expect(found).to.equal(true);
+    });
+
+    it("should open FxA/sync preference page when there's a problem", async () => {
+      await setLoginFailed();
+      await loadTestPage();
+      await openSyncPrefs();
+      const found = await findAndCloseSyncPrefs();
+      expect(found).to.equal(true);
+    });
+  });
+
   describe("browser.experiments.sync.getUserProfileInfo", () => {
+    beforeEach(async () => {
+      await webext.inContent();
+    });
+
     it("should return null if the user is not logged in", async () => {
       await setNotConfigured();
       await loadTestPage();

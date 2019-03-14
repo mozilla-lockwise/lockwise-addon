@@ -218,6 +218,7 @@ window.browser = {
     },
     sync: {
       async getUserProfileInfo() { },
+      async openPreferences() { },
       onUserProfileChanged: new MockListener(),
     },
   },

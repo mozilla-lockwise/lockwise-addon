@@ -53,3 +53,7 @@ export const openWebsite = (url, closeWindow = true) => {
     window.close();
   }
 };
+
+export const openSyncPrefs = () => {
+  browser.experiments.sync.openPreferences("lockbox-addon");
+};
