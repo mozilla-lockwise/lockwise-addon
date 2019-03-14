@@ -18,7 +18,7 @@ const dateOptions = {year: "numeric", month: "long", day: "numeric" };
 
 // Note: ItemDetails doesn't directly interact with items from the Lockbox
 // datastore. For that, please consult <../containers/current-item.js>.
-export default function ItemDetails({fields, onCopy, onEdit, onDelete}) {
+export default function ItemDetails({fields, onCopy, onEdit, onDelete, onReveal}) {
   const created = new Date(fields.timeCreated).toLocaleDateString(LOCALE, dateOptions);
   const modified = new Date(fields.timePasswordChanged).toLocaleDateString(LOCALE, dateOptions);
   const lastUsed = new Date(fields.timeLastUsed).toLocaleDateString(LOCALE, dateOptions);
@@ -41,7 +41,7 @@ export default function ItemDetails({fields, onCopy, onEdit, onDelete}) {
         </Toolbar>
       </header>
 
-      <ItemFields fields={fields} onCopy={onCopy} />
+      <ItemFields fields={fields} onCopy={onCopy} onReveal={onReveal} />
 
       <div className={styles.metadata}>
         <hr/>
@@ -69,4 +69,5 @@ ItemDetails.propTypes = {
   onCopy: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
+  onReveal: PropTypes.func.isRequired,
 };

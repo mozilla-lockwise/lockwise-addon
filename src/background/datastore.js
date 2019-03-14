@@ -5,7 +5,6 @@
 import UUID from "uuid";
 
 import { broadcast } from "./message-ports";
-import telemetry from "./telemetry";
 
 export function convertInfo2Item(info) {
   let title;
@@ -92,19 +91,6 @@ export function convertItem2Info(item) {
   return info;
 }
 
-async function recordMetric(method, itemid, fields) {
-  let extra = {
-    itemid,
-  };
-  if (fields) {
-    extra = {
-      ...extra,
-      fields,
-    };
-  }
-  telemetry.recordEvent(method, "datastore", extra);
-}
-
 class DataStore {
   constructor() {
     this._all = {};
@@ -170,7 +156,6 @@ class DataStore {
     await browser.experiments.logins.add(added);
 
     added = convertInfo2Item(added);
-    recordMetric("added", added.id);
 
     return added;
   }
@@ -193,7 +178,6 @@ class DataStore {
     await browser.experiments.logins.update(updated);
 
     updated = convertInfo2Item(updated);
-    recordMetric("updated", item.id);
 
     return updated;
   }
@@ -201,7 +185,6 @@ class DataStore {
     const item = await this.get(id);
     if (item) {
       await browser.experiments.logins.remove(item.id);
-      recordMetric("deleted", item.id);
     }
     return item || null;
   }

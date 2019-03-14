@@ -191,7 +191,7 @@ window.browser = {
 
   telemetry: {
     registerEvents(category, events) {},
-    recordEvent(category, method, object, value, extra) {},
+    recordEvent({ method, object, value, extra }) {},
 
     registerScalars(category, scalars) {},
     scalarSet(name, value) {},
@@ -220,6 +220,11 @@ window.browser = {
       async getUserProfileInfo() { },
       async openPreferences() { },
       onUserProfileChanged: new MockListener(),
+    },
+    temptelemetry: {
+      async recordEvent() {},
+      async shouldUseEmbedded() {},
+      async setTestPlatformVersion() {},
     },
   },
 };

@@ -18,51 +18,31 @@ import { PromoteDeviceBanner, PromoteFxABanner } from "src/list/manage/component
 
 describe("list > manage > components > promotion banners", () => {
   describe("<PromoteDeviceBanner />", () => {
-    let wrapper;
-    let mockSendMessage;
-
-    beforeEach(() => {
-      wrapper = mountWithL10n(
-        <PromoteDeviceBanner />
-      );
-      mockSendMessage = sinon.stub(browser.runtime, "sendMessage").resolves({});
-    });
-
-    afterEach(() => {
-      mockSendMessage.restore();
-    });
-
     it("calls openWebsite", () => {
+      let mockOnAction = sinon.stub();
+      let wrapper = mountWithL10n(
+        <PromoteDeviceBanner onAction={mockOnAction} />
+      );
+
       const button = wrapper.find("button");
       button.simulate("click");
 
-      expect(mockSendMessage).to.have.been.calledWith({
-        type: "open_site",
-        url: "https://lockbox.firefox.com",
-      });
+      expect(mockOnAction).to.have.been.called;
     });
   });
 
   describe("<PromoteFxABanner />", () => {
-    let wrapper;
-    let mockOpenPrefs;
-
-    beforeEach(() => {
-      wrapper = mountWithL10n(
-        <PromoteFxABanner />
-      );
-      mockOpenPrefs = sinon.stub(browser.experiments.sync, "openPreferences").resolves({});
-    });
-
-    afterEach(() => {
-      mockOpenPrefs.restore();
-    });
-
     it("calls openWebsite", () => {
+
+      let mockOnAction = sinon.stub();
+      let wrapper = mountWithL10n(
+        <PromoteFxABanner onAction={mockOnAction} />
+      );
+
       const button = wrapper.find("button");
       button.simulate("click");
 
-      expect(mockOpenPrefs).to.have.been.calledWith("lockbox-addon");
+      expect(mockOnAction).to.have.been.called;
     });
   });
 });

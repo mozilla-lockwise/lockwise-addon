@@ -26,3 +26,4 @@ _(Optional: to clearly demonstrate the feature or fix to help with testing and r
 - [ ] request the "UX" team perform a design review (if/when applicable)
 - [ ] make sure CI builds are passing (e.g.: fix lint and other errors)
 - [ ] check on the [accessibility](https://mozilla-lockbox.github.io/lockbox-addon/developer/test-plan-accessibility/) of any added UI
+- [ ] make sure any new UI has telemetry events wired up and documented in docs/metrics.md, and verify that the events are recording properly (visit `about:telemetry#events-tab`, then choose 'dynamic' from the dropdown menu at top right, to view events fired by the addon

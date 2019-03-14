@@ -16,7 +16,7 @@ chai.use(chaiFocus);
 describe("widgets > <PasswordInput/>", () => {
   it("render input", () => {
     const wrapper = mountWithL10n(
-      <PasswordInput value="my password" onChange={() => {}}/>
+      <PasswordInput value="my password" onReveal={() => {}} onChange={() => {}}/>
     );
     expect(wrapper.find("input")).to.have.prop("value", "my password");
     expect(wrapper.childAt(0).prop("className")).to.match(
@@ -29,7 +29,7 @@ describe("widgets > <PasswordInput/>", () => {
 
   it("merge classNames", () => {
     const wrapper = mountWithL10n(
-      <PasswordInput className="foo" value="some text" onChange={() => {}}/>
+      <PasswordInput className="foo" value="some text" onReveal={() => {}} onChange={() => {}}/>
     );
     expect(wrapper.childAt(0).prop("className")).to.match(
       /^\S+password\S+ \S+input-wrapper\S+ foo$/
@@ -38,14 +38,14 @@ describe("widgets > <PasswordInput/>", () => {
 
   it("non-monospace", () => {
     const wrapper = mountWithL10n(
-      <PasswordInput monospace={false} value="my password" onChange={() => {}}/>
+      <PasswordInput monospace={false} value="my password" onReveal={() => {}} onChange={() => {}}/>
     );
     expect(wrapper.find("input")).to.have.prop("className", "");
   });
 
   it("show/hide button toggles password visibility", async () => {
     const wrapper = mountWithL10n(
-      <PasswordInput value="password" onChange={() => {}}/>
+      <PasswordInput value="password" onReveal={() => {}} onChange={() => {}}/>
     );
     expect(wrapper.find("input")).to.have.prop("type", "password");
 
@@ -58,7 +58,7 @@ describe("widgets > <PasswordInput/>", () => {
 
   it("focus() focuses input", () => {
     const wrapper = mountWithL10nIntoDOM(
-      <PasswordInput value="password" onChange={() => {}}/>
+      <PasswordInput value="password" onReveal={() => {}} onChange={() => {}}/>
     );
     wrapper.instance().focus();
     expect(wrapper.find("input")).to.be.focused();

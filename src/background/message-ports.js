@@ -36,7 +36,7 @@ export default function initializeMessagePorts() {
     case "list_items":
       return openDataStore().then(async (ds) => {
         const entries = (await ds.list()).map(makeItemSummary);
-        telemetry.scalarSet("datastoreCount", entries.length);
+        telemetry.scalarSet({ name: "loginCount", value: entries.length });
         return { items: entries };
       });
     case "get_item":
@@ -58,18 +58,20 @@ export default function initializeMessagePorts() {
         await ds.remove(message.id);
         return {};
       });
-
     case "telemetry_event":
-        telemetry.recordEvent(message.method, message.object, message.extra);
+      telemetry.recordEvent(message.data);
       return {};
     case "telemetry_scalar":
-        telemetry.scalarSet(message.name, message.value);
-        return {};
+      telemetry.scalarSet({ name: message.name, value: message.value });
+      return {};
+    case "telemetry_add":
+      telemetry.scalarAdd({ name: message.name, value: message.value });
+      return {};
     case "copied_field":
-        await clipboard.copyToClipboard(message.field, message.toCopy);
-        return {};
+      await clipboard.copyToClipboard(message.field, message.toCopy);
+      return {};
     case "get_profile":
-        return getProfileInfo();
+      return getProfileInfo();
     default:
       return null;
     }

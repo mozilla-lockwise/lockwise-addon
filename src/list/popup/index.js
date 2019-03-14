@@ -13,7 +13,6 @@ import App from "./components/app";
 import { filterItems, listItems, getProfile } from "../actions";
 import reducer from "./reducers";
 import initializeMessagePorts from "../message-ports";
-import * as telemetry from "../../telemetry";
 import telemetryLogger from "./telemetry";
 
 const store = createStore(reducer, undefined, applyMiddleware(
@@ -33,8 +32,6 @@ browser.tabs.query({ active: true, currentWindow: true }).then((result) => {
 store.dispatch(listItems());
 initializeMessagePorts(store);
 store.dispatch(getProfile());
-
-telemetry.recordEvent("render", "doorhanger");
 
 ReactDOM.render(
   <Provider store={store}>

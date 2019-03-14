@@ -287,14 +287,17 @@ describe("list > actions", () => {
       return null;
     });
 
-    await store.dispatch(actions.copiedField("field", "toCopy"));
+    const item = { id: "1" };
+
+    await store.dispatch(actions.copiedField("field", "toCopy", item));
     const dispatched = store.getActions();
     expect(dispatched).to.deep.equal([
       { type: actions.COPIED_FIELD_STARTING,
         actionId: dispatched[0].actionId },
       { type: actions.COPIED_FIELD_COMPLETED,
         actionId: dispatched[0].actionId,
-        field: "field" },
+        field: "field",
+        item },
     ]);
   });
 
@@ -362,4 +365,13 @@ describe("list > actions", () => {
       { type: actions.HIDE_MODAL },
     ]);
   });
+
+  it("openSyncPrefs() dispatched", () => {
+    store.dispatch(actions.openSyncPrefs("accountSettings"));
+    expect(store.getActions()).to.deep.equal([
+      { type: actions.OPEN_SYNC_PREFS,
+        id: "accountSettings" },
+    ]);
+  });
+
 });

@@ -34,6 +34,7 @@ describe("list > manage > containers > <AppHeader/>", () => {
       "MenuConnect",
       "MenuAccount",
       "MenuSignIn",
+      "MenuProfile",
     ].forEach(name => mockHandlers[`onClick${name}`] = sinon.spy());
   });
 
@@ -190,30 +191,5 @@ describe("list > manage > containers > <ConnectedAppHeader/>", () => {
     tab.simulate("click");
     expect(dispatch.called).to.be.true;
     expect(dispatch.firstCall.args[0]).to.deep.equal(selectTabLogins());
-  });
-
-  it("calls openWebsite for FAQ and Feedback menu items", () => {
-    const { subject } = makeSubject();
-
-    const avatarButton = subject.find("button#avatar");
-    avatarButton.simulate("click");
-
-    subject.find(`button[name="menuFAQ"]`).simulate("click");
-    subject.find(`button[name="menuFeedback"]`).simulate("click");
-
-    expect(mockSendMessage.args).to.deep.equal([
-      [
-        {
-          "type": "open_site",
-          "url": "https://lockbox.firefox.com/faq.html",
-        },
-      ],
-      [
-        {
-          "type": "open_site",
-          "url": "https://qsurvey.mozilla.com/s3/Lockbox-Input?ver=2.0.0-alpha",
-        },
-      ],
-    ]);
   });
 });
