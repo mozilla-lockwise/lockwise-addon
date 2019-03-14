@@ -53,3 +53,7 @@ body > main,
   background-color: #f9f9fa;
   overflow: auto;
 }
+
+.error-notification {
+  background: #ffe900;
+}

@@ -14,6 +14,22 @@ import ModalRoot from "../containers/modals";
 
 import styles from "./app.css";
 
+class ErrorNotification extends React.Component {
+  render() {
+    return (
+      <div className={styles.errorNotification}>
+        <Localized id={`error-notification-sync`}>
+          <span>Unable to sync logins.</span>
+        </Localized>
+        <Localized id={`error-notification-sync-button`}>
+          <button>Reconnect to Sync</button>
+        </Localized>
+        <span>X</span>
+      </div>
+    );
+  }
+}
+
 export default class App extends React.Component {
   componentDidMount() {
     this._filterField.focus(true);
@@ -24,6 +40,7 @@ export default class App extends React.Component {
       <Localized id="document" attrs={{title: true}}>
         <DocumentTitle title="lOCKBOx eNTRIEs">
           <div className={styles.app}>
+            <ErrorNotification/>
             <AppHeader />
             <AppPanes>{{
               logins: (
