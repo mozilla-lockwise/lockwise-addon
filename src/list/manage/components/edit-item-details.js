@@ -24,6 +24,7 @@ export default class EditItemDetails extends React.Component {
       onSave: PropTypes.func.isRequired,
       onCancel: PropTypes.func.isRequired,
       onDelete: PropTypes.func.isRequired,
+      onReveal: PropTypes.func.isRequired,
     };
   }
 
@@ -58,7 +59,7 @@ export default class EditItemDetails extends React.Component {
   }
 
   render() {
-    const {fields: { title }, onSave, onCancel, onDelete} = this.props;
+    const {fields: { title }, onSave, onCancel, onDelete, onReveal} = this.props;
     const {itemId, ...saveState} = this.state;
     const newItem = itemId === null;
 
@@ -89,6 +90,7 @@ export default class EditItemDetails extends React.Component {
           )}
         </header>
         <EditItemFields fields={this.state}
+                        onReveal={onReveal}
                         onChange={(e) => this.handleChange(e)}/>
         <Toolbar className={styles.buttons}>
           <Localized id={`item-details-save-${newItem ? "new" : "existing"}`}>

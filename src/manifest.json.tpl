@@ -54,6 +54,14 @@
         "script": "experiments/sync/api.js",
         "paths": [["experiments", "sync"]]
       }
+    },
+    "temptelemetry": {
+      "schema": "experiments/temptelemetry/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "script": "experiments/temptelemetry/api.js",
+        "paths": [["experiments", "temptelemetry"]]
+      }
     }
   },
 

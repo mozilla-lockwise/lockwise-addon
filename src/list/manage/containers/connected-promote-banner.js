@@ -9,20 +9,27 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { PromoteDeviceBanner, PromoteFxABanner } from "../components/promote-banner";
+import { openHomepage, openSyncPrefs } from "../../actions";
 
-export function CurrentPromotionBanner({hasProfile}) {
+export function CurrentPromotionBanner({hasProfile, onClickDeviceBanner, onClickFxABanner}) {
   if (hasProfile) {
-    return <PromoteDeviceBanner />;
+    return <PromoteDeviceBanner onAction={onClickDeviceBanner} />;
   }
-  return <PromoteFxABanner />;
+  return <PromoteFxABanner onAction={onClickFxABanner} />;
 }
 
 CurrentPromotionBanner.propTypes = {
   hasProfile: PropTypes.bool,
+  onClickDeviceBanner: PropTypes.func.isRequired,
+  onClickFxABanner: PropTypes.func.isRequired,
 };
 
 export default connect(
   (state) => ({
     hasProfile: state.app.profileWrap.hasProfile,
-  })
+  }),
+  (dispatch) => ({
+    onClickDeviceBanner: () => dispatch(openHomepage()),
+    onClickFxABanner: () => dispatch(openSyncPrefs()),
+  }),
 )(CurrentPromotionBanner);

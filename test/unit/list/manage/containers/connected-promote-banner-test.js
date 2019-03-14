@@ -15,7 +15,7 @@ import thunk from "redux-thunk";
 import mountWithL10n from "test/unit/mocks/l10n";
 import { initialState, filledState } from "../mock-redux-state";
 
-chai.use(chaiEnzyme);
+chai.use(chaiEnzyme());
 chai.use(sinonChai);
 
 import { PromoteDeviceBanner, PromoteFxABanner } from "src/list/manage/components/promote-banner";

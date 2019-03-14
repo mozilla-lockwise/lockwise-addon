@@ -25,7 +25,7 @@ const fieldsPropTypes = PropTypes.shape({
   password: PropTypes.string.isRequired,
 });
 
-export function ItemFields({fields, onCopy, isPopup}) {
+export function ItemFields({fields, onCopy, isPopup, onReveal}) {
   const originEl = isPopup ? (
       <h4 className={styles.popupOrigin}>{new URL(fields.origin).host}</h4>
   ) : (
@@ -75,7 +75,7 @@ export function ItemFields({fields, onCopy, isPopup}) {
           <LabelText>pASSWORd</LabelText>
         </Localized>
         <div className={styles.inlineButton}>
-          <PasswordText data-name="password" value={fields.password} />
+          <PasswordText data-name="password" value={fields.password} onReveal={onReveal} />
           <Localized id="item-fields-copy-password">
             <CopyToClipboardButton value={fields.password} isPopup={isPopup}
                                    onCopy={toCopy => onCopy("password", toCopy)}/>
@@ -90,6 +90,7 @@ ItemFields.propTypes = {
   fields: fieldsPropTypes,
   isPopup: PropTypes.bool,
   onCopy: PropTypes.func.isRequired,
+  onReveal: PropTypes.func.isRequired,
 };
 
 export class EditItemFields extends React.Component {
@@ -98,6 +99,7 @@ export class EditItemFields extends React.Component {
       itemId: PropTypes.string,
       fields: fieldsPropTypes.isRequired,
       onChange: PropTypes.func.isRequired,
+      onReveal: PropTypes.func.isRequired,
     };
   }
 
@@ -112,7 +114,7 @@ export class EditItemFields extends React.Component {
   }
 
   render() {
-    const {fields, onChange} = this.props;
+    const {fields, onChange, onReveal} = this.props;
     const controlledProps = (name, maxLength = 500) => {
       return {name, value: fields[name],
               onChange: (e) => onChange(e),
@@ -160,7 +162,9 @@ export class EditItemFields extends React.Component {
           <Localized id="item-fields-password">
             <LabelText>pASSWORd</LabelText>
           </Localized>
-          <PasswordInput className={styles.password} required
+          <PasswordInput className={styles.password}
+                         required
+                         onReveal={onReveal}
                          {...controlledProps("password")}/>
         </label>
       </div>

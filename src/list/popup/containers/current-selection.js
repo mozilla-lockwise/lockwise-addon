@@ -10,20 +10,25 @@ import { flattenItem } from "../../common";
 import { selectItem, copiedField } from "../../actions";
 import AllItemsPanel from "./all-items-panel";
 import ItemDetailsPanel from "../components/item-details-panel";
+import { concealPassword, revealPassword } from "../../actions";
 
 const ConnectedItemDetailsPanel = connect(
   (state, ownProps) => ({
     fields: flattenItem(ownProps.item),
   }),
-  (dispatch) => ({
-    onCopy: (field, toCopy) => { dispatch(copiedField(field, toCopy)); },
+  (dispatch, ownProps) => ({
+    onCopy: (field, toCopy) => { dispatch(copiedField(field, toCopy, ownProps.item)); },
     onBack: () => { dispatch(selectItem(null)); },
+    onReveal: (show) => {
+      const id = ownProps.item && ownProps.item.id;
+      return dispatch(show ? revealPassword(id) : concealPassword(id));
+    },
   })
 )(ItemDetailsPanel);
 
-function CurrentSelection({item, inputRef}) {
+function CurrentSelection({item, inputRef, onReveal}) {
   if (item) {
-    return <ConnectedItemDetailsPanel item={item}/>;
+    return <ConnectedItemDetailsPanel onReveal={onReveal} item={item}/>;
   }
   return <AllItemsPanel inputRef={inputRef}/>;
 }
@@ -31,10 +36,11 @@ function CurrentSelection({item, inputRef}) {
 CurrentSelection.propTypes = {
   item: PropTypes.object,
   inputRef: PropTypes.func,
+  onReveal: PropTypes.func,
 };
 
 export default connect(
   (state) => ({
     item: state.cache.currentItem,
-  })
+  }),
 )(CurrentSelection);

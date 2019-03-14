@@ -13,7 +13,7 @@ import { ItemFields } from "../../components/item-fields";
 
 import styles from "./item-details-panel.css";
 
-export default function ItemDetailsPanel({fields, onCopy, onBack}) {
+export default function ItemDetailsPanel({fields, onCopy, onBack, onReveal}) {
   return (
     <Panel>
       <Localized id="item-details-panel-title">
@@ -23,7 +23,7 @@ export default function ItemDetailsPanel({fields, onCopy, onBack}) {
       </Localized>
 
       <PanelBody className={styles.panelBody}>
-        <ItemFields fields={fields} onCopy={onCopy} isPopup={true}/>
+        <ItemFields fields={fields} onCopy={onCopy} onReveal={onReveal} isPopup={true}/>
       </PanelBody>
 
       <PanelFooter border="floating">
@@ -41,4 +41,5 @@ ItemDetailsPanel.propTypes = {
   ...ItemFields.propTypes,
   onCopy: PropTypes.func.isRequired,
   onBack: PropTypes.func.isRequired,
+  onReveal: PropTypes.func.isRequired,
 };

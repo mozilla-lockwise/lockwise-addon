@@ -23,14 +23,21 @@ describe("telemetry", () => {
   });
 
   it("recordEvent()", async () => {
-    const result = await telemetry.recordEvent("method", "object",
-                                               {extra: "value"});
+    const result = await telemetry.recordEvent({
+      method: "method",
+      object: "object",
+      extra: {extra: "extra"},
+      value: "value",
+    });
     expect(result).to.deep.equal({});
     expect(onMessage).to.have.been.calledWith({
       type: "telemetry_event",
-      method: "method",
-      object: "object",
-      extra: {extra: "value"},
+      data: {
+        method: "method",
+        object: "object",
+        extra: {extra: "extra"},
+        value: "value",
+      },
     });
   });
 });

@@ -43,6 +43,17 @@ export const GET_PROFILE = Symbol("GET_PROFILE");
 export const GET_PROFILE_STARTING = Symbol("GET_PROFILE_STARTING");
 export const UPDATED_PROFILE = Symbol("UPDATED_PROFILE");
 
+export const OPEN_FAQ = Symbol("OPEN_FAQ");
+export const OPEN_FEEDBACK = Symbol("OPEN_FEEDBACK");
+export const OPEN_SYNC_PREFS = Symbol("OPEN_SYNC_PREFS");
+export const OPEN_GET_MOBILE = Symbol("OPEN_GET_MOBILE");
+export const SHOW_PROFILE_MENU = Symbol("SHOW_PROFILE_MENU");
+export const OPEN_WEBSITE = Symbol("OPEN_WEBSITE");
+export const OPEN_HOMEPAGE = Symbol("OPEN_HOMEPAGE");
+
+export const REVEAL_PASSWORD = Symbol("REVEAL_PASSWORD");
+export const CONCEAL_PASSWORD = Symbol("CONCEAL_PASSWORD");
+
 // The action ID is used for debugging to correlate async actions with each
 // other (i.e. FOO_STARTING and FOO_COMPLETED).
 let nextActionId = 0;
@@ -236,7 +247,7 @@ function selectItemCompleted(actionId, item) {
   };
 }
 
-export function copiedField(field, toCopy) {
+export function copiedField(field, toCopy, item) {
   return async (dispatch) => {
     const actionId = nextActionId++;
     dispatch(copiedFieldStarting(actionId));
@@ -245,7 +256,7 @@ export function copiedField(field, toCopy) {
       field,
       toCopy,
     });
-    dispatch(copiedFieldCompleted(actionId, field));
+    dispatch(copiedFieldCompleted(actionId, field, item));
   };
 }
 
@@ -256,11 +267,12 @@ function copiedFieldStarting(actionId) {
   };
 }
 
-function copiedFieldCompleted(actionId, field) {
+function copiedFieldCompleted(actionId, field, item) {
   return {
     type: COPIED_FIELD_COMPLETED,
     actionId,
     field,
+    item,
   };
 }
 
@@ -333,6 +345,24 @@ export function selectTabMonitor() {
   };
 }
 
+export function openFAQ() {
+  return {
+    type: OPEN_FAQ,
+  };
+}
+
+export function openFeedback() {
+  return {
+    type: OPEN_FEEDBACK,
+  };
+}
+
+export function openHomepage() {
+  return {
+    type: OPEN_HOMEPAGE,
+  };
+}
+
 export function getProfile() {
   return async (dispatch) => {
     dispatch(getProfileStarting());
@@ -347,5 +377,44 @@ export function updatedProfile(profile) {
   return {
     type: UPDATED_PROFILE,
     profile,
+  };
+}
+
+export function openSyncPrefs(menuItem) {
+  return {
+    type: OPEN_SYNC_PREFS,
+    id: menuItem,
+  };
+}
+
+export function openGetMobile() {
+  return {
+    type: OPEN_GET_MOBILE,
+  };
+}
+
+export function openProfileMenu() {
+  return {
+    type: SHOW_PROFILE_MENU,
+  };
+}
+
+export function revealPassword(id) {
+  return {
+    type: REVEAL_PASSWORD,
+    id,
+  };
+}
+
+export function concealPassword(id) {
+  return {
+    type: CONCEAL_PASSWORD,
+    id,
+  };
+}
+
+export function openWebsite() {
+  return {
+    type: OPEN_WEBSITE,
   };
 }
