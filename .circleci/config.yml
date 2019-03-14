@@ -61,6 +61,9 @@ jobs:
           command: npm run integration
           environment:
             LOCKBOX_FIREFOX_HEADLESS: "1"
+      - run:
+          name: linting
+          command: npm run lint
   package-addon-production:
     docker:
       - image: circleci/node
