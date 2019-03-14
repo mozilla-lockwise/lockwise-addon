@@ -101,6 +101,10 @@ module.exports = {
           options: BABEL_OPTS,
         },
       },
+      {
+        test: /\.svg$/,
+        loader: "svg-inline-loader",
+      },
     ],
   },
   plugins: [

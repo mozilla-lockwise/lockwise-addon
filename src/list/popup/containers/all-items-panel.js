@@ -7,14 +7,14 @@ import { connect } from "react-redux";
 import ItemListPanel from "../components/item-list-panel";
 import { selectItem } from "../../actions";
 import { parseFilterString, filterItem } from "../../filter";
-const collator = new Intl.Collator();
+import { byLastUsed } from "../../sort";
 
 export default connect(
   (state, ownProps) => {
     const filter = parseFilterString(state.list.filter.query);
     const items = state.cache.items
                        .filter((i) => filterItem(filter, i))
-                       .sort((a, b) => collator.compare(a.title, b.title));
+                       .sort(byLastUsed);
     const isFiltering = state.list.filter.query.length;
     if (items.length || state.list.filter.userEntered) {
       return {...ownProps, items, noResultsBanner: false, isFiltering};

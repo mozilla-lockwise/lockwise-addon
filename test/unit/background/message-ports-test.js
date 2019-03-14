@@ -8,6 +8,7 @@ import sinon from "sinon";
 import sinonChai from "sinon-chai";
 
 import "test/unit/mocks/browser";
+import { originalTime, updatedTime } from "test/unit/constants";
 import {
   initializeDataStore,
   openDataStore,
@@ -19,6 +20,7 @@ import clipboard from "src/background/clipboard";
 
 chai.use(chaiAsPromised);
 chai.use(sinonChai);
+
 
 describe("background > message ports", () => {
   let itemId, otherMessagePort, otherListener;
@@ -77,6 +79,9 @@ describe("background > message ports", () => {
     const item = {
       title: "origin.com",
       origins: ["origin.com", "origin.com"],
+      timeCreated: originalTime,
+      timeLastUsed: originalTime,
+      timePasswordChanged: originalTime,
       entry: {
         kind: "login",
         username: "username",
@@ -97,11 +102,18 @@ describe("background > message ports", () => {
     expect(otherListener.args[0][0].item).to.deep.include(item);
   });
 
+  // The timePasswordChanged is changed on the desktop side by code that uses
+  // Date.now(). The best we can do is verify that the changed time is greater
+  // than the original time, and a few milliseconds less than the *current*
+  // time. See comment in issue #102 for more details on the Gecko code.
   it('handle "update_item"', async () => {
     const item = {
       title: "updated-origin.com",
       id: itemId,
       origins: ["updated-origin.com", "updated-origin.com"],
+      timeCreated: updatedTime,
+      timeLastUsed: updatedTime,
+      timePasswordChanged: updatedTime,
       entry: {
         kind: "login",
         username: "updated username",
@@ -114,6 +126,15 @@ describe("background > message ports", () => {
       type: "update_item",
       item,
     });
+
+    expect(result.item.timePasswordChanged < Date.now());
+    expect(result.item.timePasswordChanged > originalTime);
+
+    // Now, delete timePasswordChanged everywhere, so the items will be
+    // deep-equal.
+    delete result.item.timePasswordChanged;
+    delete item.timePasswordChanged;
+    delete otherListener.args[0][0].item.timePasswordChanged;
 
     expect(result.item).to.deep.include(item);
     expect(otherListener).to.have.callCount(1);
@@ -130,6 +151,8 @@ describe("background > message ports", () => {
     expect(result.item).to.deep.include({
       title: "updated-origin.com",
       origins: ["updated-origin.com", "updated-origin.com"],
+      timeCreated: updatedTime,
+      timeLastUsed: updatedTime,
       entry: {
         kind: "login",
         username: "updated username",
@@ -144,9 +167,10 @@ describe("background > message ports", () => {
     const result = await browser.runtime.sendMessage({
       type: "list_items",
     });
-
+    delete result.items[0].timePasswordChanged;
     expect(result).to.deep.equal({items: [{
       id: itemId,
+      timeLastUsed: updatedTime,
       title: "updated-origin.com",
       username: "updated username",
       origins: ["updated-origin.com", "updated-origin.com"],

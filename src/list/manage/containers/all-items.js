@@ -7,23 +7,25 @@ import { connect } from "react-redux";
 import ItemListPanel from "../components/item-list-panel";
 import { requestSelectItem } from "../../actions";
 import { parseFilterString, filterItem } from "../../filter";
+import { getSort } from "../../sort";
 import { NEW_ITEM_ID } from "../../common";
-
-const collator = new Intl.Collator();
 
 export default connect(
   (state, ownProps) => {
     const totalItemCount = state.cache.items.length;
     const filter = parseFilterString(state.list.filter.query);
     const selected = state.list.selectedItemId;
+    const sort = state.cache.sort;
+    const sortFn = getSort(state.cache.sort);
     const items = state.cache.items
                        .filter((i) => filterItem(filter, i))
-                       .sort((a, b) => collator.compare(a.title, b.title));
+                       .sort(sortFn);
+    const count = items.length;
 
     if (selected === NEW_ITEM_ID) {
       items.unshift({id: NEW_ITEM_ID, title: "", username: ""});
     }
-    return {...ownProps, totalItemCount, items, selected};
+    return {...ownProps, totalItemCount, items, selected, count, sort};
   },
   (dispatch) => ({
     onChange: (id) => dispatch(requestSelectItem(id)),

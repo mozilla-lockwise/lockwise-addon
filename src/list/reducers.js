@@ -27,7 +27,7 @@ function maybeRemoveCurrentItem(state, action) {
   return {};
 }
 
-export function cacheReducer(state = {items: [], currentItem: null}, action) {
+export function cacheReducer(state = {items: [], currentItem: null, sort: "name"}, action) {
   switch (action.type) {
   case actions.LIST_ITEMS_COMPLETED:
     return {
@@ -69,6 +69,21 @@ export function cacheReducer(state = {items: [], currentItem: null}, action) {
     return {...state, currentItem: action.item};
   case actions.START_NEW_ITEM:
     return {...state, currentItem: null};
+  case actions.SORT_BY_NAME:
+    return {
+      ...state,
+      sort: "name",
+    };
+  case actions.SORT_BY_LAST_USED:
+    return {
+      ...state,
+      sort: "last-used",
+    };
+  case actions.SORT_BY_LAST_CHANGED:
+    return {
+      ...state,
+      sort: "last-changed",
+    };
   default:
     return state;
   }
