@@ -2,11 +2,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { expect } from "chai";
+import chai, { expect } from "chai";
 import sinon from "sinon";
+import sinonChai from "sinon-chai";
 import "test/unit/mocks/browser";
 
 import * as common from "src/list/common";
+
+chai.use(sinonChai);
 
 describe("list > common", () => {
   describe("openSyncPrefs", () => {
@@ -21,7 +24,7 @@ describe("list > common", () => {
 
     it("call WebExt API", async () => {
       common.openSyncPrefs();
-      spyOpenPrefs.calledWith("lockbox-addon");
+      expect(spyOpenPrefs).to.have.been.calledWith("lockbox-addon");
     });
   });
 });
