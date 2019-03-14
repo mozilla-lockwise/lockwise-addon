@@ -8,6 +8,8 @@ export function makeItemSummary(item) {
     id: item.id,
     origins: item.origins,
     username: item.entry.username,
+    timeLastUsed: item.timeLastUsed,
+    timePasswordChanged: item.timePasswordChanged,
   };
 }
 

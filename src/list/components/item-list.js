@@ -37,10 +37,12 @@ ItemList.propTypes = {
   ).isRequired,
   itemClassName: PropTypes.string,
   panel: PropTypes.bool,
+  sort: PropTypes.string,
 };
 
 ItemList.defaultProps = {
   itemClassName: "",
+  sort: "name",
 };
 
 export function ItemListPlaceholder({children}) {

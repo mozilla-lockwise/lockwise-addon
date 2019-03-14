@@ -30,11 +30,17 @@ const makeSelectors = ({ By }) => ({
   itemListEmpty: By.css(".itemListEmpty"),
   itemList: By.css(".itemList"),
   itemListFirstItem: By.css(".itemList li"),
+  itemListFirstItemChild: By.css(".itemList li > div"),
   listItemContainer: By.css(".itemList li[data-selected=true] > div"),
   listItemSelected: By.css(".itemList li[data-selected=true]"),
   listItemSelectedSubtitle: By.css(".itemList li[data-selected=true] div[data-name=subtitle]"),
   listItemSubtitle: By.css(".itemList li div[data-name=subtitle]"),
   popupManageButton: By.css("footer button"),
+  listSortSelect: By.id("listSortSelect"),
+  optionSortByName: By.css("#listSortSelect option[value=name]"),
+  optionSortByLastUsed: By.css("#listSortSelect option[value=last-used]"),
+  optionSortByLastChanged: By.css("#listSortSelect option[value=last-changed]"),
+  listCounter: By.id("listCounter"),
 });
 
 // TODO: share with logins-api-test?
@@ -88,6 +94,31 @@ describe("add-on UI", () => {
       Services.logins.addLogin(login);
     `);
     await webext.inContent();
+  };
+
+  // Add the mockLogin and two additional logins, to verify sorting works:
+  // * newerLastUsedLogin: sorts to the top when sorting by Last Used.
+  // * newerPasswordChangedLogin: sorts to the top when sorting by Last Changed.
+  const addSortableLogins = async () => {
+    await addLogin(mockLogin);
+
+    const newerLastUsedLogin = Object.assign({}, mockLogin, {
+      timeLastUsed: mockLogin.timeLastUsed + 10000,
+      timePasswordChanged: mockLogin.timePasswordChanged - 10000,
+      hostname: "https://newerLastUsed.com",
+      guid: "newerLastUsed",
+      username: "newerLastUsed",
+    });
+    await addLogin(newerLastUsedLogin);
+
+    const newerPasswordChangedLogin = Object.assign({}, mockLogin, {
+      timePasswordChanged: mockLogin.timePasswordChanged + 10000,
+      timeLastUsed: mockLogin.timeLastUsed - 10000,
+      hostname: "https://newerPasswordChanged.com",
+      guid: "newerPasswordChanged",
+      username: "newerPasswordChanged",
+    });
+    await addLogin(newerPasswordChangedLogin);
   };
 
   before(async () => {
@@ -347,6 +378,89 @@ describe("add-on UI", () => {
       await waitFor(selectors.listItemContainer);
     });
 
+    describe("list sorting", () => {
+      beforeEach(async () => {
+        await addSortableLogins();
+      });
+
+      // newSort is either 'name', 'last-used', or 'last-changed'.
+      const changeSort = async (newSort) => {
+        await webext.inContent();
+        const select = await waitFor(selectors.listSortSelect);
+        const option = await select.findElement(By.css(`option[value=${newSort}]`));
+        await option.click();
+        // TODO: how long to wait for the list to re-sort itself?
+        await (async () => { await new Promise(resolve => setTimeout(resolve, 100)); })();
+      };
+
+      const getTopItemId = async () => {
+        const topItem = await waitFor(selectors.itemListFirstItemChild);
+        const guid = topItem.getAttribute("data-item-id");
+        return guid;
+      };
+
+      it("by default, sorts by name", async () => {
+        expect(await getTopItemId()).to.equal(mockLogin.guid);
+      });
+
+      it("correctly re-sorts by last used", async () => {
+        await changeSort("last-used");
+        expect(await getTopItemId()).to.equal("newerLastUsed");
+      });
+
+      it("correctly re-sorts by last changed", async () => {
+        await changeSort("last-changed");
+        expect(await getTopItemId()).to.equal("newerPasswordChanged");
+      });
+
+      it("persists a sort change across page reloads", async () => {
+        await changeSort("last-changed");
+        await driver.navigate().refresh();
+        expect(await getTopItemId()).to.equal("newerPasswordChanged");
+      });
+
+      it("correctly re-sorts by name", async () => {
+        await changeSort("name");
+        expect(await getTopItemId()).to.equal(mockLogin.guid);
+      });
+
+      after(async () => {
+        // TODO: need a way to clear webextension storage. For now, just ensure
+        // the default sort is used when we stop.
+        await changeSort("name");
+      });
+    });
+
+    describe("list counter", () => {
+      beforeEach(async () => {
+        await clearLogins();
+      });
+
+      const getCounterText = async () => {
+        const counter = await waitFor(selectors.listCounter);
+        const text = await counter.getText();
+        return text;
+      };
+
+      it("shows '0 entries' when no logins are present", async () => {
+        const text = await getCounterText();
+        expect(text === "0 entries");
+      });
+
+      it("shows '1 entry' when one login is present", async () => {
+        await addLogin(mockLogin);
+
+        const text = await getCounterText();
+        expect(text === "1 entry");
+      });
+
+      it("shows '3 entries' when three logins are present", async () => {
+        await addSortableLogins();
+
+        const text = await getCounterText();
+        expect(text === "3 entries");
+      });
+    });
   });
 
   describe("doorhanger", () => {
@@ -415,6 +529,14 @@ describe("add-on UI", () => {
       expect(await driver.getCurrentUrl()).to.equal(
         webext.url("/list/manage.html"),
       );
+    });
+
+    it("displays logins sorted in last used order", async () => {
+      await addSortableLogins();
+
+      const firstItem = await waitFor(selectors.listItemSubtitle);
+      const itemText = await firstItem.getText();
+      expect(itemText == "newerLastUsed");
     });
   });
 });

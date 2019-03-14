@@ -13,6 +13,7 @@ export const initialState = {
   cache: {
     items: [],
     currentItem: null,
+    sort: "name",
   },
   list: {
     selectedItemId: null,
@@ -57,6 +58,7 @@ export const filledState = {
         password: "password 1",
       },
     },
+    sort: "name",
   },
   list: {
     selectedItemId: "1",

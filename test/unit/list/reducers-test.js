@@ -9,6 +9,7 @@ import {
   cacheReducer, listReducer,
 } from "src/list/reducers";
 import { NEW_ITEM_ID } from "src/list/common";
+import { originalTime, updatedTime } from "test/unit/constants";
 
 describe("list > reducers", () => {
   describe("cache reducer", () => {
@@ -18,6 +19,7 @@ describe("list > reducers", () => {
       expect(cacheReducer(undefined, action)).to.deep.equal({
         items: [],
         currentItem: null,
+        sort: "name",
       });
     });
 
@@ -33,6 +35,7 @@ describe("list > reducers", () => {
       expect(cacheReducer(undefined, action)).to.deep.equal({
         items: action.items,
         currentItem: null,
+        sort: "name",
       });
     });
 
@@ -56,6 +59,7 @@ describe("list > reducers", () => {
         expect(cacheReducer(undefined, action)).to.deep.equal({
           items: [],
           currentItem: null,
+          sort: "name",
         });
       });
 
@@ -63,6 +67,7 @@ describe("list > reducers", () => {
         const state = {
           items: [],
           currentItem: null,
+          sort: "name",
         };
         const action = {
           type: actions.ADD_ITEM_COMPLETED,
@@ -71,6 +76,8 @@ describe("list > reducers", () => {
             title: "title",
             origins: ["origin.com"],
             id: "1",
+            timeLastUsed: originalTime,
+            timePasswordChanged: originalTime,
             entry: {
               kind: "login",
               username: "username",
@@ -87,8 +94,11 @@ describe("list > reducers", () => {
             title: action.item.title,
             origins: action.item.origins,
             username: action.item.entry.username,
+            timeLastUsed: originalTime,
+            timePasswordChanged: originalTime,
           }],
           currentItem: action.item,
+          sort: "name",
         });
       });
 
@@ -96,6 +106,7 @@ describe("list > reducers", () => {
         const state = {
           items: [],
           currentItem: null,
+          sort: "name",
         };
         const action = {
           type: actions.ADD_ITEM_COMPLETED,
@@ -104,6 +115,8 @@ describe("list > reducers", () => {
             title: "title",
             origins: ["origin.com"],
             id: "1",
+            timeLastUsed: originalTime,
+            timePasswordChanged: originalTime,
             entry: {
               kind: "login",
               username: "username",
@@ -120,8 +133,11 @@ describe("list > reducers", () => {
             title: action.item.title,
             username: action.item.entry.username,
             origins: action.item.origins,
+            timeLastUsed: originalTime,
+            timePasswordChanged: originalTime,
           }],
           currentItem: null,
+          sort: "name",
         });
       });
     });
@@ -137,6 +153,8 @@ describe("list > reducers", () => {
             title: "original title",
             id: "1",
             origins: ["original-origin.com"],
+            timeLastUsed: originalTime,
+            timePasswordChanged: originalTime,
             entry: {
               kind: "login",
               username: "original username",
@@ -144,6 +162,7 @@ describe("list > reducers", () => {
               notes: "original notes",
             },
           },
+          sort: "name",
         };
         const action = {
           type: actions.UPDATE_ITEM_COMPLETED,
@@ -152,6 +171,7 @@ describe("list > reducers", () => {
             title: "updated title",
             id: "1",
             origins: ["updated-origin.com"],
+            timeLastUsed: updatedTime,
             entry: {
               kind: "login",
               username: "updated username",
@@ -161,17 +181,22 @@ describe("list > reducers", () => {
           },
         };
 
-        expect(cacheReducer(state, action)).to.deep.equal({
+        const result = cacheReducer(state, action);
+        expect(result.items[0].timePasswordChanged > originalTime);
+        delete result.items[0].timePasswordChanged;
+        expect(result).to.deep.equal({
           items: [
             {
               id: action.item.id,
               title: action.item.title,
               username: action.item.entry.username,
               origins: action.item.origins,
+              timeLastUsed: updatedTime,
             },
             state.items[1],
           ],
           currentItem: action.item,
+          sort: "name",
         });
       });
 
@@ -179,11 +204,12 @@ describe("list > reducers", () => {
         const state = {
           items: [
             {id: "1", title: "original title", username: "original username",
-             origins: ["original-origin.com"]},
+             origins: ["original-origin.com"], timeLastUsed: originalTime },
             {id: "2", title: "another title", username: "another username",
-             origins: ["another-origin.com"]},
+             origins: ["another-origin.com"], timeLastUsed: originalTime },
           ],
           currentItem: null,
+          sort: "name",
         };
         const action = {
           type: actions.UPDATE_ITEM_COMPLETED,
@@ -192,6 +218,7 @@ describe("list > reducers", () => {
             title: "updated title",
             id: "1",
             origins: ["updated-origin.com"],
+            timeLastUsed: updatedTime,
             entry: {
               kind: "login",
               username: "updated username",
@@ -201,17 +228,23 @@ describe("list > reducers", () => {
           },
         };
 
-        expect(cacheReducer(state, action)).to.deep.equal({
+        const result = cacheReducer(state, action);
+        expect(result.items[0].timePasswordChanged > originalTime);
+        delete result.items[0].timePasswordChanged;
+
+        expect(result).to.deep.equal({
           items: [
             {
               id: action.item.id,
               title: action.item.title,
               username: action.item.entry.username,
               origins: action.item.origins,
+              timeLastUsed: updatedTime,
             },
             state.items[1],
           ],
           currentItem: null,
+          sort: "name",
         });
       });
     });

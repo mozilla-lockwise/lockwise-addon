@@ -5,6 +5,7 @@
 import { expect } from "chai";
 
 import { makeItemSummary, classNames } from "src/common";
+import { updatedTime } from "test/unit/constants";
 
 describe("common", () => {
   describe("makeItemSummary", () => {
@@ -17,12 +18,17 @@ describe("common", () => {
           username: "myusername",
           password: "ishouldchangeit",
         },
+        timePasswordChanged: updatedTime,
+        timeLastUsed: updatedTime,
+        timeCreated: updatedTime,
       };
       expect(makeItemSummary(full)).to.deep.equal({
         title: "example.com",
         id: "04052872-8347-45E9-9A03-6063093C450A",
         origins: ["https://example.com"],
         username: "myusername",
+        timePasswordChanged: updatedTime,
+        timeLastUsed: updatedTime,
       });
     });
   });

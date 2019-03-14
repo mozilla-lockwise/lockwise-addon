@@ -115,10 +115,22 @@ item-details-save-new = Create Entry
 item-details-save-existing = Save Changes
 item-details-cancel = Cancel
 
-
 item-details-created = Created: {$date}
 item-details-created = Last Modified: {$date}
 item-details-created = Last Used: {$date}
+
+list-count = {$count} entries
+
+list-count = { $count ->
+  [one]   {$count} entry
+ *[other] { $count } entries
+}
+
+sort-by = Sort by:
+sort-by-name = Name
+sort-by-last-used = Last Used
+sort-by-last-changed = Last Changed
+
 
 ## popup
 

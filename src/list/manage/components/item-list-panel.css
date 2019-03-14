@@ -2,17 +2,48 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-.filter-toolbar > * + * {
-  margin-inline-start: 8px;
+.filter-toolbar {
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .panel-header {
   composes: panel-header from "../../../widgets/panel.css";
   background: #fff;
+  height: auto;
+}
+
+.first-row, .second-row {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.first-row > * + * {
+  margin-inline-start: 8px;
+}
+
+.second-row {
+  font-weight: normal;
+  display: flex;
+  justify-content: space-between;
+  margin-inline-start: 0;
+  line-height: 32px;
+  height: 32px;
+  margin-bottom: -12px;
+  margin-top: 8px;
 }
 
 .item-filter {
   composes: item-filter from "../../../widgets/panel.css";
   background: #f3f3f5;
   height: 32px;
+}
+
+.flex-spacer {
+  flex-grow: 1;
+}
+
+.list-counter {
+  flex-grow: 0;
+  flex-shrink: 0;
 }
