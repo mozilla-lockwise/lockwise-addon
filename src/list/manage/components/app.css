@@ -41,7 +41,7 @@ body > main,
 
 .aside {
   grid-column: 1;
-  min-width: 150px;
+  min-width: 250px;
   min-height: 0;
   display: flex;
   flex-direction: column;

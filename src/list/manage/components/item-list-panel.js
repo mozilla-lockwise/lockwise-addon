@@ -10,11 +10,13 @@ import { PanelHeader, PanelBody } from "../../../widgets/panel";
 import AddItem from "../containers/add-item";
 import ItemList, { ItemListPlaceholder } from "../../components/item-list";
 import ItemFilter from "../../containers/item-filter";
+import ListSort from "../containers/list-sort.js";
+import ListCounter from "../components/list-counter.js";
 
 import styles from "./item-list-panel.css";
 
 export default function ItemListPanel({className, inputRef, totalItemCount,
-                                       ...props}) {
+                                       sort, count, ...props}) {
   const hasItems = props.items.length !== 0;
   let list;
   if (!hasItems) {
@@ -35,9 +37,16 @@ export default function ItemListPanel({className, inputRef, totalItemCount,
       <PanelHeader className={styles.panelHeader}
                    border={hasItems ? "floating" : "none"}
                    toolbarClassName={styles.filterToolbar}>
-        <ItemFilter className={styles.itemFilter}
-                    inputRef={inputRef}/>
-        <AddItem/>
+        <div className={styles.firstRow}>
+          <ItemFilter className={styles.itemFilter}
+                      inputRef={inputRef}/>
+          <AddItem/>
+        </div>
+        <div className={styles.secondRow}>
+          <ListSort sort={sort} {...props} />
+          <div className={styles.flexSpacer}></div>
+          <ListCounter count={count} className={styles.listCounter} />
+        </div>
       </PanelHeader>
 
       <PanelBody scroll={false}>

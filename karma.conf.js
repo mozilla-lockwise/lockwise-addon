@@ -30,6 +30,9 @@ module.exports = (config) => {
         { type: "html", subdir: "html" },
       ],
     },
+    mochaReporter: {
+      showDiff: true,
+    },
 
     webpack: require("./webpack.config"),
     webpackMiddleware: {

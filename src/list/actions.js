@@ -29,6 +29,10 @@ export const CANCEL_EDITING = Symbol("CANCEL_EDITING");
 
 export const FILTER_ITEMS = Symbol("FILTER_ITEMS");
 
+export const SORT_BY_NAME = Symbol("SORT_BY_NAME");
+export const SORT_BY_LAST_USED = Symbol("SORT_BY_LAST_USED");
+export const SORT_BY_LAST_CHANGED = Symbol("SORT_BY_LAST_CHANGED");
+
 export const SHOW_MODAL = Symbol("SHOW_MODAL");
 export const HIDE_MODAL = Symbol("HIDE_MODAL");
 

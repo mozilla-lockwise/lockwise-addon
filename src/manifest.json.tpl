@@ -62,6 +62,7 @@
     "clipboardRead",
     "clipboardWrite",
     "mozillaAddons",
+    "storage",
     "telemetry"
   ]
 }
