@@ -18,6 +18,12 @@ document.querySelector("#check-passwords-pref").addEventListener("click", () => 
     then(log, log);
 });
 
+document.querySelector("#open-sync-prefs").addEventListener("click", () => {
+  const log = getLogger("open-sync-prefs");
+  browser.experiments.sync.openPreferences("lockbox-addon-tests").
+    then(log, log);
+});
+
 document.querySelector("#register-listener").addEventListener("click", () => {
   const events = [];
   const log = getLogger("register-listener");
