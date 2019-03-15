@@ -3,6 +3,7 @@
   flex-direction: row;
   background-color: #ededf0;
   border-bottom: 1px solid #d7d7db;
+  position: relative;
 }
 .app-header-title {
   line-height: 55px;
@@ -13,12 +14,14 @@
   letter-spacing: -0.2px;
   text-align: center;
   color: var(--charcoal-grey);
+  position: absolute;
+  top: 0;
+  left: 44%;
 }
 .app-header-title b {
   font-weight: 600;
 }
 .app-header-menu-tabs {
-  position: absolute;
   height: 56px;
   top: 0px;
   left: 0;

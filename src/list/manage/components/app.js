@@ -6,6 +6,7 @@ import { Localized } from "fluent-react";
 import React from "react";
 import DocumentTitle from "react-document-title";
 
+import ErrorNotification from "../../components/error-notification";
 import AppHeader from "../containers/app-header";
 import AppPanes from "../containers/app-panes";
 import AllItems from "../containers/all-items";
@@ -13,22 +14,6 @@ import CurrentSelection from "../containers/current-selection";
 import ModalRoot from "../containers/modals";
 
 import styles from "./app.css";
-
-class ErrorNotification extends React.Component {
-  render() {
-    return (
-      <div className={styles.errorNotification}>
-        <Localized id={`error-notification-sync`}>
-          <span>Unable to sync logins.</span>
-        </Localized>
-        <Localized id={`error-notification-sync-button`}>
-          <button>Reconnect to Sync</button>
-        </Localized>
-        <span>X</span>
-      </div>
-    );
-  }
-}
 
 export default class App extends React.Component {
   componentDidMount() {
@@ -40,8 +25,8 @@ export default class App extends React.Component {
       <Localized id="document" attrs={{title: true}}>
         <DocumentTitle title="lOCKBOx eNTRIEs">
           <div className={styles.app}>
-            <ErrorNotification/>
             <AppHeader />
+            <ErrorNotification isPanel={true}/>
             <AppPanes>{{
               logins: (
                 <section className={styles.appMain}>

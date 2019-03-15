@@ -10,6 +10,7 @@ import Panel, { PanelHeader, PanelBanner, PanelBody, PanelFooter,
                 PanelFooterButton } from "../../../widgets/panel";
 import ItemList, { ItemListPlaceholder } from "../../components/item-list";
 import ItemFilter from "../../containers/item-filter";
+import ErrorNotification from "../../components/error-notification";
 
 import styles from "./item-list-panel.css";
 
@@ -96,6 +97,8 @@ export default function ItemListPanel({inputRef, noResultsBanner,
       <PanelHeader border={topBorder} className={styles.panelHeader}>
         <ItemFilter inputRef={inputRef} className={styles.filterPanel} />
       </PanelHeader>
+
+      <ErrorNotification/>
 
       {banner}
 
