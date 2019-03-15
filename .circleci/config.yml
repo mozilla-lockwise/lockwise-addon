@@ -182,6 +182,7 @@ workflows:
           requires:
             - build
             - test
+            - lint
           filters:
             branches:
               ignore: /.*/
