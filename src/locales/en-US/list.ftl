@@ -116,8 +116,8 @@ item-details-save-existing = Save Changes
 item-details-cancel = Cancel
 
 item-details-created = Created: {$date}
-item-details-created = Last Modified: {$date}
-item-details-created = Last Used: {$date}
+item-details-modified = Last Modified: {$date}
+item-details-last-used = Last Used: {$date}
 
 list-count = {$count} entries
 
