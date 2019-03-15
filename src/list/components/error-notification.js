@@ -5,17 +5,24 @@
 import { Localized } from "fluent-react";
 import PropTypes from "prop-types";
 import React from "react";
+import { connect } from "react-redux";
+import { openSyncPrefs } from "../common";
+
 import styles from "./error-notification.css";
 
-export default class ErrorNotification extends React.Component {
+export class ErrorNotification extends React.Component {
   static get propTypes() {
     return {
+      profile: PropTypes.object,
+      hasProfile: PropTypes.bool.isRequired,
       isPanel: PropTypes.bool,
     };
   }
 
   static get defaultProps() {
     return {
+      profile: {},
+      hasProfile: false,
       isPanel: false,
     };
   }
@@ -23,12 +30,7 @@ export default class ErrorNotification extends React.Component {
   constructor(props) {
     super(props);
     this.remove = this.remove.bind(this);
-    this.launchSyncPrefs = this.launchSyncPrefs.bind(this);
     this.state = {hideNotification: false};
-  }
-
-  launchSyncPrefs() {
-
   }
 
   remove() {
@@ -39,7 +41,7 @@ export default class ErrorNotification extends React.Component {
 
   render() {
     const { hideNotification } = this.state;
-    const { isPanel } = this.props;
+    const { isPanel, reconnectToSync } = this.props;
     return (<>
       {!hideNotification && <div className={styles.errorNotification}>
         <Localized id={`error-notification-sync`}>
@@ -47,9 +49,24 @@ export default class ErrorNotification extends React.Component {
         </Localized>
         {isPanel && <span onClick={this.remove} className={styles.closeIcon}></span>}
         <Localized id={`error-notification-sync-button`}>
-          <button onClick={this.launchSyncPrefs}>Reconnect to Sync</button>
+          <button onClick={reconnectToSync}>Reconnect to Sync</button>
         </Localized>
        </div>}
     </>);
   }
 }
+
+export default connect(
+  ({
+    app: {
+      profile,
+      hasProfile,
+    },
+  }) => ({
+    profile,
+    hasProfile,
+  }),
+  dispatch => ({
+    reconnectToSync: () => openSyncPrefs(),
+  })
+)(ErrorNotification);
