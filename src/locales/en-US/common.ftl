@@ -2,8 +2,10 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+product-line = Firefox
 product-title = Lockbox
 product-tagline = The simple way to store, retrieve and manage website login info
+product-fulltitle = { product-line } { product-title }
 
 # when Kinto is supported, the above should be changed to:
 #    Creating a Firefox account - or adding Lockbox to an existing account - protects your logins

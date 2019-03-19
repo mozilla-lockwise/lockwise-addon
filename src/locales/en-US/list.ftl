@@ -163,3 +163,8 @@ modal-cancel-editing = Unsaved changes exist. Discard them?
 modal-delete = Delete this Entry?
   .confirmLabel = Delete
   .cancelLabel = Cancel
+
+banner-action-learn-more = Learn More
+
+banner-promote-device =
+    Download our mobile app to take your passwords with you everywhere.

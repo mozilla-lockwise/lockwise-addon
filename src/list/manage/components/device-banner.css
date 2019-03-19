@@ -1,0 +1,38 @@
+/**
+ * Copyright (c) 2019 Matthew A. Miller
+ * 
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+
+.promote-device {
+    min-width: max-content;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: baseline;
+}
+.promote-device .content {
+    flex: 1 1 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    background: url(/icons/icon-lockbox.svg) no-repeat;
+    min-height: 40px;
+    padding-inline-start: 52px;
+}
+
+.promote-device .content h1 {
+    padding: 0px;
+    margin: 0px;
+    font-size: 17px;
+    font-weight: bold;
+}
+.promote-device .content span {
+    padding: 0px;
+    margin: 0px;
+}
+.promote-device .learn-more {
+    margin-inline-start: 20px
+}
