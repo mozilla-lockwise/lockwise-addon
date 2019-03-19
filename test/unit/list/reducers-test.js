@@ -6,7 +6,7 @@ import { expect } from "chai";
 
 import * as actions from "src/list/actions";
 import {
-  cacheReducer, listReducer,
+  cacheReducer, listReducer, profileReducer,
 } from "src/list/reducers";
 import { NEW_ITEM_ID } from "src/list/common";
 import { originalTime, updatedTime } from "test/unit/constants";
@@ -504,6 +504,66 @@ describe("list > reducers", () => {
           query: "my filter",
           userEntered: false,
         },
+      });
+    });
+  });
+
+  describe("profile reducer", () => {
+    it("initial state", () => {
+      expect(profileReducer(undefined, {})).to.deep.equal({
+        profile: null,
+        hasProfile: false,
+        hasProfileNeedsAttn: false,
+      });
+    });
+
+    describe("handle UPDATED_PROFILE", () => {
+      it("error", () => {
+        const action = {
+          type: actions.UPDATED_PROFILE,
+          actionId: 0,
+          profile: {
+            status: "error",
+            avatar: "blah.jpg",
+            displayName: "fox",
+            email: "lockbox@example.com",
+          },
+        };
+
+        expect(profileReducer(undefined, action)).to.deep.equal({
+          hasProfile: true,
+          hasProfileNeedsAttn: true,
+          profile: {
+            status: "error",
+            avatar: "blah.jpg",
+            displayName: "fox",
+            email: "lockbox@example.com",
+          },
+        });
+      });
+
+      it("ok", () => {
+        const action = {
+          type: actions.UPDATED_PROFILE,
+          actionId: 0,
+          profile: {
+            status: "ok",
+            avatar: "blah.jpg",
+            displayName: "fox",
+            email: "lockbox@example.com",
+          },
+        };
+
+        expect(profileReducer(undefined, action)).to.deep.equal({
+          hasProfile: true,
+          hasProfileNeedsAttn: true,
+          profile: {
+            status: "ok",
+            avatar: "blah.jpg",
+            displayName: "fox",
+            email: "lockbox@example.com",
+          },
+        });
       });
     });
   });

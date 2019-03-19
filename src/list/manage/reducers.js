@@ -5,27 +5,14 @@
 import { combineReducers } from "redux";
 
 import * as actions from "../actions";
-import { cacheReducer, listReducer } from "../reducers";
+import { cacheReducer, listReducer, tabsReducer, profileReducer,
+       } from "../reducers";
 
-export function appReducer(state = {
-  selectedTab: "logins",
-  profile: null,
-  hasProfile: false,
-}, action) {
-  switch (action.type) {
-  case actions.SELECT_TAB_LOGINS:
-    return {...state, selectedTab: "logins"};
-  case actions.SELECT_TAB_MONITOR:
-    return {...state, selectedTab: "monitor"};
-  case actions.UPDATED_PROFILE:
-    return {
-      ...state,
-      profile: action.profile,
-      hasProfile: action.profile && action.profile.status === "ok",
-    };
-  default:
-    return state;
-  }
+export function appReducer(state, action) {
+  return combineReducers({
+    tabsReducer,
+    profileReducer,
+  })(state, action);
 }
 
 export function editorReducer(state = {

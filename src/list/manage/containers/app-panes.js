@@ -18,5 +18,5 @@ AppPanes.propTypes = {
 };
 
 export default connect(
-  ({ app: { selectedTab } }) => ({ selectedTab }),
+  ({ app: { tabsReducer: { selectedTab }} }) => ({ selectedTab }),
 )(AppPanes);

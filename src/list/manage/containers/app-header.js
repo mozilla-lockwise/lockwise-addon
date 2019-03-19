@@ -218,9 +218,13 @@ export class AppHeader extends React.Component {
 export default connect(
   ({
     app: {
-      selectedTab,
-      profile,
-      hasProfile,
+      tabsReducer: {
+        selectedTab,
+      },
+      profileReducer: {
+        profile,
+        hasProfile,
+      },
     },
   }) => ({
     selectedTab,

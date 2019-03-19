@@ -1,5 +1,5 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
+n * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import * as actions from "./actions";
@@ -112,6 +112,37 @@ export function listReducer(state = {
       query: action.filter,
       userEntered: action.userEntered,
     }};
+  default:
+    return state;
+  }
+}
+
+export function profileReducer(state = {
+  profile: null,
+  hasProfile: false,
+  hasProfileNeedsAttn: false,
+}, action) {
+  switch (action.type) {
+  case actions.UPDATED_PROFILE:
+    return {
+      ...state,
+      profile: action.profile,
+      hasProfile: (action.profile !== null),
+      hasProfileNeedsAttn: action.profile && action.profile.status === "error",
+    };
+  default:
+    return state;
+  }
+}
+
+export function tabsReducer(state = {
+  selectedTab: "logins",
+}, action) {
+  switch (action.type) {
+  case actions.SELECT_TAB_LOGINS:
+    return {...state, selectedTab: "logins"};
+  case actions.SELECT_TAB_MONITOR:
+    return {...state, selectedTab: "monitor"};
   default:
     return state;
   }

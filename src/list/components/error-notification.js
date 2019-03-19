@@ -13,17 +13,19 @@ import styles from "./error-notification.css";
 export class ErrorNotification extends React.Component {
   static get propTypes() {
     return {
-      profile: PropTypes.object,
-      hasProfile: PropTypes.bool.isRequired,
+      // profile not set as required, since the default is null
+      // which tells us that the user has never signed in.
+      hasProfileNeedsAttn: PropTypes.bool.isRequired,
       isPanel: PropTypes.bool,
+      reconnectToSync: PropTypes.func.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      profile: {},
-      hasProfile: false,
+      hasProfileNeedsAttn: false,
       isPanel: false,
+      reconnectToSync: () => {},
     };
   }
 
@@ -35,15 +37,17 @@ export class ErrorNotification extends React.Component {
 
   remove() {
     this.setState({
-      hideNotification: true
+      hideNotification: true,
     });
   }
 
   render() {
     const { hideNotification } = this.state;
-    const { isPanel, reconnectToSync } = this.props;
+    const { isPanel, reconnectToSync, hasProfileNeedsAttn } = this.props;
+    const shouldShow = hasProfileNeedsAttn && !hideNotification;
+
     return (<>
-      {!hideNotification && <div className={styles.errorNotification}>
+      {shouldShow && <div className={styles.errorNotification}>
         <Localized id={`error-notification-sync`}>
           <p className={styles.warningMessage}>Unable to sync logins.</p>
         </Localized>
@@ -56,16 +60,15 @@ export class ErrorNotification extends React.Component {
   }
 }
 
-export default connect(
-  ({
-    app: {
-      profile,
-      hasProfile,
+export default connect(({
+  app: {
+    profileReducer: {
+      hasProfileNeedsAttn,
     },
-  }) => ({
-    profile,
-    hasProfile,
-  }),
+  },
+}) => ({
+  hasProfileNeedsAttn,
+}),
   dispatch => ({
     reconnectToSync: () => openSyncPrefs(),
   })

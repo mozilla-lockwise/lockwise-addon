@@ -25,8 +25,8 @@ export default class App extends React.Component {
       <Localized id="document" attrs={{title: true}}>
         <DocumentTitle title="lOCKBOx eNTRIEs">
           <div className={styles.app}>
-            <AppHeader />
             <ErrorNotification isPanel={true}/>
+            <AppHeader />
             <AppPanes>{{
               logins: (
                 <section className={styles.appMain}>
