@@ -67,7 +67,7 @@ function CurrentSelection({editing, item, hideHome, numItems}) {
   } else {
     inner = <IntroPage/>;
   }
-  return <div>{inner}</div>;
+  return inner;
 }
 
 CurrentSelection.propTypes = {
