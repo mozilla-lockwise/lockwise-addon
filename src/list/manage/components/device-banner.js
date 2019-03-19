@@ -5,7 +5,6 @@
  */
 
 import { Localized } from "fluent-react";
-import PropTypes from "prop-types";
 import React from "react";
 
 import Banner from "../../../widgets/banner";
@@ -38,5 +37,5 @@ export default function DeviceBanner() {
         </Button>
       </div>
     </Banner>
-  )
+  );
 }
