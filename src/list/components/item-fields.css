@@ -20,8 +20,13 @@
   text-decoration: none;
 }
 
-.input {
+.input,
+.origin-input {
   max-width: 280px;
+}
+
+.origin-input:invalid {
+  
 }
 
 .password {
