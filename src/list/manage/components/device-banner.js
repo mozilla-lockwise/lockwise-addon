@@ -17,25 +17,23 @@ const URL = "https://lockbox.firefox.com";
 
 export default function DeviceBanner() {
   return (
-    <Banner>
-      <div className={styles.promoteDevice}>
-        <div className={styles.content}>
-          <Localized id="product-fulltitle">
-            <h1>fIrEfOx lOcKbOx</h1>
-          </Localized>
-          <Localized id="banner-promote-device">
-            <span>Maecenas sed diam eget risus varius blandit sit amet non magna.</span>
-          </Localized>
-        </div>
-        <Button
-            type="button" className={styles.learnMore}
-            theme="primary" size="wide"
-            onClick={() => openWebsite(URL)}>
-          <Localized id="banner-action-learn-more">
-          <span>lEaRn MoRe</span>
-          </Localized>
-        </Button>
+    <Banner className={styles.promotion}>
+      <div className={styles.content}>
+        <Localized id="product-fulltitle">
+          <h1 className={styles.title}>fIrEfOx lOcKbOx</h1>
+        </Localized>
+        <Localized id="banner-promote-device">
+          <span className={styles.details}>Maecenas sed diam eget risus varius blandit sit amet non magna.</span>
+        </Localized>
       </div>
+      <Button
+        type="button" className={styles.action}
+        theme="primary" size="wide"
+        onClick={() => openWebsite(URL)}>
+        <Localized id="banner-action-learn-more">
+          <span>lEaRn MoRe</span>
+        </Localized>
+      </Button>
     </Banner>
   );
 }

@@ -6,14 +6,14 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-.promote-device {
+.promotion {
     min-width: max-content;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
     justify-content: baseline;
 }
-.promote-device .content {
+.promotion .content {
     flex: 1 1 auto;
     display: flex;
     flex-flow: column nowrap;
@@ -23,16 +23,16 @@
     padding-inline-start: 52px;
 }
 
-.promote-device .content h1 {
+.promotion .content .title {
     padding: 0px;
     margin: 0px;
     font-size: 17px;
     font-weight: bold;
 }
-.promote-device .content span {
+.promotion .content .details {
     padding: 0px;
     margin: 0px;
 }
-.promote-device .learn-more {
+.promotion .action {
     margin-inline-start: 20px
 }
