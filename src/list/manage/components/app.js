@@ -6,7 +6,7 @@ import { Localized } from "fluent-react";
 import React from "react";
 import DocumentTitle from "react-document-title";
 
-import ErrorNotification from "../../components/error-notification";
+import ErrorNotification from "../../containers/connected-error-notification";
 import AppHeader from "../containers/app-header";
 import AppPanes from "../containers/app-panes";
 import AllItems from "../containers/all-items";

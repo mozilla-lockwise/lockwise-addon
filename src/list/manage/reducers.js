@@ -10,8 +10,8 @@ import { cacheReducer, listReducer, tabsReducer, profileReducer,
 
 export function appReducer(state, action) {
   return combineReducers({
-    tabsReducer,
-    profileReducer,
+    tabs: tabsReducer,
+    profileWrap: profileReducer,
   })(state, action);
 }
 

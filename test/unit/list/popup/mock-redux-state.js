@@ -6,7 +6,7 @@
 
 export const initialState = {
   app: {
-    profileReducer: {
+    profileWrap: {
       profile: null,
       hasProfile: false,
       hasProfileNeedsAttn: false,
@@ -27,7 +27,7 @@ export const initialState = {
 
 export const filledState = {
   app: {
-    profileReducer: {
+    profileWrap: {
       profile: null,
       hasProfile: false,
       hasProfileNeedsAttn: false,

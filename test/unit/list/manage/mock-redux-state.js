@@ -6,10 +6,10 @@
 
 export const initialState = {
   app: {
-    tabsReducer: {
+    tabs: {
       selectedTab: "logins",
     },
-    profileReducer: {
+    profileWrap: {
       profile: null,
       hasProfile: false,
       hasProfileNeedsAttn: false,
@@ -40,10 +40,10 @@ export const initialState = {
 
 export const filledState = {
   app: {
-    tabsReducer: {
+    tabs: {
       selectedTab: "logins",
     },
-    profileReducer: {
+    profileWrap: {
       profile: null,
       hasProfile: false,
       hasProfileNeedsAttn: false,

@@ -10,7 +10,7 @@ export default combineReducers({
   // we use combineReducers here to add another layer
   // in the object in order to match the pattern used
   // in manage/reducers.js
-  app: combineReducers({profileReducer}),
+  app: combineReducers({profileWrap: profileReducer}),
   cache: cacheReducer,
   list: listReducer,
 });

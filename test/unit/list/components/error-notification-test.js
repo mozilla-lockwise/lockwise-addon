@@ -7,7 +7,7 @@ import chaiEnzyme from "chai-enzyme";
 import React from "react";
 
 import mountWithL10n from "test/unit/mocks/l10n";
-import { ErrorNotification } from "src/list/components/error-notification";
+import ErrorNotification from "src/list/components/error-notification";
 
 chai.use(chaiEnzyme());
 

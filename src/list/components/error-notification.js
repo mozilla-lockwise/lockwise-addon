@@ -5,12 +5,10 @@
 import { Localized } from "fluent-react";
 import PropTypes from "prop-types";
 import React from "react";
-import { connect } from "react-redux";
-import { openSyncPrefs } from "../common";
 
 import styles from "./error-notification.css";
 
-export class ErrorNotification extends React.Component {
+export default class ErrorNotification extends React.Component {
   static get propTypes() {
     return {
       // profile not set as required, since the default is null
@@ -59,17 +57,3 @@ export class ErrorNotification extends React.Component {
     </>);
   }
 }
-
-export default connect(({
-  app: {
-    profileReducer: {
-      hasProfileNeedsAttn,
-    },
-  },
-}) => ({
-  hasProfileNeedsAttn,
-}),
-  dispatch => ({
-    reconnectToSync: () => openSyncPrefs(),
-  })
-)(ErrorNotification);

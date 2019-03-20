@@ -10,7 +10,7 @@ import Panel, { PanelHeader, PanelBanner, PanelBody, PanelFooter,
                 PanelFooterButton } from "../../../widgets/panel";
 import ItemList, { ItemListPlaceholder } from "../../components/item-list";
 import ItemFilter from "../../containers/item-filter";
-import ErrorNotification from "../../components/error-notification";
+import ErrorNotification from "../../containers/connected-error-notification";
 
 import styles from "./item-list-panel.css";
 
