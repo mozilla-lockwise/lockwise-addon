@@ -556,7 +556,7 @@ describe("list > reducers", () => {
 
         expect(profileReducer(undefined, action)).to.deep.equal({
           hasProfile: true,
-          hasProfileNeedsAttn: true,
+          hasProfileNeedsAttn: false,
           profile: {
             status: "ok",
             avatar: "blah.jpg",

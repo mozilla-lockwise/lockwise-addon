@@ -5,6 +5,13 @@
 // Keep these in sync with <src/webextension/list/popup/reducers.js>.
 
 export const initialState = {
+  app: {
+    profileReducer: {
+      profile: null,
+      hasProfile: false,
+      hasProfileNeedsAttn: false,
+    },
+  },
   cache: {
     items: [],
     currentItem: null,
@@ -19,6 +26,13 @@ export const initialState = {
 };
 
 export const filledState = {
+  app: {
+    profileReducer: {
+      profile: null,
+      hasProfile: false,
+      hasProfileNeedsAttn: false,
+    },
+  },
   cache: {
     items: [
       {id: "0", title: "origin-0.com", username: "username 0",

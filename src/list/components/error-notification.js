@@ -51,7 +51,7 @@ export class ErrorNotification extends React.Component {
         <Localized id={`error-notification-sync`}>
           <p className={styles.warningMessage}>Unable to sync logins.</p>
         </Localized>
-        {isPanel && <span onClick={this.remove} className={styles.closeIcon}></span>}
+        {!isPanel && <span onClick={this.remove} className={styles.closeIcon}></span>}
         <Localized id={`error-notification-sync-button`}>
           <button onClick={reconnectToSync}>Reconnect to Sync</button>
         </Localized>

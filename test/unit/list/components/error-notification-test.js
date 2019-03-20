@@ -7,7 +7,7 @@ import chaiEnzyme from "chai-enzyme";
 import React from "react";
 
 import mountWithL10n from "test/unit/mocks/l10n";
-import ErrorNotification from "src/list/components/error-notification";
+import { ErrorNotification } from "src/list/components/error-notification";
 
 chai.use(chaiEnzyme());
 
@@ -25,23 +25,21 @@ describe("list > components > <ErrorNotification/>", () => {
   });
 
   it("should not render if hasProfile and does not need attention", () => {
-    expect(wrapper.find("p")).to.have.length(0);
+    expect(wrapper.find("button")).to.have.length(0);
   });
 
-  it("should not render if hasProfileNeedsAttn is true", () => {
-    props.hasProfileNeedsAttn = true;
-    expect(wrapper.find("p")).to.have.length(1);
+  it("should render if hasProfileNeedsAttn is true", () => {
+    wrapper.setProps({hasProfileNeedsAttn: true});
+    expect(wrapper.find("button")).to.have.length(1);
   });
 
   it("should render close button if not rendered in popup panel", () => {
-    props.isPanel = true;
-    props.hasProfileNeedsAttn = true;
+    wrapper.setProps({hasProfileNeedsAttn: true, isPanel: false});
     expect(wrapper.find("span")).to.have.length(1);
   });
 
   it("should not render close button if is rendered in popup panel", () => {
-    props.isPanel = true;
-    props.hasProfileNeedsAttn = true;
+    wrapper.setProps({hasProfileNeedsAttn: true, isPanel: true});
     expect(wrapper.find("span")).to.have.length(0);
   });
 });

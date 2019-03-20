@@ -98,7 +98,7 @@ export default function ItemListPanel({inputRef, noResultsBanner,
         <ItemFilter inputRef={inputRef} className={styles.filterPanel} />
       </PanelHeader>
 
-      <ErrorNotification/>
+      <ErrorNotification isPanel={true}/>
 
       {banner}
 
