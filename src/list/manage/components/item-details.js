@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import Button from "../../../widgets/button";
-import DeviceBanner from "./device-banner";
+import DeviceBanner from "./promote-banner";
 import Toolbar from "../../../widgets/toolbar";
 import { ItemFields } from "../../components/item-fields";
 
