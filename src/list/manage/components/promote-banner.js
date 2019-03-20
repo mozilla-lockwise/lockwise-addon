@@ -12,7 +12,7 @@ import Banner from "../../../widgets/banner";
 import Button from "../../../widgets/button";
 
 import styles from "./promote-banner.css";
-import { openWebsite } from "../../common";
+import { openWebsite, openSyncPrefs } from "../../common";
 
 const URL = "https://lockbox.firefox.com";
 
@@ -51,6 +51,9 @@ LocalizedPromotionBanner.propTypes = {
   onAction: PropTypes.func.isRequired,
 };
 
-export default function PromoteDeviceBanner() {
+export function PromoteDeviceBanner() {
   return (<LocalizedPromotionBanner l10nId="banner-promote-device" onAction={() => openWebsite(URL)} />);
+}
+export function PromoteFxABanner() {
+  return (<LocalizedPromotionBanner l10nId="banner-promote-fxa" onAction={() => openSyncPrefs()} />);
 }

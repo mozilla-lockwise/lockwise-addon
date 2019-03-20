@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import Button from "../../../widgets/button";
-import DeviceBanner from "./promote-banner";
+import ConnectedPromotionBanner from "../containers/connected-promote-banner";
 import Toolbar from "../../../widgets/toolbar";
 import { ItemFields } from "../../components/item-fields";
 
@@ -58,7 +58,7 @@ export default function ItemDetails({fields, onCopy, onEdit, onDelete}) {
       </div>
 
       <div className={styles.promotion}>
-        <DeviceBanner />
+        <ConnectedPromotionBanner />
       </div>
     </div>
   );

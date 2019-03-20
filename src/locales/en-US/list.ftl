@@ -168,3 +168,8 @@ banner-promote-device =
   .title = { product-fulltitle }
   .details = Download our mobile app to take your passwords with you everywhere.
   .actionLabel = Learn More
+
+banner-promote-fxa =
+  .title = Take your passwords everywhere.
+  .details = Createa a Firefox Account or Sign In to sync to Lockbox on mobile.
+  .actionLabel = Sign In
