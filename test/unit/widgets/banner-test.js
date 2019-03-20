@@ -15,7 +15,7 @@ import Banner from "src/widgets/banner";
 chai.use(chaiEnzyme());
 chai.use(sinonChai);
 
-describe.only("widgets > <Banner/>", () => {
+describe("widgets > <Banner/>", () => {
   it("render", () => {
     const wrapper = mount(
       <Banner>
