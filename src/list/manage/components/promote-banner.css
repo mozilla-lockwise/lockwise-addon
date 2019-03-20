@@ -20,6 +20,7 @@
     justify-content: space-between;
     background: url(/icons/icon-lockbox.svg) no-repeat;
     min-height: 40px;
+    max-width: 28rem;
     padding-inline-start: 52px;
 }
 
