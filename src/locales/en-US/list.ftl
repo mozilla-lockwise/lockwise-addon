@@ -171,5 +171,5 @@ banner-promote-device =
 
 banner-promote-fxa =
   .title = Take your passwords everywhere.
-  .details = Createa a Firefox Account or Sign In to sync to Lockbox on mobile.
+  .details = Create a Firefox Account or Sign In to sync to Lockbox on mobile.
   .actionLabel = Sign In
