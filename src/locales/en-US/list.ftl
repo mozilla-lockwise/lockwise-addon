@@ -7,6 +7,9 @@
 document =
   .title = Lockbox Entries
 
+error-notification-sync = Unable to sync logins.
+error-notification-sync-button = Reconnect
+
 all-items-get-started =
   When you add an entry, it automatically shows up here.
 
