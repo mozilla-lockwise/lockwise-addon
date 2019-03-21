@@ -40,11 +40,9 @@ describe("list > manage > containers > <ConnectedPromotionBanner />", () => {
   describe("signed in", () => {
     it("render", () => {
       const state = { ...filledState };
-      state.app = {
-        app: {
-          ...state.app,
-          hasProfile: true,
-        },
+      state.app.profileWrap = {
+        ...state.app.profileWrap,
+        hasProfile: true,
       };
       const store = mockStore(state);
       const wrapper = mountWithL10n(

@@ -23,6 +23,6 @@ CurrentPromotionBanner.propTypes = {
 
 export default connect(
   (state) => ({
-    hasProfile: state.app.hasProfile,
+    hasProfile: state.app.profileWrap.hasProfile,
   })
 )(CurrentPromotionBanner);
