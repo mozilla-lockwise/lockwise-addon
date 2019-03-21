@@ -51,7 +51,7 @@ export default class ErrorNotification extends React.Component {
         </Localized>
         {!isPanel && <span onClick={this.remove} className={styles.closeIcon}></span>}
         <Localized id={`error-notification-sync-button`}>
-          <button onClick={reconnectToSync}>Reconnect to Sync</button>
+          <button onClick={reconnectToSync}>rECONNECt</button>
         </Localized>
        </div>}
     </>);
