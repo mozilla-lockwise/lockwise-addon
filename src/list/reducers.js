@@ -116,3 +116,34 @@ export function listReducer(state = {
     return state;
   }
 }
+
+export function profileReducer(state = {
+  profile: null,
+  hasProfile: false,
+  hasProfileNeedsAttn: false,
+}, action) {
+  switch (action.type) {
+  case actions.UPDATED_PROFILE:
+    return {
+      ...state,
+      profile: action.profile,
+      hasProfile: (action.profile !== null),
+      hasProfileNeedsAttn: action.profile && action.profile.status === "error",
+    };
+  default:
+    return state;
+  }
+}
+
+export function tabsReducer(state = {
+  selectedTab: "logins",
+}, action) {
+  switch (action.type) {
+  case actions.SELECT_TAB_LOGINS:
+    return {...state, selectedTab: "logins"};
+  case actions.SELECT_TAB_MONITOR:
+    return {...state, selectedTab: "monitor"};
+  default:
+    return state;
+  }
+}

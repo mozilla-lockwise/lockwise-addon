@@ -4,9 +4,13 @@
 
 import { combineReducers } from "redux";
 
-import { cacheReducer, listReducer } from "../reducers";
+import { cacheReducer, listReducer, profileReducer } from "../reducers";
 
 export default combineReducers({
+  // we use combineReducers here to add another layer
+  // in the object in order to match the pattern used
+  // in manage/reducers.js
+  app: combineReducers({profileWrap: profileReducer}),
   cache: cacheReducer,
   list: listReducer,
 });

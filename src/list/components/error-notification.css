@@ -1,0 +1,45 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+.error-notification {
+  background: #ffe900;
+  padding: 8px 5px;
+}
+
+.warning-message {
+  display: inline-block;
+  margin: 0 10px;
+  font-size: 12px;
+}
+
+.warning-message:before {
+  background-image: url(/icons/warning.svg);
+  content: '';
+  display: inline-block;
+  height: 16px;
+  margin-right: 5px;
+  margin-bottom: -2px;
+  width: 16px;
+}
+
+.error-notification button {
+  border-radius: 10px;
+  border: 1px solid #989898;
+  color: black;
+  cursor: pointer;
+  float: right;
+  font-size: 11px;
+  font-weight: 500;
+  height: 19px;
+  margin: 0px 10px;
+}
+
+.close-icon {
+  background-image: url(/icons/close.svg);
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  height: 16px;
+  width: 16px;
+}
