@@ -5,6 +5,9 @@
 .item-details {
   padding: 1em 4.6em 4.6em;
   background-color: #f9f9fa;
+  display: flex;
+  flex: 1 1 auto;
+  flex-flow: column nowrap;
 }
 
 .item-details header {
@@ -63,4 +66,11 @@ hr {
   color: #d7d7db;
   float: left;
   margin-top: 50px;
+}
+
+.promotion {
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: end;
 }

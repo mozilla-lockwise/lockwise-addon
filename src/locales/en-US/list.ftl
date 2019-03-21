@@ -166,3 +166,13 @@ modal-cancel-editing = Unsaved changes exist. Discard them?
 modal-delete = Delete this Entry?
   .confirmLabel = Delete
   .cancelLabel = Cancel
+
+banner-promote-device =
+  .title = { product-fulltitle }
+  .details = Download our mobile app to take your passwords with you everywhere.
+  .actionLabel = Learn More
+
+banner-promote-fxa =
+  .title = Take your passwords everywhere.
+  .details = Create a Firefox Account or Sign In to sync to Lockbox on mobile.
+  .actionLabel = Sign In

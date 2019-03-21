@@ -7,12 +7,18 @@ import chaiEnzyme from "chai-enzyme";
 import React from "react";
 import sinon from "sinon";
 import sinonChai from "sinon-chai";
+import configureStore from "redux-mock-store";
+import { Provider } from "react-redux";
 
+import { initialState } from "../mock-redux-state";
 import mountWithL10n from "test/unit/mocks/l10n";
 import ItemDetails from "src/list/manage/components/item-details";
 
 chai.use(chaiEnzyme());
 chai.use(sinonChai);
+
+const middlewares = [];
+const mockStore = configureStore(middlewares);
 
 describe("list > manage > components > <ItemDetails/>", () => {
   const fields = {
@@ -27,9 +33,12 @@ describe("list > manage > components > <ItemDetails/>", () => {
   beforeEach(() => {
     onEdit = sinon.spy();
     onDelete = sinon.spy();
+    const store = mockStore(initialState);
     wrapper = mountWithL10n(
-      <ItemDetails fields={fields} onCopy={() => {}} onEdit={onEdit}
-                   onDelete={onDelete}/>
+      <Provider store={store}>
+        <ItemDetails fields={fields} onCopy={() => { }} onEdit={onEdit}
+          onDelete={onDelete} />
+      </Provider>
     );
   });
 
