@@ -20,10 +20,16 @@ body > main,
   height: 100%;
 }
 
+.app {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
 .app-main {
   display: grid;
   height: 100%;
   grid-template-columns: 1fr 3fr;
+  overflow: hidden;
 }
 
 .app-main article {
@@ -52,4 +58,6 @@ body > main,
   grid-column: 2;
   background-color: #f9f9fa;
   overflow: auto;
+  display: flex;
+  flex-flow: column nowrap;
 }

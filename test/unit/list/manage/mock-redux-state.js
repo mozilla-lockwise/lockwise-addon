@@ -6,9 +6,14 @@
 
 export const initialState = {
   app: {
-    selectedTab: "logins",
-    profile: null,
-    hasProfile: false,
+    tabs: {
+      selectedTab: "logins",
+    },
+    profileWrap: {
+      profile: null,
+      hasProfile: false,
+      hasProfileNeedsAttn: false,
+    },
   },
   cache: {
     items: [],
@@ -35,9 +40,14 @@ export const initialState = {
 
 export const filledState = {
   app: {
-    selectedTab: "logins",
-    profile: null,
-    hasProfile: false,
+    tabs: {
+      selectedTab: "logins",
+    },
+    profileWrap: {
+      profile: null,
+      hasProfile: false,
+      hasProfileNeedsAttn: false,
+    },
   },
   cache: {
     items: [

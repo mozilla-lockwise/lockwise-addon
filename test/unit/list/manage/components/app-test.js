@@ -55,7 +55,6 @@ describe("list > manage > components > <App/>", () => {
         <App/>
       </Provider>
     );
-
     expect(wrapper).to.have.descendants(AddItem);
     expect(wrapper).to.have.descendants(AllItems);
     expect(wrapper).to.have.descendants(CurrentSelection);
