@@ -121,8 +121,10 @@ jobs:
       - run:
           name: "Publish Release on GitHub"
           command: |
+            cd ~/project
             VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]')
-            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ~/project/addons/lockbox-signed.xpi
+            echo "Release ${VERSION}"
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./addons/lockbox-signed.xpi
   build-documentation:
     docker:
       - image: python:3.7
