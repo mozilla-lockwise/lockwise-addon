@@ -186,7 +186,7 @@ workflows:
             branches:
               ignore: /.*/
             tags:
-              only: /^\d+\.\d+\.\d+$/
+              only: /^\d+\.\d+\.\d+(-.*)?$/
       - lint:
           requires:
             - build
@@ -194,7 +194,7 @@ workflows:
             branches:
               ignore: /.*/
             tags:
-              only: /^\d+\.\d+\.\d+$/
+              only: /^\d+\.\d+\.\d+(-.*)?$/
       - test:
           requires:
             - build
@@ -202,7 +202,7 @@ workflows:
             branches:
               ignore: /.*/
             tags:
-              only: /^\d+\.\d+\.\d+$/
+              only: /^\d+\.\d+\.\d+(-.*)?$/
       - package-addon-production:
           requires:
             - build
@@ -212,7 +212,7 @@ workflows:
             branches:
               ignore: /.*/
             tags:
-              only: /^\d+\.\d+\.\d+$/
+              only: /^\d+\.\d+\.\d+(-.*)?$/
       - publish-github-release:
           requires:
             - package-addon-production
@@ -220,4 +220,4 @@ workflows:
             branches:
               ignore: /.*/
             tags:
-              only: /^\d+\.\d+\.\d+$/
+              only: /^\d+\.\d+\.\d+(-.*)?$/
