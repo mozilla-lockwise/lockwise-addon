@@ -186,6 +186,8 @@ workflows:
             tags:
               only: /^\d+\.\d+\.\d+$/
       - lint:
+          requires:
+            - build
           filters:
             tags:
               only: /^\d+\.\d+\.\d+$/
