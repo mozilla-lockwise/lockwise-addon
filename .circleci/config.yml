@@ -21,6 +21,27 @@ jobs:
           root: .
           paths:
             - ./*
+  lint:
+    docker:
+      - image: circleci/node
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@6.7'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install-npm
+          command: npm ci
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: lint
+          command: npm run lint
   test:
     docker:
       - image: circleci/node
@@ -142,6 +163,9 @@ workflows:
       - test:
           requires:
             - build
+      - lint:
+          requires:
+            - build
       - build-documentation:
           filters:
             branches:
@@ -158,6 +182,7 @@ workflows:
           requires:
             - build
             - test
+            - lint
           filters:
             branches:
               ignore: /.*/
