@@ -107,6 +107,7 @@ jobs:
             npm run sign:prod
       - store_artifacts:
           path: ~/project/addons/lockbox-signed.xpi
+          destination: lockbox-signed.xpi
       - persist_to_workspace:
           root: .
           paths:
@@ -120,8 +121,10 @@ jobs:
       - run:
           name: "Publish Release on GitHub"
           command: |
+            cd ~/project
             VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]')
-            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ~/project/addons/lockbox-signed.xpi
+            echo "Release ${VERSION}"
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./addons/lockbox-signed.xpi
   build-documentation:
     docker:
       - image: python:3.7
@@ -157,7 +160,7 @@ jobs:
 
 workflows:
   version: 2
-  build_and_test_and_package_and_deploy_docs:
+  build_and_test_and_docs:
     jobs:
       - build
       - test:
@@ -178,6 +181,30 @@ workflows:
             branches:
               only:
                 - master
+  deploy_release:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^\d+\.\d+\.\d+(-.*)?$/
+      - lint:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^\d+\.\d+\.\d+(-.*)?$/
+      - test:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^\d+\.\d+\.\d+(-.*)?$/
       - package-addon-production:
           requires:
             - build
@@ -187,7 +214,7 @@ workflows:
             branches:
               ignore: /.*/
             tags:
-              only: /^\d+\.\d+\.\d+$/
+              only: /^\d+\.\d+\.\d+(-.*)?$/
       - publish-github-release:
           requires:
             - package-addon-production
@@ -195,4 +222,4 @@ workflows:
             branches:
               ignore: /.*/
             tags:
-              only: /^\d+\.\d+\.\d+$/
+              only: /^\d+\.\d+\.\d+(-.*)?$/
