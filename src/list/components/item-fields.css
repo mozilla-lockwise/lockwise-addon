@@ -25,10 +25,6 @@
   max-width: 280px;
 }
 
-.origin-input:invalid {
-  
-}
-
 .password {
   max-width: 296px;
 }
@@ -55,4 +51,70 @@
 
 .popup-origin {
   margin: 2px;
+}
+
+/* tooltip styles */
+.tooltip {
+  display: none;
+  border-radius: 2px;
+
+  width: 200px;
+  padding: 4px;
+  position: absolute;
+  z-index: 2;
+}
+
+.input-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.error-msg {
+  background-color: #d70022;
+}
+
+.error-msg p,
+.info-msg p {
+  padding: 0;
+  margin: 0;
+}
+
+.origin-input:focus:not(:invalid) ~ .info-msg {
+  display: block;
+  font-size: 13px;
+  position: absolute;
+  left: 311px;
+  top: 22px;
+  box-shadow: 0 5px 12px 0 rgba(0, 0, 0, 0.2);
+  background-color: #fdfdfd;
+}
+
+.origin-input:invalid:focus ~ .error-msg {
+  display: block;
+  position: absolute;
+  font-size: 12px;
+  left: 0px;
+  top: 60px;
+  color: #ffffff;
+}
+
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #d70022;
+  position: absolute;
+  top: -5px;
+}
+
+.arrow-left {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #fdfdfd;
+  filter: drop-shadow(-4px 3px 3px rgba(0, 0, 0, 0.2));
+  position: absolute;
+  left: -8px;
 }

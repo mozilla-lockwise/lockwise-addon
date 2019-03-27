@@ -5,7 +5,6 @@
 import { Localized } from "fluent-react";
 import PropTypes from "prop-types";
 import React from "react";
-import ReactTooltip from 'react-tooltip'
 
 import { openWebsite } from "../common";
 import CopyToClipboardButton from "../../widgets/copy-to-clipboard-button";
@@ -112,50 +111,45 @@ export class EditItemFields extends React.Component {
     }
   }
 
-  focusOriginInput() {
-    // do a check here for input, if there is input don't show nothin
-    console.log("focusOriginInput", this.props.fields.origin);
-    ReactTooltip.show(findDOMNode(this.refs["info-tooltip"]));
-  }
-
-  onChangeLocal(e) {
-    ReactTooltip.hide(findDOMNode(this.refs["info-tooltip"]));
-    this.props.onChange(e);
-  }
-
   render() {
     const {fields, onChange} = this.props;
     const controlledProps = (name, maxLength = 500) => {
       return {name, value: fields[name],
-              onChange: (e) => this.onChangeLocal(e),
+              onChange: (e) => onChange(e),
               maxLength: maxLength.toString()};
     };
 
     return (
       <div className={styles.itemFields}>
-        <label>
-          <Localized id="item-fields-origin">
-            <LabelText>oRIGIn</LabelText>
-          </Localized>
-          <Localized id="item-fields-origin-input" attrs={{placeholder: true}}>
-            <Input className={styles.originInput} type="text"
-                   disabled={!!fields.itemId}
-      onFocus={}
-                   pattern={"^https?://"}
-                   placeholder="hTTps://wWw.eXAMPLe.cOm"
-                   {...controlledProps("origin")}
-                   ref={(element) => this._firstField = element} />
-        </Localized>
+        <div className={styles.inputWrap}>
+          <label>
+            <Localized id="item-fields-origin">
+              <LabelText>oRIGIn</LabelText>
+            </Localized>
+            <Localized id="item-fields-origin-input" attrs={{placeholder: true}}>
+              <Input className={styles.originInput} type="url"
+                     disabled={!!fields.itemId}
+                     placeholder="hTTps://wWw.eXAMPLe.cOm"
+                     {...controlledProps("origin")}
+                     ref={(element) => this._firstField = element} />
+            </Localized>
 
-        <Localized id="item-fields-origin-error-message">
-          <p ref='error-tooltip' data-tip='tooltip'>eRROr mESSAGe</p>
-        </Localized>
-        
-        <Localized id="item-fields-origin-info-message">
-          <p ref='info-tooltip' data-tip='tooltip'>iNFo mESSAGe</p>
-        </Localized>
-        <ReactTooltip />
-        </label>
+            <div className={`${styles.tooltip} ${styles.infoMsg}`}>
+              <div className={styles.arrowLeft}></div>
+              <Localized id="item-fields-origin-info-message">
+                <p>iNFo mESSAGe</p>
+              </Localized>
+            </div>
+
+            <div className={`${styles.tooltip} ${styles.errorMsg}`}>
+              <div className={styles.arrowUp}></div>
+              <Localized id="item-fields-origin-error-message">
+                <p>eRROr mESSAGe</p>
+              </Localized>
+            </div>
+          </label>
+        </div>
+
         <label>
           <Localized id="item-fields-username">
             <LabelText>uSERNAMe</LabelText>
