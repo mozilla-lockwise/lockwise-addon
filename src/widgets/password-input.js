@@ -17,6 +17,7 @@ export default class PasswordInput extends React.Component {
       className: PropTypes.string,
       monospace: PropTypes.bool,
       disabled: PropTypes.bool,
+      errorEl: PropTypes.element,
     };
   }
 
@@ -25,6 +26,7 @@ export default class PasswordInput extends React.Component {
       className: "",
       monospace: true,
       disabled: false,
+      errorEl: null,
     };
   }
 
@@ -45,7 +47,7 @@ export default class PasswordInput extends React.Component {
   }
 
   render() {
-    const {className, monospace, disabled, ...props} = this.props;
+    const {className, monospace, disabled, errorEl, ...props} = this.props;
     const {showPassword} = this.state;
     const selectedIndex = showPassword ? 1 : 0;
 
@@ -69,6 +71,7 @@ export default class PasswordInput extends React.Component {
                     onClick={() => this.showPassword(false)}/>
           </Localized>
         </Stack>
+        {errorEl}
       </div>
     );
   }

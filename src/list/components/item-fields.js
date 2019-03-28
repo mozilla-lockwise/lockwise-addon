@@ -119,6 +119,14 @@ export class EditItemFields extends React.Component {
               maxLength: maxLength.toString()};
     };
 
+    const passwordErrorEl = (
+        <div className={`${styles.tooltip} ${styles.passwordErrorMsg}`}>
+          <div className={styles.arrowUp}></div>
+          <Localized id="item-fields-password-error-message">
+            <p>eRROr mESSAGe</p>
+          </Localized>
+        </div>);
+
     return (
       <div className={styles.itemFields}>
         <div className={styles.inputWrap}>
@@ -166,7 +174,8 @@ export class EditItemFields extends React.Component {
           <Localized id="item-fields-password">
             <LabelText>pASSWORd</LabelText>
           </Localized>
-          <PasswordInput className={styles.password}
+          <PasswordInput className={styles.password} required
+                         errorEl={passwordErrorEl}
                          {...controlledProps("password")}/>
         </label>
       </div>

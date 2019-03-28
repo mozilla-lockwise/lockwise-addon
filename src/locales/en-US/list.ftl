@@ -22,6 +22,7 @@ item-fields-origin-input =
   .placeholder = https://www.example.com
 item-fields-origin-error-message = Must include “https://“ or “http://“
 item-fields-origin-info-message = Make sure this matches the exact domain for the website you are referencing (“https://” and “www” included).
+item-fields-password-error-message = Password cannot be empty
 item-fields-origin-button = Launch
 item-fields-username = Username
 item-fields-username-input =

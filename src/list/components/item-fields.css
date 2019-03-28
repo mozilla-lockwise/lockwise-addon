@@ -69,10 +69,12 @@
   display: inline-block;
 }
 
+.password-error-msg,
 .error-msg {
   background-color: #d70022;
 }
 
+.password-error-msg p,
 .error-msg p,
 .info-msg p {
   padding: 0;
@@ -89,13 +91,20 @@
   background-color: #fdfdfd;
 }
 
-.origin-input:invalid:focus ~ .error-msg {
+
+.origin-input:invalid:focus ~ .error-msg,
+.password input:-moz-ui-invalid ~ .password-error-msg {
   display: block;
   position: absolute;
   font-size: 12px;
   left: 0px;
   top: 60px;
   color: #ffffff;
+}
+
+.password input:-moz-ui-invalid ~ .password-error-msg {
+  top: 36px;
+  width: 145px;
 }
 
 .arrow-up {
