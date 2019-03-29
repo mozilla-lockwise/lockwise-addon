@@ -9,7 +9,7 @@
   },
 
 
-  "content_security_policy": "script-src 'self' {{testing_csp_scripts}} ; object-src 'self' {{testing_csp_objects}}",
+  "content_security_policy": "script-src 'self' 'sha256-HbSjs39Y0thRGfO3RHrNzLPKyC/tq6FdIuP3jEBAcJQ=' {{testing_csp_scripts}} ; object-src 'self' {{testing_csp_objects}}",
 
   "applications": {
     "gecko": {
@@ -39,6 +39,14 @@
   },
 
   "experiment_apis": {
+    "aboutLogins": {
+      "schema": "experiments/aboutLogins/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "script": "experiments/aboutLogins/api.js",
+        "paths": [["experiments", "aboutLogins"]]
+      }
+    },
     "logins": {
       "schema": "experiments/logins/schema.json",
       "parent": {

@@ -11,4 +11,6 @@ export async function initializeEnvironment() {
     await browser.experiments.logins
       .setLoginSavingEnabled(origin, false);
   }
+
+  browser.experiments.aboutLogins.register();
 }

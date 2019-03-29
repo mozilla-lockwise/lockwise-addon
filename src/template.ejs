@@ -4,7 +4,11 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <html>
   <head>
+    <base>
     <meta charset="utf-8"/>
+    <!-- If you change this script tag you must update the hash in the extension's
+         `content_security_policy`: 'sha256-HbSjs39Y0thRGfO3RHrNzLPKyC/tq6FdIuP3jEBAcJQ=' -->
+    <script>document.head.firstElementChild.href = browser.runtime.getURL("");</script>
     <% for (let css of htmlWebpackPlugin.files.css) { %>
     <link href="<%- css %>" rel="stylesheet">
     <% } for (let js of htmlWebpackPlugin.files.js) { %>

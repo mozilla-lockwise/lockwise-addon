@@ -1,0 +1,15 @@
+[
+  {
+    "namespace": "experiments.aboutLogins",
+    "description": "Firefox Lockbox internal API for registering about:logins",
+    "functions": [
+      {
+        "name": "register",
+        "type": "function",
+        "description": "Register about:logins to point to the management page.",
+        "async": false,
+        "parameters": []
+      }
+    ]
+  }
+]
