@@ -121,18 +121,35 @@ export class EditItemFields extends React.Component {
 
     return (
       <div className={styles.itemFields}>
-        <label>
-          <Localized id="item-fields-origin">
-            <LabelText>oRIGIn</LabelText>
-          </Localized>
-          <Localized id="item-fields-origin-input" attrs={{placeholder: true}}>
-            <Input className={styles.input} type="text"
-                   disabled={!!fields.itemId}
-                   placeholder="hTTps://wWw.eXAMPLe.cOm"
-                   {...controlledProps("origin")}
-                   ref={(element) => this._firstField = element} />
-          </Localized>
-        </label>
+        <div className={styles.inputWrap}>
+          <label>
+            <Localized id="item-fields-origin">
+              <LabelText>oRIGIn</LabelText>
+            </Localized>
+            <Localized id="item-fields-origin-input" attrs={{placeholder: true}}>
+              <Input className={styles.originInput} type="url"
+                     disabled={!!fields.itemId}
+                     placeholder="hTTps://wWw.eXAMPLe.cOm"
+                     {...controlledProps("origin")}
+                     ref={(element) => this._firstField = element} />
+            </Localized>
+
+            <div className={`${styles.tooltip} ${styles.infoMsg}`}>
+              <div className={styles.arrowLeft}></div>
+              <Localized id="item-fields-origin-info-message">
+                <p>iNFo mESSAGe</p>
+              </Localized>
+            </div>
+
+            <div className={`${styles.tooltip} ${styles.errorMsg}`}>
+              <div className={styles.arrowUp}></div>
+              <Localized id="item-fields-origin-error-message">
+                <p>eRROr mESSAGe</p>
+              </Localized>
+            </div>
+          </label>
+        </div>
+
         <label>
           <Localized id="item-fields-username">
             <LabelText>uSERNAMe</LabelText>
