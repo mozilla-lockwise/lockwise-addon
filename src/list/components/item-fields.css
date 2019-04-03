@@ -79,7 +79,7 @@
   margin: 0;
 }
 
-.origin-input:focus:not(:invalid) ~ .info-msg {
+.origin-input:focus:placeholder-shown ~ .info-msg {
   display: block;
   font-size: 13px;
   position: absolute;
@@ -89,7 +89,7 @@
   background-color: #fdfdfd;
 }
 
-.origin-input:invalid:focus ~ .error-msg {
+.origin-input:invalid:focus:not(:placeholder-shown) ~ .error-msg {
   display: block;
   position: absolute;
   font-size: 12px;
