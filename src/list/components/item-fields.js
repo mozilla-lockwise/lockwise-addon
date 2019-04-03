@@ -129,6 +129,7 @@ export class EditItemFields extends React.Component {
             <Localized id="item-fields-origin-input" attrs={{placeholder: true}}>
               <Input className={styles.originInput} type="url"
                      disabled={!!fields.itemId}
+                     required={!fields.itemId}
                      placeholder="hTTps://wWw.eXAMPLe.cOm"
                      {...controlledProps("origin")}
                      ref={(element) => this._firstField = element} />
