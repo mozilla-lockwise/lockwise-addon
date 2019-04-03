@@ -61,10 +61,11 @@ const ConnectedItemDetails = connect(
   })
 )(ItemDetails);
 
-function CurrentSelection({editing, item, hideHome, numItems}) {
+function CurrentSelection({editing, item, hideHome, numItems, error}) {
   let inner;
   if (editing) {
-    inner = <ConnectedEditItemDetails item={item}/>;
+    console.log("editing, connectedEditItemDetails error", error);
+    inner = <ConnectedEditItemDetails item={item} error={error}/>;
   } else if (item) {
     inner = <ConnectedItemDetails item={item}/>;
   } else if (hideHome) {
@@ -81,15 +82,19 @@ function CurrentSelection({editing, item, hideHome, numItems}) {
 CurrentSelection.propTypes = {
   editing: PropTypes.bool.isRequired,
   item: PropTypes.object,
+  error: PropTypes.object,
   hideHome: PropTypes.bool.isRequired,
   numItems: PropTypes.number.isRequired,
 };
 
 export default connect(
-  (state) => ({
+  (state) => (
+
+    return {
     editing: state.editor.editing,
-    hideHome: state.editor.hideHome,
     item: state.cache.currentItem,
+    error: state.editor.error,
+    hideHome: state.editor.hideHome,
     numItems: state.cache.items.length,
   })
 )(CurrentSelection);

@@ -10,7 +10,7 @@ import { classNames } from "../../../common";
 import Button from "../../../widgets/button";
 import Toolbar from "../../../widgets/toolbar";
 import { EditItemFields } from "../../components/item-fields";
-import DuplicateNotification from "../../components/duplicate-notification";
+import DuplicateNotification from "../../containers/connected-duplicate-notification";
 
 import styles from "./item-details.css";
 
@@ -22,7 +22,7 @@ export default class EditItemDetails extends React.Component {
     return {
       ...EditItemFields.propTypes,
       itemId: PropTypes.string,
-      isDuplicate: PropTypes.bool,
+      error: PropTypes.object,
       onSave: PropTypes.func.isRequired,
       onCancel: PropTypes.func.isRequired,
       onDelete: PropTypes.func.isRequired,
@@ -33,7 +33,7 @@ export default class EditItemDetails extends React.Component {
   static get defaultProps() {
     return {
       itemId: null,
-      isDuplicate: false,
+      error: null,
       fields: {
         origin: "",
         username: "",
@@ -66,6 +66,8 @@ export default class EditItemDetails extends React.Component {
     const {itemId, ...saveState} = this.state;
     const newItem = itemId === null;
 
+    console.log("state:::", this.state, "AND ERRORS", error);
+
     return (
       <form className={classNames([styles.itemDetails, styles.editing])}
             id={newItem ? "newItemForm" : "editItemForm"}
@@ -74,7 +76,7 @@ export default class EditItemDetails extends React.Component {
               onSave(saveState);
             }}>
         <header>
-          {<DuplicateNotification title={"twitter.com"} id={"0372a65f-b85e-41f8-b9e7-bed222e4010e"}/>}
+          {<DuplicateNotification title={"twitter.com"} id={"{0372a65f-b85e-41f8-b9e7-bed222e4010e}"}/>}
           {newItem ? (
             <Localized id={`item-details-heading-new`}>
               <h1>cREATe nEw eNTRy</h1>

@@ -16,10 +16,13 @@ export function appReducer(state, action) {
 }
 
 export function editorReducer(state = {
-  editing: false, changed: false, hideHome: false,
+  editing: false, changed: false, hideHome: false
 }, action) {
   switch (action.type) {
   case actions.ADD_ITEM_COMPLETED:
+  case actions.ADD_ITEM_FAILED:
+    console.log("ADD_ITEM_FAILED", state, action);
+    return {...state, editing: true, hideHome: false, error: action.error};
   case actions.UPDATE_ITEM_COMPLETED:
     if (action.interactive) {
       return {...state, editing: false, changed: false};

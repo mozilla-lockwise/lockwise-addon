@@ -39,12 +39,11 @@ export default class DuplicateNotification extends React.Component {
 
     return (
       <ErrorNotification className={styles.warningNotification}>
-        <Localized id={`error-notification-duplicate`} attrs={{title}}
-                   a={<a href="#" onClick={() => launchExistingEntry(id)}/>}>
+        <Localized id={`error-notification-duplicate`} attrs={{title}}>
           <p className={styles.warningMessageLight}>
           aN eNTRy fOr { title } wITh tHAt uSERNAMe aLREADy eXISTs.</p>
         </Localized>
-        <span onClick={() => launchExistingEntry(id)}>gO TO eXISTINg eNTRy?</span>
+        <button type="button" onClick={launchEntry}>gO TO eXISTINg eNTRy?</button>
       </ErrorNotification>
     );
   }

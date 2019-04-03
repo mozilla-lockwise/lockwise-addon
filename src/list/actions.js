@@ -7,6 +7,7 @@ export const LIST_ITEMS_COMPLETED = Symbol("LIST_ITEMS_COMPLETED");
 
 export const ADD_ITEM_STARTING = Symbol("ADD_ITEM_STARTING");
 export const ADD_ITEM_COMPLETED = Symbol("ADD_ITEM_COMPLETED");
+export const ADD_ITEM_FAILED = Symbol("ADD_ITEM_FAILED");
 
 export const UPDATE_ITEM_STARTING = Symbol("UPDATE_ITEM_STARTING");
 export const UPDATE_ITEM_COMPLETED = Symbol("UPDATE_ITEM_COMPLETED");
@@ -85,7 +86,7 @@ function listItemsCompleted(actionId, items) {
   };
 }
 
-export function addItem(details) {
+export function checkForDuplicateAndAddItem(details) {
   return async (dispatch) => {
     const actionId = nextActionId++;
     dispatch(addItemStarting(actionId, details));
@@ -98,8 +99,40 @@ export function addItem(details) {
   };
 }
 
+export function addItem(details) {
+  return async (dispatch) => {
+    const actionId = nextActionId++;
+    dispatch(addItemStarting(actionId, details));
+
+    let response, exceptionExists = false;
+
+    try {
+      response = await browser.runtime.sendMessage({
+        type: "add_item",
+        item: details,
+      });
+    } catch (ex) {
+      exceptionExists = true;
+      dispatch(addItemFailed(actionId, details, ex));
+    }
+
+    if (!exceptionExists) {
+      dispatch(addItemCompleted(actionId, response.item, true));
+    }
+  };
+}
+
 export function addedItem(item) {
   return addItemCompleted(undefined, item);
+}
+
+function addItemFailed(actionId, item, error) {
+  return {
+    type: ADD_ITEM_FAILED,
+    actionId,
+    item,
+    error,
+  };
 }
 
 function addItemStarting(actionId, item) {

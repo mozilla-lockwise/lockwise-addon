@@ -1,11 +1,18 @@
 import { connect } from "react-redux";
-import { requestSelectItem } from "../actions";
+import { openSyncPrefs } from "../common";
 
 import SyncNotification from "../components/sync-notification";
 
-export default connect(
-  null,
+export default connect(({
+  app: {
+    profileWrap: {
+      hasProfileNeedsAttn,
+    },
+  },
+}) => ({
+  hasProfileNeedsAttn,
+}),
   dispatch => ({
-    launchExistingEntry: (id) => requestSelectItem(id),
+    reconnectToSync: () => openSyncPrefs(),
   })
 )(SyncNotification);
