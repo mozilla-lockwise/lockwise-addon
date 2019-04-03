@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { openSyncPrefs } from "../common";
 
-import ErrorNotification from "../components/error-notification";
+import SyncNotification from "../components/sync-notification";
 
 export default connect(({
   app: {
@@ -15,5 +15,4 @@ export default connect(({
   dispatch => ({
     reconnectToSync: () => openSyncPrefs(),
   })
-)(ErrorNotification);
-
+)(SyncNotification);
