@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { openSyncPrefs } from "../common";
+import { openSyncPrefs } from "../actions";
 
 import SyncNotification from "../components/sync-notification";
 

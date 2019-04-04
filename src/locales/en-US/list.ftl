@@ -10,7 +10,7 @@ document =
 error-notification-sync = Unable to sync logins.
 error-notification-sync-button = Reconnect
 error-notification-duplicate =
-  An entry for { $title } with that username already exists.
+  An entry for {$title} with that username already exists.
 error-notification-duplicate-link = <a>Go to existing entry?</a>
 
 all-items-get-started =

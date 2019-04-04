@@ -13,37 +13,26 @@ import styles from "./notification.css";
 export default class DuplicateNotification extends React.Component {
   static get propTypes() {
     return {
-      id: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
-      launchExistingEntry: PropTypes.func.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      id: "",
       title: "",
-      launchExistingEntry: () => {},
     };
   }
 
   render() {
-    const { title, id, launchExistingEntry } = this.props;
-    const launchEntry = () => launchExistingEntry(id);
-    // const link = (
-    //     <Localized id={`error-notification-duplicate-link`} attrs={{title}}
-    //                a={<a href="#" onClick={() => launchExistingEntry(id)}/>}>
-    //     <a>gO TO eXISTINg eNTRy?</a>
-    //     </Localized>
-    // );
+    const { title } = this.props;
 
     return (
       <ErrorNotification className={styles.warningNotification}>
-        <Localized id={`error-notification-duplicate`} attrs={{title}}>
+        <Localized id={`error-notification-duplicate`} $title={title} p={<p></p>}>
           <p className={styles.warningMessageLight}>
-          aN eNTRy fOr { title } wITh tHAt uSERNAMe aLREADy eXISTs.</p>
+            aN eNTRy fOr {title} wITh tHAt uSERNAMe aLREADy eXISTs.
+          </p>
         </Localized>
-        <button type="button" onClick={launchEntry}>gO TO eXISTINg eNTRy?</button>
       </ErrorNotification>
     );
   }

@@ -64,7 +64,6 @@ const ConnectedItemDetails = connect(
 function CurrentSelection({editing, item, hideHome, numItems, error}) {
   let inner;
   if (editing) {
-    console.log("editing, connectedEditItemDetails error", error);
     inner = <ConnectedEditItemDetails item={item} error={error}/>;
   } else if (item) {
     inner = <ConnectedItemDetails item={item}/>;
@@ -88,9 +87,7 @@ CurrentSelection.propTypes = {
 };
 
 export default connect(
-  (state) => (
-
-    return {
+  (state) => ({
     editing: state.editor.editing,
     item: state.cache.currentItem,
     error: state.editor.error,

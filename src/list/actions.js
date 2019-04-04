@@ -86,19 +86,6 @@ function listItemsCompleted(actionId, items) {
   };
 }
 
-export function checkForDuplicateAndAddItem(details) {
-  return async (dispatch) => {
-    const actionId = nextActionId++;
-    dispatch(addItemStarting(actionId, details));
-
-    const response = await browser.runtime.sendMessage({
-      type: "add_item",
-      item: details,
-    });
-    dispatch(addItemCompleted(actionId, response.item, true));
-  };
-}
-
 export function addItem(details) {
   return async (dispatch) => {
     const actionId = nextActionId++;
