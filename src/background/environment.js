@@ -11,4 +11,8 @@ export async function initializeEnvironment() {
     await browser.experiments.logins
       .setLoginSavingEnabled(origin, false);
   }
+
+  const mgmtURI = browser.extension.getURL("/list/manage.html?filter=%DOMAIN%");
+  console.log(`setting management URI to ${mgmtURI}`);
+  browser.experiments.logins.setOverrideManagementURI(mgmtURI);
 }

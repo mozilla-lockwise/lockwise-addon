@@ -226,6 +226,19 @@
         }]
       },
       {
+        "name": "setOverrideManagementURI",
+        "type": "function",
+        "description": "",
+        "async": true,
+        "parameters": [{
+          "name": "url",
+          "type": "string",
+          "description": "The URL for the new management page",
+          "optional": true,
+          "default": ""
+        }]
+      },
+      {
         "name": "getAll",
         "type": "function",
         "description": "Gets an array of all Logins. Returns a Promise for the (possibly empty) list of all Logins.",

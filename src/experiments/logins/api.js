@@ -63,6 +63,14 @@ this.logins = class extends ExtensionAPI {
               throw new ExtensionError(ex);
             }
           },
+          setOverrideManagementURI(url) {
+            try {
+              const prefs = Services.prefs.getDefaultBranch(null);
+              prefs.setStringPref("signon.management.overrideURI", url);
+            } catch (ex) {
+              throw new ExtensionError(ex);
+            }
+          },
           getAll() {
             const logins = getLogins();
             return logins;
