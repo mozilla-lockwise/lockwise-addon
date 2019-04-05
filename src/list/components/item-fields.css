@@ -69,16 +69,6 @@
   display: inline-block;
 }
 
-.error-msg {
-  background-color: #d70022;
-}
-
-.error-msg p,
-.info-msg p {
-  padding: 0;
-  margin: 0;
-}
-
 .origin-input:focus:placeholder-shown ~ .info-msg {
   display: block;
   font-size: 13px;
@@ -87,15 +77,6 @@
   top: 22px;
   box-shadow: 0 5px 12px 0 rgba(0, 0, 0, 0.2);
   background-color: #fdfdfd;
-}
-
-.origin-input:invalid:focus:not(:placeholder-shown) ~ .error-msg {
-  display: block;
-  position: absolute;
-  font-size: 12px;
-  left: 0px;
-  top: 60px;
-  color: #ffffff;
 }
 
 .arrow-up {
