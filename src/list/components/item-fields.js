@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { Localized } from "fluent-react";
+import { Localized, isReactLocalization } from "fluent-react";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -101,6 +101,17 @@ export class EditItemFields extends React.Component {
     };
   }
 
+  static get contextTypes() {
+    return {
+      l10n: isReactLocalization,
+    };
+  }
+
+  constructor(props, context) {
+    super(props, context);
+    this.state = context;
+  }
+
   componentDidMount() {
     // Focus the first editable field...
     if (this.props.fields.itemId) {
@@ -112,11 +123,19 @@ export class EditItemFields extends React.Component {
   }
 
   render() {
+    const { l10n } = this.state;
     const {fields, onChange} = this.props;
     const controlledProps = (name, maxLength = 500) => {
       return {name, value: fields[name],
               onChange: (e) => onChange(e),
               maxLength: maxLength.toString()};
+    };
+
+    const onInvalidHostname = (evt) => {
+      const input = evt.target;
+      if (input.validity.typeMismatch) {
+        input.setCustomValidity(l10n.getString("item-fields-origin-error-message"));
+      }
     };
 
     return (
@@ -131,6 +150,7 @@ export class EditItemFields extends React.Component {
                      disabled={!!fields.itemId}
                      required={!fields.itemId}
                      placeholder="hTTps://wWw.eXAMPLe.cOm"
+                     onInvalid={onInvalidHostname}
                      {...controlledProps("origin")}
                      ref={(element) => this._firstField = element} />
             </Localized>
@@ -139,13 +159,6 @@ export class EditItemFields extends React.Component {
               <div className={styles.arrowLeft}></div>
               <Localized id="item-fields-origin-info-message">
                 <p>iNFo mESSAGe</p>
-              </Localized>
-            </div>
-
-            <div className={`${styles.tooltip} ${styles.errorMsg}`}>
-              <div className={styles.arrowUp}></div>
-              <Localized id="item-fields-origin-error-message">
-                <p>eRROr mESSAGe</p>
               </Localized>
             </div>
           </label>
