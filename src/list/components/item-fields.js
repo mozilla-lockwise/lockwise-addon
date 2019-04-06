@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { Localized, isReactLocalization } from "fluent-react";
+import { Localized } from "fluent-react";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -12,6 +12,7 @@ import FieldText from "../../widgets/field-text";
 import Input from "../../widgets/input";
 import Button from "../../widgets/button";
 import LabelText from "../../widgets/label-text";
+import HostnameInput from "../../widgets/hostname-input";
 import PasswordInput from "../../widgets/password-input";
 import PasswordText from "../../widgets/password-text";
 
@@ -101,17 +102,6 @@ export class EditItemFields extends React.Component {
     };
   }
 
-  static get contextTypes() {
-    return {
-      l10n: isReactLocalization,
-    };
-  }
-
-  constructor(props, context) {
-    super(props, context);
-    this.state = context;
-  }
-
   componentDidMount() {
     // Focus the first editable field...
     if (this.props.fields.itemId) {
@@ -123,19 +113,11 @@ export class EditItemFields extends React.Component {
   }
 
   render() {
-    const { l10n } = this.state;
     const {fields, onChange} = this.props;
     const controlledProps = (name, maxLength = 500) => {
       return {name, value: fields[name],
               onChange: (e) => onChange(e),
               maxLength: maxLength.toString()};
-    };
-
-    const onInvalidHostname = (evt) => {
-      const input = evt.target;
-      if (input.validity.typeMismatch) {
-        input.setCustomValidity(l10n.getString("item-fields-origin-error-message"));
-      }
     };
 
     return (
@@ -146,11 +128,10 @@ export class EditItemFields extends React.Component {
               <LabelText>oRIGIn</LabelText>
             </Localized>
             <Localized id="item-fields-origin-input" attrs={{placeholder: true}}>
-              <Input className={styles.originInput} type="url"
+              <HostnameInput className={styles.originInput} type="url"
                      disabled={!!fields.itemId}
                      required={!fields.itemId}
                      placeholder="hTTps://wWw.eXAMPLe.cOm"
-                     onInvalid={onInvalidHostname}
                      {...controlledProps("origin")}
                      ref={(element) => this._firstField = element} />
             </Localized>

@@ -18,3 +18,5 @@ password-input-hide =
 
 panel-back-button =
   .alt = Go Back
+
+hostname-error-message = Must include “https://“ or “http://“
