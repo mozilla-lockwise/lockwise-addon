@@ -129,6 +129,7 @@ export class EditItemFields extends React.Component {
             <Localized id="item-fields-origin-input" attrs={{placeholder: true}}>
               <Input className={styles.originInput} type="url"
                      disabled={!!fields.itemId}
+                     required={!fields.itemId}
                      placeholder="hTTps://wWw.eXAMPLe.cOm"
                      {...controlledProps("origin")}
                      ref={(element) => this._firstField = element} />
@@ -138,13 +139,6 @@ export class EditItemFields extends React.Component {
               <div className={styles.arrowLeft}></div>
               <Localized id="item-fields-origin-info-message">
                 <p>iNFo mESSAGe</p>
-              </Localized>
-            </div>
-
-            <div className={`${styles.tooltip} ${styles.errorMsg}`}>
-              <div className={styles.arrowUp}></div>
-              <Localized id="item-fields-origin-error-message">
-                <p>eRROr mESSAGe</p>
               </Localized>
             </div>
           </label>
