@@ -89,3 +89,18 @@ document.querySelector("#enable-saving")
   .addEventListener("click", () => changeSaving(true));
 document.querySelector("#disable-saving")
   .addEventListener("click", () => changeSaving(false));
+
+const changeManagementURI = val => {
+  const uri = window.location.toString();
+  const log = getLogger("management-uri");
+  browser.experiments.logins
+    .setManagementURI(val ? uri : "")
+    .then(() =>
+      browser.experiments.logins
+        .getManagementURI())
+    .then(log, log);
+};
+document.querySelector("#register-management-uri")
+  .addEventListener("click", () => changeManagementURI(true));
+document.querySelector("#unregister-management-uri")
+  .addEventListener("click", () => changeManagementURI(false));
