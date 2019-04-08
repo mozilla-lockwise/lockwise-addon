@@ -12,7 +12,6 @@ import FieldText from "../../widgets/field-text";
 import Input from "../../widgets/input";
 import Button from "../../widgets/button";
 import LabelText from "../../widgets/label-text";
-import HostnameInput from "../../widgets/hostname-input";
 import PasswordInput from "../../widgets/password-input";
 import PasswordText from "../../widgets/password-text";
 
@@ -128,7 +127,7 @@ export class EditItemFields extends React.Component {
               <LabelText>oRIGIn</LabelText>
             </Localized>
             <Localized id="item-fields-origin-input" attrs={{placeholder: true}}>
-              <HostnameInput className={styles.originInput} type="url"
+              <Input className={styles.originInput} type="url"
                      disabled={!!fields.itemId}
                      required={!fields.itemId}
                      placeholder="hTTps://wWw.eXAMPLe.cOm"
