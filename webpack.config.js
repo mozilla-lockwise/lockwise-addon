@@ -70,7 +70,7 @@ module.exports = {
     "list/manage": "./list/manage/index.js",
     "list/popup": "./list/popup/index.js",
   },
-  devtool: (NODE_ENV === "development" ? "cheap-source-map" : false),
+  devtool: false,
   output: {
     filename: "[name].js",
     path: PATH.resolve(__dirname, "dist"),
