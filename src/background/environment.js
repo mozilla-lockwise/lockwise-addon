@@ -13,6 +13,5 @@ export async function initializeEnvironment() {
   }
 
   const mgmtURI = browser.extension.getURL("/list/manage.html?filter=%DOMAIN%");
-  console.log(`setting management URI to ${mgmtURI}`);
-  browser.experiments.logins.setOverrideManagementURI(mgmtURI);
+  await browser.experiments.logins.setManagementURI(mgmtURI);
 }

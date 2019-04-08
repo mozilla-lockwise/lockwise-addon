@@ -36,6 +36,8 @@ const getLogin = (id) => {
   return login || null;
 };
 
+const PREF_MANAGEMENT_OVERRIDE = "signon.management.overrideURI";
+
 this.logins = class extends ExtensionAPI {
   getAPI(context) {
     const EventManager = ExtensionCommon.EventManager;
@@ -63,10 +65,15 @@ this.logins = class extends ExtensionAPI {
               throw new ExtensionError(ex);
             }
           },
-          setOverrideManagementURI(url) {
+          setManagementURI(url) {
             try {
               const prefs = Services.prefs.getDefaultBranch(null);
-              prefs.setStringPref("signon.management.overrideURI", url);
+              prefs.setStringPref(PREF_MANAGEMENT_OVERRIDE, url);
+              context.callOnClose({
+                close() {
+                  prefs.setStringPref(PREF_MANAGEMENT_OVERRIDE, "");
+                },
+              });
             } catch (ex) {
               throw new ExtensionError(ex);
             }

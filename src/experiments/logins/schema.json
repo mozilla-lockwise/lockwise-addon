@@ -226,9 +226,9 @@
         }]
       },
       {
-        "name": "setOverrideManagementURI",
+        "name": "setManagementURI",
         "type": "function",
-        "description": "",
+        "description": "Sets the logins management URI, as an absolute URI",
         "async": true,
         "parameters": [{
           "name": "url",
