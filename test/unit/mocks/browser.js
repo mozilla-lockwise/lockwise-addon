@@ -201,6 +201,7 @@ window.browser = {
     logins: {
       async getLoginSavingEnabled() { },
       async setLoginSavingEnabled() { },
+      async setOverrideManagementURI() { },
       async getAll() { return []; },
       async add(login) {
         browser.experiments.logins.onAdded.getListener()({ login });
