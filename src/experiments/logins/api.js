@@ -65,6 +65,14 @@ this.logins = class extends ExtensionAPI {
               throw new ExtensionError(ex);
             }
           },
+
+          getManagementURI() {
+            try {
+              return Services.prefs.getDefaultBranch(null).getStringPref(PREF_MANAGEMENT_OVERRIDE, "");
+            } catch (ex) {
+              throw new ExtensionError(ex);
+            }
+          },
           setManagementURI(url) {
             try {
               const prefs = Services.prefs.getDefaultBranch(null);
@@ -78,6 +86,7 @@ this.logins = class extends ExtensionAPI {
               throw new ExtensionError(ex);
             }
           },
+
           getAll() {
             const logins = getLogins();
             return logins;

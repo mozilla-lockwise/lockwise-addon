@@ -226,6 +226,13 @@
         }]
       },
       {
+        "name": "getManagementURI",
+        "type": "function",
+        "description": "Retrieves the current logins management URI, or \"\" if none is set",
+        "async": true,
+        "parameters": []
+      },
+      {
         "name": "setManagementURI",
         "type": "function",
         "description": "Sets the logins management URI, as an absolute URI",
