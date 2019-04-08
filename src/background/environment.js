@@ -12,6 +12,7 @@ export async function initializeEnvironment() {
       .setLoginSavingEnabled(origin, false);
   }
 
+  // NOTE: %DOMAIN% is replaced by the browser with the context's location, or "" is no context
   const mgmtURI = browser.extension.getURL("/list/manage.html?filter=%DOMAIN%");
   await browser.experiments.logins.setManagementURI(mgmtURI);
 }

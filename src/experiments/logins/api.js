@@ -66,6 +66,8 @@ this.logins = class extends ExtensionAPI {
             }
           },
 
+          // By using `getBranchDefault()`, the pref changes are forgotten on shutdown/restart/crash of the browser.
+          // The extra benefit (liability) is a user-pref override still applies ...
           getManagementURI() {
             try {
               return Services.prefs.getDefaultBranch(null).getStringPref(PREF_MANAGEMENT_OVERRIDE, "");
