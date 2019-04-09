@@ -41,6 +41,9 @@ export default connect(
     ...ownProps,
   }),
   (dispatch) => ({
-    onLearnMore: () => dispatch(openFAQ(true)),
+    onLearnMore: () => dispatch(openFAQ({
+      target: "how-do-i-get-my-saved-logins-into-firefox-lockbox",
+      close: true,
+    })),
   }),
 )(BaseNoEntriesPlaceholder);

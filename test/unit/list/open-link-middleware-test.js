@@ -6,6 +6,7 @@ import chai, { expect } from "chai";
 import sinon from "sinon";
 import sinonChai from "sinon-chai";
 import "test/unit/mocks/browser";
+import pkg from "../../../package.json";
 
 import * as actions from "src/list/actions";
 import openLinkMiddleware from "src/list/open-link-middleware";
@@ -41,13 +42,24 @@ describe("list > manage > open-link-middleware", () => {
     });
   });
 
+  it("opens website when OPEN_FAQ (with target) is dispatched", async () => {
+    openLinkMiddleware(store)(next)({
+      type: actions.OPEN_FAQ,
+      target: "how-do-i-get-my-saved-logins-into-firefox-lockbox",
+    });
+    expect(listener).to.have.been.calledWith({
+      type: "open_site",
+      url: "https://lockbox.firefox.com/faq.html#how-do-i-get-my-saved-logins-into-firefox-lockbox",
+    });
+  });
+
   it("opens website when OPEN_FEEDBACK is dispatched", async () => {
     openLinkMiddleware(store)(next)({
       type: actions.OPEN_FEEDBACK,
     });
     expect(listener).to.have.been.calledWith({
       type: "open_site",
-      url: "https://qsurvey.mozilla.com/s3/Lockbox-Input?ver=2.0.0-alpha",
+      url: "https://qsurvey.mozilla.com/s3/Lockbox-Input?ver=" + pkg.version,
     });
   });
 

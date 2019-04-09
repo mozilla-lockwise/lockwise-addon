@@ -13,10 +13,17 @@ const urls = {
   homepage: "https://lockbox.firefox.com",
 };
 
+function openTargetedWebsite(url, target, close) {
+  const location = (target) ?
+      `${url}#${target}` :
+      url;
+  openWebsite(location, close);
+}
+
 export default (store) => (next) => (action) => {
   switch (action.type) {
   case actions.OPEN_FAQ:
-    openWebsite(urls.faq, action.close || false);
+    openTargetedWebsite(urls.faq, action.target, action.close);
     break;
   case actions.OPEN_FEEDBACK:
     openWebsite(urls.feedback, false);
