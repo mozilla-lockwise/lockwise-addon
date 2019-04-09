@@ -18,17 +18,22 @@ import styles from "./item-list-panel.css";
 export default function ItemListPanel({className, inputRef, totalItemCount,
                                        sort, count, ...props}) {
   const hasItems = props.items.length !== 0;
+  const hasAnything = totalItemCount !== 0;
   let list;
   if (!hasItems) {
-    list = (
-      <Localized id={`all-items-${totalItemCount ? "no-results" :
-                                                   "get-started"}`}
-                 attrs={{heading: true}}>
-        <ItemListPlaceholder heading="hEaDiNg">
-          wHEn yOu cREATe an eNTRy...
-        </ItemListPlaceholder>
-      </Localized>
-    );
+    if (!hasAnything) {
+      list = (
+        <Localized id="all-items-get-started" attrs={{ title: true }}>
+          <ItemListPlaceholder>wHEn yOu cREATe an eNTRy...</ItemListPlaceholder>
+        </Localized>
+      );
+    } else {
+      list = (
+        <Localized id="all-items-no-results" attrs={{ title: true }}>
+          <ItemListPlaceholder>nO rESULTs</ItemListPlaceholder>
+        </Localized>
+      );
+    }
   } else {
     list = <ItemList {...props}/>;
   }

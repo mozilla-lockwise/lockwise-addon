@@ -12,11 +12,11 @@ error-notification-sync-button = Reconnect
 
 all-items-get-started =
   When you save a password in Firefox, it will show up here.
-  .heading = No entries found.
+  .title = No entries found.
 
 all-items-no-results =
   If this login is saved on another device, make sure you have signed in and synced on that device in order to see it here.
-  .heading = No matching entries.
+  .title = No matching entries.
 
 item-fields-title-input =
   .placeholder = e.g. primary bank

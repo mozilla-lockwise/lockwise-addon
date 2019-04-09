@@ -16,6 +16,7 @@
 .empty h2 {
   font-weight: normal;
   font-size: 15px;
+  margin-top: 0px;
 }
 
 .item {

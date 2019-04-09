@@ -69,7 +69,7 @@ export default function ItemListPanel({inputRef, totalItemCount, noResultsBanner
     );
     list = (
       <Localized id={listL10n}>
-        <ItemListPlaceholder>
+        <ItemListPlaceholder className={styles.empty}>
           wHEn yOu cREATe an eNTRy...
         </ItemListPlaceholder>
       </Localized>
