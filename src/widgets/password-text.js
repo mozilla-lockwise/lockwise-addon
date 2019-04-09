@@ -17,6 +17,7 @@ export default class PasswordText extends React.Component {
     return {
       className: PropTypes.string,
       value: PropTypes.string,
+      onReveal: PropTypes.func.isRequired,
     };
   }
 
@@ -36,11 +37,15 @@ export default class PasswordText extends React.Component {
   }
 
   showPassword(show) {
+    const {onReveal} = this.props;
     this.setState({showPassword: show});
+    onReveal(show);
   }
 
   render() {
-    const {className, value, ...props} = this.props;
+    // We don't need onReveal here, but need to exclude it from ...props.
+    // eslint-disable-next-line no-unused-vars
+    const {className, value, onReveal, ...props} = this.props;
     const {showPassword} = this.state;
 
     return (

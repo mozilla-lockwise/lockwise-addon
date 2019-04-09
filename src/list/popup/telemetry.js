@@ -3,19 +3,36 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import * as actions from "../actions";
-import * as telemetry from "../../telemetry";
+import helpers from "../telemetry";
 
 export default (store) => (next) => (action) => {
   try {
     switch (action.type) {
-    case actions.SELECT_ITEM_COMPLETED:
-      if (action.item) {
-        telemetry.recordEvent("itemSelected", "doorhanger",
-                              {itemid: action.item.id});
-      }
+    case actions.CONCEAL_PASSWORD:
+      helpers.passwordConcealed(action, "itemDetailDoorhanger");
       break;
     case actions.COPIED_FIELD_COMPLETED:
-      telemetry.recordEvent(`${action.field}Copied`, "doorhanger");
+      helpers.itemCopied(action, "itemDetailDoorhanger");
+      break;
+    case actions.LIST_ITEMS_COMPLETED:
+      const state = store.getState();
+      helpers.listShown(action, "itemListDoorhanger", state.cache.items);
+      break;
+    case actions.OPEN_WEBSITE:
+      helpers.websiteOpened(action, "itemDetailDoorhanger");
+      break;
+    case actions.REVEAL_PASSWORD:
+      helpers.passwordRevealed(action, "itemDetailDoorhanger");
+      break;
+    case actions.SELECT_ITEM_COMPLETED:
+      if (action.item) {
+        helpers.itemShown(action, "itemDetailDoorhanger");
+      }
+      break;
+    case actions.SELECT_ITEM_STARTING:
+      if (action.item) {
+        helpers.itemSelected(action, "doorhanger");
+      }
       break;
     }
   } catch (e) {

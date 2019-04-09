@@ -195,15 +195,22 @@ describe("background > message ports", () => {
     const spied = sinon.spy(telemetry, "recordEvent");
     const result = await browser.runtime.sendMessage({
       type: "telemetry_event",
-      method: "method",
-      object: "object",
-      extra: {extra: "value"},
+      data: {
+        method: "method",
+        object: "object",
+        extra: {extra: "extra"},
+        value: "value",
+      },
     });
 
     expect(result).to.deep.equal({});
     expect(spied.called).to.be.true;
-    expect(spied).to.have.been.calledWith("method", "object",
-                                          {extra: "value"});
+    expect(spied).to.have.been.calledWith({
+      method: "method",
+      object: "object",
+      extra: {extra: "extra"},
+      value: "value",
+    });
     spied.restore();
   });
 

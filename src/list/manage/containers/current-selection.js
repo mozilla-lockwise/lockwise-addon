@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 import { flattenItem, unflattenItem } from "../../common";
 import {
   addItem, updateItem, requestRemoveItem, editCurrentItem, requestCancelEditing,
-  editorChanged, copiedField,
+  editorChanged, copiedField, revealPassword, concealPassword,
 } from "../../actions";
 import EditItemDetails from "../components/edit-item-details";
 import ItemDetails from "../components/item-details";
@@ -38,6 +38,10 @@ const ConnectedEditItemDetails = connect(
       onSave,
       onCancel: () => { dispatch(requestCancelEditing()); },
       onDelete: () => { dispatch(requestRemoveItem(ownProps.item.id)); },
+      onReveal: (show) => {
+        dispatch(show ? revealPassword(ownProps.item && ownProps.item.id)
+          : concealPassword(ownProps.item && ownProps.item.id));
+      },
     };
   },
 )(EditItemDetails);
@@ -47,9 +51,13 @@ const ConnectedItemDetails = connect(
     fields: flattenItem(ownProps.item),
   }),
   (dispatch, ownProps) => ({
-    onCopy: (field, toCopy) => { dispatch(copiedField(field, toCopy)); },
+    onCopy: (field, toCopy) => { dispatch(copiedField(field, toCopy, ownProps.item)); },
     onEdit: () => { dispatch(editCurrentItem()); },
     onDelete: () => { dispatch(requestRemoveItem(ownProps.item.id)); },
+    onReveal: (show) => {
+      dispatch(show ? revealPassword(ownProps.item && ownProps.item.id)
+        : concealPassword(ownProps.item && ownProps.item.id));
+    },
   })
 )(ItemDetails);
 

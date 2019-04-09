@@ -2,21 +2,20 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { version } from "../../../../package";
 import { Localized } from "fluent-react";
 import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
-import { openWebsite, openSyncPrefs } from "../../common";
 import { classNames } from "../../../common";
 import {
   selectTabLogins,
   selectTabMonitor,
+  openFAQ,
+  openFeedback,
+  openGetMobile,
+  openSyncPrefs,
+  openProfileMenu,
 } from "../../actions";
-
-// TODO: Update these links
-const FEEDBACK_URL = "https://qsurvey.mozilla.com/s3/Lockbox-Input?ver=" + version;
-const FAQ_URL = "https://lockbox.firefox.com/faq.html";
 
 import styles from "./app-header.css";
 
@@ -33,6 +32,7 @@ export class AppHeader extends React.Component {
       onClickMenuConnect: PropTypes.func.isRequired,
       onClickMenuAccount: PropTypes.func.isRequired,
       onClickMenuSignIn: PropTypes.func.isRequired,
+      onClickMenuProfile: PropTypes.func.isRequired,
       document: PropTypes.any,
     };
   }
@@ -97,7 +97,9 @@ export class AppHeader extends React.Component {
   }
 
   toggleProfileMenu() {
+    const { onClickMenuProfile } = this.props;
     this.setState(state => ({ profileMenuShown: !state.profileMenuShown }));
+    onClickMenuProfile();
   }
 
   showProfileMenu() {
@@ -234,12 +236,11 @@ export default connect(
   dispatch => ({
     onClickTabLogins: () => dispatch(selectTabLogins()),
     onClickTabMonitor: () => dispatch(selectTabMonitor()),
-    onClickMenuFAQ: () => openWebsite(FAQ_URL, false),
-    onClickMenuFeedback: () => openWebsite(FEEDBACK_URL, false),
-    onClickMenuConnect: () => {
-      // TODO: Issue TBD
-    },
-    onClickMenuAccount: () => openSyncPrefs(),
-    onClickMenuSignIn: () => openSyncPrefs(),
+    onClickMenuFAQ: () => dispatch(openFAQ()),
+    onClickMenuFeedback: () => dispatch(openFeedback()),
+    onClickMenuConnect: () => dispatch(openGetMobile()),
+    onClickMenuAccount: () => dispatch(openSyncPrefs("accountSettings")),
+    onClickMenuSignIn: () => dispatch(openSyncPrefs("signinSync")),
+    onClickMenuProfile: () => dispatch(openProfileMenu()),
   })
 )(AppHeader);

@@ -1,0 +1,58 @@
+[
+  {
+    "namespace": "experiments.temptelemetry",
+    "description": "Firefox Lockbox internal API for submitting telemetry events for Firefox versions less than 68 (see bug 1536877 for details)",
+    "types": [],
+    "events": [],
+    "functions": [
+      {
+        "name": "recordEvent",
+        "type": "function",
+        "description": "Record an event in Telemetry. Throws when trying to record an unknown event.",
+        "async": true,
+        "parameters": [{
+          "name": "category",
+          "type": "string",
+          "description": "The category name."
+        }, {
+          "name": "method",
+          "type": "string",
+          "description": "The method name."
+        }, {
+          "name": "object",
+          "type": "string",
+          "description": "The object name."
+        }, {
+          "name": "value",
+          "type": "string",
+          "optional": true,
+          "description": "An optional string value to record."
+        }, {
+          "name": "extra",
+          "type": "object",
+          "optional": true,
+          "description": "An optional object of the form (string -> string). It should only contain registered extra keys.",
+          "additionalProperties": { "type": "string" }
+        }]
+      },
+      {
+        "name": "shouldUseEmbedded",
+        "type": "function",
+        "description": "Function that checks the current Firefox version against the version that contains the recordEvent method fix. Returns a boolean that's true if this embedded telemetry API should be used.",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "setTestPlatformVersion",
+        "type": "function",
+        "description": "For testing only: allows the current platform version to be stubbed out, to verify that `shouldUseEmbedded` is working as intended.",
+        "async": true,
+        "parameters": [{
+          "name": "version",
+          "type": "string",
+          "description": "The test Firefox version number. Note that an empty string will cause the code to switch to the actual value returned by `Services.appinfo.platformVersion`."
+        }]
+      }
+    ]
+  }
+]

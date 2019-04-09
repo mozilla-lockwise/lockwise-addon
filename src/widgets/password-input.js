@@ -17,6 +17,7 @@ export default class PasswordInput extends React.Component {
       className: PropTypes.string,
       monospace: PropTypes.bool,
       disabled: PropTypes.bool,
+      onReveal: PropTypes.func.isRequired,
     };
   }
 
@@ -34,10 +35,13 @@ export default class PasswordInput extends React.Component {
     this.state = {
       showPassword: false,
     };
+    this.showPassword = this.showPassword.bind(this);
   }
 
   showPassword(show) {
+    const {onReveal} = this.props;
     this.setState({showPassword: show});
+    onReveal(show);
   }
 
   focus() {
@@ -45,7 +49,9 @@ export default class PasswordInput extends React.Component {
   }
 
   render() {
-    const {className, monospace, disabled, ...props} = this.props;
+    // onReveal isn't used here, but it needs to be removed from `...props`
+    // eslint-disable-next-line no-unused-vars
+    const {className, monospace, disabled, onReveal, ...props} = this.props;
     const {showPassword} = this.state;
     const selectedIndex = showPassword ? 1 : 0;
 
