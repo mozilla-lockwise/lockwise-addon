@@ -22,8 +22,9 @@ export default function ItemListPanel({className, inputRef, totalItemCount,
   if (!hasItems) {
     list = (
       <Localized id={`all-items-${totalItemCount ? "no-results" :
-                                                   "get-started"}`}>
-        <ItemListPlaceholder>
+                                                   "get-started"}`}
+                 attrs={{heading: true}}>
+        <ItemListPlaceholder heading="hEaDiNg">
           wHEn yOu cREATe an eNTRy...
         </ItemListPlaceholder>
       </Localized>

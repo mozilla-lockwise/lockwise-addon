@@ -11,9 +11,12 @@ error-notification-sync = Unable to sync logins.
 error-notification-sync-button = Reconnect
 
 all-items-get-started =
-  When you add an entry, it automatically shows up here.
+  When you save a password in Firefox, it will show up here.
+  .heading = No entries found.
 
-all-items-no-results = No results
+all-items-no-results =
+  If this login is saved on another device, make sure you have signed in and synced on that device in order to see it here.
+  .heading = No matching entries.
 
 item-fields-title-input =
   .placeholder = e.g. primary bank
@@ -151,6 +154,10 @@ filtered-banner = { $count ->
   [one]   {$count} entry found
  *[other] { $count } entries found
 }
+
+get-started-banner = No entries found.
+
+no-matching-banner = No matching entries.
 
 no-results-banner = No entries found for current website.
 

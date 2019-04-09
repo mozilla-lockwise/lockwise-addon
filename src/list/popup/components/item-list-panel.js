@@ -44,7 +44,7 @@ class PopupItemList extends React.Component {
   }
 }
 
-export default function ItemListPanel({inputRef, noResultsBanner,
+export default function ItemListPanel({inputRef, totalItemCount, noResultsBanner,
                                        isFiltering, ...props}) {
   const openManager = () => {
     browser.runtime.sendMessage({
@@ -58,14 +58,22 @@ export default function ItemListPanel({inputRef, noResultsBanner,
   let list, topBorder, banner;
 
   if (!hasItems) {
+    const hasAnyItems = (totalItemCount !== 0);
+    const bannerL10n = `${hasAnyItems ? "no-matching" : "get-started"}-banner`;
+    const listL10n = `all-items-${hasAnyItems ? "no-results" : "get-started"}`;
+
+    banner = (
+      <Localized id={bannerL10n}>
+        <PanelBanner border="floating" className={styles.panelBanner}>no rESULTs</PanelBanner>
+      </Localized>
+    );
     list = (
-      <Localized id="all-items-no-results">
+      <Localized id={listL10n}>
         <ItemListPlaceholder>
           wHEn yOu cREATe an eNTRy...
         </ItemListPlaceholder>
       </Localized>
     );
-    topBorder = "none";
   } else {
     list = <PopupItemList {...props}/>;
     topBorder = "normal";
@@ -119,6 +127,7 @@ export default function ItemListPanel({inputRef, noResultsBanner,
 
 ItemListPanel.propTypes = {
   inputRef: PropTypes.func,
+  totalItemCount: PropTypes.number.isRequired,
   noResultsBanner: PropTypes.bool,
   ...ItemList.propTypes,
 };
