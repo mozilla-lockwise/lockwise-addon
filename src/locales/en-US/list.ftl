@@ -12,7 +12,8 @@ error-notification-sync-button = Reconnect
 
 all-items-get-started =
   When you save a password in Firefox, it will show up here.
-  .title = No entries found.
+all-items-get-started-title = No entries found.
+all-items-get-started-footer = Not seeing your saved logins? <go>Find out why</go>
 
 all-items-no-results =
   If this login is saved on another device, make sure you have signed in and synced on that device in order to see it here.
