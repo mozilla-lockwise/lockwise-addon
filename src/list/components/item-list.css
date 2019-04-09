@@ -5,7 +5,7 @@
 .empty {
   text-align: center;
   white-space: pre-wrap;
-  padding: 40px;
+  padding: 40px 20px;
   overflow: hidden;
   overflow-wrap: break-word;
   color: #0c0c0d;
