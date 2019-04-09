@@ -13,8 +13,7 @@ import thunk from "redux-thunk";
 
 import mountWithL10n from "test/unit/mocks/l10n";
 import { initialState } from "../manage/mock-redux-state";
-import NoMatchingPlaceholder, { BaseNoMatchingPlaceholder } from "src/list/containers/no-matching-placeholder";
-import { OPEN_FAQ } from "../../../../src/list/actions";
+import NoMatchingPlaceholder from "src/list/containers/no-matching-placeholder";
 
 chai.use(chaiEnzyme());
 
