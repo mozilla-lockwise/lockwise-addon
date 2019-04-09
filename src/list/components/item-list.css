@@ -13,10 +13,14 @@
   line-height: 1.5;
   letter-spacing: normal;
 }
+.empty * {
+  font-size: 13px;
+  margin-top: 0px;
+}
+
 .empty h2 {
   font-weight: normal;
   font-size: 15px;
-  margin-top: 0px;
 }
 
 .item {
