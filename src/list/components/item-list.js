@@ -55,13 +55,10 @@ export function ItemListPlaceholder({className, children}) {
 }
 
 ItemListPlaceholder.propTypes = {
-  header: PropTypes.node,
-  footer: PropTypes.node,
   className: PropTypes.string,
   children: PropTypes.node,
 };
 
 ItemListPlaceholder.defaultProps = {
-  title: "",
   className: "",
 };

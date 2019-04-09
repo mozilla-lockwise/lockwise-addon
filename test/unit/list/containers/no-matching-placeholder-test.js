@@ -20,6 +20,8 @@ chai.use(chaiEnzyme());
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
+// TODO: figure out how to properly test with chai + enzyme + fluent + react overlays
+//    so that openFAQ dispatching can be verified
 describe("list > containers > <NoMatchingPlaceholder />", () => {
   let store;
 

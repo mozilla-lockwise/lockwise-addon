@@ -62,12 +62,12 @@ export default function ItemListPanel({inputRef, totalItemCount, noResultsBanner
 
   topBorder = "normal";
   if (!hasItems) {
-    banner = <PanelBanner border="floating" className={styles.panelBanner}>no rESULTs</PanelBanner>;
+    const bannerContent = <PanelBanner border="floating" className={styles.panelBanner}>no rESULTs</PanelBanner>;
     if (!hasAnything) {
-      banner = <Localized id="get-started-banner">{banner}</Localized>;
+      banner = <Localized id="get-started-banner">{bannerContent}</Localized>;
       list = <NoEntriesPlaceholder className={styles.empty} />;
     } else {
-      banner = <Localized id="no-matching-banner">{banner}</Localized>;
+      banner = <Localized id="no-matching-banner">{bannerContent}</Localized>;
       list = <NoMatchingPlaceholder title={false} className={styles.empty}/>;
     }
   } else {
