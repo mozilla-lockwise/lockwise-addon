@@ -345,9 +345,10 @@ export function selectTabMonitor() {
   };
 }
 
-export function openFAQ() {
+export function openFAQ(close) {
   return {
     type: OPEN_FAQ,
+    close,
   };
 }
 

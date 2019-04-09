@@ -8,7 +8,7 @@ import sinonChai from "sinon-chai";
 import "test/unit/mocks/browser";
 
 import * as actions from "src/list/actions";
-import openLinkMiddleware from "src/list/manage/open-link-middleware";
+import openLinkMiddleware from "src/list/open-link-middleware";
 
 chai.use(sinonChai);
 

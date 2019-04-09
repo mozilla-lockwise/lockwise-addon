@@ -14,9 +14,10 @@ import { filterItems, listItems, getProfile } from "../actions";
 import reducer from "./reducers";
 import initializeMessagePorts from "../message-ports";
 import telemetryLogger from "./telemetry";
+import openLink from "../open-link-middleware";
 
 const store = createStore(reducer, undefined, applyMiddleware(
-  thunk, telemetryLogger
+  thunk, telemetryLogger, openLink,
 ));
 
 // Pre-fill the URL of the current tab.

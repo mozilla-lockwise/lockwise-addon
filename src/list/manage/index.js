@@ -15,7 +15,7 @@ import reducer from "./reducers";
 import initializeMessagePorts from "../message-ports";
 import telemetryLogger from "./telemetry";
 import { saveSort, loadSort } from "./sort-middleware";
-import openLink from "./open-link-middleware";
+import openLink from "../open-link-middleware";
 
 let store;
 (async () => {
