@@ -8,10 +8,11 @@ import React from "react";
 
 import Panel, { PanelHeader, PanelBanner, PanelBody, PanelFooter,
                 PanelFooterButton } from "../../../widgets/panel";
-import ItemList, { ItemListPlaceholder } from "../../components/item-list";
+import ItemList from "../../components/item-list";
 import ItemFilter from "../../containers/item-filter";
 import ErrorNotification from "../../containers/connected-error-notification";
 import NoMatchingPlaceholder from "../../containers/no-matching-placeholder";
+import NoEntriesPlaceholder from "../containers/no-entries-placeholder";
 
 import styles from "./item-list-panel.css";
 
@@ -64,11 +65,7 @@ export default function ItemListPanel({inputRef, totalItemCount, noResultsBanner
     banner = <PanelBanner border="floating" className={styles.panelBanner}>no rESULTs</PanelBanner>;
     if (!hasAnything) {
       banner = <Localized id="get-started-banner">{banner}</Localized>;
-      list = (
-        <Localized id="all-items-get-started">
-          <ItemListPlaceholder className={styles.empty}>wHEn yOu cREATe an eNTRy...</ItemListPlaceholder>
-        </Localized>
-      );
+      list = <NoEntriesPlaceholder className={styles.empty} />;
     } else {
       banner = <Localized id="no-matching-banner">{banner}</Localized>;
       list = <NoMatchingPlaceholder title={false} className={styles.empty}/>;
