@@ -1,6 +1,6 @@
 # Lockbox Desktop Addon Metrics Plan
 
-_Last Updated: Feb 19, 2019_
+_Last Updated: Mar 20, 2019_
 
 <!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
@@ -68,20 +68,21 @@ Here's a breakdown of how a to register a typical event:
 
 
 ```javascript
-browser.telemetry.registerEvents("event_category", {
-    "event_name": {
+browser.telemetry.registerEvents("eventcategory", {
+    "eventName": {
         methods: ["click", ... ], // types of events that can occur
-        objects: ["a_button", ... ], // objects event can occur on
+        objects: ["aButton", ... ], // objects event can occur on
         extra: {"key": "value", ... } // key-value pairs (strings)
     }
 ```
 
 For our purposes, we will use the `extra` field for a few purposes:
 
-- To log the UUID of the item that has been added or changed (e.g. `"item_id": UUID`)
-- To log the fields that are modified when an item is updated in the datastore (e.g. `"fields": "username,passsword,hostname"` (because the value has to be a string we will have to concat the fields that were updated somehow)
+- To log the UUID of the item that has been added or changed (e.g. `"itemid": UUID`)
+  * TODO: Do we still want to do this? I removed the old datastore events, since they weren't in the list of planned events below.
+- To log the fields that are modified when an item is updated in the datastore (e.g. `"fields": "username,password,hostname"` (because the value has to be a string we will have to concat the fields that were updated somehow)
 
-Once an event is registered, we can record it with:
+Once an event is registered, we can record it with: (\*)
 
 `browser.telemetry.recordEvent(category, method, object, value, extra)`
 
@@ -89,13 +90,15 @@ Note: The semantics of `value` is contingent on the event being recorded, see li
 
 See the Events section for specific examples of event registration and recording.
 
+\* Due to a bug in Firefox 67-, we will need to use a fallback embedded API experiment to correctly record telemetry events. See bug 1536877 for details.)
+
 #### Scalar recording
 
 We use the js api for scalar recording as well. Here registration happens with the following syntax:
 
 ```javascript
 browser.telemetry.registerScalars(category, {
-	"scalar_name": {
+	"scalarName": {
 		kind: browser.Telemetry.SCALAR_TYPE_COUNT, // SCALAR_TYPE_COUNT, SCALAR_TYPE_BOOLEAN. or SCALAR_TYPE_STRING
 		keyed: false,
 		record_on_release: false, // NEEDS TO BE SET TO RECORD ON RELEASE CHANNEL
@@ -124,23 +127,25 @@ These are the metrics we currently collect regarding the state of the user's log
 
 ## List of Planned Metrics Events
 
-All events are currently implemented under the **category: lockbox-addon**. The `extra` field contains `itemid` for events pertaining to a particular Lockbox item. They are listed and grouped together below based on the contents of the event's `method` field.
+All events are currently implemented under the **category: lockboxaddon**. The `extra` field contains `itemid` for events pertaining to a particular Lockbox item. They are listed and grouped together below based on the contents of the event's `method` field.
 
-1. `startup` fires when the webextension is loaded. **objects**: webextension. Note that this event fires whenever the browser is started, so is not indicative of direct user interaction with Lockbox. **value** is null.
+1. `startup` fires when the webextension is loaded. **objects**: `webextension`. Note that this event fires whenever the browser is started, so is not indicative of direct user interaction with Lockbox. **value** is null.
 
-2. `click` fires when someone clicks on one of the UI elements listed **objects**: `toolbar`, `get_mobile`, `faq`, `account_settings`, `give_feedback`, `settings_menu`, `reconnect_sync`, `signin_sync` (or whatever the menu is that contains links to account settings, faq, etc). **value** is null.
+2. `click` fires when someone clicks on one of the UI elements listed **objects**: `toolbar`, `getMobile`, `faq`, `accountSettings`, `giveFeedback`, `settingsMenu`, `signinSync`.  **value** is null. `sortMenu` has **value** of `lastUsed`, `lastChanged`, or `name`.
 
-3. `show` events fire when various UI elements are rendered shown to the user. **objects**: `item_list_manager`, `item_list_doorhanger`, `item_detail_doorhanger` `item_detail_manager`, `new_item`, `item_edit`, `delete_confirm`, `connect_another_device` (referring to the dialog displayed after a user clicks on the button to learn about the mobile apps) **value** should be a boolean for `item_list_*` events indicating whether any logins are in the login list (e.g. `False` if the list is empty).
+3. `show` events fire when various UI elements are rendered shown to the user. **objects**: `itemListManager`, `itemListDoorhanger`, `itemDetailDoorhanger` `itemDetailManager`, `newItem`, `itemEdit`, `deleteConfirm`, `connectAnotherDevice` (referring to the dialog displayed after a user clicks on the button to learn about the mobile apps) **value** should be a boolean for `itemList*` events indicating whether any logins are in the login list (e.g. `False` if the list is empty).
 
-4. `item_add`, `item_update`, `item_delete` fire after a successful adding, editing or deleting of a credential. **objects**: manager, doorhanger (contingent on where the user initiated the action). item GUID should be in the extra field. **value** is null
+4. `itemAdd`, `itemUpdate`, `itemDelete` fire after a successful adding, editing or deleting of a credential. **objects**: manager, doorhanger (contingent on where the user initiated the action). item GUID should be in the extra field. **value** is null
 
-5. `item_selected` fires when a user clicks an item in the itemlist. **objects** manager, doorhanger  **value** is null
+5. `itemSelected` fires when a user clicks an item in the itemlist. **objects** manager, doorhanger  **value** is null
 
-6. `copy_password` and `copy_username` fire when a user copies their username or password from an item. **objects**: `item_detail_manager`, `item_detail_doorhanger` **value** is null. item GUID should be in the extra field.
+6. `copyPassword` and `copyUsername` fire when a user copies their username or password from an item. **objects**: `itemDetailManager`, `itemDetailDoorhanger` **value** is null. item GUID should be in the extra field.
 
-7. `reveal_password` fires when a user reveals a password from within the item detail view. **objects**: `item_detail_manager`, `item_detail_doorhanger` **value** is null item GUID should be in the extra field.
+7. `revealPassword` fires when a user reveals a password from within the item detail view. **objects**: `itemDetailManager`, `itemDetailDoorhanger` **value** is null item GUID should be in the extra field (or null, if the item is being created, and doesn't have an ID yet)
 
-8. `open_website` fires when a user clicks to open a credential's associated web address. **objects**: `item_detail_manager`, `item_detail_doorhanger` **value** is null item GUID should be in the extra field.
+8. `concealPassword` fires when a user conceals a previously revealed password from within the item detail view. **objects**: `itemDetailManager`, `itemDetailDoorhanger` **value** is null item GUID should be in the extra field (or null, if the item is being created, and doesn't have an ID yet)
+
+8. `openWebsite` fires when a user clicks to open a credential's associated web address. **objects**: `itemDetailManager`, `itemDetailDoorhanger` **value** is null item GUID should be in the extra field.
 
 
 
