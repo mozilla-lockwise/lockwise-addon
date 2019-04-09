@@ -24,9 +24,14 @@ export default function ItemListPanel({className, inputRef, totalItemCount,
   if (!hasItems) {
     if (!hasAnything) {
       list = (
-        <Localized id="all-items-get-started" attrs={{ title: true }}>
-          <ItemListPlaceholder>wHEn yOu cREATe an eNTRy...</ItemListPlaceholder>
-        </Localized>
+        <ItemListPlaceholder>
+          <Localized id="all-items-get-started-title">
+            <h2>gEt sTARTEd</h2>
+          </Localized>
+          <Localized id="all-items-get-started">
+            <p>wHEn yOu cREATe an eNTRy...</p>
+          </Localized>
+        </ItemListPlaceholder>
       );
     } else {
       list = <NoMatchingPlaceholder withTitle={true} />;
