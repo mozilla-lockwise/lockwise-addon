@@ -12,7 +12,10 @@ export async function initializeEnvironment() {
       .setLoginSavingEnabled(origin, false);
   }
 
-  // NOTE: %DOMAIN% is replaced by the browser with the context's location, or "" is no context
+  // NOTE: %DOMAIN% is replaced by the browser with the context's location:
+  //  * context menu -> "Fill Password" / "Fill Login" -> "Saved Logins"
+  //  * autofill dropdown -> "Saved logins"
+  // %DOMAIN* is "" if there is no context (e.g., from main menu -> "Passwords and Logins")
   const mgmtURI = browser.extension.getURL("/list/manage.html?filter=%DOMAIN%");
   await browser.experiments.logins.setManagementURI(mgmtURI);
 }
