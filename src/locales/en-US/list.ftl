@@ -16,7 +16,8 @@ all-items-get-started =
 
 all-items-no-results =
   If this login is saved on another device, make sure you have signed in and synced on that device in order to see it here.
-  .title = No matching entries.
+all-items-no-results-title = No matching entries.
+all-items-no-results-footer = <go>Learn more</go>
 
 item-fields-title-input =
   .placeholder = e.g. primary bank
