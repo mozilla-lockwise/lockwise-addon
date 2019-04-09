@@ -11,6 +11,7 @@ import Panel, { PanelHeader, PanelBanner, PanelBody, PanelFooter,
 import ItemList, { ItemListPlaceholder } from "../../components/item-list";
 import ItemFilter from "../../containers/item-filter";
 import ErrorNotification from "../../containers/connected-error-notification";
+import NoMatchingPlaceholder from "../../containers/no-matching-placeholder";
 
 import styles from "./item-list-panel.css";
 
@@ -55,28 +56,25 @@ export default function ItemListPanel({inputRef, totalItemCount, noResultsBanner
   };
 
   const hasItems = props.items.length !== 0;
+  const hasAnything = totalItemCount !== 0;
   let list, topBorder, banner;
 
+  topBorder = "normal";
   if (!hasItems) {
-    const hasAnyItems = (totalItemCount !== 0);
-    const bannerL10n = `${hasAnyItems ? "no-matching" : "get-started"}-banner`;
-    const listL10n = `all-items-${hasAnyItems ? "no-results" : "get-started"}`;
-
-    banner = (
-      <Localized id={bannerL10n}>
-        <PanelBanner border="floating" className={styles.panelBanner}>no rESULTs</PanelBanner>
-      </Localized>
-    );
-    list = (
-      <Localized id={listL10n}>
-        <ItemListPlaceholder className={styles.empty}>
-          wHEn yOu cREATe an eNTRy...
-        </ItemListPlaceholder>
-      </Localized>
-    );
+    banner = <PanelBanner border="floating" className={styles.panelBanner}>no rESULTs</PanelBanner>;
+    if (!hasAnything) {
+      banner = <Localized id="get-started-banner">{banner}</Localized>;
+      list = (
+        <Localized id="all-items-get-started">
+          <ItemListPlaceholder className={styles.empty}>wHEn yOu cREATe an eNTRy...</ItemListPlaceholder>
+        </Localized>
+      );
+    } else {
+      banner = <Localized id="no-matching-banner">{banner}</Localized>;
+      list = <NoMatchingPlaceholder title={false} className={styles.empty}/>;
+    }
   } else {
     list = <PopupItemList {...props}/>;
-    topBorder = "normal";
 
     if (noResultsBanner) {
       banner = (

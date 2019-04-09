@@ -9,6 +9,7 @@ import React from "react";
 import { PanelHeader, PanelBody } from "../../../widgets/panel";
 import AddItem from "../containers/add-item";
 import ItemList, { ItemListPlaceholder } from "../../components/item-list";
+import NoMatchingPlaceholder from "../../containers/no-matching-placeholder";
 import ItemFilter from "../../containers/item-filter";
 import ListSort from "../containers/list-sort.js";
 import ListCounter from "../components/list-counter.js";
@@ -28,11 +29,7 @@ export default function ItemListPanel({className, inputRef, totalItemCount,
         </Localized>
       );
     } else {
-      list = (
-        <Localized id="all-items-no-results" attrs={{ title: true }}>
-          <ItemListPlaceholder>nO rESULTs</ItemListPlaceholder>
-        </Localized>
-      );
+      list = <NoMatchingPlaceholder withTitle={true} />;
     }
   } else {
     list = <ItemList {...props}/>;
