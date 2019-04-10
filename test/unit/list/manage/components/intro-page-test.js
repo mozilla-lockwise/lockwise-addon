@@ -17,8 +17,6 @@ describe("list > manage > components > <IntroPage/>", () => {
       <IntroPage/>
     );
 
-    expect(wrapper).to.have.descendants("img[src='/images/intro-step-1.png']");
-    expect(wrapper).to.have.descendants("img[src='/images/intro-step-2.png']");
-    expect(wrapper).to.have.descendants("img[src='/images/intro-step-3.png']");
+    expect(wrapper).to.have.descendants("a[href='https://lockbox.firefox.com/faq.html#how-do-i-get-my-saved-logins-into-firefox-lockbox']");
   });
 });

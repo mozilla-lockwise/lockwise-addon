@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Localized } from "fluent-react";
-import PropTypes from "prop-types";
 import React from "react";
 
 import styles from "./intro-page.css";
@@ -61,7 +60,7 @@ export default function IntroPage() {
           <Localized id="intro-page-main-article-4-copy">
             <p></p>
           </Localized>
-        </article>        
+        </article>
       </section>
 
       <hr/>
