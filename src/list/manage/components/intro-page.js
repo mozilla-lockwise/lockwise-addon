@@ -8,45 +8,73 @@ import React from "react";
 
 import styles from "./intro-page.css";
 
-function IntroImage({src, title, children}) {
-  return (
-    <div className={styles.introImage}>
-      <img src={src} alt=""/>
-      <h1>{title}</h1>
-      <p>{children}</p>
-    </div>
-  );
-}
-
-IntroImage.propTypes = {
-  src: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  children: PropTypes.node,
-};
+const learnMoreLink = "https://lockbox.firefox.com/faq.html#how-do-i-get-my-saved-logins-into-firefox-lockbox";
 
 export default function IntroPage() {
   return (
-    <article className={styles.introPage}>
-      <section className={styles.introImages}>
-        <Localized id="intro-page-step-1" attrs={{title: true}}>
-          <IntroImage src={browser.extension.getURL("/images/intro-step-1.png")}
-                      title="aDd lOGIn iNFo to lOCKBOx">
-            sAVe uSERNAMe aNd pASSWORd...
-          </IntroImage>
+    <section className={styles.introPage}>
+      <header>
+        <Localized id="intro-page-header-title">
+          <h2>fIREFOx lOCKBOx fOr dESKTOp</h2>
         </Localized>
-        <Localized id="intro-page-step-2" attrs={{title: true}}>
-          <IntroImage src={browser.extension.getURL("/images/intro-step-2.png")}
-                      title="go sTRAIGHt to yOUr lOGINs">
-            cLICk tHe lOCKBOx iCOn...
-          </IntroImage>
+        <Localized id="intro-page-header-subtitle">
+          <p>iNTRo hEADEr sUBTITLe</p>
         </Localized>
-        <Localized id="intro-page-step-3" attrs={{title: true}}>
-          <IntroImage src={browser.extension.getURL("/images/intro-step-3.png")}
-                      title="sIGn in fROm lOCKBOx">
-            cOPy an eNTRY&apos;s iNFo...
-          </IntroImage>
-        </Localized>
+      </header>
+
+      <section className={styles.introMain}>
+        <article>
+          <Localized id="intro-page-main-article-1-title">
+            <h3></h3>
+          </Localized>
+
+          <Localized id="intro-page-main-article-1-copy">
+            <p></p>
+          </Localized>
+        </article>
+
+        <article>
+          <Localized id="intro-page-main-article-2-title">
+            <h3></h3>
+          </Localized>
+
+          <Localized id="intro-page-main-article-2-copy">
+            <p></p>
+          </Localized>
+        </article>
+
+        <article>
+          <Localized id="intro-page-main-article-3-title">
+            <h3></h3>
+          </Localized>
+
+          <Localized id="intro-page-main-article-3-copy">
+            <p></p>
+          </Localized>
+        </article>
+
+        <article>
+          <Localized id="intro-page-main-article-4-title">
+            <h3></h3>
+          </Localized>
+
+          <Localized id="intro-page-main-article-4-copy">
+            <p></p>
+          </Localized>
+        </article>        
       </section>
-    </article>
+
+      <hr/>
+
+      <footer>
+        <Localized id="intro-page-footer-heading">
+          <h2>iNTRo fOOTEr hEADEr</h2>
+        </Localized>
+      <Localized id="intro-page-footer-copy"
+                 a={<a href={learnMoreLink}></a>}>
+          <p>iNTRo fOOTEr cOPy <a>lEARn mORe</a></p>
+        </Localized>
+      </footer>
+    </section>
   );
 }

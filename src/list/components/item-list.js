@@ -47,7 +47,7 @@ ItemList.defaultProps = {
 
 export function ItemListPlaceholder({children}) {
   return (
-    <div className={"itemListEmpty " + styles.empty}>
+    <div className={`itemListEmpty ${styles.empty}`}>
       {children}
     </div>
   );

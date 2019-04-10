@@ -54,22 +54,36 @@ export default function ItemListPanel({inputRef, noResultsBanner,
     window.close();
   };
 
+  const openUrl = (url) => {
+    browser.runtime.sendMessage({
+      type: "open_site",
+      url: "https://lockbox.firefox.com/faq.html#how-do-i-get-my-saved-logins-into-firefox-lockbox",
+    });
+    window.close();
+  };
+
   const hasItems = props.items.length !== 0;
-  let list, topBorder, banner;
+  let list, banner;
 
   if (!hasItems) {
     list = (
-      <Localized id="all-items-no-results">
-        <ItemListPlaceholder>
-          wHEn yOu cREATe an eNTRy...
-        </ItemListPlaceholder>
+      <ItemListPlaceholder className={styles.allItemsNoResults}>
+        <Localized id="all-items-no-results-message">
+          <p>nO rESULTs oNBOARDINg</p>
+        </Localized>
+        <Localized id="all-items-no-results-message-with-link"
+                   a={<a href="#" onClick={openUrl}></a>}>
+          <p>nO rESULTs lINk<a>lEARn mORe</a></p>
+        </Localized>
+      </ItemListPlaceholder>
+    );
+    banner = (
+      <Localized id="no-results-all-items-banner">
+        <PanelBanner border="floating" className={styles.panelBanner}>no rESULTs fOUNd</PanelBanner>
       </Localized>
     );
-    topBorder = "none";
   } else {
     list = <PopupItemList {...props}/>;
-    topBorder = "normal";
-
     if (noResultsBanner) {
       banner = (
         <Localized id="no-results-banner">
@@ -94,7 +108,7 @@ export default function ItemListPanel({inputRef, noResultsBanner,
 
   return (
     <Panel>
-      <PanelHeader border={topBorder} className={styles.panelHeader}>
+      <PanelHeader border={"normal"} className={styles.panelHeader}>
         <ItemFilter inputRef={inputRef} className={styles.filterPanel} />
       </PanelHeader>
 

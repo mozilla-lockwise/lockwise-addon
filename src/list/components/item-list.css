@@ -8,10 +8,13 @@
   padding: 40px;
   overflow: hidden;
   overflow-wrap: break-word;
-  color: #737373;
-  font-size: 15px;
-  line-height: 1.5;
-  letter-spacing: 0.2px;
+  color: #0c0c0d;
+  font-size: 13px;
+}
+
+.empty a {
+  color: #0060df;
+  text-decoration: none;
 }
 
 .item {
