@@ -55,8 +55,6 @@ export default connect(
   (dispatch, ownProps) => ({
     // sing doorhanger does not render a in-placeholder title ...
     // .. (ab)using the inverse of `withTitle` for the `close` flag
-    onLearnMore: () => dispatch(openFAQ({
-      close: !ownProps.withTitle,
-    })),
+    onLearnMore: () => dispatch(openFAQ(null, !ownProps.withTitle)),
   })
 )(BaseNoMatchingPlaceholder);
