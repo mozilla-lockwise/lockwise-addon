@@ -226,6 +226,26 @@
         }]
       },
       {
+        "name": "getManagementURI",
+        "type": "function",
+        "description": "Retrieves the current logins management URI, or \"\" if none is set",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "setManagementURI",
+        "type": "function",
+        "description": "Sets the logins management URI, as an absolute URI",
+        "async": true,
+        "parameters": [{
+          "name": "url",
+          "type": "string",
+          "description": "The URL for the new management page",
+          "optional": true,
+          "default": ""
+        }]
+      },
+      {
         "name": "getAll",
         "type": "function",
         "description": "Gets an array of all Logins. Returns a Promise for the (possibly empty) list of all Logins.",

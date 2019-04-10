@@ -36,6 +36,8 @@ const getLogin = (id) => {
   return login || null;
 };
 
+const PREF_MANAGEMENT_OVERRIDE = "signon.management.overrideURI";
+
 this.logins = class extends ExtensionAPI {
   getAPI(context) {
     const EventManager = ExtensionCommon.EventManager;
@@ -63,6 +65,30 @@ this.logins = class extends ExtensionAPI {
               throw new ExtensionError(ex);
             }
           },
+
+          // By using `getBranchDefault()`, the pref changes are forgotten on shutdown/restart/crash of the browser.
+          // The extra benefit (liability) is a user-pref override still applies ...
+          getManagementURI() {
+            try {
+              return Services.prefs.getDefaultBranch(null).getStringPref(PREF_MANAGEMENT_OVERRIDE, "");
+            } catch (ex) {
+              throw new ExtensionError(ex);
+            }
+          },
+          setManagementURI(url) {
+            try {
+              const prefs = Services.prefs.getDefaultBranch(null);
+              prefs.setStringPref(PREF_MANAGEMENT_OVERRIDE, url);
+              context.callOnClose({
+                close() {
+                  prefs.setStringPref(PREF_MANAGEMENT_OVERRIDE, "");
+                },
+              });
+            } catch (ex) {
+              throw new ExtensionError(ex);
+            }
+          },
+
           getAll() {
             const logins = getLogins();
             return logins;

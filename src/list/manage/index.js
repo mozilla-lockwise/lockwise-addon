@@ -10,12 +10,21 @@ import thunk from "redux-thunk";
 
 import AppLocalizationProvider from "../../l10n";
 import App from "./components/app";
-import { listItems, getProfile } from "../actions";
+import { listItems, getProfile, filterItems } from "../actions";
 import reducer from "./reducers";
 import initializeMessagePorts from "../message-ports";
 import telemetryLogger from "./telemetry";
 import { saveSort, loadSort } from "./sort-middleware";
 import openLink from "../open-link-middleware";
+
+const applyQueryFilter = () => {
+  // parse query params ...
+  const params = new URLSearchParams(window.location.search);
+  const filter = params.get("filter");
+  if (filter) {
+    store.dispatch(filterItems(filter, false));
+  }
+};
 
 let store;
 (async () => {
@@ -28,6 +37,7 @@ let store;
   store.dispatch(listItems());
   initializeMessagePorts(store);
   store.dispatch(getProfile());
+  applyQueryFilter();
 
   ReactDOM.render(
     <Provider store={store}>

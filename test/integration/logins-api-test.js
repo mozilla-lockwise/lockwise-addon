@@ -38,6 +38,7 @@ const mockSyncLogin = {
   username: "14c73624237046f0964ac092194a6a23",
   password: "{long complicated sync object}",
 };
+const TEST_PAGE_URL = "/test/integration/test-pages/logins-api.html";
 
 describe("logins API", () => {
   let webext;
@@ -110,9 +111,17 @@ describe("logins API", () => {
     return logins;
   };
 
+  const getPrefManagementURI = async () => {
+    await webext.inChrome();
+    const pref = await driver.executeScript(`
+      return Services.prefs.getDefaultBranch(null).getStringPref("signon.management.overrideURI", "");
+    `);
+    return pref;
+  };
+
   const loadTestPage = async () => {
     await webext.inContent();
-    await driver.get(webext.url("/test/integration/test-pages/logins-api.html"));
+    await driver.get(webext.url(TEST_PAGE_URL));
   };
 
   const clickButton = async (id) => {
@@ -285,6 +294,31 @@ describe("logins API", () => {
       it("does not enable login saving for origin when given true", async () => {
         await commonTest(true, false);
       });
+    });
+  });
+
+  describe("browser.experiments.logins.{get,set}ManagementURI", () => {
+    const commonTest = async (button, expected) => {
+      await loadTestPage();
+      await clickButton(button ? "register-management-uri" : "unregister-management-uri");
+      const results = await driver.wait(until.elementLocated(
+        By.id("management-uri-results")
+      ), 1000);
+
+      const output = await results.getText();
+      expect(JSON.parse(output)).to.equal(expected);
+
+      const actual = await getPrefManagementURI();
+      expect(actual).to.equal(expected);
+    };
+
+    it("registers test page location as management URI", async () => {
+      const expected = webext.url(TEST_PAGE_URL);
+      await commonTest(true, expected);
+    });
+    it("unregistered test page location as management URI", async () => {
+      const expected = "";
+      await commonTest(false, expected);
     });
   });
 
