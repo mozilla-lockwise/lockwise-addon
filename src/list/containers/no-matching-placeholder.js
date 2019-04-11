@@ -33,7 +33,7 @@ export function BaseNoMatchingPlaceholder({
         <Link onClick={onLearnMore}></Link>
       }
     >
-      <p>{"<go>lEARn mORe</go>"}</p>
+      <p><go>lEARn mORe</go></p>
     </Localized>
   </ItemListPlaceholder>;
 }

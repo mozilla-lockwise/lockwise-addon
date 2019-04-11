@@ -22,7 +22,7 @@ export function BaseNoEntriesPlaceholder({className, onLearnMore}) {
         go={
           <Link onClick={onLearnMore}/>
         }>
-      <p>{"<go>fINd oUt wHy</go>"}</p>
+      <p><go>fINd oUt wHy</go></p>
     </Localized>
   </ItemListPlaceholder>;
 }
