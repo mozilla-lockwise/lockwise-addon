@@ -18,7 +18,7 @@ const middleware = {};
 const mockStore = configureStore(middleware);
 
 describe("list > manage > components > <Homepage/>", () => {
-  it("render homepage with welcome", () => {
+  it("render homepage with promotion banner", () => {
     const store = mockStore(initialState);
     const wrapper = mountWithL10n(
       <Provider store={store}>
@@ -26,6 +26,6 @@ describe("list > manage > components > <Homepage/>", () => {
       </Provider>
     );
 
-    expect(wrapper.find("h1")).to.contain.text("tHe sIMPLe wAy tO sTORE...");
+    expect(wrapper.find("h1")).to.contain.text("tItLe");
   });
 });
