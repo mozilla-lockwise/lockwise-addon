@@ -53,7 +53,7 @@ export default connect(
     ...ownProps,
   }),
   (dispatch, ownProps) => ({
-    // sing doorhanger does not render a in-placeholder title ...
+    // since doorhanger does not render a in-placeholder title ...
     // .. (ab)using the inverse of `withTitle` for the `close` flag
     onLearnMore: () => dispatch(openFAQ(null, !ownProps.withTitle)),
   })
