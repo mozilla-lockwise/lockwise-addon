@@ -45,14 +45,20 @@ ItemList.defaultProps = {
   sort: "name",
 };
 
-export function ItemListPlaceholder({children}) {
+export function ItemListPlaceholder({className, children}) {
+  const fullClassName = classNames(["itemListEmpty", styles.empty, className]);
   return (
-    <div className={"itemListEmpty " + styles.empty}>
+    <div className={fullClassName}>
       {children}
     </div>
   );
 }
 
 ItemListPlaceholder.propTypes = {
+  className: PropTypes.string,
   children: PropTypes.node,
+};
+
+ItemListPlaceholder.defaultProps = {
+  className: "",
 };

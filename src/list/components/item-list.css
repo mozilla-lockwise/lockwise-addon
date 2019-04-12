@@ -5,13 +5,22 @@
 .empty {
   text-align: center;
   white-space: pre-wrap;
-  padding: 40px;
+  padding: 40px 20px;
   overflow: hidden;
   overflow-wrap: break-word;
-  color: #737373;
-  font-size: 15px;
+  color: #0c0c0d;
+  font-size: 13px;
   line-height: 1.5;
-  letter-spacing: 0.2px;
+  letter-spacing: normal;
+}
+.empty * {
+  font-size: 13px;
+  margin-top: 0px;
+}
+
+.empty h2 {
+  font-weight: normal;
+  font-size: 15px;
 }
 
 .item {

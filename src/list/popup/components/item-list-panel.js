@@ -8,9 +8,11 @@ import React from "react";
 
 import Panel, { PanelHeader, PanelBanner, PanelBody, PanelFooter,
                 PanelFooterButton } from "../../../widgets/panel";
-import ItemList, { ItemListPlaceholder } from "../../components/item-list";
+import ItemList from "../../components/item-list";
 import ItemFilter from "../../containers/item-filter";
 import SyncNotification from "../../containers/connected-sync-notification";
+import NoMatchingPlaceholder from "../../containers/no-matching-placeholder";
+import NoEntriesPlaceholder from "../containers/no-entries-placeholder";
 
 import styles from "./item-list-panel.css";
 
@@ -44,7 +46,7 @@ class PopupItemList extends React.Component {
   }
 }
 
-export default function ItemListPanel({inputRef, noResultsBanner,
+export default function ItemListPanel({inputRef, totalItemCount, noResultsBanner,
                                        isFiltering, ...props}) {
   const openManager = () => {
     browser.runtime.sendMessage({
@@ -55,20 +57,21 @@ export default function ItemListPanel({inputRef, noResultsBanner,
   };
 
   const hasItems = props.items.length !== 0;
+  const hasAnything = totalItemCount !== 0;
   let list, topBorder, banner;
 
+  topBorder = "normal";
   if (!hasItems) {
-    list = (
-      <Localized id="all-items-no-results">
-        <ItemListPlaceholder>
-          wHEn yOu cREATe an eNTRy...
-        </ItemListPlaceholder>
-      </Localized>
-    );
-    topBorder = "none";
+    const bannerContent = <PanelBanner border="floating" className={styles.panelBanner}>no rESULTs</PanelBanner>;
+    if (!hasAnything) {
+      banner = <Localized id="get-started-banner">{bannerContent}</Localized>;
+      list = <NoEntriesPlaceholder className={styles.empty} />;
+    } else {
+      banner = <Localized id="no-matching-banner">{bannerContent}</Localized>;
+      list = <NoMatchingPlaceholder title={false} className={styles.empty}/>;
+    }
   } else {
     list = <PopupItemList {...props}/>;
-    topBorder = "normal";
 
     if (noResultsBanner) {
       banner = (
@@ -119,6 +122,7 @@ export default function ItemListPanel({inputRef, noResultsBanner,
 
 ItemListPanel.propTypes = {
   inputRef: PropTypes.func,
+  totalItemCount: PropTypes.number.isRequired,
   noResultsBanner: PropTypes.bool,
   ...ItemList.propTypes,
 };

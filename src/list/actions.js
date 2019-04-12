@@ -365,9 +365,11 @@ export function selectTabMonitor() {
   };
 }
 
-export function openFAQ() {
+export function openFAQ(target, close) {
   return {
     type: OPEN_FAQ,
+    target,
+    close,
   };
 }
 

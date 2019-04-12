@@ -14,9 +14,14 @@ error-notification-duplicate =
 error-notification-duplicate-link = <a>Go to existing entry?</a>
 
 all-items-get-started =
-  When you add an entry, it automatically shows up here.
+  When you save a password in Firefox, it will show up here.
+all-items-get-started-title = No entries found.
+all-items-get-started-footer = Not seeing your saved logins? <go>Find out why</go>
 
-all-items-no-results = No results
+all-items-no-results =
+  If this login is saved on another device, make sure you have signed in and synced on that device in order to see it here.
+all-items-no-results-title = No matching entries.
+all-items-no-results-footer = <go>Learn more</go>
 
 item-fields-title-input =
   .placeholder = e.g. primary bank
@@ -81,20 +86,41 @@ account-summary-account = Account
 account-summary-options = Preferences
 account-summary-signout = Sign Out
 
-intro-page-step-1 =
-  Save username and password info to create a { product-title } entry.
+intro-page-header-title = { product-fulltitle } for Desktop
+intro-page-header-subtitle =
+  Welcome to better login management. Our desktop addon brings many of
+  the improvements seen in our mobile apps to your computer, with
+  greater control of your logins.
 
-  .title = Add login info to { product-title }
+intro-page-main-article-1-title =
+  Easy management of your accounts
+intro-page-main-article-1-copy =
+  Managing your accounts shouldn’t be rocket science. We made things
+  easy with our new desktop interface.
+intro-page-main-article-2-title =
+  Quick access to your logins
+intro-page-main-article-2-copy =
+  Click the Lockbox icon from the toolbar in Firefox to bring up our
+  doorhanger to access your entries.
+intro-page-main-article-3-title =
+  Create new entries manually
+intro-page-main-article-3-copy =
+  With the addition of manual entries, you can now store any account
+  you want within Lockbox.
+intro-page-main-article-4-title =
+  Get notified when new breaches occur
+intro-page-main-article-4-copy =
+  Keep your logins safe with our new breach notifications. Learn what
+  was impacted and how to secure your login.
 
-intro-page-step-2 =
-  Click the { product-title } icon to see all the entries you've saved.
+intro-page-footer-heading =
+  Not seeing your saved logins? Let us help.
+intro-page-footer-copy =
+  Firefox Lockbox provides access to the logins you’ve saved to
+  Firefox on your device. If your logins are stored on another device,
+  you can sync your information to this device by signing in to or
+  creating a Firefox Account. <go>Learn More</go>
 
-  .title = Go straight to your logins
-
-intro-page-step-3 =
-  Copy an entry's info to sign in right from Firefox.
-
-  .title = Sign in from { product-title }
 
 homepage-title = { product-tagline }
 
@@ -154,6 +180,10 @@ filtered-banner = { $count ->
   [one]   {$count} entry found
  *[other] { $count } entries found
 }
+
+get-started-banner = No entries found.
+
+no-matching-banner = No matching entries.
 
 no-results-banner = No entries found for current website.
 

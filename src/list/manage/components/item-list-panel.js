@@ -9,6 +9,7 @@ import React from "react";
 import { PanelHeader, PanelBody } from "../../../widgets/panel";
 import AddItem from "../containers/add-item";
 import ItemList, { ItemListPlaceholder } from "../../components/item-list";
+import NoMatchingPlaceholder from "../../containers/no-matching-placeholder";
 import ItemFilter from "../../containers/item-filter";
 import ListSort from "../containers/list-sort.js";
 import ListCounter from "../components/list-counter.js";
@@ -18,16 +19,23 @@ import styles from "./item-list-panel.css";
 export default function ItemListPanel({className, inputRef, totalItemCount,
                                        sort, count, ...props}) {
   const hasItems = props.items.length !== 0;
+  const hasAnything = totalItemCount !== 0;
   let list;
   if (!hasItems) {
-    list = (
-      <Localized id={`all-items-${totalItemCount ? "no-results" :
-                                                   "get-started"}`}>
+    if (!hasAnything) {
+      list = (
         <ItemListPlaceholder>
-          wHEn yOu cREATe an eNTRy...
+          <Localized id="all-items-get-started-title">
+            <h2>gEt sTARTEd</h2>
+          </Localized>
+          <Localized id="all-items-get-started">
+            <p>wHEn yOu cREATe an eNTRy...</p>
+          </Localized>
         </ItemListPlaceholder>
-      </Localized>
-    );
+      );
+    } else {
+      list = <NoMatchingPlaceholder withTitle={true} />;
+    }
   } else {
     list = <ItemList {...props}/>;
   }

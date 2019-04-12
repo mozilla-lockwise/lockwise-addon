@@ -5,20 +5,26 @@
 import chai, { expect } from "chai";
 import chaiEnzyme from "chai-enzyme";
 import React from "react";
+import sinon from "sinon";
+import sinonChai from "sinon-chai";
 
 import mountWithL10n from "test/unit/mocks/l10n";
 import IntroPage from "src/list/manage/components/intro-page";
 
 chai.use(chaiEnzyme());
+chai.use(sinonChai);
 
 describe("list > manage > components > <IntroPage/>", () => {
-  it("render introduction page", () => {
-    const wrapper = mountWithL10n(
-      <IntroPage/>
-    );
+  let wrapper, spyLearnMore;
 
-    expect(wrapper).to.have.descendants("img[src='/images/intro-step-1.png']");
-    expect(wrapper).to.have.descendants("img[src='/images/intro-step-2.png']");
-    expect(wrapper).to.have.descendants("img[src='/images/intro-step-3.png']");
+  beforeEach(() => {
+    spyLearnMore = sinon.spy();
+    wrapper = mountWithL10n(
+      <IntroPage onLearnMore={spyLearnMore}/>
+    );
+  });
+
+  it("render introduction page", () => {
+    expect(wrapper).to.have.descendants("go");
   });
 });

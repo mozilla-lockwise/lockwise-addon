@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 import { flattenItem, unflattenItem } from "../../common";
 import {
   addItem, updateItem, requestRemoveItem, editCurrentItem, requestCancelEditing,
-  editorChanged, copiedField, revealPassword, concealPassword,
+  editorChanged, copiedField, revealPassword, concealPassword, openFAQ,
 } from "../../actions";
 import EditItemDetails from "../components/edit-item-details";
 import ItemDetails from "../components/item-details";
@@ -61,7 +61,7 @@ const ConnectedItemDetails = connect(
   })
 )(ItemDetails);
 
-function CurrentSelection({editing, item, hideHome, numItems, error}) {
+function CurrentSelection({editing, item, hideHome, numItems, error, onLearnMoreInIntro}) {
   let inner;
   if (editing) {
     inner = <ConnectedEditItemDetails item={item} error={error}/>;
@@ -73,7 +73,7 @@ function CurrentSelection({editing, item, hideHome, numItems, error}) {
   } else if (numItems !== 0) {
     inner = <Homepage/>;
   } else {
-    inner = <IntroPage/>;
+    inner = <IntroPage onLearnMore={() => onLearnMoreInIntro()}/>;
   }
   return inner;
 }
@@ -84,6 +84,7 @@ CurrentSelection.propTypes = {
   error: PropTypes.object,
   hideHome: PropTypes.bool.isRequired,
   numItems: PropTypes.number.isRequired,
+  onLearnMoreInIntro: PropTypes.func.isRequired,
 };
 
 export default connect(
@@ -93,5 +94,8 @@ export default connect(
     error: state.editor.error,
     hideHome: state.editor.hideHome,
     numItems: state.cache.items.length,
+  }),
+  (dispatch) => ({
+    onLearnMoreInIntro: () => dispatch(openFAQ("how-do-i-get-my-saved-logins-into-firefox-lockbox")),
   })
 )(CurrentSelection);

@@ -47,7 +47,7 @@ describe("list > manage > containers > <AllItems/>", () => {
 
     it("render items", () => {
       expect(wrapper.find(ItemSummary)).to.have.length(0);
-      expect(wrapper.find(ItemListPlaceholder)).to.have.text(
+      expect(wrapper.find(ItemListPlaceholder)).to.contain.text(
         "wHEn yOu cREATe an eNTRy..."
       );
     });

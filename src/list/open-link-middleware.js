@@ -2,9 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import * as actions from "../actions";
-import { version } from "../../../package";
-import { openWebsite } from "../common";
+import * as actions from "./actions";
+import { version } from "../../package";
+import { openWebsite } from "./common";
 
 // TODO: Update these links?
 const urls = {
@@ -13,10 +13,17 @@ const urls = {
   homepage: "https://lockbox.firefox.com",
 };
 
+function openTargetedWebsite(url, target, close) {
+  const location = (target) ?
+      `${url}#${target}` :
+      url;
+  openWebsite(location, close);
+}
+
 export default (store) => (next) => (action) => {
   switch (action.type) {
   case actions.OPEN_FAQ:
-    openWebsite(urls.faq, false);
+    openTargetedWebsite(urls.faq, action.target, action.close);
     break;
   case actions.OPEN_FEEDBACK:
     openWebsite(urls.feedback, false);

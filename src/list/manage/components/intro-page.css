@@ -2,40 +2,54 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-.intro-images {
+.intro-page {
+  color: #0c0c0d;
+  text-align: center;
+  margin: 0 95px;
+}
+
+.intro-page footer h2,
+.intro-page header h2 {
+  font-size: 22px;
+  font-weight: lighter;
+}
+
+.intro-page footer {
+  margin-top: 40px;
+}
+
+.intro-page footer p,
+.intro-page header p {
+  color: #737373;
+  font-size: 15px;
+}
+
+.intro-main {
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto auto auto;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
   grid-column-gap: 4em;
-  margin: 8em auto 4em;
-  padding: 0 4em;
-  max-width: 880px;
+
+  font-size: 13px;
+  margin-bottom: 40px;
 }
 
-.intro-image {
-  display: contents;
-  text-align: center;
-}
-
-.intro-image > h1,
-.intro-image > p {
-  overflow: hidden;
-}
-
-.intro-image > img {
-  width: 100%;
-  border: 1px solid #d7d7db;
-  border-radius: 5px;
-  box-shadow: 0 1px 4px rgba(12, 12, 13, 0.1);
-}
-
-.intro-image > h1 {
-  font-size: 17px;
-  margin-bottom: 0;
-}
-
-.intro-image > p {
+.intro-main h3 {
   font-size: 15px;
-  line-height: 1.5;
+  font-weight: bold;
+}
+
+.intro-main article {
+  padding: 0 !important;
+  text-align: left;
+}
+
+.intro-page hr {
+  color: #ededf0;
+  width: 200px;
+}
+
+.intro-page footer button {
+  font-size: inherit;
 }
