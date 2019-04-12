@@ -7,22 +7,6 @@
   padding: 8px 5px;
 }
 
-.warning-message {
-  display: inline-block;
-  margin: 0 10px;
-  font-size: 12px;
-}
-
-.warning-message:before {
-  background-image: url(/icons/warning.svg);
-  content: '';
-  display: inline-block;
-  height: 16px;
-  margin-right: 5px;
-  margin-bottom: -2px;
-  width: 16px;
-}
-
 .error-notification button {
   border-radius: 10px;
   border: 1px solid #989898;
@@ -33,6 +17,34 @@
   font-weight: 500;
   height: 19px;
   margin: 0px 10px;
+}
+
+.warning-notification {
+  background: #a4000f;
+  margin-bottom: 40px;
+  color: #ffffff;
+}
+
+.warning-message,
+.warning-message-light {
+  display: inline-block;
+  margin: 0 10px;
+  font-size: 12px;
+}
+
+.warning-message:before,
+.warning-message-light:before {
+  background-image: url(/icons/warning.svg);
+  content: '';
+  display: inline-block;
+  height: 16px;
+  margin-right: 5px;
+  margin-bottom: -2px;
+  width: 16px;
+}
+
+.warning-message-light:before {
+  background-image: url(/icons/warning-light.svg);
 }
 
 .close-icon {

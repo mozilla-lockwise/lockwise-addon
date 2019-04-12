@@ -19,6 +19,8 @@ export function editorReducer(state = {
   editing: false, changed: false, hideHome: false,
 }, action) {
   switch (action.type) {
+  case actions.ADD_ITEM_FAILED:
+    return {...state, editing: true, hideHome: false, error: action.error};
   case actions.ADD_ITEM_COMPLETED:
   case actions.UPDATE_ITEM_COMPLETED:
     if (action.interactive) {

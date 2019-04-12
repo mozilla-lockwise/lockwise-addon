@@ -7,7 +7,7 @@ import chaiEnzyme from "chai-enzyme";
 import React from "react";
 
 import mountWithL10n from "test/unit/mocks/l10n";
-import ErrorNotification from "src/list/components/error-notification";
+import SyncNotification from "src/list/components/sync-notification";
 
 chai.use(chaiEnzyme());
 
@@ -20,7 +20,7 @@ describe("list > components > <ErrorNotification/>", () => {
 
   beforeEach(() => {
     wrapper = mountWithL10n(
-        <ErrorNotification {...props} />
+        <SyncNotification {...props} />
     );
   });
 

@@ -6,7 +6,7 @@ import { Localized } from "fluent-react";
 import React from "react";
 import DocumentTitle from "react-document-title";
 
-import ErrorNotification from "../../containers/connected-error-notification";
+import SyncNotification from "../../containers/connected-sync-notification";
 import AppHeader from "../containers/app-header";
 import AppPanes from "../containers/app-panes";
 import AllItems from "../containers/all-items";
@@ -25,7 +25,7 @@ export default class App extends React.Component {
       <Localized id="document" attrs={{title: true}}>
         <DocumentTitle title="lOCKBOx eNTRIEs">
           <div className={styles.app}>
-            <ErrorNotification isPanel={false}/>
+            <SyncNotification isPanel={false}/>
             <AppHeader />
             <AppPanes>{{
               logins: (

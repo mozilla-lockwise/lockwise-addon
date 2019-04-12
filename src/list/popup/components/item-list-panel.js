@@ -10,7 +10,7 @@ import Panel, { PanelHeader, PanelBanner, PanelBody, PanelFooter,
                 PanelFooterButton } from "../../../widgets/panel";
 import ItemList, { ItemListPlaceholder } from "../../components/item-list";
 import ItemFilter from "../../containers/item-filter";
-import ErrorNotification from "../../containers/connected-error-notification";
+import SyncNotification from "../../containers/connected-sync-notification";
 
 import styles from "./item-list-panel.css";
 
@@ -98,7 +98,7 @@ export default function ItemListPanel({inputRef, noResultsBanner,
         <ItemFilter inputRef={inputRef} className={styles.filterPanel} />
       </PanelHeader>
 
-      <ErrorNotification isPanel={true}/>
+      <SyncNotification isPanel={true}/>
 
       {banner}
 
