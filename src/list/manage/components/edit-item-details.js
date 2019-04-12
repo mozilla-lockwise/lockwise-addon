@@ -10,6 +10,7 @@ import { classNames } from "../../../common";
 import Button from "../../../widgets/button";
 import Toolbar from "../../../widgets/toolbar";
 import { EditItemFields } from "../../components/item-fields";
+import DuplicateNotification from "../../components/duplicate-notification";
 
 import styles from "./item-details.css";
 
@@ -21,6 +22,7 @@ export default class EditItemDetails extends React.Component {
     return {
       ...EditItemFields.propTypes,
       itemId: PropTypes.string,
+      error: PropTypes.object,
       onSave: PropTypes.func.isRequired,
       onCancel: PropTypes.func.isRequired,
       onDelete: PropTypes.func.isRequired,
@@ -31,6 +33,7 @@ export default class EditItemDetails extends React.Component {
   static get defaultProps() {
     return {
       itemId: null,
+      error: null,
       fields: {
         origin: "",
         username: "",
@@ -59,9 +62,10 @@ export default class EditItemDetails extends React.Component {
   }
 
   render() {
-    const {fields: { title }, onSave, onCancel, onDelete, onReveal} = this.props;
+    const {fields: { title }, onSave, onCancel, onDelete, onReveal, error} = this.props;
     const {itemId, ...saveState} = this.state;
     const newItem = itemId === null;
+    const isDuplicate = error && !!~error.message.indexOf("This login already exists");
 
     return (
       <form className={classNames([styles.itemDetails, styles.editing])}
@@ -71,9 +75,10 @@ export default class EditItemDetails extends React.Component {
               onSave(saveState);
             }}>
         <header>
+        {isDuplicate && <DuplicateNotification title={(new URL(this.state.origin).hostname)}/>}
           {newItem ? (
             <Localized id={`item-details-heading-new`}>
-              <h1>nEw iTEm</h1>
+              <h1>cREATe nEw eNTRy</h1>
             </Localized>
           ) : (
             <React.Fragment>
