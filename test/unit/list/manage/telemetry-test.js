@@ -166,7 +166,7 @@ describe("list > manage > telemetryLogger middleware", () => {
 
   it("record telemetry for clicking the get mobile link", async () => {
     telemetryLogger(store)(next)({
-      type: actions.OPEN_GET_MOBILE,
+      type: actions.OPEN_HOMEPAGE,
     });
     expect(listener).to.have.been.calledWith({
       type: "telemetry_event",

@@ -527,6 +527,7 @@ describe("list > reducers", () => {
             avatar: "blah.jpg",
             displayName: "fox",
             email: "lockbox@example.com",
+            syncEnabled: true,
           },
         };
 
@@ -538,6 +539,7 @@ describe("list > reducers", () => {
             avatar: "blah.jpg",
             displayName: "fox",
             email: "lockbox@example.com",
+            syncEnabled: true,
           },
         });
       });
@@ -551,6 +553,7 @@ describe("list > reducers", () => {
             avatar: "blah.jpg",
             displayName: "fox",
             email: "lockbox@example.com",
+            syncEnabled: true,
           },
         };
 
@@ -562,6 +565,33 @@ describe("list > reducers", () => {
             avatar: "blah.jpg",
             displayName: "fox",
             email: "lockbox@example.com",
+            syncEnabled: true,
+          },
+        });
+      });
+
+      it("logins sync state", () => {
+        const action = {
+          type: actions.UPDATED_PROFILE,
+          actionId: 0,
+          profile: {
+            status: "ok",
+            avatar: "blah.jpg",
+            displayName: "fox",
+            email: "lockbox@example.com",
+            syncEnabled: false,
+          },
+        };
+
+        expect(profileReducer(undefined, action)).to.deep.equal({
+          hasProfile: true,
+          hasProfileNeedsAttn: false,
+          profile: {
+            status: "ok",
+            avatar: "blah.jpg",
+            displayName: "fox",
+            email: "lockbox@example.com",
+            syncEnabled: false,
           },
         });
       });

@@ -47,7 +47,6 @@ export const UPDATED_PROFILE = Symbol("UPDATED_PROFILE");
 export const OPEN_FAQ = Symbol("OPEN_FAQ");
 export const OPEN_FEEDBACK = Symbol("OPEN_FEEDBACK");
 export const OPEN_SYNC_PREFS = Symbol("OPEN_SYNC_PREFS");
-export const OPEN_GET_MOBILE = Symbol("OPEN_GET_MOBILE");
 export const SHOW_PROFILE_MENU = Symbol("SHOW_PROFILE_MENU");
 export const OPEN_WEBSITE = Symbol("OPEN_WEBSITE");
 export const OPEN_HOMEPAGE = Symbol("OPEN_HOMEPAGE");
@@ -410,8 +409,8 @@ export function openSyncPrefs(menuItem) {
 }
 
 export function openGetMobile() {
-  return {
-    type: OPEN_GET_MOBILE,
+  return async (dispatch) => {
+    dispatch(showModal("connect-another-device"));
   };
 }
 
