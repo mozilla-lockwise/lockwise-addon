@@ -41,11 +41,15 @@ let store;
   store.dispatch(getProfile());
   applyQueryFilter();
 
-  // select a default item so the home view is not empty
-  const cache = store.getState().cache;
-  if (cache.items.length) {
-    const sortedList = cache.items.sort(getSort(cache.sort));
-    store.dispatch(requestSelectItem(sortedList[0].id));
+  // if no filter check ensure that we have a default item selected
+  const params = new URLSearchParams(window.location.search);
+  const filter = params.get("filter");
+  if (!filter) {
+    const cache = store.getState().cache;
+    if (cache.items.length) {
+      const sortedList = cache.items.sort(getSort(cache.sort));
+      store.dispatch(requestSelectItem(sortedList[0].id));
+    }
   }
 
   ReactDOM.render(
