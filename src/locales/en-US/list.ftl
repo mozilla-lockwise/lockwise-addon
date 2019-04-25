@@ -171,7 +171,7 @@ manage-lockbox-button = Open Lockbox
 
 list-detail-button = Open Website
 
-default-banner = Recently used entries. Select to launch.
+default-banner = Recently used entries.
 
 # count is the number of items matching the filter
 filtered-banner = {$count} entries found
