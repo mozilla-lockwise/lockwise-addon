@@ -5,7 +5,7 @@
   "version": "2.1.0-alpha",
   "description": "Take your passwords everywhere.",
   "engines": {
-    "firefox": ">= 63",
+    "firefox": ">= 67",
     "node": ">=10.15.0"
   },
   "scripts": {
