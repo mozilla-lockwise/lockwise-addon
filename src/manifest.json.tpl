@@ -11,10 +11,10 @@
 
   "content_security_policy": "script-src 'self' {{testing_csp_scripts}} ; object-src 'self' {{testing_csp_objects}}",
 
-  "applications": {
+  "browser_specific_settings": {
     "gecko": {
       "id": "{{id}}",
-      "strict_min_version": "63.0"
+      "strict_min_version": "67.0"
     }
   },
 
