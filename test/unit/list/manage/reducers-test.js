@@ -171,6 +171,7 @@ describe("list > manage > reducers", () => {
         editing: true,
         changed: false,
         hideHome: false,
+        error: null,
       });
     });
 
@@ -183,6 +184,7 @@ describe("list > manage > reducers", () => {
         editing: true,
         changed: false,
         hideHome: false,
+        error: null,
       });
     });
 

@@ -34,7 +34,7 @@ export function editorReducer(state = {
     return {...state, hideHome: false};
   case actions.START_NEW_ITEM:
   case actions.EDIT_CURRENT_ITEM:
-    return {...state, editing: true};
+    return {...state, editing: true,  error: null};
   case actions.EDITOR_CHANGED:
     return {...state, changed: true};
   case actions.CANCEL_EDITING:
