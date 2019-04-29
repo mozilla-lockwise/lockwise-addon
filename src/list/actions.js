@@ -11,6 +11,7 @@ export const ADD_ITEM_FAILED = Symbol("ADD_ITEM_FAILED");
 
 export const UPDATE_ITEM_STARTING = Symbol("UPDATE_ITEM_STARTING");
 export const UPDATE_ITEM_COMPLETED = Symbol("UPDATE_ITEM_COMPLETED");
+export const UPDATE_ITEM_FAILED = Symbol("UPDATE_ITEM_FAILED");
 
 export const REMOVE_ITEM_STARTING = Symbol("REMOVE_ITEM_STARTING");
 export const REMOVE_ITEM_COMPLETED = Symbol("REMOVE_ITEM_COMPLETED");
@@ -121,6 +122,15 @@ function addItemFailed(actionId, item, error) {
   };
 }
 
+function updateItemFailed(actionId, item, error) {
+  return {
+    type: UPDATE_ITEM_FAILED,
+    actionId,
+    item,
+    error,
+  };
+}
+
 function addItemStarting(actionId, item) {
   return {
     type: ADD_ITEM_STARTING,
@@ -146,11 +156,21 @@ export function updateItem(item) {
     const actionId = nextActionId++;
     dispatch(updateItemStarting(actionId, item));
 
-    const response = await browser.runtime.sendMessage({
-      type: "update_item",
-      item,
-    });
-    dispatch(updateItemCompleted(actionId, response.item, true));
+    let response, exceptionExists = false;
+
+    try {
+      response = await browser.runtime.sendMessage({
+        type: "update_item",
+        item,
+      });
+    } catch (ex) {
+      exceptionExists = true;
+      dispatch(updateItemFailed(actionId, item, ex));
+    }
+
+    if (!exceptionExists) {
+      dispatch(updateItemCompleted(actionId, response.item, true));
+    }
   };
 }
 
