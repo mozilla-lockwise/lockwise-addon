@@ -216,6 +216,7 @@ describe("sync API", () => {
       email: "foo@example.com",
       id: "0123456789abcdef0123456789abcdef",
       displayName: null,
+      syncEnabled: true,
     },
     error: {
       status: "error",
@@ -223,6 +224,7 @@ describe("sync API", () => {
       email: "foo@example.com",
       id: "0123456789abcdef0123456789abcdef",
       displayName: null,
+      syncEnabled: true,
     },
   };
 

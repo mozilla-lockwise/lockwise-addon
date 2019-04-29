@@ -47,7 +47,11 @@
           },
           "status": {
             "$ref": "SyncStatus",
-            "description": "Current Sync login status."
+            "description": "Current status of the user's login state in Firefox. See SyncStatus for details."
+          },
+          "syncEnabled": {
+            "type": "boolean",
+            "description": "Status of the user's sync settings for logins. True if the user has enabled logins for sync, false if not. This is a separate issue from whether the user is logged in."
           }
         }
       }

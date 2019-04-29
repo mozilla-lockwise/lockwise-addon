@@ -50,16 +50,18 @@ export default (store) => (next) => (action) => {
         object: "faq",
       });
       break;
+    // Clicking the mobile upsell opens the homepage
+    // TODO: differentiate between the connect modal and the display ad
+    case actions.OPEN_HOMEPAGE:
+      recordEvent({
+        method: "click",
+        object: "getMobile",
+      });
+      break;
     case actions.OPEN_FEEDBACK:
       recordEvent({
         method: "click",
         object: "giveFeedback",
-      });
-      break;
-    case actions.OPEN_GET_MOBILE:
-      recordEvent({
-        method: "click",
-        object: "getMobile",
       });
       break;
     case actions.OPEN_SYNC_PREFS:
@@ -98,6 +100,11 @@ export default (store) => (next) => (action) => {
           method: "show",
           object: "deleteConfirm",
           extra: { itemid: state.list.selectedItemId },
+        });
+      } else if (action.id === "connect-another-device") {
+        recordEvent({
+          method: "click",
+          object: "getMobile",
         });
       }
       break;
