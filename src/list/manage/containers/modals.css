@@ -1,15 +1,15 @@
-.connectDevice {
+.connect-device {
   width: 660px;
 }
 
-.connectDevice h1 {
+.connect-device h1 {
   font-size: 22px;
   line-height: 33px;
   font-weight: normal;
   margin-top: 0;
 }
 
-.connectDevice h2 {
+.connect-device h2 {
   font-size: 15px;
   line-height: 22.5px;
   font-weight: normal;
@@ -17,14 +17,14 @@
   margin: auto;
 }
 
-.connectDevice h3 {
+.connect-device h3 {
   font-size: 17px;
   line-height: 22.5px;
   font-weight: normal;
   display: inline;
 }
 
-.connectDevice li {
+.connect-device li {
   list-style-type: none;
   width: 480px;
   margin-left: auto;
@@ -34,19 +34,19 @@
   position: relative;
 }
 
-.connectDevice a {
+.connect-device a {
   color: #0060df;
   cursor: pointer;
 }
 
-.connectDevice p {
+.connect-device p {
   font-size: 15px;
   line-height: 22.5px;
   margin-top: 8px;
 }
 
-.connectDevice li.complete:before,
-.connectDevice li.incomplete:before {
+.connect-device li.complete:before,
+.connect-device li.incomplete:before {
   content: "";
   position: absolute;
   left: -40px;
@@ -57,7 +57,7 @@
   line-height: 24px;
 }
 
-.connectDevice li.incomplete:before {
+.connect-device li.incomplete:before {
   background-color: #ededf0;
   border: 1px solid #b1b1b3;
   border-radius: 50%;
@@ -67,32 +67,32 @@
 }
 
 /* this feels so hacky, but list item decimals don't allow backgrounds */
-.connectDevice li.incomplete.connect:before {
+.connect-device li.incomplete.connect:before {
   content: "1";
 }
 
-.connectDevice li.incomplete.sync:before {
+.connect-device li.incomplete.sync:before {
   content: "2";
 }
 
-.connectDevice li.complete h3 {
+.connect-device li.complete h3 {
   color: #868686;
 }
 
-.connectDevice li.complete p {
+.connect-device li.complete p {
   color: #bbb;
 }
 
-.connectDevice li.complete:before {
+.connect-device li.complete:before {
   content: "✓";
   background-color: #30e60b;
   border: 1px solid #30e60b;
   border-radius: 50%;
 }
 
-.connectDevice .desktopIcon:before,
-.connectDevice .mobileIcon:before,
-.connectDevice .mobileIcon:after {
+.connect-device .desktop-icon:before,
+.connect-device .mobile-icon:before,
+.connect-device .mobile-icon:after {
   content: "";
   position: absolute;
   left: -80px;
@@ -103,15 +103,15 @@
   width: 64px;
   height: 64px;
 }
-.connectDevice .desktopIcon:before {
+.connect-device .desktop-icon:before {
   mask-image: url(/icons/icon-desktop.svg);
 }
 
-.connectDevice .mobileIcon:before {
+.connect-device .mobile-icon:before {
   mask-image: url(/icons/icon-mobile.svg);
 }
 
-.connectDevice .mobileIcon:after {
+.connect-device .mobile-icon:after {
   mask-image: url(/icons/icon-download.svg);
   width: 20px;
   height: 22px;
