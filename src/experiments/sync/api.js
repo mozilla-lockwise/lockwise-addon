@@ -64,6 +64,9 @@ this.sync = class extends ExtensionAPI {
     return {
       experiments: {
         sync: {
+          async getCurrentState(syncType) {
+            return Services.prefs.getBoolPref("services.sync.engine." + syncType, false);
+          },
           async getUserProfileInfo() {
             const profileInfo = await getProfileInfo();
             return profileInfo;

@@ -4,6 +4,17 @@
     "description": "Firefox Lockbox internal API for accessing Firefox Accounts/Sync state.",
     "types": [
       {
+        "id": "SyncType",
+        "type": "string",
+        "enum": ["addons", "addresses", "bookmarks", "creditcards", "history", "passwords", "prefs", "tabs"],
+        "description": "Represents different types of data that users can choose to sync across devices. Based on sync engine prefs in Firefox. Note that 'passwords' actually means logins."
+      },
+      {
+        "id": "SyncState",
+        "type": "boolean",
+        "description": "True if the user has enabled sync for the particular SyncType, false otherwise."
+      },
+      {
         "id": "SyncStatus",
         "type": "string",
         "enum": ["error", "ok"],
@@ -64,6 +75,17 @@
       }
     ],
     "functions": [
+      {
+        "name": "getCurrentState",
+        "type": "function",
+        "description": "Given a SyncType, returns a Promise that resolves to the SyncState for that type.",
+        "async": true,
+        "parameters": [{
+          "name": "type",
+          "$ref": "SyncType",
+          "description": "SyncType to check."
+        }]
+      },
       {
         "name": "getUserProfileInfo",
         "type": "function",
