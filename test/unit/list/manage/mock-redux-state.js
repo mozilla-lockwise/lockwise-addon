@@ -31,6 +31,7 @@ export const initialState = {
     editing: false,
     changed: false,
     hideHome: false,
+    error: null,
   },
   modal: {
     id: null,
@@ -81,6 +82,7 @@ export const filledState = {
     editing: false,
     changed: false,
     hideHome: false,
+    error: null,
   },
   modal: {
     id: null,
