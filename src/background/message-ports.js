@@ -69,6 +69,15 @@ export default function initializeMessagePorts() {
       return {};
     case "copied_field":
       await clipboard.copyToClipboard(message.field, message.toCopy);
+      const ds = await openDataStore();
+      if (message.field === "password") {
+        try {
+          await ds.touch(message.item.id);
+        } catch (ex) {
+          // eslint-disable-next-line no-console
+          console.error("Unable to touch() login after password copy: ", ex);
+        }
+      }
       return {};
     case "get_profile":
       return getProfileInfo();

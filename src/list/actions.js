@@ -294,6 +294,7 @@ export function copiedField(field, toCopy, item) {
       type: "copied_field",
       field,
       toCopy,
+      item,
     });
     dispatch(copiedFieldCompleted(actionId, field, item));
   };

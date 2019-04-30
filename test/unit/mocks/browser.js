@@ -212,6 +212,7 @@ window.browser = {
       async remove(guid) {
         browser.experiments.logins.onRemoved.getListener()({ login: { guid } });
       },
+      async touch() { },
       onAdded: new MockListener(),
       onUpdated: new MockListener(),
       onRemoved: new MockListener(),
