@@ -4,8 +4,8 @@
   "version": "{{version}}",
   "description": "{{description}}",
   "icons": {
-    "48": "icons/lb_locked.svg",
-    "96": "icons/lb_locked.svg"
+    "48": "icons/icon-lockbox.svg",
+    "96": "icons/icon-lockbox.svg"
   },
 
 
@@ -24,7 +24,7 @@
 
   "browser_action": {
     "default_icon": {
-      "32": "icons/lb_locked.svg"
+      "32": "icons/icon-lockbox.svg"
     },
     "default_title": "Lockbox",
     "browser_style": false
