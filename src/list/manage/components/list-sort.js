@@ -12,7 +12,7 @@ export default class ListSort extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value,
+      value: props.sort,
     };
     this.handleChange = this.handleChange.bind(this);
   }
