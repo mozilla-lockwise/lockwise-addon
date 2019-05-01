@@ -18,6 +18,7 @@ import { saveSort, loadSort } from "./sort-middleware";
 import openLink from "../open-link-middleware";
 
 import { getSort } from "../sort";
+import { filterItem, parseFilterString } from "../filter";
 
 const applyQueryFilter = () => {
   // parse query params ...
@@ -42,14 +43,27 @@ let store;
   applyQueryFilter();
 
   // if no filter check ensure that we have a default item selected
-  const params = new URLSearchParams(window.location.search);
-  const filter = params.get("filter");
-  if (!filter) {
-    const cache = store.getState().cache;
-    if (cache.items.length) {
-      const sortedList = cache.items.sort(getSort(cache.sort));
-      store.dispatch(requestSelectItem(sortedList[0].id));
+  const state = store.getState();
+  const all = state.cache.items;
+  let filteredItems = all;
+
+  if (state.list.filter && !state.list.filter.userEntered) {
+    console.log(`filter by ${state.list.filter.query}`);
+    const filter = parseFilterString(state.list.filter.query);
+    filteredItems = all
+      .filter((i) => filterItem(filter, i));
+    if (!filteredItems.length) {
+      filteredItems = all.slice();
     }
+  } else {
+    console.log("no filter applied!");
+  }
+  console.log(`sort by ${ state.cache.sort }`);
+  const sortFn = getSort(state.cache.sort);
+  filteredItems = filteredItems.sort(sortFn);
+
+  if (filterItems.length) {
+    store.dispatch(requestSelectItem(filteredItems[0].id));
   }
 
   ReactDOM.render(
