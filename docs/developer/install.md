@@ -1,5 +1,16 @@
 # Installing the Lockbox Addon
 
+## Prerequisites
+
+Before installing, you'll need the following:
+
+* [node](https://nodejs.org) (10.15 or higher)
+* [Firefox](https://www.mozilla.org/en-US/firefox/channel/desktop/) (Nightly or Developer Edition)
+
+For locales, you'll want the following:
+
+* [compare-locales](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/compare-locales)
+
 ## Installing dependencies
 
 To **install the project dependencies**, you can run:
