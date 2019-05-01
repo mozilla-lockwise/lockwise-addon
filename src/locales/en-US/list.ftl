@@ -28,7 +28,7 @@ item-fields-title-input =
 item-fields-origin = Website Address
 item-fields-origin-input =
   .placeholder = https://www.example.com
-item-fields-origin-info-message = Make sure this matches the exact domain for the website you are referencing (“https://” and “www” included).
+item-fields-origin-info-message = Make sure this matches the exact domain for the website you are referencing (“https://” included).
 item-fields-origin-button = Launch
 item-fields-username = Username
 item-fields-username-input =
@@ -107,11 +107,6 @@ intro-page-main-article-3-title =
 intro-page-main-article-3-copy =
   With the addition of manual entries, you can now store any account
   you want within Lockbox.
-intro-page-main-article-4-title =
-  Get notified when new breaches occur
-intro-page-main-article-4-copy =
-  Keep your logins safe with our new breach notifications. Learn what
-  was impacted and how to secure your login.
 
 intro-page-footer-heading =
   Not seeing your saved logins? Let us help.

@@ -51,16 +51,6 @@ export default function IntroPage({onLearnMore}) {
             <p></p>
           </Localized>
         </article>
-
-        <article>
-          <Localized id="intro-page-main-article-4-title">
-            <h3></h3>
-          </Localized>
-
-          <Localized id="intro-page-main-article-4-copy">
-            <p></p>
-          </Localized>
-        </article>
       </section>
 
       <hr />
