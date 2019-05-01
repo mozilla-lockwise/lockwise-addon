@@ -147,8 +147,7 @@ item-details-created = Created: {$date}
 item-details-modified = Last Modified: {$date}
 item-details-last-used = Last Used: {$date}
 
-list-count = {$count} entries
-
+# count is the number of items in the list
 list-count = { $count ->
   [one]   {$count} entry
  *[other] { $count } entries
@@ -169,8 +168,6 @@ list-detail-button = Open Website
 default-banner = Recently used entries.
 
 # count is the number of items matching the filter
-filtered-banner = {$count} entries found
-
 filtered-banner = { $count ->
   [one]   {$count} entry found
  *[other] { $count } entries found
