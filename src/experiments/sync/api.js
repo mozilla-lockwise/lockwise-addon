@@ -24,6 +24,7 @@ const FxAErrors = [UIState.STATUS_LOGIN_FAILED, UIState.STATUS_NOT_VERIFIED];
 
 const getProfileInfo = async () => {
   const uiState = UIState.get();
+  const syncEnabled = Services.prefs.getBoolPref("services.sync.engine.passwords", false);
   let profileInfo;
 
   // STATUS_NOT_CONFIGURED means the user is not logged in.
@@ -39,6 +40,7 @@ const getProfileInfo = async () => {
       displayName: uiState.displayName || null,
       avatar: uiState.avatarURL || null,
       status: isErrorStatus ? "error" : "ok",
+      syncEnabled,
     };
   }
 
@@ -58,6 +60,7 @@ const openSignIn = async (entrypoint) => {
 this.sync = class extends ExtensionAPI {
   getAPI(context) {
     const EventManager = ExtensionCommon.EventManager;
+
     return {
       experiments: {
         sync: {
@@ -68,7 +71,6 @@ this.sync = class extends ExtensionAPI {
             const profileInfo = await getProfileInfo();
             return profileInfo;
           },
-
           async openPreferences(entrypoint) {
             const uiState = UIState.get();
 
@@ -113,8 +115,10 @@ this.sync = class extends ExtensionAPI {
               },
             };
             Services.obs.addObserver(observer, "sync-ui-state:update");
+            Services.prefs.addObserver("services.sync.engine.passwords", observer);
             return () => {
               Services.obs.removeObserver(observer, "sync-ui-state:update");
+              Services.prefs.removeObserver("services.sync.engine.passwords", observer);
             };
           }).api(),
         },

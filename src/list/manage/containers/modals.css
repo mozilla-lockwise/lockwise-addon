@@ -1,0 +1,120 @@
+.connect-device {
+  width: 660px;
+}
+
+.connect-device h1 {
+  font-size: 22px;
+  line-height: 33px;
+  font-weight: normal;
+  margin-top: 0;
+}
+
+.connect-device h2 {
+  font-size: 15px;
+  line-height: 22.5px;
+  font-weight: normal;
+  width: 430px;
+  margin: auto;
+}
+
+.connect-device h3 {
+  font-size: 17px;
+  line-height: 22.5px;
+  font-weight: normal;
+  display: inline;
+}
+
+.connect-device li {
+  list-style-type: none;
+  width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  text-align: left;
+  position: relative;
+}
+
+.connect-device a {
+  color: #0060df;
+  cursor: pointer;
+}
+
+.connect-device p {
+  font-size: 15px;
+  line-height: 22.5px;
+  margin-top: 8px;
+}
+
+.connect-device li.complete:before,
+.connect-device li.incomplete:before {
+  content: "";
+  position: absolute;
+  left: -40px;
+  top: 2px;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  line-height: 24px;
+}
+
+.connect-device li.incomplete:before {
+  background-color: #ededf0;
+  border: 1px solid #b1b1b3;
+  border-radius: 50%;
+  color: #0c0c0d;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* this feels so hacky, but list item decimals don't allow backgrounds */
+.connect-device li.incomplete.connect:before {
+  content: "1";
+}
+
+.connect-device li.incomplete.sync:before {
+  content: "2";
+}
+
+.connect-device li.complete h3 {
+  color: #868686;
+}
+
+.connect-device li.complete p {
+  color: #bbb;
+}
+
+.connect-device li.complete:before {
+  content: "✓";
+  background-color: #30e60b;
+  border: 1px solid #30e60b;
+  border-radius: 50%;
+}
+
+.connect-device .desktop-icon:before,
+.connect-device .mobile-icon:before,
+.connect-device .mobile-icon:after {
+  content: "";
+  position: absolute;
+  left: -80px;
+  top: 8px;
+  background: linear-gradient(127deg, #00c8d7, #0060df);
+  mask: no-repeat 100% 100%;
+  mask-size: cover;
+  width: 64px;
+  height: 64px;
+}
+.connect-device .desktop-icon:before {
+  mask-image: url(/icons/icon-desktop.svg);
+}
+
+.connect-device .mobile-icon:before {
+  mask-image: url(/icons/icon-mobile.svg);
+}
+
+.connect-device .mobile-icon:after {
+  mask-image: url(/icons/icon-download.svg);
+  width: 20px;
+  height: 22px;
+  left: -57px;
+  top: 27px;
+}

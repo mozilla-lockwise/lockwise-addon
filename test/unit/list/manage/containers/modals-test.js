@@ -13,10 +13,10 @@ import sinon from "sinon";
 import sinonChai from "sinon-chai";
 
 import mountWithL10n from "test/unit/mocks/l10n";
-import { initialState } from "../mock-redux-state";
+import { initialState, filledState } from "../mock-redux-state";
 import ModalRootWidget from "src/widgets/modal-root";
 import * as actions from "src/list/actions";
-import ModalRoot, { CancelEditingModal, DeleteItemModal } from
+import ModalRoot, { CancelEditingModal, DeleteItemModal, ConnectDeviceModal, ConnectDevice } from
        "src/list/manage/containers/modals";
 
 chai.use(sinonChai);
@@ -160,5 +160,112 @@ describe("list > manage > containers > modals", () => {
       expect(store.getActions()).to.deep.equal([]);
       expect(onClose).to.have.been.calledWith();
     });
+  });
+
+  describe("<ConnectDeviceModal/>", () => {
+    let initialStore, fxaStore, fxaNoSyncStore, wrapper, onClose, onDownloadClick, onSyncPrefsClick;
+
+    beforeEach(() => {
+      onClose = sinon.spy();
+      onDownloadClick = sinon.spy();
+      onSyncPrefsClick = sinon.spy();
+
+      const makeProfile = (hasProfile, hasProfileNeedsAttn, syncEnabled) => {
+        return {
+          app: {
+            profileWrap: {
+              hasProfile,
+              hasProfileNeedsAttn,
+              profile: {
+                syncEnabled,
+              },
+            },
+          },
+        };
+      };
+
+      const loggedOutProfile = makeProfile(false, false, false);
+      const loggedInProfile = makeProfile(true, false, true);
+      const noSyncProfile = makeProfile(true, false, false);
+
+      // No Firefox Accounts, no sync enabled
+      initialStore = mockStore(Object.assign({}, initialState, loggedOutProfile));
+
+      // Firefox Accounts profile with logins sync disabled
+      fxaNoSyncStore = mockStore(Object.assign({}, filledState, noSyncProfile));
+
+      // Firefox Accounts profile with logins sync enabled
+      fxaStore = mockStore(Object.assign({}, filledState, loggedInProfile));
+    });
+
+    const createWrapper = (store) => {
+      return mountWithL10n(
+        <Provider store={store}>
+          <ConnectDeviceModal onClose={onClose}
+            onDownloadClick={onDownloadClick}
+            onSyncPrefsClick={onSyncPrefsClick} />
+        </Provider>
+      );
+    };
+
+    // Container tests
+
+    it("onClose() dispatches HIDE_MODAL", () => {
+      wrapper = createWrapper(initialStore);
+      (wrapper.find(ConnectDevice)).prop("onClose")();
+      expect(initialStore.getActions()).to.deep.equal([{
+        type: actions.HIDE_MODAL,
+      }]);
+    });
+    it("onDownloadClick() dispatches OPEN_HOMEPAGE", () => {
+      wrapper = createWrapper(initialStore);
+      (wrapper.find(ConnectDevice)).prop("onDownloadClick")();
+      expect(initialStore.getActions()).to.deep.equal([{
+        type: actions.OPEN_HOMEPAGE,
+      }]);
+    });
+    it("converts empty state to expected profile props", () => {
+      wrapper = createWrapper(initialStore);
+      expect(wrapper.find(ConnectDevice).prop("profile")).to.deep.equal({
+        hasProfile: false,
+        hasProfileNeedsAttn: false,
+        syncEnabled: false,
+      });
+    });
+    it("converts logged in, logins sync disabled state to expected profile props", () => {
+      wrapper = createWrapper(fxaNoSyncStore);
+      expect(wrapper.find(ConnectDevice).prop("profile")).to.deep.equal({
+        hasProfile: true,
+        hasProfileNeedsAttn: false,
+        syncEnabled: false,
+      });
+    });
+    it("converts logged in state to expected profile props", () => {
+      wrapper = createWrapper(fxaStore);
+      expect(wrapper.find(ConnectDevice).prop("profile")).to.deep.equal({
+        hasProfile: true,
+        hasProfileNeedsAttn: false,
+        syncEnabled: true,
+      });
+    });
+
+    // Component tests
+    // TODO: figure out how to trigger infixed link creation via fluent, so
+    //       those links can be unit tested.
+
+    it("given logged-out profile, renders first screen", () => {
+      wrapper = createWrapper(initialStore);
+      expect(wrapper.find(ConnectDevice).text()).to.contain("bEfOrE YoU CaN AcCeSs");
+    });
+    it("given logged-in profile with logins sync disabled, renders first screen partially-completed", () => {
+      wrapper = createWrapper(fxaNoSyncStore);
+      expect(wrapper.find(ConnectDevice).text()).to.contain("cOnNeCt a fIrEfOx aCcOuNt (cOmPlEtE)");
+      expect(wrapper.find(ConnectDevice).text()).to.contain("tO SyNc yOuR LoGiNs");
+    });
+    it("given logged-in profile, renders second screen", () => {
+      wrapper = createWrapper(fxaStore);
+      expect(wrapper.find(ConnectDevice).text()).to.contain("eAsIlY GaIn aCcEsS");
+    });
+
   });
 });

@@ -20,6 +20,7 @@ export function editorReducer(state = {
 }, action) {
   switch (action.type) {
   case actions.ADD_ITEM_FAILED:
+  case actions.UPDATE_ITEM_FAILED:
     return {...state, editing: true, hideHome: false, error: action.error};
   case actions.ADD_ITEM_COMPLETED:
   case actions.UPDATE_ITEM_COMPLETED:
@@ -33,7 +34,7 @@ export function editorReducer(state = {
     return {...state, hideHome: false};
   case actions.START_NEW_ITEM:
   case actions.EDIT_CURRENT_ITEM:
-    return {...state, editing: true};
+    return {...state, editing: true,  error: null};
   case actions.EDITOR_CHANGED:
     return {...state, changed: true};
   case actions.CANCEL_EDITING:

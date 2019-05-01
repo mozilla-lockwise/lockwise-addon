@@ -4,17 +4,17 @@
   "version": "{{version}}",
   "description": "{{description}}",
   "icons": {
-    "48": "icons/lb_locked.svg",
-    "96": "icons/lb_locked.svg"
+    "48": "icons/icon-lockbox.svg",
+    "96": "icons/icon-lockbox.svg"
   },
 
 
   "content_security_policy": "script-src 'self' {{testing_csp_scripts}} ; object-src 'self' {{testing_csp_objects}}",
 
-  "applications": {
+  "browser_specific_settings": {
     "gecko": {
       "id": "{{id}}",
-      "strict_min_version": "63.0"
+      "strict_min_version": "67.0"
     }
   },
 
@@ -24,7 +24,7 @@
 
   "browser_action": {
     "default_icon": {
-      "32": "icons/lb_locked.svg"
+      "32": "icons/icon-lockbox.svg"
     },
     "default_title": "Lockbox",
     "browser_style": false

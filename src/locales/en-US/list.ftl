@@ -201,6 +201,22 @@ modal-delete = Delete this Entry?
   .confirmLabel = Delete
   .cancelLabel = Cancel
 
+connect-another-device = Connect another device
+easily-access-logins = Easily gain access to your logins from any device.
+access-on-another-computer = Access on another computer
+# TODO should Firefox Account or Firefox Lockbox be localized in the following strings?
+simply-sign-in-other-device = Simply sign in to your Firefox Account on your other device to sync your logins to that computer.
+download-mobile = Download the mobile app
+download-ios-android = Firefox Lockbox is available on both iOS and Android. <learnmore>Click here</learnmore> to learn more and to send a link to your phone to download the app.
+before-access = Before you can access your logins on another device, you will need to connect a Firefox Account.
+connect-a-firefox-account = Connect a Firefox Account
+connect-a-firefox-account-complete = Connect a Firefox Account (complete)
+sync-requires-account = To sync your logins to another device, you will need to <signin>sign in or create a Firefox Account</signin>.
+# TODO this string seems funny. should Sync be capitalized? should Logins be in quotes? is Sync localized?
+ensure-logins-checked = Ensure the “Logins” checkbox is selected in sync preferences
+# TODO should Sync be capitalized? is Sync localized?
+setting-to-allow-sync = In order to allow your logins to be synced to other devices, this setting must be checked. <openprefs>Open sync preferences</openprefs></p>
+
 banner-promote-device =
   .title = { product-fulltitle }
   .details = Download our mobile app to take your passwords with you everywhere.
