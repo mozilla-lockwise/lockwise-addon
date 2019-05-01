@@ -36,7 +36,7 @@
 .item-filter {
   composes: item-filter from "../../../widgets/panel.css";
   background: #f3f3f5;
-  height: 32px;
+  height: 31px;
 }
 
 .flex-spacer {
