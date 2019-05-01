@@ -8,6 +8,8 @@
   display: flex;
   flex: 1 1 auto;
   flex-flow: column nowrap;
+  overflow: scroll;
+  min-width: 500px;
 }
 
 .item-details header {

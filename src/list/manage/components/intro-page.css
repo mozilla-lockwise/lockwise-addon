@@ -6,6 +6,7 @@
   color: #0c0c0d;
   text-align: center;
   margin: 0 95px;
+  min-width: 500px;
 }
 
 .intro-page footer h2,
