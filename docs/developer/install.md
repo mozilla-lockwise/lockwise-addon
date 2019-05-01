@@ -5,7 +5,7 @@
 Before installing, you'll need the following:
 
 * [node](https://nodejs.org) (10.15 or higher)
-* [Firefox](https://www.mozilla.org/en-US/firefox/channel/desktop/) (Nightly or Developer Edition)
+* [Firefox](https://www.mozilla.org/en-US/firefox/channel/desktop/) (version 67 or higher, Nightly or Developer Edition)
 
 For locales, you'll want the following:
 
