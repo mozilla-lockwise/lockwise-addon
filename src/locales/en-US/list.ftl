@@ -101,23 +101,6 @@ intro-page-footer-copy =
   you can sync your information to this device by signing in to or
   creating a Firefox Account. <go>Learn More</go>
 
-
-homepage-title = { product-tagline }
-
-homepage-linkaccount-title = Add Serious Security & Convenience
-homepage-linkaccount-description =
-    Now create a Firefox account – or add { product-title } to an existing
-    account – to protect your logins with the strongest encryption
-    available and sync your { product-title } info across devices.
-
-homepage-linkaccount-action-create = Create Account
-homepage-linkaccount-action-signin = { product-action-signin }
-
-homepage-accountlinked-title = Your logins are locked down tight!
-homepage-accountlinked-description =
-    { product-title } uses the strongest encryption available to
-    protect your logins – even for banking and other critical sites.
-
 item-details-heading-new = Create New Entry
 item-details-heading-edit = Edit Entry Details
 
