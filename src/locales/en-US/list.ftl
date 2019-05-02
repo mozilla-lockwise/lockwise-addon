@@ -41,18 +41,10 @@ item-fields-copy-password =
 item-fields-notes = Notes
 
 item-summary-new-title = New Entry
-item-summary-title =
-  { $length ->
-     [0]     (no site name)
-    *[other] { $title }
-  }
+item-summary-no-title = (no title)
 
 item-summary-new-username = Enter your login credentials
-item-summary-username =
-  { $length ->
-     [0]     (no username)
-    *[other] { $username }
-  }
+item-summary-no-username = (no username)
 
 item-summary-copy-username = Copy Username
   .title = Copy the username to the clipboard
@@ -72,13 +64,6 @@ send-feedback-button = Provide Feedback
 
 toolbar-go-home = Home
 toolbar-open-faq = FAQ
-
-breadcrumbs-item-new = New entry
-breadcrumbs-item =
-  { $length ->
-     [0]     (no site name)
-    *[other] { $title }
-  }
 
 account-summary-avatar =
   .alt = User Avatar
