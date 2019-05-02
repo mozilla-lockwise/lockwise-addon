@@ -7,7 +7,6 @@
  */
 
 .promotion {
-    min-width: max-content;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
