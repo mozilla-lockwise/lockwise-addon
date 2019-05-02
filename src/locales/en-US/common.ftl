@@ -10,26 +10,14 @@ product-title = Lockbox
 product-fulltitle = { product-line } { product-title }
 product-tagline = The simple way to store, retrieve and manage website login info
 
-# when Kinto is supported, the above should be changed to:
-#    Creating a Firefox account - or adding Lockbox to an existing account - protects your logins
-#    with the strongest encryption available and syncs your Lockbox info across accounts.
-
-
 product-action-signin = Sign In
 product-action-prefs = Preferences
 
-header-logins-button =
-  Logins
-header-monitor-button =
-  Monitor
+header-logins-button = Logins
+header-monitor-button = Monitor
 
-profile-menu-account =
-  Account
-profile-menu-sign-in =
-  Sign in to Sync
-profile-menu-connect =
-  Connect a Device
-profile-menu-faq =
-  FAQ
-profile-menu-feedback =
-  Provide Feedback
+profile-menu-account = Account
+profile-menu-sign-in = Sign in to Sync
+profile-menu-connect = Connect a Device
+profile-menu-faq = FAQ
+profile-menu-feedback = Provide Feedback
