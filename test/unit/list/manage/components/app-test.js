@@ -80,4 +80,21 @@ describe("list > manage > components > <App/>", () => {
     expect(wrapper.find("input")).to.be.focused();
     expect(wrapper.find("input")).to.have.selection();
   });
+
+  it("Default view item", () => {
+    const store = mockStore({
+      ...filledState,
+      list: {
+        ...filledState.list,
+      },
+    });
+
+    const wrapper = mountWithL10nIntoDOM(
+      <Provider store={store}>
+        <App/>
+      </Provider>
+    );
+
+    expect(wrapper.find("#itemDetails")).to.have.length(1);
+  });
 });

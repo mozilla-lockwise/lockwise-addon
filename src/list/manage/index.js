@@ -10,12 +10,15 @@ import thunk from "redux-thunk";
 
 import AppLocalizationProvider from "../../l10n";
 import App from "./components/app";
-import { listItems, getProfile, filterItems } from "../actions";
+import { listItems, getProfile, filterItems, requestSelectItem } from "../actions";
 import reducer from "./reducers";
 import initializeMessagePorts from "../message-ports";
 import telemetryLogger from "./telemetry";
 import { saveSort, loadSort } from "./sort-middleware";
 import openLink from "../open-link-middleware";
+
+import { getSort } from "../sort";
+import { filterItem, parseFilterString } from "../filter";
 
 const applyQueryFilter = () => {
   // parse query params ...
@@ -34,10 +37,30 @@ let store;
   store = createStore(reducer, preloadedState, applyMiddleware(
     thunk, telemetryLogger, saveSort, openLink,
   ));
-  store.dispatch(listItems());
+  await store.dispatch(listItems());
   initializeMessagePorts(store);
   store.dispatch(getProfile());
   applyQueryFilter();
+
+  // if no filter check ensure that we have a default item selected
+  const state = store.getState();
+  const allItems = state.cache.items;
+  let selectedItems = allItems;
+
+  if (state.list.filter && !state.list.filter.userEntered) {
+    const filter = parseFilterString(state.list.filter.query);
+    selectedItems = allItems
+      .filter((i) => filterItem(filter, i));
+    if (!selectedItems.length) {
+      selectedItems = allItems.slice();
+    }
+  }
+
+  if (selectedItems.length) {
+    const sortFn = getSort(state.cache.sort);
+    selectedItems = selectedItems.sort(sortFn);
+    store.dispatch(requestSelectItem(selectedItems[0].id));
+  }
 
   ReactDOM.render(
     <Provider store={store}>
