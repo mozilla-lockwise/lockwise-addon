@@ -38,9 +38,6 @@ export const SORT_BY_LAST_CHANGED = Symbol("SORT_BY_LAST_CHANGED");
 export const SHOW_MODAL = Symbol("SHOW_MODAL");
 export const HIDE_MODAL = Symbol("HIDE_MODAL");
 
-export const SELECT_TAB_LOGINS = Symbol("SELECT_TAB_LOGINS");
-export const SELECT_TAB_MONITOR = Symbol("SELECT_TAB_MONITOR");
-
 export const GET_PROFILE = Symbol("GET_PROFILE");
 export const GET_PROFILE_STARTING = Symbol("GET_PROFILE_STARTING");
 export const UPDATED_PROFILE = Symbol("UPDATED_PROFILE");
@@ -370,18 +367,6 @@ function showModal(id, props = {}) {
 export function hideModal() {
   return {
     type: HIDE_MODAL,
-  };
-}
-
-export function selectTabLogins() {
-  return {
-    type: SELECT_TAB_LOGINS,
-  };
-}
-
-export function selectTabMonitor() {
-  return {
-    type: SELECT_TAB_MONITOR,
   };
 }
 

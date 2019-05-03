@@ -8,7 +8,6 @@ import DocumentTitle from "react-document-title";
 
 import SyncNotification from "../../containers/connected-sync-notification";
 import AppHeader from "../containers/app-header";
-import AppPanes from "../containers/app-panes";
 import AllItems from "../containers/all-items";
 import CurrentSelection from "../containers/current-selection";
 import ModalRoot from "../containers/modals";
@@ -27,19 +26,15 @@ export default class App extends React.Component {
           <div className={styles.app}>
             <SyncNotification isPanel={false}/>
             <AppHeader />
-            <AppPanes>{{
-              logins: (
-                <section className={styles.appMain}>
-                  <AllItems className={styles.aside}
-                            inputRef={(element) => {
-                              this._filterField = element;
-                            }}/>
-                  <article>
-                    <CurrentSelection/>
-                  </article>
-                </section>
-              ),
-            }}</AppPanes>
+              <section className={styles.appMain}>
+                <AllItems className={styles.aside}
+                          inputRef={(element) => {
+                            this._filterField = element;
+                          }}/>
+                <article>
+                  <CurrentSelection/>
+                </article>
+              </section>
             <ModalRoot/>
           </div>
         </DocumentTitle>

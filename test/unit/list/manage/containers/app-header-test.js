@@ -6,15 +6,8 @@ import { expect } from "chai";
 import sinon from "sinon";
 import React from "react";
 import mountWithL10n from "test/unit/mocks/l10n";
-import { Provider } from "react-redux";
-import configureStore from "redux-mock-store";
 
-import { initialState } from "../mock-redux-state";
-import ConnectedAppHeader, { AppHeader } from "src/list/manage/containers/app-header";
-import { selectTabLogins } from "src/list/actions";
-
-const middlewares = [];
-const mockStore = configureStore(middlewares);
+import { AppHeader } from "src/list/manage/containers/app-header";
 
 describe("list > manage > containers > <AppHeader/>", () => {
   let mockHandlers, mockDocument, listeners;
@@ -27,8 +20,6 @@ describe("list > manage > containers > <AppHeader/>", () => {
     };
     mockHandlers = {};
     [
-      "TabLogins",
-      "TabMonitor",
       "MenuFeedback",
       "MenuFAQ",
       "MenuConnect",
@@ -65,18 +56,10 @@ describe("list > manage > containers > <AppHeader/>", () => {
       mockProps = {
         ...mockHandlers,
         document: mockDocument,
-        selectedTab: "logins",
         hasProfile: false,
         profile: null,
       };
       subject = makeSubject(mockProps);
-    });
-
-    it("calls correct handler on Logins tab click", () => {
-      const tab = subject.find("nav li button.tabLogins");
-      expect(tab.length).to.equal(1);
-      tab.simulate("click");
-      expect(mockHandlers.onClickTabLogins.called).to.be.true;
     });
 
     it("displays an empty avatar", () => {
@@ -160,36 +143,5 @@ describe("list > manage > containers > <AppHeader/>", () => {
     it("offers the correct menu items", () => {
       expectCommonMenuItems(subject, "Account");
     });
-  });
-});
-
-describe("list > manage > containers > <ConnectedAppHeader/>", () => {
-  let mockSendMessage;
-
-  function makeSubject(state = initialState) {
-    const store = mockStore(state);
-    const dispatch = sinon.stub(store, "dispatch");
-    const subject = mountWithL10n(
-      <Provider store={store}>
-        <ConnectedAppHeader/>
-      </Provider>
-    );
-    return { store, subject, dispatch };
-  }
-
-  beforeEach(() => {
-    mockSendMessage = sinon.stub(browser.runtime, "sendMessage").resolves({});
-  });
-
-  afterEach(() => {
-    mockSendMessage.restore();
-  });
-
-  it("dispatches a select action on tab click", () => {
-    const { subject, dispatch } = makeSubject();
-    const tab = subject.find("nav li button.tabLogins");
-    tab.simulate("click");
-    expect(dispatch.called).to.be.true;
-    expect(dispatch.firstCall.args[0]).to.deep.equal(selectTabLogins());
   });
 });

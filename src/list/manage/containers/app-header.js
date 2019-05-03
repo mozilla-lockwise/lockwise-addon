@@ -6,10 +6,7 @@ import { Localized } from "fluent-react";
 import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
-import { classNames } from "../../../common";
 import {
-  selectTabLogins,
-  selectTabMonitor,
   openFAQ,
   openFeedback,
   openGetMobile,
@@ -24,9 +21,6 @@ export class AppHeader extends React.Component {
     return {
       profile: PropTypes.object,
       hasProfile: PropTypes.bool.isRequired,
-      selectedTab: PropTypes.string.isRequired,
-      onClickTabLogins: PropTypes.func.isRequired,
-      onClickTabMonitor: PropTypes.func.isRequired,
       onClickMenuFeedback: PropTypes.func.isRequired,
       onClickMenuFAQ: PropTypes.func.isRequired,
       onClickMenuConnect: PropTypes.func.isRequired,
@@ -50,7 +44,6 @@ export class AppHeader extends React.Component {
       "hideProfileMenu",
       "handleGlobalClick",
       "handleGlobalKeydown",
-      "handleTabClick",
     ].forEach(name => (this[name] = this[name].bind(this)));
   }
 
@@ -84,18 +77,6 @@ export class AppHeader extends React.Component {
     }
   }
 
-  handleTabClick(name) {
-    const { onClickTabLogins, onClickTabMonitor } = this.props;
-    return e => {
-      switch (name) {
-        case "monitor":
-          return onClickTabMonitor();
-        default:
-          return onClickTabLogins();
-      }
-    };
-  }
-
   toggleProfileMenu() {
     const { onClickMenuProfile } = this.props;
     this.setState(state => ({ profileMenuShown: !state.profileMenuShown }));
@@ -114,7 +95,6 @@ export class AppHeader extends React.Component {
     const {
       profile,
       hasProfile,
-      selectedTab,
       onClickMenuFeedback,
       onClickMenuFAQ,
       onClickMenuConnect,
@@ -127,31 +107,6 @@ export class AppHeader extends React.Component {
 
     return (
       <header className={styles.appHeader}>
-        <nav className={styles.appHeaderMenuTabs}>
-          <ul>
-            <li
-              className={classNames([
-                selectedTab === "logins" && styles.appHeaderMenuTabSelected,
-              ])}
-            >
-              <Localized id="header-logins-button">
-                <button className="tabLogins" onClick={this.handleTabClick("logins")}>Logins</button>
-              </Localized>
-            </li>
-            {/* TODO: Re-enable as part of issue #15
-            <li
-              className={classNames([
-                selectedTab === "monitor" && styles.appHeaderMenuTabSelected,
-              ])}
-            >
-              <Localized id="header-monitor-button">
-                <button className="tabMonitor" onClick={this.handleTabClick("monitor")}>Monitor</button>
-              </Localized>
-            </li>
-            */}
-          </ul>
-        </nav>
-
         <h1 className={styles.appHeaderTitle}>
           <Localized id="header-app-title" attrs={{ title: true }}>
             <img src={logoSrc} alt="fIREFOx lOCKWISe" />
@@ -223,22 +178,16 @@ export class AppHeader extends React.Component {
 export default connect(
   ({
     app: {
-      tabs: {
-        selectedTab,
-      },
       profileWrap: {
         profile,
         hasProfile,
       },
     },
   }) => ({
-    selectedTab,
     profile,
     hasProfile,
   }),
   dispatch => ({
-    onClickTabLogins: () => dispatch(selectTabLogins()),
-    onClickTabMonitor: () => dispatch(selectTabMonitor()),
     onClickMenuFAQ: () => dispatch(openFAQ()),
     onClickMenuFeedback: () => dispatch(openFeedback()),
     onClickMenuConnect: () => dispatch(openGetMobile()),
