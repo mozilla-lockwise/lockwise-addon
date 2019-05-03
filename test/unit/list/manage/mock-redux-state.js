@@ -37,6 +37,9 @@ export const initialState = {
     id: null,
     props: null,
   },
+  promo: {
+    showPromo: true,
+  },
 };
 
 export const filledState = {
@@ -87,5 +90,8 @@ export const filledState = {
   modal: {
     id: null,
     props: null,
+  },
+  promo: {
+    showPromo: true,
   },
 };

@@ -20,11 +20,12 @@ describe("list > manage > components > promotion banners", () => {
   describe("<PromoteDeviceBanner />", () => {
     it("calls openWebsite", () => {
       let mockOnAction = sinon.stub();
+      let mockOnClose = sinon.stub();
       let wrapper = mountWithL10n(
-        <PromoteDeviceBanner onAction={mockOnAction} />
+        <PromoteDeviceBanner onAction={mockOnAction} onClose={mockOnClose} />
       );
 
-      const button = wrapper.find("button");
+      const button = wrapper.find("p button");
       button.simulate("click");
 
       expect(mockOnAction).to.have.been.called;
@@ -35,11 +36,12 @@ describe("list > manage > components > promotion banners", () => {
     it("calls openWebsite", () => {
 
       let mockOnAction = sinon.stub();
+      let mockOnClose = sinon.stub();
       let wrapper = mountWithL10n(
-        <PromoteFxABanner onAction={mockOnAction} />
+        <PromoteFxABanner onAction={mockOnAction} onClose={mockOnClose} />
       );
 
-      const button = wrapper.find("button");
+      const button = wrapper.find("p button");
       button.simulate("click");
 
       expect(mockOnAction).to.have.been.called;

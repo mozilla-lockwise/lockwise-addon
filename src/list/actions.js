@@ -55,6 +55,9 @@ export const OPEN_HOMEPAGE = Symbol("OPEN_HOMEPAGE");
 export const REVEAL_PASSWORD = Symbol("REVEAL_PASSWORD");
 export const CONCEAL_PASSWORD = Symbol("CONCEAL_PASSWORD");
 
+export const HIDE_PROMO = Symbol("HIDE_PROMO");
+export const SHOW_PROMO = Symbol("SHOW_PROMO");
+
 // The action ID is used for debugging to correlate async actions with each
 // other (i.e. FOO_STARTING and FOO_COMPLETED).
 let nextActionId = 0;
@@ -458,5 +461,17 @@ export function concealPassword(id) {
 export function openWebsite() {
   return {
     type: OPEN_WEBSITE,
+  };
+}
+
+export function hidePromo() {
+  return {
+    type: HIDE_PROMO,
+  };
+}
+
+export function showPromo() {
+  return {
+    type: SHOW_PROMO,
   };
 }

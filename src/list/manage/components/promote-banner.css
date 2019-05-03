@@ -11,6 +11,8 @@
     left: 0;
     right: 0;
     bottom: 0;
+    /* Offset for the absolutely-positioned close button */
+    padding-right: 60px;
 }
 .promotion .content {
     flex: 1 1 auto;
@@ -41,4 +43,13 @@
 
 .promotion .action {
   margin: 0 10px;
+}
+
+.promotion .close {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: none;
+  font-size: 15px;
 }
