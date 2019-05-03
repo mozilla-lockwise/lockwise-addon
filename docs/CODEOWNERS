@@ -18,8 +18,7 @@
 /docs/release-notes.md      @mozilla-lockbox/product
 
 # include Flod for l10n string changes
-# @todo uncomment below after initial string freeze
-#src/locales/en-US/*.ftl    @flodolo
+src/locales/en-US/*.ftl    @flodolo
 
 # otherwise, everything is to be reviewed by the desktop team
 *                           @mozilla-lockbox/desktop-engineering

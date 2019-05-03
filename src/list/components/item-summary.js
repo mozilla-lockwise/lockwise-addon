@@ -12,24 +12,30 @@ import { NEW_ITEM_ID } from "../common";
 import styles from "./item-summary.css";
 
 export default function ItemSummary({className, id, title, username, panel}) {
-
   const trimmedTitle = title.trim();
   const trimmedUsername = username.trim();
 
   const isNew = id === NEW_ITEM_ID;
-  const idModifier = isNew ? "new-" : "";
-  const titleId = `item-summary-${idModifier}title`;
-  const usernameId = `item-summary-${idModifier}username`;
+  const idModifier = (subject) => {
+    if (isNew) {
+      return "new-";
+    }
+    if (!subject.length) {
+      return "no-";
+    }
+    return "";
+  };
+
+  const titleId = `item-summary-${idModifier(trimmedTitle)}title`;
+  const usernameId = `item-summary-${idModifier(trimmedUsername)}username`;
   return (
     <div className={styles.itemSummaryContainer} data-item-id={id}>
       <div className={classNames([styles.itemSummary, className])}>
-        <Localized id={titleId} $title={trimmedTitle}
-                   $length={trimmedTitle.length}>
-          <div data-name="title" className={styles.title}>no tITLe</div>
+        <Localized id={titleId}>
+          <div data-name="title" className={styles.title}>{title || "nO tITLe"}</div>
         </Localized>
-        <Localized id={usernameId} $username={trimmedUsername}
-                   $length={trimmedUsername.length}>
-          <div data-name="subtitle" className={styles.subtitle}>no uSERNAMe</div>
+        <Localized id={usernameId}>
+          <div data-name="subtitle" className={styles.subtitle}>{username || "nO uSERNAMe"}</div>
         </Localized>
         {!isNew &&
            <span className={classNames([styles.info, panel ? styles.panel : ""])}></span>
