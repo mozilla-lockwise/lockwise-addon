@@ -134,16 +134,3 @@ export function profileReducer(state = {
     return state;
   }
 }
-
-export function tabsReducer(state = {
-  selectedTab: "logins",
-}, action) {
-  switch (action.type) {
-  case actions.SELECT_TAB_LOGINS:
-    return {...state, selectedTab: "logins"};
-  case actions.SELECT_TAB_MONITOR:
-    return {...state, selectedTab: "monitor"};
-  default:
-    return state;
-  }
-}

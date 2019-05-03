@@ -8,7 +8,6 @@ import DocumentTitle from "react-document-title";
 
 import SyncNotification from "../../containers/connected-sync-notification";
 import AppHeader from "../containers/app-header";
-import AppPanes from "../containers/app-panes";
 import AllItems from "../containers/all-items";
 import CurrentSelection from "../containers/current-selection";
 import ModalRoot from "../containers/modals";
@@ -27,28 +26,15 @@ export default class App extends React.Component {
           <div className={styles.app}>
             <SyncNotification isPanel={false}/>
             <AppHeader />
-            <AppPanes>{{
-              logins: (
-                <section className={styles.appMain}>
-                  <AllItems className={styles.aside}
-                            inputRef={(element) => {
-                              this._filterField = element;
-                            }}/>
-                  <article>
-                    <CurrentSelection/>
-                  </article>
-                </section>
-              ),
-              /* TODO: Implement this as part of issue #15
-              monitor: (
-                <h1>
-                  <a href="https://github.com/mozilla-lockbox/lockbox-addon/issues/15">
-                    Monitor app content TBD in Issue #15
-                  </a>
-                </h1>
-              ),
-              */
-            }}</AppPanes>
+              <section className={styles.appMain}>
+                <AllItems className={styles.aside}
+                          inputRef={(element) => {
+                            this._filterField = element;
+                          }}/>
+                <article>
+                  <CurrentSelection/>
+                </article>
+              </section>
             <ModalRoot/>
           </div>
         </DocumentTitle>
