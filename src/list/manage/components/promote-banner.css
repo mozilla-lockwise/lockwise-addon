@@ -7,10 +7,10 @@
  */
 
 .promotion {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: baseline;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 .promotion .content {
     flex: 1 1 auto;
@@ -26,13 +26,19 @@
 .promotion .content .title {
     padding: 0px;
     margin: 0px;
-    font-size: 17px;
+    font-size: 15px;
     font-weight: bold;
+    text-align: center;
 }
+.promotion .content .title,
 .promotion .content .details {
-    padding: 0px;
-    margin: 0px;
+  margin: 0 5px;
 }
+
+.promotion .content strong {
+  font-weight: 500;
+}
+
 .promotion .action {
-    margin-inline-start: 20px
+  margin: 0 10px;
 }

@@ -207,10 +207,10 @@ setting-to-allow-sync = In order to allow your logins to be synced to other devi
 
 banner-promote-device =
   .title = { -product-full-name }
-  .details = Download our mobile app to take your passwords with you everywhere.
+  .details = Download our mobile app to take your passwords with you everywhere:
   .actionLabel = Learn More
 
 banner-promote-fxa =
-  .title = Take your passwords everywhere.
-  .details = Create a { -fxaccount-brand-name } or Sign In to sync to { -product-short-name } on mobile.
+  .title = Take your passwords everywhere
+  .details = Create a { -fxaccount-brand-name } or Sign In to sync to { -product-short-name } on mobile:
   .actionLabel = Sign In

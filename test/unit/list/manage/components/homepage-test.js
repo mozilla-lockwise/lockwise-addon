@@ -26,6 +26,6 @@ describe("list > manage > components > <Homepage/>", () => {
       </Provider>
     );
 
-    expect(wrapper.find("h1")).to.contain.text("tItLe");
+    expect(wrapper.find("strong")).to.contain.text("tItLe");
   });
 });

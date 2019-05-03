@@ -16,14 +16,15 @@ import styles from "./promote-banner.css";
 export function PromotionBanner({title, details, actionLabel, onAction}) {
   return (
     <Banner className={styles.promotion}>
-      <div className={styles.content}>
-        <h1 className={styles.title}>{title}</h1>
+      <p className={styles.content}>
+        <strong className={styles.title}>{title}</strong>
+        &mdash;
         <span className={styles.details}>{details}</span>
-      </div>
-      <Button
-        type="button" className={styles.action}
-        theme="primary" size="wide"
-        onClick={() => onAction()}>{actionLabel}</Button>
+        <Button
+          type="button" className={styles.action}
+          theme="primary" size="wide"
+          onClick={() => onAction()}>{actionLabel}</Button>
+      </p>
     </Banner>
   );
 }
