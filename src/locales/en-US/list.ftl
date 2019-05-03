@@ -2,10 +2,31 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-## common
+## Firefox / Lockbox Brand
+##
+## Firefox and Lockbox must be treated as a brand, and kept in English.
+## They cannot be:
+## - Declined to adapt to grammatical case.
+## - Transliterated.
+## - Translated.
+##
+## Reference: https://www.mozilla.org/styleguide/communications/translation/
+-brand-name = Firefox
+-product-short-name = Lockbox
+-product-full-name = Firefox Lockbox
+# TODO: should Firefox Account also not be translated or declined?
+-product-accounts = Firefox Account
+
+header-logins-button = Logins
+
+profile-menu-account = Account
+profile-menu-sign-in = Sign in to Sync
+profile-menu-connect = Connect a Device
+profile-menu-faq = FAQ
+profile-menu-feedback = Provide Feedback
 
 document =
-  .title = Lockbox Entries
+  .title = { -product-short-name } Entries
 
 error-notification-sync = Unable to sync logins.
 error-notification-sync-button = Reconnect
@@ -14,7 +35,7 @@ error-notification-duplicate =
 error-notification-duplicate-link = <a>Go to existing entry?</a>
 
 all-items-get-started =
-  When you save a password in Firefox, it will show up here.
+  When you save a password in { -brand-name }, it will show up here.
 all-items-get-started-title = No entries found.
 all-items-get-started-footer = Not seeing your saved logins? <go>Find out why</go>
 
@@ -52,8 +73,8 @@ item-summary-copy-password = Copy Password
   .title = Copy the password to the clipboard
 
 item-filter =
-  .placeholder = Search Lockbox
-  .aria-label = Search Lockbox
+  .placeholder = Search { -product-short-name }
+  .aria-label = Search { -product-short-name }
 
 ## manage
 
@@ -71,7 +92,7 @@ account-summary-account = Account
 account-summary-options = Preferences
 account-summary-signout = Sign Out
 
-intro-page-header-title = { product-fulltitle } for Desktop
+intro-page-header-title = { -product-full-name } for Desktop
 intro-page-header-subtitle =
   Welcome to better login management. Our desktop addon brings many of
   the improvements seen in our mobile apps to your computer, with
@@ -85,21 +106,21 @@ intro-page-main-article-1-copy =
 intro-page-main-article-2-title =
   Quick access to your logins
 intro-page-main-article-2-copy =
-  Click the Lockbox icon from the toolbar in Firefox to bring up our
+  Click the { -product-short-name } icon from the toolbar in { -brand-name } to bring up our
   doorhanger to access your entries.
 intro-page-main-article-3-title =
   Create new entries manually
 intro-page-main-article-3-copy =
   With the addition of manual entries, you can now store any account
-  you want within Lockbox.
+  you want within { -product-short-name }.
 
 intro-page-footer-heading =
   Not seeing your saved logins? Let us help.
 intro-page-footer-copy =
-  Firefox Lockbox provides access to the logins you’ve saved to
-  Firefox on your device. If your logins are stored on another device,
+  { -product-full-name } provides access to the logins you’ve saved to
+  { -brand-name } on your device. If your logins are stored on another device,
   you can sync your information to this device by signing in to or
-  creating a Firefox Account. <go>Learn More</go>
+  creating a { -product-accounts }. <go>Learn More</go>
 
 item-details-heading-new = Create New Entry
 item-details-heading-edit = Edit Entry Details
@@ -129,7 +150,7 @@ sort-by-last-changed = Last Changed
 
 ## popup
 
-manage-lockbox-button = Open Lockbox
+manage-lockbox-button = Open { -product-short-name }
 
 list-detail-button = Open Website
 
@@ -164,25 +185,24 @@ modal-delete = Delete this Entry?
 connect-another-device = Connect another device
 easily-access-logins = Easily gain access to your logins from any device.
 access-on-another-computer = Access on another computer
-# TODO should Firefox Account or Firefox Lockbox be localized in the following strings?
-simply-sign-in-other-device = Simply sign in to your Firefox Account on your other device to sync your logins to that computer.
+simply-sign-in-other-device = Simply sign in to your { -product-accounts } on your other device to sync your logins to that computer.
 download-mobile = Download the mobile app
-download-ios-android = Firefox Lockbox is available on both iOS and Android. <learnmore>Click here</learnmore> to learn more and to send a link to your phone to download the app.
-before-access = Before you can access your logins on another device, you will need to connect a Firefox Account.
-connect-a-firefox-account = Connect a Firefox Account
-connect-a-firefox-account-complete = Connect a Firefox Account (complete)
-sync-requires-account = To sync your logins to another device, you will need to <signin>sign in or create a Firefox Account</signin>.
+download-ios-android = { -product-full-name } is available on both iOS and Android. <learnmore>Click here</learnmore> to learn more and to send a link to your phone to download the app.
+before-access = Before you can access your logins on another device, you will need to connect a { -product-full-name }.
+connect-a-firefox-account = Connect a { -product-full-name }
+connect-a-firefox-account-complete = Connect a { -product-full-name } (complete)
+sync-requires-account = To sync your logins to another device, you will need to <signin>sign in or create a { -product-full-name }</signin>.
 # TODO this string seems funny. should Sync be capitalized? should Logins be in quotes? is Sync localized?
 ensure-logins-checked = Ensure the “Logins” checkbox is selected in sync preferences
 # TODO should Sync be capitalized? is Sync localized?
 setting-to-allow-sync = In order to allow your logins to be synced to other devices, this setting must be checked. <openprefs>Open sync preferences</openprefs></p>
 
 banner-promote-device =
-  .title = { product-fulltitle }
+  .title = { -product-full-name }
   .details = Download our mobile app to take your passwords with you everywhere.
   .actionLabel = Learn More
 
 banner-promote-fxa =
   .title = Take your passwords everywhere.
-  .details = Create a Firefox Account or Sign In to sync to Lockbox on mobile.
+  .details = Create a { -product-accounts }or Sign In to sync to { -product-short-name } on mobile.
   .actionLabel = Sign In
