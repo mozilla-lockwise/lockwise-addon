@@ -2,8 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { expect } from "chai";
+import chai, { expect } from "chai";
 import sinon from "sinon";
+import sinonChai from "sinon-chai";
 
 import "test/unit/mocks/browser";
 
@@ -14,6 +15,8 @@ import {
   convertInfo2Item,
   convertItem2Info,
 } from "src/background/datastore";
+
+chai.use(sinonChai);
 
 const LOGINS_METHODS = ["getAll", "add", "update", "remove"];
 const LOGINS_EVENTS = [
@@ -304,6 +307,22 @@ describe("background > datastore", () => {
 
     expect(resultApiInfo.timePasswordChanged).to.not.be.undefined;
     expect(resultApiInfo).to.deep.equal(expectedApiInfo);
+  });
+
+  it("allows an item's last used time to be updated via touch", async () => {
+    const sampleInfo = SAMPLE_INFOS.FOO;
+
+    const newTime = Date.now();
+    const mock = sinon.stub(browser.experiments.logins, "touch");
+    mock.returns(Object.assign({}, sampleInfo, {
+      timeLastUsed: newTime,
+    }));
+    const touchedItem = await store.touch("FOO");
+
+    expect(touchedItem.timeLastUsed).to.equal(newTime);
+    expect(mock).to.have.been.calledWith("FOO");
+
+    browser.experiments.logins.touch.restore();
   });
 
   it("allows an item to be removed", async () => {

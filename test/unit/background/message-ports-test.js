@@ -230,6 +230,44 @@ describe("background > message ports", () => {
     spied.restore();
   });
 
+  it("handles copied_field for password field", async () => {
+    const item = {
+      id: itemId,
+      title: "origin.com",
+      origins: ["origin.com", "origin.com"],
+      hostname: "https://origin.com",
+      timeCreated: originalTime,
+      timeLastUsed: originalTime,
+      timePasswordChanged: originalTime,
+      entry: {
+        kind: "login",
+        username: "username",
+        password: "password",
+        usernameField: "",
+        passwordField: "",
+      },
+    };
+
+    const clipboardSpy = sinon.stub(clipboard, "copyToClipboard").resolves(true);
+    const ds = await openDataStore();
+    const getSpy = sinon.stub(ds, "get");
+    getSpy.resolves(item);
+    const touchSpy = sinon.stub(browser.experiments.logins, "touch");
+    touchSpy.resolves(Object.assign({}, item, { timeLastUsed: updatedTime }));
+
+    await browser.runtime.sendMessage({
+      type: "copied_field",
+      field: "password",
+      toCopy: "textToCopy",
+      item,
+    });
+    expect(touchSpy).to.have.been.called;
+
+    clipboardSpy.restore();
+    getSpy.restore();
+    touchSpy.restore();
+  });
+
   it("handle unknown message type", async () => {
     const result = await browser.runtime.sendMessage({
       type: "nonexist",

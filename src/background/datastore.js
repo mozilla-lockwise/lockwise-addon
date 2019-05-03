@@ -188,6 +188,15 @@ class DataStore {
     }
     return item || null;
   }
+  async touch(id) {
+    const item = await this.get(id);
+    let touchedItem;
+    if (item) {
+      const touchedLogin = await browser.experiments.logins.touch(item.id);
+      touchedItem = convertInfo2Item(touchedLogin);
+    }
+    return touchedItem || null;
+  }
 
   // TODO: Until issue #21 is resolved, this stuff handles raw info from the
   // API rather than UI items.
