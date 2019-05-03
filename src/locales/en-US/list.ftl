@@ -4,19 +4,18 @@
 
 ## Firefox / Lockbox Brand
 ##
-## Firefox and Lockbox must be treated as a brand, and kept in English.
+## All the following terms must be treated as a brand, and kept in English.
 ## They cannot be:
 ## - Declined to adapt to grammatical case.
 ## - Transliterated.
 ## - Translated.
-##
-## Reference: https://www.mozilla.org/styleguide/communications/translation/
--brand-name = Firefox
+-firefox-brand-name = Firefox
 -product-short-name = Lockbox
 -product-full-name = Firefox Lockbox
-# TODO: should Firefox Account also not be translated or declined?
--product-accounts = Firefox Account
-
+# “Account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-fxaccount-brand-name = Firefox Account
+# All the following items are localizable.
 header-logins-button = Logins
 
 profile-menu-account = Account
@@ -35,7 +34,7 @@ error-notification-duplicate =
 error-notification-duplicate-link = <a>Go to existing entry?</a>
 
 all-items-get-started =
-  When you save a password in { -brand-name }, it will show up here.
+  When you save a password in { -firefox-brand-name }, it will show up here.
 all-items-get-started-title = No entries found.
 all-items-get-started-footer = Not seeing your saved logins? <go>Find out why</go>
 
@@ -106,7 +105,7 @@ intro-page-main-article-1-copy =
 intro-page-main-article-2-title =
   Quick access to your logins
 intro-page-main-article-2-copy =
-  Click the { -product-short-name } icon from the toolbar in { -brand-name } to bring up our
+  Click the { -product-short-name } icon from the toolbar in { -firefox-brand-name } to bring up our
   doorhanger to access your entries.
 intro-page-main-article-3-title =
   Create new entries manually
@@ -118,9 +117,9 @@ intro-page-footer-heading =
   Not seeing your saved logins? Let us help.
 intro-page-footer-copy =
   { -product-full-name } provides access to the logins you’ve saved to
-  { -brand-name } on your device. If your logins are stored on another device,
+  { -firefox-brand-name } on your device. If your logins are stored on another device,
   you can sync your information to this device by signing in to or
-  creating a { -product-accounts }. <go>Learn More</go>
+  creating a { -fxaccount-brand-name }. <go>Learn More</go>
 
 item-details-heading-new = Create New Entry
 item-details-heading-edit = Edit Entry Details
@@ -185,10 +184,10 @@ modal-delete = Delete this Entry?
 connect-another-device = Connect another device
 easily-access-logins = Easily gain access to your logins from any device.
 access-on-another-computer = Access on another computer
-simply-sign-in-other-device = Simply sign in to your { -product-accounts } on your other device to sync your logins to that computer.
+simply-sign-in-other-device = Simply sign in to your { -fxaccount-brand-name } on your other device to sync your logins to that computer.
 download-mobile = Download the mobile app
 download-ios-android = { -product-full-name } is available on both iOS and Android. <learnmore>Click here</learnmore> to learn more and to send a link to your phone to download the app.
-before-access = Before you can access your logins on another device, you will need to connect a { -product-full-name }.
+before-access = Before you can access your logins on another device, you will need to connect a { -fxaccount-brand-name }.
 connect-a-firefox-account = Connect a { -product-full-name }
 connect-a-firefox-account-complete = Connect a { -product-full-name } (complete)
 sync-requires-account = To sync your logins to another device, you will need to <signin>sign in or create a { -product-full-name }</signin>.
@@ -204,5 +203,5 @@ banner-promote-device =
 
 banner-promote-fxa =
   .title = Take your passwords everywhere.
-  .details = Create a { -product-accounts }or Sign In to sync to { -product-short-name } on mobile.
+  .details = Create a { -fxaccount-brand-name } or Sign In to sync to { -product-short-name } on mobile.
   .actionLabel = Sign In
