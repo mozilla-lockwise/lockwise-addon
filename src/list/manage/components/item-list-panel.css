@@ -33,6 +33,10 @@
   margin-top: 8px;
 }
 
+.second-row select {
+  line-height: 34px;
+}
+
 .item-filter {
   composes: item-filter from "../../../widgets/panel.css";
   background: #f3f3f5;
