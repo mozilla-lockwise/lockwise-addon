@@ -15,8 +15,11 @@
 # “Account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -fxaccount-brand-name = Firefox Account
+
 # All the following items are localizable.
 header-logins-button = Logins
+header-app-title =
+  .title = { -product-full-name }
 
 profile-menu-account = Account
 profile-menu-sign-in = Sign in to Sync
