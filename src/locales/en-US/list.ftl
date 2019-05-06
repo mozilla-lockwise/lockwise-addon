@@ -124,8 +124,8 @@ intro-page-footer-copy =
   you can sync your information to this device by signing in to or
   creating a { -fxaccount-brand-name }. <go>Learn More</go>
 
-item-details-heading-new = Create New login
-item-details-heading-edit = Edit login Details
+item-details-heading-new = Create New Login
+item-details-heading-edit = Edit Login Details
 
 item-details-edit = Edit
 item-details-delete = Delete
