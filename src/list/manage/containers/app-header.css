@@ -18,6 +18,10 @@
   top: 0;
   left: 44%;
 }
+.app-header-title img {
+  height: 1.45em;
+  vertical-align: middle;
+}
 .app-header-title b {
   font-weight: 600;
 }

@@ -1,7 +1,7 @@
 [
   {
     "namespace": "experiments.temptelemetry",
-    "description": "Firefox Lockbox internal API for submitting telemetry events for Firefox versions less than 68 (see bug 1536877 for details)",
+    "description": "Firefox Lockwise internal API for submitting telemetry events for Firefox versions less than 68 (see bug 1536877 for details)",
     "types": [],
     "events": [],
     "functions": [

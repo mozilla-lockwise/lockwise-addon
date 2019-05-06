@@ -14,7 +14,7 @@ export default function IntroPage({onLearnMore}) {
     <section className={styles.introPage}>
       <header>
         <Localized id="intro-page-header-title">
-          <h2>fIREFOx lOCKBOx fOr dESKTOp</h2>
+          <h2>fIREFOx lOCKWISe fOr dESKTOp</h2>
         </Localized>
         <Localized id="intro-page-header-subtitle">
           <p>iNTRo hEADEr sUBTITLe</p>

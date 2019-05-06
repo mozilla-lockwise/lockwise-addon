@@ -103,11 +103,14 @@ export class AppHeader extends React.Component {
     } = this.props;
 
     const { profileMenuShown } = this.state;
+    const logoSrc = browser.extension.getURL("/images/logo-lockwise.svg");
 
     return (
       <header className={styles.appHeader}>
         <h1 className={styles.appHeaderTitle}>
-          <b>Firefox</b> Lockbox
+          <Localized id="header-app-title" attrs={{ title: true }}>
+            <img src={logoSrc} alt="fIREFOx lOCKWISe" />
+          </Localized>
         </h1>
 
         <nav className={styles.appHeaderProfileStatus}>

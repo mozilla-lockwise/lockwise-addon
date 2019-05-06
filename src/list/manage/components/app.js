@@ -22,7 +22,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Localized id="document" attrs={{title: true}}>
-        <DocumentTitle title="lOCKBOx eNTRIEs">
+        <DocumentTitle title="lOCKWISe eNTRIEs">
           <div className={styles.app}>
             <SyncNotification isPanel={false}/>
             <AppHeader />

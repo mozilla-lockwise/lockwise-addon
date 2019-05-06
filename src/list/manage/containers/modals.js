@@ -69,7 +69,7 @@ export function ConnectDevice({profile, onClose, onDownloadClick, onSyncPrefsCli
             </Localized>
             <Localized id="download-ios-android"
               learnmore={<a onClick={onDownloadClick}></a>}>
-              <p>fIrEfOx lOcKbOx iS AvAiLaBlE On bOtH IoS AnD AnDrOiD. <learnmore>cLiCk hErE</learnmore> To lEaRn mOrE AnD To sEnD A LiNk tO YoUr pHoNe tO DoWnLoAd tHe aPp.</p>
+              <p>fIrEfOx LOCKWISe iS AvAiLaBlE On bOtH IoS AnD AnDrOiD. <learnmore>cLiCk hErE</learnmore> To lEaRn mOrE AnD To sEnD A LiNk tO YoUr pHoNe tO DoWnLoAd tHe aPp.</p>
             </Localized>
           </li>
         </ul>

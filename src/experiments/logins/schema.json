@@ -1,7 +1,7 @@
 [
   {
     "namespace": "experiments.logins",
-    "description": "Firefox Lockbox internal API for accessing logins",
+    "description": "Firefox Lockwise internal API for accessing logins",
     "types": [{
       "id": "Login",
       "type": "object",
