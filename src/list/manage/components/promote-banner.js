@@ -10,25 +10,23 @@ import React from "react";
 
 import Banner from "../../../widgets/banner";
 import Button from "../../../widgets/button";
+import { classNames } from "../../../common";
 
 import styles from "./promote-banner.css";
 
-export function PromotionBanner({title, details, actionLabel, onAction, onClose}) {
+export function PromotionBanner({title, details, onClose, children}) {
   return (
     <Banner className={styles.promotion}>
       <p className={styles.content}>
         <strong className={styles.title}>{title}</strong>
-        &mdash;
+        &ndash;
         <span className={styles.details}>{details}</span>
-        <Button
-          type="button" className={styles.action}
-          theme="primary" size="wide"
-          onClick={() => onAction()}>{actionLabel}</Button>
       </p>
+      {children}
       <Button
           type="button" className={styles.close}
           theme="normal" size="micro"
-          onClick={onClose}>x</Button>
+          onClick={onClose}></Button>
     </Banner>
   );
 }
@@ -36,34 +34,74 @@ export function PromotionBanner({title, details, actionLabel, onAction, onClose}
 PromotionBanner.propTypes = {
   title: PropTypes.string.isRequired,
   details: PropTypes.string.isRequired,
-  actionLabel: PropTypes.string.isRequired,
-  onAction: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.shape({
+      type: PropTypes.oneOf([Button]),
+    }),
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        type: PropTypes.oneOf([Button]),
+      }),
+    ),
+  ]).isRequired,
 };
 
-export function LocalizedPromotionBanner({l10nId, onAction, onClose}) {
+export function LocalizedPromotionBanner({l10nId, onClose, children}) {
   return (
     <Localized id={l10nId} attrs={{title: true, details: true, actionLabel: true}}>
-      <PromotionBanner title="tItLe" details="dEtAiLs" actionLabel="dO iT!" onAction={onAction} onClose={onClose} />
+      <PromotionBanner title="tItLe" details="dEtAiLs" actionLabel="dO iT!" onClose={onClose}>
+        {children}
+      </PromotionBanner>
     </Localized>
   );
 }
 
 LocalizedPromotionBanner.propTypes = {
   l10nId: PropTypes.string.isRequired,
-  onAction: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.shape({
+      type: PropTypes.oneOf([Button]),
+    }),
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        type: PropTypes.oneOf([Button]),
+      }),
+    ),
+  ]).isRequired,
+};
+
+export function PromoteDeviceBanner({onAppStoreClick, onAndroidStoreClick, onClose}) {
+  // TODO: localize the app store / google play buttons
+  return (
+    <LocalizedPromotionBanner l10nId="banner-promote-device" onClose={onClose}>
+      <Button
+        type="button" className={classNames([styles.action, styles.android])}
+        theme="primary" size="wide"
+        onClick={onAndroidStoreClick}></Button>
+      <Button
+        type="button" className={classNames([styles.action, styles.ios])}
+        theme="primary" size="wide"
+        onClick={onAppStoreClick}></Button>
+    </LocalizedPromotionBanner>
+  );
+}
+PromoteDeviceBanner.propTypes = {
+  onAppStoreClick: PropTypes.func.isRequired,
+  onAndroidStoreClick: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
 };
 
-export function PromoteDeviceBanner({onAction, onClose}) {
-  return (<LocalizedPromotionBanner l10nId="banner-promote-device" onAction={onAction} onClose={onClose} />);
-}
-PromoteDeviceBanner.propTypes = {
-  onAction: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
-};
 export function PromoteFxABanner({onAction, onClose}) {
-  return (<LocalizedPromotionBanner l10nId="banner-promote-fxa" onAction={onAction} onClose={onClose} />);
+  return (
+    <LocalizedPromotionBanner l10nId="banner-promote-fxa" onAction={onAction} onClose={onClose}>
+      <Button
+        type="button" className={styles.action}
+        theme="primary" size="wide"
+        onClick={() => onAction()}></Button>
+    </LocalizedPromotionBanner>
+  );
 }
 PromoteFxABanner.propTypes = {
   onAction: PropTypes.func.isRequired,

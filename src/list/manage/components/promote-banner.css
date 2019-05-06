@@ -7,30 +7,25 @@
  */
 
 .promotion {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    /* Offset for the absolutely-positioned close button */
-    padding-right: 60px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  min-width: 500px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  /* Offset for the positioned close button */
+  padding-right: 50px;
 }
 .promotion .content {
-    flex: 1 1 auto;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-between;
-    background: url(/icons/icon-lockwise.svg) no-repeat;
-    min-height: 40px;
-    max-width: 28rem;
-    padding-inline-start: 52px;
-}
-
-.promotion .content .title {
-    padding: 0px;
-    margin: 0px;
-    font-size: 15px;
-    font-weight: bold;
-    text-align: center;
+  flex: 0 1 auto;
+  flex-flow: row;
+  text-align: center;
+  font-size: 15px;
+  margin: 0;
 }
 .promotion .content .title,
 .promotion .content .details {
@@ -46,10 +41,22 @@
 }
 
 .promotion .close {
+  max-width: 50px;
   position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background: none;
+  right: 20px;
+  background: url(/icons/close.svg) white no-repeat center center;
+  height: 20px;
+  width: 20px;
   font-size: 15px;
+}
+
+/* TODO: include app store and google play icons for other languages */
+.action.ios {
+  background: url(/icons/icon-app-store-en.svg) no-repeat center center;
+  height: 40px;
+}
+
+.action.android {
+  background: url(/icons/icon-gps-en.svg) no-repeat center center;
+  height: 40px;
 }

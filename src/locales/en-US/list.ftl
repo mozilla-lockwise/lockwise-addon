@@ -206,8 +206,8 @@ ensure-logins-checked = Ensure the “Logins” checkbox is selected in { -sync-
 setting-to-allow-sync = In order to allow your logins to be synced to other devices, this setting must be checked. <openprefs>Open { -sync-brand-short-name } preferences</openprefs></p>
 
 banner-promote-device =
-  .title = { -product-full-name }
-  .details = Download our mobile app to take your passwords with you everywhere:
+  .title = Take your passwords everywhere
+  .details = Download our app for iOS or Android:
   .actionLabel = Learn More
 
 banner-promote-fxa =

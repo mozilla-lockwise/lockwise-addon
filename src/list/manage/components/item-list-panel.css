@@ -47,3 +47,9 @@
   flex-grow: 0;
   flex-shrink: 0;
 }
+
+.panel-body .scrolling-list {
+  /* Ensure the promo banner stuck to the bottom of the viewport doesn't
+     totally overlap the bottom of the list. */
+  height: calc(100% - 85px);
+}

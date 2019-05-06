@@ -51,6 +51,8 @@ export const OPEN_SYNC_PREFS = Symbol("OPEN_SYNC_PREFS");
 export const SHOW_PROFILE_MENU = Symbol("SHOW_PROFILE_MENU");
 export const OPEN_WEBSITE = Symbol("OPEN_WEBSITE");
 export const OPEN_HOMEPAGE = Symbol("OPEN_HOMEPAGE");
+export const OPEN_APP_STORE = Symbol("OPEN_APP_STORE");
+export const OPEN_ANDROID_STORE = Symbol("OPEN_ANDROID_STORE");
 
 export const REVEAL_PASSWORD = Symbol("REVEAL_PASSWORD");
 export const CONCEAL_PASSWORD = Symbol("CONCEAL_PASSWORD");
@@ -473,5 +475,17 @@ export function hidePromo() {
 export function showPromo() {
   return {
     type: SHOW_PROMO,
+  };
+}
+
+export function openAndroidStore() {
+  return {
+    type: OPEN_ANDROID_STORE,
+  };
+}
+
+export function openAppStore() {
+  return {
+    type: OPEN_APP_STORE,
   };
 }
