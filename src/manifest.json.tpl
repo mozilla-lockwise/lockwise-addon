@@ -1,6 +1,7 @@
 {
   "manifest_version": 2,
   "name": "{{title}}",
+  "short_name": "{{name}}",
   "version": "{{version}}",
   "description": "{{description}}",
   "icons": {
@@ -26,7 +27,6 @@
     "default_icon": {
       "32": "icons/icon-lockbox.svg"
     },
-    "default_title": "Lockbox",
     "browser_style": false
   },
 

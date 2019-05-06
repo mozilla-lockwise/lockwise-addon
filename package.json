@@ -1,6 +1,6 @@
 {
-  "title": "Firefox Lockbox",
-  "name": "lockbox",
+  "title": "Firefox Lockwise",
+  "name": "lockwise",
   "id": "lockbox@mozilla.com",
   "version": "2.1.0-alpha",
   "description": "Take your passwords everywhere.",
