@@ -123,7 +123,7 @@ export class AppHeader extends React.Component {
     } = this.props;
 
     const { profileMenuShown } = this.state;
-    const logoSrc = browser.runtime.getURL("/images/logo-lockwise.svg");
+    const logoSrc = browser.extension.getURL("/images/logo-lockwise.svg");
 
     return (
       <header className={styles.appHeader}>
