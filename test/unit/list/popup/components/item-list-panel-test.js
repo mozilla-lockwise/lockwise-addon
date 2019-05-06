@@ -59,7 +59,7 @@ describe("list > popup > components > <ItemListPanel/>", () => {
     });
 
     it("open manager", () => {
-      wrapper.findWhere((x) => x.prop("id") === "manage-lockbox-button")
+      wrapper.findWhere((x) => x.prop("id") === "manage-logins-button")
              .find("button").simulate("click");
       expect(onMessage).to.have.been.calledWith({
         type: "open_view",

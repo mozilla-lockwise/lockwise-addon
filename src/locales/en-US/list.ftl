@@ -2,7 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-## Firefox / Lockbox Brand
+## Firefox / Lockwise Brand
 ##
 ## All the following terms must be treated as a brand, and kept in English.
 ## They cannot be:
@@ -10,13 +10,16 @@
 ## - Transliterated.
 ## - Translated.
 -firefox-brand-name = Firefox
--product-short-name = Lockbox
--product-full-name = Firefox Lockbox
+-product-short-name = Lockwise
+-product-full-name = Firefox Lockwise
 # “Account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -fxaccount-brand-name = Firefox Account
+
 # All the following items are localizable.
 header-logins-button = Logins
+header-app-title =
+  .title = { -product-full-name }
 
 profile-menu-account = Account
 profile-menu-sign-in = Sign in to Sync
@@ -25,22 +28,22 @@ profile-menu-faq = FAQ
 profile-menu-feedback = Provide Feedback
 
 document =
-  .title = { -product-short-name } Entries
+  .title = { -product-full-name }
 
 error-notification-sync = Unable to sync logins.
 error-notification-sync-button = Reconnect
 error-notification-duplicate =
-  An entry for {$title} with that username already exists.
-error-notification-duplicate-link = <a>Go to existing entry?</a>
+  A login for {$title} with that username already exists.
+error-notification-duplicate-link = <a>Go to existing login?</a>
 
 all-items-get-started =
   When you save a password in { -firefox-brand-name }, it will show up here.
-all-items-get-started-title = No entries found.
+all-items-get-started-title = No logins found.
 all-items-get-started-footer = Not seeing your saved logins? <go>Find out why</go>
 
 all-items-no-results =
   If this login is saved on another device, make sure you have signed in and synced on that device in order to see it here.
-all-items-no-results-title = No matching entries.
+all-items-no-results-title = No matching logins.
 all-items-no-results-footer = <go>Learn more</go>
 
 item-fields-title-input =
@@ -60,7 +63,7 @@ item-fields-copy-password =
   .title = Copy the password to the clipboard
 item-fields-notes = Notes
 
-item-summary-new-title = New Entry
+item-summary-new-title = New Login
 item-summary-no-title = (no title)
 
 item-summary-new-username = Enter your login credentials
@@ -78,7 +81,7 @@ item-filter =
 ## manage
 
 add-item-button =
-  .title = New entry
+  .title = New login
 
 send-feedback-button = Provide Feedback
 
@@ -106,11 +109,11 @@ intro-page-main-article-2-title =
   Quick access to your logins
 intro-page-main-article-2-copy =
   Click the { -product-short-name } icon from the toolbar in { -firefox-brand-name } to bring up our
-  doorhanger to access your entries.
+  doorhanger to access your logins.
 intro-page-main-article-3-title =
-  Create new entries manually
+  Create new logins manually
 intro-page-main-article-3-copy =
-  With the addition of manual entries, you can now store any account
+  With the addition of manual logins, you can now store any account
   you want within { -product-short-name }.
 
 intro-page-footer-heading =
@@ -121,13 +124,13 @@ intro-page-footer-copy =
   you can sync your information to this device by signing in to or
   creating a { -fxaccount-brand-name }. <go>Learn More</go>
 
-item-details-heading-new = Create New Entry
-item-details-heading-edit = Edit Entry Details
+item-details-heading-new = Create New Login
+item-details-heading-edit = Edit Login Details
 
 item-details-edit = Edit
 item-details-delete = Delete
 
-item-details-save-new = Create Entry
+item-details-save-new = Create Login
 item-details-save-existing = Save Changes
 item-details-cancel = Cancel
 
@@ -137,8 +140,8 @@ item-details-last-used = Last Used: {$date}
 
 # count is the number of items in the list
 list-count = { $count ->
-  [one]   {$count} entry
- *[other] { $count } entries
+  [one]   {$count} login
+ *[other] { $count } logins
 }
 
 sort-by = Sort by:
@@ -149,23 +152,23 @@ sort-by-last-changed = Last Changed
 
 ## popup
 
-manage-lockbox-button = Open { -product-short-name }
+manage-logins-button = Open { -product-short-name }
 
 list-detail-button = Open Website
 
-default-banner = Recently used entries.
+default-banner = Recently used logins.
 
 # count is the number of items matching the filter
 filtered-banner = { $count ->
-  [one]   {$count} entry found
- *[other] { $count } entries found
+  [one]   {$count} login found
+ *[other] { $count } logins found
 }
 
-get-started-banner = No entries found.
+get-started-banner = No logins found.
 
-no-matching-banner = No matching entries.
+no-matching-banner = No matching logins.
 
-no-results-banner = No entries found for current website.
+no-results-banner = No logins found for current website.
 
 item-details-panel-title = Login Details
 
@@ -177,7 +180,7 @@ modal-cancel-editing = Unsaved changes exist. Discard them?
   .confirmLabel = Discard Changes
   .cancelLabel = Go Back
 
-modal-delete = Delete this Entry?
+modal-delete = Delete this login?
   .confirmLabel = Delete
   .cancelLabel = Cancel
 

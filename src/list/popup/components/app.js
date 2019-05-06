@@ -18,7 +18,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Localized id="document" attrs={{title: true}}>
-        <DocumentTitle title="lOCKBOx eNTRIEs">
+        <DocumentTitle title="lOCKWISe eNTRIEs">
           <div className={styles.app}>
             <CurrentSelection inputRef={(element) => {
               this._filterField = element;

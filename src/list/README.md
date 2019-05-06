@@ -8,7 +8,7 @@ The list views are the primary users of Redux in the extension. This section des
 
 ### Cache reducer (common)
 
-This reducer contains a local cache of the necessary portions of the Lockbox datastore. In particular, it contains a summary of all the items in the store, plus full details of the currently-selected item. Item summaries have the following fields:
+This reducer contains a local cache of the necessary portions of the Lockwise datastore. In particular, it contains a summary of all the items in the store, plus full details of the currently-selected item. Item summaries have the following fields:
 
 ```
 title

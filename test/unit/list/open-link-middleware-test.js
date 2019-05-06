@@ -38,7 +38,7 @@ describe("list > manage > open-link-middleware", () => {
     });
     expect(listener).to.have.been.calledWith({
       type: "open_site",
-      url: "https://lockbox.firefox.com/faq.html",
+      url: "https://lockwise.firefox.com/faq.html",
     });
   });
 
@@ -49,7 +49,7 @@ describe("list > manage > open-link-middleware", () => {
     });
     expect(listener).to.have.been.calledWith({
       type: "open_site",
-      url: "https://lockbox.firefox.com/faq.html#how-do-i-get-my-saved-logins-into-firefox-lockbox",
+      url: "https://lockwise.firefox.com/faq.html#how-do-i-get-my-saved-logins-into-firefox-lockbox",
     });
   });
 

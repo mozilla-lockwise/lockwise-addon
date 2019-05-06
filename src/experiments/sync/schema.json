@@ -1,7 +1,7 @@
 [
   {
     "namespace": "experiments.sync",
-    "description": "Firefox Lockbox internal API for accessing Firefox Accounts/Sync state.",
+    "description": "Firefox Lockwise internal API for accessing Firefox Accounts/Sync state.",
     "types": [
       {
         "id": "SyncType",
@@ -23,7 +23,7 @@
       {
         "id": "UserProfileInfo",
         "type": "object",
-        "description": "Firefox Accounts/Sync user profile info relevant to Lockbox.",
+        "description": "Firefox Accounts/Sync user profile info relevant to Lockwise.",
         "properties": {
           "id": {
             "type": "string",

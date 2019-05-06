@@ -16,7 +16,7 @@ import styles from "./item-details.css";
 const LOCALE = navigator.language;
 const dateOptions = {year: "numeric", month: "long", day: "numeric" };
 
-// Note: ItemDetails doesn't directly interact with items from the Lockbox
+// Note: ItemDetails doesn't directly interact with items from the Lockwise
 // datastore. For that, please consult <../containers/current-item.js>.
 export default function ItemDetails({fields, onCopy, onEdit, onDelete, onReveal}) {
   const created = new Date(fields.timeCreated).toLocaleDateString(LOCALE, dateOptions);
