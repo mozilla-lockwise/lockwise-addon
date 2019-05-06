@@ -14,7 +14,7 @@ import DuplicateNotification from "../../components/duplicate-notification";
 
 import styles from "./item-details.css";
 
-// Note: EditItemDetails doesn't directly interact with items from the Lockbox
+// Note: EditItemDetails doesn't directly interact with items from the Lockwise
 // datastore. For that, please consult <../containers/current-item.js>.
 
 export default class EditItemDetails extends React.Component {

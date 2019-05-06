@@ -112,7 +112,7 @@ export default function ItemListPanel({inputRef, totalItemCount, noResultsBanner
       <PanelFooter border="floating">
         <Localized id="manage-logins-button">
           <PanelFooterButton onClick={openManager} className={styles.panelFooterButton}>
-            oPEn lOCKBox
+            oPEn lOCKWISe
           </PanelFooterButton>
         </Localized>
       </PanelFooter>

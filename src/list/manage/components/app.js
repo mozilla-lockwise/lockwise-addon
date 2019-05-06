@@ -23,7 +23,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Localized id="document" attrs={{title: true}}>
-        <DocumentTitle title="lOCKBOx eNTRIEs">
+        <DocumentTitle title="lOCKWISe eNTRIEs">
           <div className={styles.app}>
             <SyncNotification isPanel={false}/>
             <AppHeader />
@@ -39,15 +39,6 @@ export default class App extends React.Component {
                   </article>
                 </section>
               ),
-              /* TODO: Implement this as part of issue #15
-              monitor: (
-                <h1>
-                  <a href="https://github.com/mozilla-lockbox/lockbox-addon/issues/15">
-                    Monitor app content TBD in Issue #15
-                  </a>
-                </h1>
-              ),
-              */
             }}</AppPanes>
             <ModalRoot/>
           </div>

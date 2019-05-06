@@ -9,8 +9,8 @@ import { openWebsite } from "./common";
 // TODO: Update these links?
 const urls = {
   feedback: "https://qsurvey.mozilla.com/s3/Lockbox-Input?ver=" + version,
-  faq: "https://lockbox.firefox.com/faq.html",
-  homepage: "https://lockbox.firefox.com",
+  faq: "https://lockwise.firefox.com/faq.html",
+  homepage: "https://lockwise.firefox.com",
 };
 
 function openTargetedWebsite(url, target, close) {
