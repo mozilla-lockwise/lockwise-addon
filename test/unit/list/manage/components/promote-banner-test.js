@@ -14,21 +14,25 @@ chai.use(chaiEnzyme);
 chai.use(sinonChai);
 
 import mountWithL10n from "test/unit/mocks/l10n";
+import Button from "src/widgets/button";
 import { PromoteDeviceBanner, PromoteFxABanner } from "src/list/manage/components/promote-banner";
 
 describe("list > manage > components > promotion banners", () => {
   describe("<PromoteDeviceBanner />", () => {
     it("calls openWebsite", () => {
-      let mockOnAction = sinon.stub();
-      let mockOnClose = sinon.stub();
+      let mockOnAppStoreClick = sinon.stub();
+      let mockOnAndroidStoreClick = sinon.stub();
       let wrapper = mountWithL10n(
-        <PromoteDeviceBanner onAction={mockOnAction} onClose={mockOnClose} />
+        <PromoteDeviceBanner onAppStoreClick={mockOnAppStoreClick}
+                             onAndroidStoreClick={mockOnAndroidStoreClick} />
       );
 
-      const button = wrapper.find("p button");
-      button.simulate("click");
+      wrapper.find(Button).first().simulate("click");
+      expect(mockOnAndroidStoreClick).to.have.been.called;
+      expect(mockOnAppStoreClick).to.not.have.been.called;
 
-      expect(mockOnAction).to.have.been.called;
+      wrapper.find(Button).last().simulate("click");
+      expect(mockOnAppStoreClick).to.have.been.called;
     });
   });
 
@@ -36,12 +40,11 @@ describe("list > manage > components > promotion banners", () => {
     it("calls openWebsite", () => {
 
       let mockOnAction = sinon.stub();
-      let mockOnClose = sinon.stub();
       let wrapper = mountWithL10n(
-        <PromoteFxABanner onAction={mockOnAction} onClose={mockOnClose} />
+        <PromoteFxABanner onAction={mockOnAction} />
       );
 
-      const button = wrapper.find("p button");
+      const button = wrapper.find(Button);
       button.simulate("click");
 
       expect(mockOnAction).to.have.been.called;

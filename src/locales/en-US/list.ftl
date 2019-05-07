@@ -207,10 +207,17 @@ setting-to-allow-sync = In order to allow your logins to be synced to other devi
 
 banner-promote-device =
   .title = Take your passwords everywhere
-  .details = Download our app for iOS or Android:
-  .actionLabel = Learn More
+  .details = download our app for iOS or Android:
+
+# TODO is there an official localization we need to use for the alt text in other locales?
+banner-promote-device-app-store =
+  .title = Download on the App Store
+# TODO is there an official localization we need to use for the alt text in other locales?
+banner-promote-device-google-play =
+  .alt = Get it on Google Play
 
 banner-promote-fxa =
   .title = Take your passwords everywhere
-  .details = Create a { -fxaccount-brand-name } or Sign In to sync to { -product-short-name } on mobile:
-  .actionLabel = Sign In
+  .details = create a { -fxaccount-brand-name } or Sign In to sync to { -product-short-name } on mobile:
+
+banner-promote-fxa-action-label = Sign In

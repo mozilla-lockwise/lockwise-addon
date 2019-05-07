@@ -56,24 +56,10 @@ export function modalReducer(state = {id: null, props: null}, action) {
   }
 }
 
-export function promoReducer(state = {
-  showPromo: true,
-}, action) {
-  switch (action.type) {
-    case actions.HIDE_PROMO:
-      return {...state, showPromo: false};
-    case actions.SHOW_PROMO:
-      return {...state, showPromo: true};
-    default:
-      return state;
-  }
-}
-
 export default combineReducers({
   app: appReducer,
   cache: cacheReducer,
   list: listReducer,
   editor: editorReducer,
   modal: modalReducer,
-  promo: promoReducer,
 });

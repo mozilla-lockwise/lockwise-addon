@@ -42,7 +42,7 @@ describe("list > manage > telemetryLogger middleware", () => {
     browser.runtime.onMessage.removeListener(listener);
   });
 
-  // Note: cases are alphabetized.
+  // Note: cases are alphabetized by the action.
 
   it("record telemetry for completing add item", async () => {
     telemetryLogger(store)(next)({
@@ -134,6 +134,21 @@ describe("list > manage > telemetryLogger middleware", () => {
     }, 0);
   });
 
+  it("record telemetry for clicking the iOS app store link", async () => {
+    telemetryLogger(store)(next)({
+      type: actions.OPEN_APP_STORE,
+    });
+    expect(listener).to.have.been.calledWith({
+      type: "telemetry_event",
+      data: {
+        method: "click",
+        object: "openAppStore",
+        value: null,
+        extra: null,
+      },
+    });
+  });
+
   it("record telemetry for clicking the FAQ link", async () => {
     telemetryLogger(store)(next)({
       type: actions.OPEN_FAQ,
@@ -173,6 +188,21 @@ describe("list > manage > telemetryLogger middleware", () => {
       data: {
         method: "click",
         object: "getMobile",
+        value: null,
+        extra: null,
+      },
+    });
+  });
+
+  it("record telemetry for clicking the Google play store link", async () => {
+    telemetryLogger(store)(next)({
+      type: actions.OPEN_PLAY_STORE,
+    });
+    expect(listener).to.have.been.calledWith({
+      type: "telemetry_event",
+      data: {
+        method: "click",
+        object: "openPlayStore",
         value: null,
         extra: null,
       },

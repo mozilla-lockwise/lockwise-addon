@@ -12,13 +12,6 @@
   align-items: center;
   justify-content: center;
   min-width: 500px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 20;
-  /* Offset for the positioned close button */
-  padding-right: 50px;
 }
 .promotion .content {
   flex: 0 1 auto;
@@ -26,6 +19,7 @@
   text-align: center;
   font-size: 15px;
   margin: 0;
+  margin-right: 15px;
 }
 .promotion .content .title,
 .promotion .content .details {
@@ -37,17 +31,7 @@
 }
 
 .promotion .action {
-  margin: 0 10px;
-}
-
-.promotion .close {
-  max-width: 50px;
-  position: absolute;
-  right: 20px;
-  background: url(/icons/close.svg) white no-repeat center center;
-  height: 20px;
-  width: 20px;
-  font-size: 15px;
+  margin: 0;
 }
 
 /* TODO: include app store and google play icons for other languages */
@@ -57,6 +41,17 @@
 }
 
 .action.android {
-  background: url(/icons/icon-gps-en.svg) no-repeat center center;
+  background: url(/icons/icon-gps-en.png) no-repeat center center/150px;
   height: 40px;
+}
+
+.promotion .action.ios:hover,
+.promotion .action.android:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+.promotion .action.ios:focus,
+.promotion .action.android:focus {
+  box-shadow: none;
 }

@@ -52,13 +52,10 @@ export const SHOW_PROFILE_MENU = Symbol("SHOW_PROFILE_MENU");
 export const OPEN_WEBSITE = Symbol("OPEN_WEBSITE");
 export const OPEN_HOMEPAGE = Symbol("OPEN_HOMEPAGE");
 export const OPEN_APP_STORE = Symbol("OPEN_APP_STORE");
-export const OPEN_ANDROID_STORE = Symbol("OPEN_ANDROID_STORE");
+export const OPEN_PLAY_STORE = Symbol("OPEN_PLAY_STORE");
 
 export const REVEAL_PASSWORD = Symbol("REVEAL_PASSWORD");
 export const CONCEAL_PASSWORD = Symbol("CONCEAL_PASSWORD");
-
-export const HIDE_PROMO = Symbol("HIDE_PROMO");
-export const SHOW_PROMO = Symbol("SHOW_PROMO");
 
 // The action ID is used for debugging to correlate async actions with each
 // other (i.e. FOO_STARTING and FOO_COMPLETED).
@@ -466,21 +463,9 @@ export function openWebsite() {
   };
 }
 
-export function hidePromo() {
+export function openPlayStore() {
   return {
-    type: HIDE_PROMO,
-  };
-}
-
-export function showPromo() {
-  return {
-    type: SHOW_PROMO,
-  };
-}
-
-export function openAndroidStore() {
-  return {
-    type: OPEN_ANDROID_STORE,
+    type: OPEN_PLAY_STORE,
   };
 }
 

@@ -4,15 +4,11 @@
 
 import React from "react";
 
-import CurrentPromotionBanner from "../containers/connected-promote-banner";
 import styles from "./homepage.css";
 
 export default function Homepage() {
   return (
     <section className={styles.homepage}>
-      <div className={styles.promotion}>
-        <CurrentPromotionBanner />
-      </div>
     </section>
   );
 }

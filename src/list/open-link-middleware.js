@@ -41,7 +41,7 @@ export default (store) => (next) => (action) => {
   case actions.OPEN_APP_STORE:
     openWebsite(urls.appStore, false);
     break;
-  case actions.OPEN_ANDROID_STORE:
+  case actions.OPEN_PLAY_STORE:
     openWebsite(urls.androidStore, false);
     break;
   }

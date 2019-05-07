@@ -9,37 +9,31 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { PromoteDeviceBanner, PromoteFxABanner } from "../components/promote-banner";
-import { openSyncPrefs, hidePromo, openAppStore, openAndroidStore } from "../../actions";
+import { openSyncPrefs, openAppStore, openAndroidStore } from "../../actions";
 
-export function CurrentPromotionBanner({hasProfile, showPromo, onAppStoreClick, onAndroidStoreClick, onClickFxABanner, onClose}) {
-  if (!showPromo) { return null; }
+export function CurrentPromotionBanner({hasProfile, onAppStoreClick, onAndroidStoreClick, onClickFxABanner}) {
   if (hasProfile) {
-    return <PromoteDeviceBanner onAppStoreClick={() => console.log("onAppStoreClick") }
-                                onAndroidStoreClick={() => console.log("onAndroidStoreClick") }
-                                onClose={onClose} />;
+    return <PromoteDeviceBanner onAppStoreClick={onAppStoreClick}
+                                onAndroidStoreClick={onAndroidStoreClick} />;
   }
-  return <PromoteFxABanner onAction={onClickFxABanner} onClose={onClose} />;
+  return <PromoteFxABanner onAction={onClickFxABanner} />;
 }
 
 CurrentPromotionBanner.propTypes = {
   hasProfile: PropTypes.bool,
-  showPromo: PropTypes.bool,
   onAppStoreClick: PropTypes.func.isRequired,
   onAndroidStoreClick: PropTypes.func.isRequired,
   onClickFxABanner: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
 };
 
 export default connect(
   (state) => ({
     hasProfile: state.app.profileWrap.hasProfile,
-    showPromo: state.promo.showPromo,
   }),
   (dispatch) => ({
     // TODO: actually open the localized app store link on click.
     onAndroidStoreClick: () => dispatch(openAndroidStore()),
     onAppStoreClick: () => dispatch(openAppStore()),
     onClickFxABanner: () => dispatch(openSyncPrefs()),
-    onClose: () => dispatch(hidePromo()),
   }),
 )(CurrentPromotionBanner);

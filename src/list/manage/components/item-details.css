@@ -69,10 +69,3 @@ hr {
   float: left;
   margin-top: 50px;
 }
-
-.promotion {
-  flex: 1 1 auto;
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: end;
-}

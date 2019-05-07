@@ -14,7 +14,7 @@ import { classNames } from "../../../common";
 
 import styles from "./promote-banner.css";
 
-export function PromotionBanner({title, details, onClose, children}) {
+export function PromotionBanner({title, details, children}) {
   return (
     <Banner className={styles.promotion}>
       <p className={styles.content}>
@@ -23,10 +23,6 @@ export function PromotionBanner({title, details, onClose, children}) {
         <span className={styles.details}>{details}</span>
       </p>
       {children}
-      <Button
-          type="button" className={styles.close}
-          theme="normal" size="micro"
-          onClick={onClose}></Button>
     </Banner>
   );
 }
@@ -34,7 +30,6 @@ export function PromotionBanner({title, details, onClose, children}) {
 PromotionBanner.propTypes = {
   title: PropTypes.string.isRequired,
   details: PropTypes.string.isRequired,
-  onClose: PropTypes.func.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.shape({
       type: PropTypes.oneOf([Button]),
@@ -47,10 +42,10 @@ PromotionBanner.propTypes = {
   ]).isRequired,
 };
 
-export function LocalizedPromotionBanner({l10nId, onClose, children}) {
+export function LocalizedPromotionBanner({l10nId, children}) {
   return (
-    <Localized id={l10nId} attrs={{title: true, details: true, actionLabel: true}}>
-      <PromotionBanner title="tItLe" details="dEtAiLs" actionLabel="dO iT!" onClose={onClose}>
+    <Localized id={l10nId} attrs={{title: true, details: true}}>
+      <PromotionBanner title="tItLe" details="dEtAiLs">
         {children}
       </PromotionBanner>
     </Localized>
@@ -59,7 +54,6 @@ export function LocalizedPromotionBanner({l10nId, onClose, children}) {
 
 LocalizedPromotionBanner.propTypes = {
   l10nId: PropTypes.string.isRequired,
-  onClose: PropTypes.func.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.shape({
       type: PropTypes.oneOf([Button]),
@@ -72,38 +66,43 @@ LocalizedPromotionBanner.propTypes = {
   ]).isRequired,
 };
 
-export function PromoteDeviceBanner({onAppStoreClick, onAndroidStoreClick, onClose}) {
-  // TODO: localize the app store / google play buttons
+export function PromoteDeviceBanner({onAppStoreClick, onAndroidStoreClick}) {
   return (
-    <LocalizedPromotionBanner l10nId="banner-promote-device" onClose={onClose}>
-      <Button
-        type="button" className={classNames([styles.action, styles.android])}
-        theme="primary" size="wide"
-        onClick={onAndroidStoreClick}></Button>
-      <Button
-        type="button" className={classNames([styles.action, styles.ios])}
-        theme="primary" size="wide"
-        onClick={onAppStoreClick}></Button>
+    <LocalizedPromotionBanner l10nId="banner-promote-device">
+      <Localized id="banner-promote-device-google-play">
+        <Button
+          title="gET iT oN gOOGLe pLAy"
+          type="button" className={classNames([styles.action, styles.android])}
+          theme="primary" size="wide"
+          onClick={onAndroidStoreClick}></Button>
+      </Localized>
+      <Localized id="banner-promote-device-app-store">
+        <Button
+          title="dOWNLOAd oN tHe aPP sTORe"
+          type="button" className={classNames([styles.action, styles.ios])}
+          theme="primary" size="wide"
+          onClick={onAppStoreClick}></Button>
+      </Localized>
     </LocalizedPromotionBanner>
   );
 }
 PromoteDeviceBanner.propTypes = {
   onAppStoreClick: PropTypes.func.isRequired,
   onAndroidStoreClick: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
 };
 
-export function PromoteFxABanner({onAction, onClose}) {
+export function PromoteFxABanner({onAction}) {
   return (
-    <LocalizedPromotionBanner l10nId="banner-promote-fxa" onAction={onAction} onClose={onClose}>
-      <Button
-        type="button" className={styles.action}
-        theme="primary" size="wide"
-        onClick={() => onAction()}></Button>
+    <LocalizedPromotionBanner l10nId="banner-promote-fxa" onAction={onAction}>
+      <Localized id="banner-promote-fxa-action-label">
+        <Button
+          type="button" className={styles.action}
+          theme="primary" size="wide"
+          onClick={() => onAction()}>sIGn iN</Button>
+      </Localized>
     </LocalizedPromotionBanner>
   );
 }
 PromoteFxABanner.propTypes = {
   onAction: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
 };

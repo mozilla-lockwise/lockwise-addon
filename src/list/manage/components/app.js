@@ -12,6 +12,8 @@ import AppPanes from "../containers/app-panes";
 import AllItems from "../containers/all-items";
 import CurrentSelection from "../containers/current-selection";
 import ModalRoot from "../containers/modals";
+import CurrentPromotionBanner from "../containers/connected-promote-banner";
+
 
 import styles from "./app.css";
 
@@ -40,6 +42,7 @@ export default class App extends React.Component {
                 </section>
               ),
             }}</AppPanes>
+            <CurrentPromotionBanner />
             <ModalRoot/>
           </div>
         </DocumentTitle>
