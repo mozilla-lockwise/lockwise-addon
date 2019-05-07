@@ -1,22 +1,21 @@
 .app-header {
-  height: 55px;
-  flex-direction: row;
-  background-color: #ededf0;
+  display: flex;
+  height: 75px;
+  flex-flow: row nowrap;
+  align-items: center;
+  background-color: #ffffff;
   border-bottom: 1px solid #d7d7db;
-  position: relative;
 }
+
 .app-header-title {
-  line-height: 55px;
+  flex: 0 0 auto;
+  line-height: 75px;
   margin: 0;
-  padding: 0;
+  padding: 0 5em 0 3em;
   font-size: 22px;
   font-weight: 300;
   letter-spacing: -0.2px;
   text-align: center;
-  color: var(--charcoal-grey);
-  position: absolute;
-  top: 0;
-  left: 44%;
 }
 .app-header-title img {
   height: 1.45em;
@@ -25,17 +24,22 @@
 .app-header-title b {
   font-weight: 600;
 }
+
+.app-header-search {
+  display: flex;
+  flex-flow: row nowrap;
+  flex: 1 1 auto;
+}
+
 .app-header-profile-status {
-  position: absolute;
-  top: 0;
-  right: 0;
+  flex: 0 0 auto;
 }
 .app-header-profile-status button {
   padding: 0 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 55px;
+  height: 75px;
   border: none;
   background: transparent;
   cursor: pointer;

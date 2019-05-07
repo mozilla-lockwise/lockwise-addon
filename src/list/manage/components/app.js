@@ -25,12 +25,11 @@ export default class App extends React.Component {
         <DocumentTitle title="lOCKWISe eNTRIEs">
           <div className={styles.app}>
             <SyncNotification isPanel={false}/>
-            <AppHeader />
+            <AppHeader inputRef={(element) => {
+              this._filterField = element;
+            }}/>
               <section className={styles.appMain}>
-                <AllItems className={styles.aside}
-                          inputRef={(element) => {
-                            this._filterField = element;
-                          }}/>
+                <AllItems className={styles.aside} />
                 <article>
                   <CurrentSelection/>
                 </article>
