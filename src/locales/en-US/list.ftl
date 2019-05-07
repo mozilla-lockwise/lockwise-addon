@@ -82,8 +82,8 @@ item-summary-copy-password = Copy Password
 # Placeholder and accessibility label used in the field to filter existing
 # entries, i.e. search in the product database
 item-filter =
-  .placeholder = Search { -product-short-name }
-  .aria-label = Search { -product-short-name }
+  .placeholder = Search Logins
+  .aria-label = Search Logins
 
 add-item-button =
   .title = New login

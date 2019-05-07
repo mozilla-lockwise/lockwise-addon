@@ -2,12 +2,22 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { expect } from "chai";
+import chai, { expect } from "chai";
+import chaiEnzyme from "chai-enzyme";
 import sinon from "sinon";
 import React from "react";
 import mountWithL10n from "test/unit/mocks/l10n";
+import configureStore from "redux-mock-store";
+import { initialState, filledState } from "../mock-redux-state";
+import "test/unit/mocks/browser";
+
+chai.use(chaiEnzyme());
+
+const middlewares = [];
+const mockStore = configureStore(middlewares);
 
 import { AppHeader } from "src/list/manage/containers/app-header";
+import ItemFilter from "src/list/containers/item-filter";
 
 describe("list > manage > containers > <AppHeader/>", () => {
   let mockHandlers, mockDocument, listeners;
@@ -55,11 +65,16 @@ describe("list > manage > containers > <AppHeader/>", () => {
     beforeEach(() => {
       mockProps = {
         ...mockHandlers,
+        store: mockStore(initialState),
         document: mockDocument,
         hasProfile: false,
         profile: null,
       };
       subject = makeSubject(mockProps);
+    });
+
+    it("contains search bar", () => {
+      expect(subject).to.have.descendants(ItemFilter);
     });
 
     it("displays an empty avatar", () => {
@@ -108,6 +123,7 @@ describe("list > manage > containers > <AppHeader/>", () => {
     beforeEach(() => {
       mockProps = {
         ...mockHandlers,
+        store: mockStore(filledState),
         document: mockDocument,
         selectedTab: "logins",
         hasProfile: true,
