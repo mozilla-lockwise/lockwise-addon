@@ -5,8 +5,8 @@
   "version": "{{version}}",
   "description": "{{description}}",
   "icons": {
-    "48": "icons/icon-lockbox.svg",
-    "96": "icons/icon-lockbox.svg"
+    "48": "icons/icon-lockwise.svg",
+    "96": "icons/icon-lockwise.svg"
   },
 
 
@@ -25,7 +25,7 @@
 
   "browser_action": {
     "default_icon": {
-      "32": "icons/icon-lockbox.svg"
+      "32": "icons/icon-lockwise.svg"
     },
     "browser_style": false
   },
