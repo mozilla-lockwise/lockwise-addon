@@ -12,7 +12,6 @@ import thunk from "redux-thunk";
 import { initialState, filledState } from "../mock-redux-state";
 import mountWithL10n from "test/unit/mocks/l10n";
 import ItemSummary from "src/list/components/item-summary";
-import ItemFilter from "src/list/containers/item-filter";
 import ItemListPanel from
        "src/list/manage/components/item-list-panel";
 import ListCounter from "src/list/manage/components/list-counter";
@@ -37,7 +36,6 @@ describe("list > manage > components > <ItemListPanel/>", () => {
     });
 
     it("render panel", () => {
-      expect(wrapper).to.have.descendants(ItemFilter);
       expect(wrapper).to.have.descendants(ListCounter);
       expect(wrapper).to.have.descendants(ListSort);
       expect(wrapper.find(ItemSummary)).to.have.length(0);
@@ -61,7 +59,6 @@ describe("list > manage > components > <ItemListPanel/>", () => {
     });
 
     it("render panel", () => {
-      expect(wrapper).to.have.descendants(ItemFilter);
       expect(wrapper).to.have.descendants(ListCounter);
       expect(wrapper).to.have.descendants(ListSort);
       expect(wrapper.find(ItemSummary)).to.have.length(3);

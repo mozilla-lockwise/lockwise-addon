@@ -13,14 +13,11 @@ import { startNewItem } from "../../actions";
 import styles from "./add-item.css";
 
 function AddItem({disabled, onAddItem}) {
-  const imgSrc = browser.extension.getURL("/icons/add-icon.svg");
   return (
-    <Localized id="add-item-button" attrs={{
-      "title": true,
-    }}>
-      <Button theme="primary" title="nEW eNTRy" id="addItemButton" className={styles.addItem} disabled={disabled}
+    <Localized id="add-item-button">
+      <Button theme="normal" size="wide" id="addItemButton" className={styles.addItem} disabled={disabled}
               onClick={onAddItem}>
-        <img src={imgSrc} />
+        nEw lOGIn
       </Button>
     </Localized>
   );
