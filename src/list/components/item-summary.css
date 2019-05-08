@@ -58,12 +58,12 @@ li[data-selected] .info {
 
 .title {
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   color: #0c0c0d;
 }
 
 .subtitle {
   font-size: 13px;
-  font-weight: 400;
+  font-weight: 300;
   color: #737373;
 }
