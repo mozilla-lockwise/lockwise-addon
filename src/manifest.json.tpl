@@ -25,7 +25,7 @@
 
   "browser_action": {
     "default_icon": {
-      "32": "icons/icon-lockwise.svg"
+      "32": "icons/icon-toolbar.svg"
     },
     "browser_style": false
   },
