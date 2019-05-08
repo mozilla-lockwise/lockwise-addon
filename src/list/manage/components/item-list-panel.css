@@ -23,7 +23,7 @@
 }
 
 .second-row {
-  font-weight: normal;
+  font-weight: 300;
   display: flex;
   justify-content: space-between;
   margin-inline-start: 0;
