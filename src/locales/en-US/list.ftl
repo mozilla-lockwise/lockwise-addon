@@ -9,20 +9,25 @@
 ## - Declined to adapt to grammatical case.
 ## - Transliterated.
 ## - Translated.
+
 -firefox-brand-name = Firefox
 -product-short-name = Lockwise
 -product-full-name = Firefox Lockwise
+
 # “Account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -fxaccount-brand-name = Firefox Account
 
-# All the following items are localizable.
+## All the following messages are localizable.
+
+-sync-brand-short-name = Sync
+
 header-logins-button = Logins
 header-app-title =
   .title = { -product-full-name }
 
 profile-menu-account = Account
-profile-menu-sign-in = Sign in to Sync
+profile-menu-sign-in = Sign in to { -sync-brand-short-name }
 profile-menu-connect = Connect a Device
 profile-menu-faq = FAQ
 profile-menu-feedback = Provide Feedback
@@ -33,7 +38,7 @@ document =
 error-notification-sync = Unable to sync logins.
 error-notification-sync-button = Reconnect
 error-notification-duplicate =
-  A login for {$title} with that username already exists.
+  A login for { $title } with that username already exists.
 error-notification-duplicate-link = <a>Go to existing login?</a>
 
 all-items-get-started =
@@ -74,11 +79,11 @@ item-summary-copy-username = Copy Username
 item-summary-copy-password = Copy Password
   .title = Copy the password to the clipboard
 
+# Placeholder and accessibility label used in the field to filter existing
+# entries, i.e. search in the product database
 item-filter =
   .placeholder = Search { -product-short-name }
   .aria-label = Search { -product-short-name }
-
-## manage
 
 add-item-button =
   .title = New login
@@ -96,7 +101,7 @@ account-summary-signout = Sign Out
 
 intro-page-header-title = { -product-full-name } for Desktop
 intro-page-header-subtitle =
-  Welcome to better login management. Our desktop addon brings many of
+  Welcome to better login management. Our desktop add-on brings many of
   the improvements seen in our mobile apps to your computer, with
   greater control of your logins.
 
@@ -134,13 +139,14 @@ item-details-save-new = Create Login
 item-details-save-existing = Save Changes
 item-details-cancel = Cancel
 
-item-details-created = Created: {$date}
-item-details-modified = Last Modified: {$date}
-item-details-last-used = Last Used: {$date}
+item-details-created = Created: { $date }
+item-details-modified = Last Modified: { $date }
+item-details-last-used = Last Used: { $date }
 
-# count is the number of items in the list
+# Variables:
+#   - $count (number): number of items in the list
 list-count = { $count ->
-  [one]   {$count} login
+  [one] { $count } login
  *[other] { $count } logins
 }
 
@@ -150,7 +156,7 @@ sort-by-last-used = Last Used
 sort-by-last-changed = Last Changed
 
 
-## popup
+## String used in pop-up
 
 manage-logins-button = Open { -product-short-name }
 
@@ -158,9 +164,10 @@ list-detail-button = Open Website
 
 default-banner = Recently used logins.
 
-# count is the number of items matching the filter
+# Variables:
+#   - $count (number): number of items in the list
 filtered-banner = { $count ->
-  [one]   {$count} login found
+  [one] { $count } login found
  *[other] { $count } logins found
 }
 
@@ -174,7 +181,7 @@ item-details-panel-title = Login Details
 
 navigate-panel-backwards = Go back
 
-## dialogs
+## Strings used in dialog
 
 modal-cancel-editing = Unsaved changes exist. Discard them?
   .confirmLabel = Discard Changes
@@ -191,13 +198,12 @@ simply-sign-in-other-device = Simply sign in to your { -fxaccount-brand-name } o
 download-mobile = Download the mobile app
 download-ios-android = { -product-full-name } is available on both iOS and Android. <learnmore>Click here</learnmore> to learn more and to send a link to your phone to download the app.
 before-access = Before you can access your logins on another device, you will need to connect a { -fxaccount-brand-name }.
-connect-a-firefox-account = Connect a { -product-full-name }
-connect-a-firefox-account-complete = Connect a { -product-full-name } (complete)
+connect-a-firefox-account = Connect a { -fxaccount-brand-name }
+# Displayed after the connection has completed
+connect-a-firefox-account-complete = Connect a { -fxaccount-brand-name } (complete)
 sync-requires-account = To sync your logins to another device, you will need to <signin>sign in or create a { -product-full-name }</signin>.
-# TODO this string seems funny. should Sync be capitalized? should Logins be in quotes? is Sync localized?
-ensure-logins-checked = Ensure the “Logins” checkbox is selected in sync preferences
-# TODO should Sync be capitalized? is Sync localized?
-setting-to-allow-sync = In order to allow your logins to be synced to other devices, this setting must be checked. <openprefs>Open sync preferences</openprefs></p>
+ensure-logins-checked = Ensure the “Logins” checkbox is selected in { -sync-brand-short-name } preferences
+setting-to-allow-sync = In order to allow your logins to be synced to other devices, this setting must be checked. <openprefs>Open { -sync-brand-short-name } preferences</openprefs></p>
 
 banner-promote-device =
   .title = { -product-full-name }
