@@ -134,14 +134,14 @@ module.exports = {
       filename: "list/manage.html",
       chunks: ["list/manage"],
       inject: false,
-      icon: "/icons/icon-lockbox.svg",
+      icon: "/icons/icon-lockwise.svg",
     }),
     new HTMLWebpackPlugin({
       template: "template.ejs",
       filename: "list/popup.html",
       chunks: ["list/popup"],
       inject: false,
-      icon: "/icons/icon-lockbox.svg",
+      icon: "/icons/icon-lockwise.svg",
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV,
