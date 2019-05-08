@@ -1,9 +1,5 @@
 basepath = "."
 
-locales = [
-  "fr-FR",
-]
-
 [[paths]]
   reference = "src/locales/en-US/*.ftl"
   l10n = "src/locales/{locale}/*.ftl"
