@@ -17,7 +17,7 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
-    background: url(/icons/icon-lockbox.svg) no-repeat;
+    background: url(/icons/icon-lockwise.svg) no-repeat;
     min-height: 40px;
     max-width: 28rem;
     padding-inline-start: 52px;

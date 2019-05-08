@@ -27,8 +27,5 @@ export default async function updateBrowserAction() {
   // XXXX: be more efficient with this?
   uninstallPopup();
 
-  const iconpath = "icons/icon-lockbox.svg";
-  browser.browserAction.setIcon({ path: iconpath });
-
   return installEntriesAction();
 }
