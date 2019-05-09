@@ -37,8 +37,8 @@ export default function ItemSummary({className, id, title, username, panel}) {
         <Localized id={usernameId}>
           <div data-name="subtitle" className={styles.subtitle}>{username || "nO uSERNAMe"}</div>
         </Localized>
-        {!isNew &&
-           <span className={classNames([styles.info, panel ? styles.panel : ""])}></span>
+        {!isNew && panel &&
+           <span className={classNames([styles.info, styles.panel])}></span>
         }
       </div>
     </div>

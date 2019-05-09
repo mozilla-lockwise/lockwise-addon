@@ -9,8 +9,9 @@
 
 .panel-header {
   composes: panel-header from "../../../widgets/panel.css";
-  background: #fff;
+  background: #f9f9fa;
   height: auto;
+  padding: 0;
 }
 
 .first-row, .second-row {
@@ -23,14 +24,14 @@
 }
 
 .second-row {
-  font-weight: normal;
+  font-weight: 300;
   display: flex;
   justify-content: space-between;
   margin-inline-start: 0;
   line-height: 32px;
   height: 32px;
-  margin-bottom: -12px;
-  margin-top: 8px;
+  margin: 0;
+  padding: 0 10px;
 }
 
 .item-filter {
@@ -46,6 +47,12 @@
 .list-counter {
   flex-grow: 0;
   flex-shrink: 0;
+  font-size: 12px;
+  color: #737373;
+}
+
+.empty {
+  border-top: 1px solid #d7d7db;
 }
 
 .panel-body ul { 

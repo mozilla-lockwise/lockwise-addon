@@ -47,9 +47,10 @@ body > main,
 
 .aside {
   grid-column: 1;
-  min-width: 250px;
+  width: 280px;
   min-height: 0;
   display: flex;
+  flex-grow: 0;
   flex-direction: column;
   border-inline-end: 1px solid #d7d7db;
 }
