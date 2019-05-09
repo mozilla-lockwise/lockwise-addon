@@ -173,8 +173,8 @@ input::placeholder {
 .filter::before {
   content: "";
   display: block;
-  background-color: rgba(12, 12, 13, 0.4);
-  mask-image: url(/icons/search.svg);
+  background-image: url(/icons/search.svg);
+  background-repeat: no-repeat;
   background-size: 16px 16px;
   height: 16px;
   width: 16px;
