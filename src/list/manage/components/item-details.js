@@ -7,7 +7,6 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import Button from "../../../widgets/button";
-import ConnectedPromotionBanner from "../containers/connected-promote-banner";
 import Toolbar from "../../../widgets/toolbar";
 import { ItemFields } from "../../components/item-fields";
 
@@ -55,10 +54,6 @@ export default function ItemDetails({fields, onCopy, onEdit, onDelete, onReveal}
         <Localized id="item-details-last-used" $date={lastUsed}>
           <p>Last Used: {lastUsed}</p>
         </Localized>
-      </div>
-
-      <div className={styles.promotion}>
-        <ConnectedPromotionBanner />
       </div>
     </div>
   );
