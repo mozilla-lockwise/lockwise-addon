@@ -211,7 +211,7 @@ banner-promote-device =
 
 banner-promote-device-app-store =
   .title = Download on the App Store
-banner-promote-device-google-play =
+banner-promote-device-play-store =
   .title = Get it on Google Play
 
 banner-promote-fxa =

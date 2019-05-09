@@ -69,14 +69,14 @@ LocalizedPromotionBanner.propTypes = {
 export function PromoteDeviceBanner({openAppStore, openPlayStore}) {
   return (
     <LocalizedPromotionBanner l10nId="banner-promote-device">
-      <Localized id="banner-promote-device-google-play">
+      <Localized id="banner-promote-device-play-store" attrs={{title: true}}>
         <Button
           title="gET iT oN gOOGLe pLAy"
           type="button" className={classNames([styles.action, styles.android])}
           theme="primary" size="wide"
           onClick={openPlayStore}></Button>
       </Localized>
-      <Localized id="banner-promote-device-app-store">
+      <Localized id="banner-promote-device-app-store" attrs={{title: true}}>
         <Button
           title="dOWNLOAd oN tHe aPP sTORe"
           type="button" className={classNames([styles.action, styles.ios])}
