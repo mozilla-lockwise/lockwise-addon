@@ -22,7 +22,7 @@ export default function ItemListPanel({className, inputRef, totalItemCount,
   if (!hasItems) {
     if (!hasAnything) {
       list = (
-        <ItemListPlaceholder>
+        <ItemListPlaceholder className={styles.empty}>
           <Localized id="all-items-get-started-title">
             <h2>gEt sTARTEd</h2>
           </Localized>
