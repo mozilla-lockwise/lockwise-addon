@@ -36,12 +36,12 @@
 
 /* TODO: include app store and google play icons for other languages */
 .action.ios {
-  background: url(/icons/icon-app-store-en.svg) no-repeat center center;
+  background: url(/icons/localized/en/icon-app-store.svg) no-repeat center center;
   height: 40px;
 }
 
 .action.android {
-  background: url(/icons/icon-gps-en.png) no-repeat center center/150px;
+  background: url(/icons/localized/en/icon-play-store.png) no-repeat center center/150px;
   height: 40px;
 }
 
