@@ -7,32 +7,51 @@
  */
 
 .promotion {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: baseline;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  min-width: 500px;
 }
 .promotion .content {
-    flex: 1 1 auto;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-between;
-    background: url(/icons/icon-lockwise.svg) no-repeat;
-    min-height: 40px;
-    max-width: 28rem;
-    padding-inline-start: 52px;
+  flex: 0 1 auto;
+  flex-flow: row;
+  text-align: center;
+  font-size: 15px;
+  margin: 0;
+  margin-right: 15px;
+}
+.promotion .content .title,
+.promotion .content .details {
+  margin: 0 5px;
 }
 
-.promotion .content .title {
-    padding: 0px;
-    margin: 0px;
-    font-size: 17px;
-    font-weight: bold;
+.promotion .content strong {
+  font-weight: 500;
 }
-.promotion .content .details {
-    padding: 0px;
-    margin: 0px;
-}
+
 .promotion .action {
-    margin-inline-start: 20px
+  margin: 0;
+}
+
+/* TODO: include app store and google play icons for other languages */
+.action.ios {
+  background: url(/icons/localized/en/icon-app-store.svg) no-repeat center center;
+  height: 40px;
+}
+
+.action.android {
+  background: url(/icons/localized/en/icon-play-store.png) no-repeat center center/150px;
+  height: 40px;
+}
+
+.promotion .action.ios:hover,
+.promotion .action.android:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+.promotion .action.ios:focus,
+.promotion .action.android:focus {
+  box-shadow: none;
 }

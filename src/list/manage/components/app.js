@@ -11,6 +11,8 @@ import AppHeader from "../containers/app-header";
 import AllItems from "../containers/all-items";
 import CurrentSelection from "../containers/current-selection";
 import ModalRoot from "../containers/modals";
+import CurrentPromotionBanner from "../containers/connected-promote-banner";
+
 
 import styles from "./app.css";
 
@@ -28,12 +30,13 @@ export default class App extends React.Component {
             <AppHeader inputRef={(element) => {
               this._filterField = element;
             }}/>
-              <section className={styles.appMain}>
-                <AllItems className={styles.aside} />
-                <article>
-                  <CurrentSelection/>
-                </article>
-              </section>
+            <section className={styles.appMain}>
+              <AllItems className={styles.aside} />
+              <article>
+                <CurrentSelection/>
+              </article>
+            </section>
+            <CurrentPromotionBanner />
             <ModalRoot/>
           </div>
         </DocumentTitle>
