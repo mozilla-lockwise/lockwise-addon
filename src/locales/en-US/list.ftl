@@ -209,12 +209,10 @@ banner-promote-device =
   .title = Take your passwords everywhere
   .details = download our app for iOS or Android:
 
-# TODO is there an official localization we need to use for the alt text in other locales?
 banner-promote-device-app-store =
   .title = Download on the App Store
-# TODO is there an official localization we need to use for the alt text in other locales?
 banner-promote-device-google-play =
-  .alt = Get it on Google Play
+  .title = Get it on Google Play
 
 banner-promote-fxa =
   .title = Take your passwords everywhere

@@ -11,8 +11,6 @@ const urls = {
   feedback: "https://qsurvey.mozilla.com/s3/Lockbox-Input?ver=" + version,
   faq: "https://lockwise.firefox.com/faq.html",
   homepage: "https://lockwise.firefox.com",
-  // TODO: figure out how to track app store links clicked from within the extension
-  // TODO: also, figure out the app store link, based on the current locale
   appStore: "https://app.adjust.com/eu4xdqg?redirect=https://itunes.apple.com/us/app/firefox-lockbox/id1314000270?mt=8",
   androidStore: "https://app.adjust.com/eu4xdqg?redirect=https://play.google.com/store/apps/details?id=mozilla.lockbox",
 };

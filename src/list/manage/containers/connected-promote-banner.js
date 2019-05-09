@@ -31,7 +31,6 @@ export default connect(
     hasProfile: state.app.profileWrap.hasProfile,
   }),
   (dispatch) => ({
-    // TODO: actually open the localized app store link on click.
     onAndroidStoreClick: () => dispatch(openAndroidStore()),
     onAppStoreClick: () => dispatch(openAppStore()),
     onClickFxABanner: () => dispatch(openSyncPrefs()),
