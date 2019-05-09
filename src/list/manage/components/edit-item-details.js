@@ -74,7 +74,7 @@ export default class EditItemDetails extends React.Component {
               e.preventDefault();
               onSave(saveState);
             }}>
-        <header>
+        <header className="detail-title">
         {isDuplicate && <DuplicateNotification title={(new URL(this.state.origin).hostname)}/>}
           {newItem ? (
             <Localized id={`item-details-heading-new`}>
@@ -97,7 +97,7 @@ export default class EditItemDetails extends React.Component {
         <EditItemFields fields={this.state}
                         onReveal={onReveal}
                         onChange={(e) => this.handleChange(e)}/>
-        <Toolbar className={styles.buttons}>
+        <Toolbar className={styles.actions}>
           <Localized id={`item-details-save-${newItem ? "new" : "existing"}`}>
             <Button type="submit" theme="primary" size="wide">sAVe</Button>
           </Localized>
