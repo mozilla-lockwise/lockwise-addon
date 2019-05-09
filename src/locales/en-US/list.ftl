@@ -85,8 +85,6 @@ item-filter =
   .placeholder = Search Logins
   .aria-label = Search Logins
 
-## manage
-
 add-item-button = New Login
 
 send-feedback-button = Provide Feedback
