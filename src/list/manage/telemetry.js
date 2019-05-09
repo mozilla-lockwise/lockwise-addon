@@ -58,6 +58,18 @@ export default (store) => (next) => (action) => {
         object: "getMobile",
       });
       break;
+    case actions.OPEN_APP_STORE:
+      recordEvent({
+        method: "click",
+        object: "openAppStore",
+      });
+      break;
+    case actions.OPEN_PLAY_STORE:
+      recordEvent({
+        method: "click",
+        object: "openPlayStore",
+      });
+      break;
     case actions.OPEN_FEEDBACK:
       recordEvent({
         method: "click",

@@ -10,20 +10,19 @@ import React from "react";
 
 import Banner from "../../../widgets/banner";
 import Button from "../../../widgets/button";
+import { classNames } from "../../../common";
 
 import styles from "./promote-banner.css";
 
-export function PromotionBanner({title, details, actionLabel, onAction}) {
+export function PromotionBanner({title, details, children}) {
   return (
     <Banner className={styles.promotion}>
-      <div className={styles.content}>
-        <h1 className={styles.title}>{title}</h1>
+      <p className={styles.content}>
+        <strong className={styles.title}>{title}</strong>
+        &ndash;
         <span className={styles.details}>{details}</span>
-      </div>
-      <Button
-        type="button" className={styles.action}
-        theme="primary" size="wide"
-        onClick={() => onAction()}>{actionLabel}</Button>
+      </p>
+      {children}
     </Banner>
   );
 }
@@ -31,31 +30,78 @@ export function PromotionBanner({title, details, actionLabel, onAction}) {
 PromotionBanner.propTypes = {
   title: PropTypes.string.isRequired,
   details: PropTypes.string.isRequired,
-  actionLabel: PropTypes.string.isRequired,
-  onAction: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.shape({
+      type: PropTypes.oneOf([Button]),
+    }),
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        type: PropTypes.oneOf([Button]),
+      }),
+    ),
+  ]).isRequired,
 };
 
-export function LocalizedPromotionBanner({l10nId, onAction}) {
+export function LocalizedPromotionBanner({l10nId, children}) {
   return (
-    <Localized id={l10nId} attrs={{title: true, details: true, actionLabel: true}}>
-      <PromotionBanner title="tItLe" details="dEtAiLs" actionLabel="dO iT!" onAction={onAction} />
+    <Localized id={l10nId} attrs={{title: true, details: true}}>
+      <PromotionBanner title="tItLe" details="dEtAiLs">
+        {children}
+      </PromotionBanner>
     </Localized>
   );
 }
 
 LocalizedPromotionBanner.propTypes = {
   l10nId: PropTypes.string.isRequired,
-  onAction: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.shape({
+      type: PropTypes.oneOf([Button]),
+    }),
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        type: PropTypes.oneOf([Button]),
+      }),
+    ),
+  ]).isRequired,
 };
 
-export function PromoteDeviceBanner({onAction}) {
-  return (<LocalizedPromotionBanner l10nId="banner-promote-device" onAction={onAction} />);
+export function PromoteDeviceBanner({openAppStore, openPlayStore}) {
+  return (
+    <LocalizedPromotionBanner l10nId="banner-promote-device">
+      <Localized id="banner-promote-device-play-store" attrs={{title: true}}>
+        <Button
+          title="gET iT oN gOOGLe pLAy"
+          type="button" className={classNames([styles.action, styles.android])}
+          theme="primary" size="wide"
+          onClick={openPlayStore}></Button>
+      </Localized>
+      <Localized id="banner-promote-device-app-store" attrs={{title: true}}>
+        <Button
+          title="dOWNLOAd oN tHe aPP sTORe"
+          type="button" className={classNames([styles.action, styles.ios])}
+          theme="primary" size="wide"
+          onClick={openAppStore}></Button>
+      </Localized>
+    </LocalizedPromotionBanner>
+  );
 }
 PromoteDeviceBanner.propTypes = {
-  onAction: PropTypes.func.isRequired,
+  openAppStore: PropTypes.func.isRequired,
+  openPlayStore: PropTypes.func.isRequired,
 };
+
 export function PromoteFxABanner({onAction}) {
-  return (<LocalizedPromotionBanner l10nId="banner-promote-fxa" onAction={onAction} />);
+  return (
+    <LocalizedPromotionBanner l10nId="banner-promote-fxa" onAction={onAction}>
+      <Localized id="banner-promote-fxa-action-label">
+        <Button
+          type="button" className={styles.action}
+          theme="primary" size="wide"
+          onClick={() => onAction()}>sIGn iN</Button>
+      </Localized>
+    </LocalizedPromotionBanner>
+  );
 }
 PromoteFxABanner.propTypes = {
   onAction: PropTypes.func.isRequired,

@@ -9,18 +9,20 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { PromoteDeviceBanner, PromoteFxABanner } from "../components/promote-banner";
-import { openHomepage, openSyncPrefs } from "../../actions";
+import { openSyncPrefs, openAppStore, openPlayStore } from "../../actions";
 
-export function CurrentPromotionBanner({hasProfile, onClickDeviceBanner, onClickFxABanner}) {
+export function CurrentPromotionBanner({hasProfile, openAppStore, openPlayStore, onClickFxABanner}) {
   if (hasProfile) {
-    return <PromoteDeviceBanner onAction={onClickDeviceBanner} />;
+    return <PromoteDeviceBanner openAppStore={openAppStore}
+                                openPlayStore={openPlayStore} />;
   }
   return <PromoteFxABanner onAction={onClickFxABanner} />;
 }
 
 CurrentPromotionBanner.propTypes = {
   hasProfile: PropTypes.bool,
-  onClickDeviceBanner: PropTypes.func.isRequired,
+  openAppStore: PropTypes.func.isRequired,
+  openPlayStore: PropTypes.func.isRequired,
   onClickFxABanner: PropTypes.func.isRequired,
 };
 
@@ -29,7 +31,8 @@ export default connect(
     hasProfile: state.app.profileWrap.hasProfile,
   }),
   (dispatch) => ({
-    onClickDeviceBanner: () => dispatch(openHomepage()),
+    openPlayStore: () => dispatch(openPlayStore()),
+    openAppStore: () => dispatch(openAppStore()),
     onClickFxABanner: () => dispatch(openSyncPrefs()),
   }),
 )(CurrentPromotionBanner);

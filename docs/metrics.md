@@ -131,7 +131,7 @@ All events are currently implemented under the **category: lockboxaddon**. The `
 
 1. `startup` fires when the webextension is loaded. **objects**: `webextension`. Note that this event fires whenever the browser is started, so is not indicative of direct user interaction with Lockbox. **value** is null.
 
-2. `click` fires when someone clicks on one of the UI elements listed **objects**: `toolbar`, `getMobile`, `faq`, `accountSettings`, `giveFeedback`, `settingsMenu`, `signinSync`.  **value** is null. `sortMenu` has **value** of `lastUsed`, `lastChanged`, or `name`.
+2. `click` fires when someone clicks on one of the UI elements listed **objects**: `toolbar`, `getMobile`, `faq`, `accountSettings`, `giveFeedback`, `settingsMenu`, `signinSync`, `openPlayStore`, `openAppStore`.  **value** is null. `sortMenu` has **value** of `lastUsed`, `lastChanged`, or `name`.
 
 3. `show` events fire when various UI elements are rendered shown to the user. **objects**: `itemListManager`, `itemListDoorhanger`, `itemDetailDoorhanger` `itemDetailManager`, `newItem`, `itemEdit`, `deleteConfirm`, `connectAnotherDevice` (referring to the dialog displayed after a user clicks on the button to learn about the mobile apps) **value** should be a boolean for `itemList*` events indicating whether any logins are in the login list (e.g. `False` if the list is empty).
 
