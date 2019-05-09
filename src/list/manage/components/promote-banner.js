@@ -66,7 +66,7 @@ LocalizedPromotionBanner.propTypes = {
   ]).isRequired,
 };
 
-export function PromoteDeviceBanner({onAppStoreClick, onAndroidStoreClick}) {
+export function PromoteDeviceBanner({openAppStore, openPlayStore}) {
   return (
     <LocalizedPromotionBanner l10nId="banner-promote-device">
       <Localized id="banner-promote-device-google-play">
@@ -74,21 +74,21 @@ export function PromoteDeviceBanner({onAppStoreClick, onAndroidStoreClick}) {
           title="gET iT oN gOOGLe pLAy"
           type="button" className={classNames([styles.action, styles.android])}
           theme="primary" size="wide"
-          onClick={onAndroidStoreClick}></Button>
+          onClick={openPlayStore}></Button>
       </Localized>
       <Localized id="banner-promote-device-app-store">
         <Button
           title="dOWNLOAd oN tHe aPP sTORe"
           type="button" className={classNames([styles.action, styles.ios])}
           theme="primary" size="wide"
-          onClick={onAppStoreClick}></Button>
+          onClick={openAppStore}></Button>
       </Localized>
     </LocalizedPromotionBanner>
   );
 }
 PromoteDeviceBanner.propTypes = {
-  onAppStoreClick: PropTypes.func.isRequired,
-  onAndroidStoreClick: PropTypes.func.isRequired,
+  openAppStore: PropTypes.func.isRequired,
+  openPlayStore: PropTypes.func.isRequired,
 };
 
 export function PromoteFxABanner({onAction}) {

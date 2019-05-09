@@ -9,20 +9,20 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { PromoteDeviceBanner, PromoteFxABanner } from "../components/promote-banner";
-import { openSyncPrefs, openAppStore, openAndroidStore } from "../../actions";
+import { openSyncPrefs, openAppStore, openPlayStore } from "../../actions";
 
-export function CurrentPromotionBanner({hasProfile, onAppStoreClick, onAndroidStoreClick, onClickFxABanner}) {
+export function CurrentPromotionBanner({hasProfile, openAppStore, openPlayStore, onClickFxABanner}) {
   if (hasProfile) {
-    return <PromoteDeviceBanner onAppStoreClick={onAppStoreClick}
-                                onAndroidStoreClick={onAndroidStoreClick} />;
+    return <PromoteDeviceBanner openAppStore={openAppStore}
+                                openPlayStore={openPlayStore} />;
   }
   return <PromoteFxABanner onAction={onClickFxABanner} />;
 }
 
 CurrentPromotionBanner.propTypes = {
   hasProfile: PropTypes.bool,
-  onAppStoreClick: PropTypes.func.isRequired,
-  onAndroidStoreClick: PropTypes.func.isRequired,
+  openAppStore: PropTypes.func.isRequired,
+  openPlayStore: PropTypes.func.isRequired,
   onClickFxABanner: PropTypes.func.isRequired,
 };
 
@@ -31,8 +31,8 @@ export default connect(
     hasProfile: state.app.profileWrap.hasProfile,
   }),
   (dispatch) => ({
-    onAndroidStoreClick: () => dispatch(openAndroidStore()),
-    onAppStoreClick: () => dispatch(openAppStore()),
+    openPlayStore: () => dispatch(openPlayStore()),
+    openAppStore: () => dispatch(openAppStore()),
     onClickFxABanner: () => dispatch(openSyncPrefs()),
   }),
 )(CurrentPromotionBanner);
