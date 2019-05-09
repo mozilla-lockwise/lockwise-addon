@@ -26,7 +26,7 @@
   display: inline;
   font-size: 33px;
   line-height: 1.5;
-  font-weight: 200;
+  font-weight: 300;
 }
 .item-details header menu {
   flex: 0 1 auto;
@@ -36,8 +36,6 @@
   clear: both;
 }
 
-.item-details .buttons {
-}
 .item-details .actions {
   padding: 40px 0px 0px;
 }
