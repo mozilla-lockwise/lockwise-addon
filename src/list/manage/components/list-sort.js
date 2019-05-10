@@ -8,6 +8,8 @@ import React from "react";
 
 import styles from "./list-sort.css";
 
+var selectStyle = {};
+
 export default class ListSort extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +20,9 @@ export default class ListSort extends React.Component {
   }
 
   handleChange(evt) {
+    // update select width
+    selectStyle = {width: 20 + (evt.target.options[evt.target.selectedIndex].text.length * 8) + "px"};
+
     const value = evt.target.value;
     this.setState({ value });
     this.props.onChange(value);
@@ -32,7 +37,7 @@ export default class ListSort extends React.Component {
                  htmlFor="sort-options">sORT bY:</label>
         </Localized>
         <select id="listSortSelect" value={this.state.value}
-                className={styles.select}
+                className={styles.select} style={selectStyle}
                 onChange={this.handleChange}
                 disabled={disabled}>
           <Localized id="sort-by-name">
