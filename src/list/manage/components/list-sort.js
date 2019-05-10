@@ -9,6 +9,10 @@ import React from "react";
 import styles from "./list-sort.css";
 
 function calcSelectStyle(el) {
+  if (!el.options) {
+    return "65px";
+  }
+
   return 20 + (el.options[el.selectedIndex].text.length * 8) + "px";
 }
 
