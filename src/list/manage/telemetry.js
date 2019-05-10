@@ -86,11 +86,11 @@ export default (store) => (next) => (action) => {
       helpers.websiteOpened(action, "itemDetailManager");
       break;
     case actions.REMOVE_ITEM_COMPLETED:
-      if (action.interactive && action.item) {
+      if (action.interactive && action.id) {
         recordEvent({
           method: "itemDelete",
           object: "manager",
-          extra: { itemid: action.item.id },
+          extra: { itemid: action.id },
         });
       }
       break;

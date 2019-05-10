@@ -240,7 +240,7 @@ describe("list > manage > telemetryLogger middleware", () => {
     telemetryLogger(store)(next)({
       type: actions.REMOVE_ITEM_COMPLETED,
       interactive: true,
-      item,
+      id: item.id,
     });
     expect(listener).to.have.been.calledWith({
       type: "telemetry_event",

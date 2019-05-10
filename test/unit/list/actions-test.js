@@ -137,6 +137,7 @@ describe("list > actions", () => {
         id },
       { type: actions.REMOVE_ITEM_COMPLETED,
         actionId: dispatched[0].actionId,
+        interactive: true,
         id },
     ]);
   });
@@ -274,6 +275,7 @@ describe("list > actions", () => {
     expect(store.getActions()).to.deep.equal([
       { type: actions.REMOVE_ITEM_COMPLETED,
         actionId: undefined,
+        interactive: false,
         id },
     ]);
   });
