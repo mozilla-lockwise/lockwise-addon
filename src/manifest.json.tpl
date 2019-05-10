@@ -15,7 +15,8 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "{{id}}",
-      "strict_min_version": "67.0"
+      "strict_min_version": "67.0",
+      "update_url": "https://lockwise.firefox.com/addon/updates.json"
     }
   },
 
