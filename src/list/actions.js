@@ -205,12 +205,11 @@ export function removeItem(id) {
   return async (dispatch) => {
     const actionId = nextActionId++;
     dispatch(removeItemStarting(actionId, id));
-
     await browser.runtime.sendMessage({
       type: "remove_item",
       id,
     });
-    dispatch(removeItemCompleted(actionId, id));
+    dispatch(removeItemCompleted(actionId, id, true));
   };
 }
 
@@ -226,11 +225,12 @@ function removeItemStarting(actionId, id) {
   };
 }
 
-function removeItemCompleted(actionId, id) {
+function removeItemCompleted(actionId, id, interactive = false) {
   return {
     type: REMOVE_ITEM_COMPLETED,
     actionId,
     id,
+    interactive,
   };
 }
 
