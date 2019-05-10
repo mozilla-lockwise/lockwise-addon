@@ -19,22 +19,22 @@ export default class ListSort extends React.Component {
       value: props.sort,
       selectWidth: "65px",
     };
-    this.selectEl = React.createRef();
+    this.selectEl = null;
     this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
     // set initial select width
-    this.setState({selectWidth: calcSelectStyle(this.selectEl.current)});
+    this.setState({selectWidth: calcSelectStyle(this.selectEl)});
   }
 
   handleChange(evt) {
-    // update select width
-    this.setState({selectWidth: calcSelectStyle(evt.target)});
-
     const value = evt.target.value;
     this.setState({ value });
     this.props.onChange(value);
+
+    // update select width
+    this.setState({selectWidth: calcSelectStyle(evt.target)});
   }
 
   render() {
@@ -48,7 +48,7 @@ export default class ListSort extends React.Component {
         </Localized>
         <select id="listSortSelect" value={this.state.value}
                 className={styles.select} style={{width: selectWidth}}
-                onChange={this.handleChange} ref={this.selectEl}
+                onChange={this.handleChange} ref={node => (this.selectEl = node)}
                 disabled={disabled}>
           <Localized id="sort-by-name">
             <option value="name">nAMe</option>
