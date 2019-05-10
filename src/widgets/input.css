@@ -182,6 +182,9 @@ input::placeholder {
   top: 7px;
   left: 8px;
 }
+.filter:focus-within::before {
+  background-image: url(/icons/search-focused.svg);
+}
 
 .filter input {
   padding-left: 32px;

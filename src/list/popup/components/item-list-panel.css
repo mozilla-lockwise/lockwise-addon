@@ -35,7 +35,8 @@
   border: 0;
 }
 
-.filter-panel::before {
+.filter-panel::before,
+.filter-panel:focus-within::before {
   background-image: url(/icons/icon-lockwise.svg);
 }
 

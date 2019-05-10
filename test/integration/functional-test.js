@@ -148,7 +148,7 @@ describe("add-on UI", () => {
     it("has a toolbar button", async () => {
       await webext.inChrome();
       const button = await helper.toolbar();
-      expect(button.getAttribute("tooltiptext")).eventually.to.equal("Lockbox");
+      await expect(button.getAttribute("tooltiptext")).eventually.to.equal("Firefox Lockwise");
     });
 
     it("opens the doorhanger", async () => {

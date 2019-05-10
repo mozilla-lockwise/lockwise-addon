@@ -17,14 +17,16 @@
   flex-flow: row nowrap;
   align-items: baseline;
   border-bottom: 1px solid #d7d7db;
+  height: 50px;
   padding-bottom: 8px;
 }
 .item-details header h1 {
   flex: 1 1 auto;
   margin: 0px;
   display: inline;
-  font-size: 30px;
-  font-weight: 200;
+  font-size: 33px;
+  line-height: 1.5;
+  font-weight: 300;
 }
 .item-details header menu {
   flex: 0 1 auto;
@@ -34,14 +36,17 @@
   clear: both;
 }
 
+.item-details .actions {
+  padding: 40px 0px 0px;
+}
+
 .item-details menu > button {
   margin-top: 0px;
 }
 
 .edit-button, .delete-button {
   padding-left: 30px;
-  font-size: 16px;
-  font-weight: 200;
+  font-size: 15px;
 }
 .edit-button {
   background-image: url(/icons/edit.svg);
@@ -51,6 +56,7 @@
 
 .delete-button {
   background-image: url(/icons/delete.svg);
+  background-size: 16px;
   background-position: 15% 8px;
   background-repeat: no-repeat;
 }
