@@ -20,7 +20,7 @@
 
 .panel-header {
   background: #ffffff;
-  height: 25px;
+  padding: 12px;
 }
 
 .panel-banner {
@@ -32,27 +32,22 @@
 
 .filter-panel {
   background: #ffffff;
-  height: 48px;
   border: 0;
 }
 
 .filter-panel::before {
-  top: 16px;
-  left: 2px;
+  background-image: url(/icons/icon-lockwise.svg);
 }
 
 .filter-panel .input-wrapper {
-  height: 50px;
   border: none;
 }
 
 .filter-panel input {
   background: #ffffff;
-  margin-left: -5px;
   font-size: 15px;
   font-weight: normal;
   color: #171718;
-  height: 48px;
   border: none;
 }
 

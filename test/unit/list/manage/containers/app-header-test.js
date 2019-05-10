@@ -2,19 +2,22 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { expect } from "chai";
+import chai, { expect } from "chai";
+import chaiEnzyme from "chai-enzyme";
 import sinon from "sinon";
 import React from "react";
 import mountWithL10n from "test/unit/mocks/l10n";
-import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
+import { initialState, filledState } from "../mock-redux-state";
+import "test/unit/mocks/browser";
 
-import { initialState } from "../mock-redux-state";
-import ConnectedAppHeader, { AppHeader } from "src/list/manage/containers/app-header";
-import { selectTabLogins } from "src/list/actions";
+chai.use(chaiEnzyme());
 
 const middlewares = [];
 const mockStore = configureStore(middlewares);
+
+import { AppHeader } from "src/list/manage/containers/app-header";
+import ItemFilter from "src/list/containers/item-filter";
 
 describe("list > manage > containers > <AppHeader/>", () => {
   let mockHandlers, mockDocument, listeners;
@@ -27,8 +30,6 @@ describe("list > manage > containers > <AppHeader/>", () => {
     };
     mockHandlers = {};
     [
-      "TabLogins",
-      "TabMonitor",
       "MenuFeedback",
       "MenuFAQ",
       "MenuConnect",
@@ -64,19 +65,16 @@ describe("list > manage > containers > <AppHeader/>", () => {
     beforeEach(() => {
       mockProps = {
         ...mockHandlers,
+        store: mockStore(initialState),
         document: mockDocument,
-        selectedTab: "logins",
         hasProfile: false,
         profile: null,
       };
       subject = makeSubject(mockProps);
     });
 
-    it("calls correct handler on Logins tab click", () => {
-      const tab = subject.find("nav li button.tabLogins");
-      expect(tab.length).to.equal(1);
-      tab.simulate("click");
-      expect(mockHandlers.onClickTabLogins.called).to.be.true;
+    it("contains search bar", () => {
+      expect(subject).to.have.descendants(ItemFilter);
     });
 
     it("displays an empty avatar", () => {
@@ -125,6 +123,7 @@ describe("list > manage > containers > <AppHeader/>", () => {
     beforeEach(() => {
       mockProps = {
         ...mockHandlers,
+        store: mockStore(filledState),
         document: mockDocument,
         selectedTab: "logins",
         hasProfile: true,
@@ -160,36 +159,5 @@ describe("list > manage > containers > <AppHeader/>", () => {
     it("offers the correct menu items", () => {
       expectCommonMenuItems(subject, "Account");
     });
-  });
-});
-
-describe("list > manage > containers > <ConnectedAppHeader/>", () => {
-  let mockSendMessage;
-
-  function makeSubject(state = initialState) {
-    const store = mockStore(state);
-    const dispatch = sinon.stub(store, "dispatch");
-    const subject = mountWithL10n(
-      <Provider store={store}>
-        <ConnectedAppHeader/>
-      </Provider>
-    );
-    return { store, subject, dispatch };
-  }
-
-  beforeEach(() => {
-    mockSendMessage = sinon.stub(browser.runtime, "sendMessage").resolves({});
-  });
-
-  afterEach(() => {
-    mockSendMessage.restore();
-  });
-
-  it("dispatches a select action on tab click", () => {
-    const { subject, dispatch } = makeSubject();
-    const tab = subject.find("nav li button.tabLogins");
-    tab.simulate("click");
-    expect(dispatch.called).to.be.true;
-    expect(dispatch.firstCall.args[0]).to.deep.equal(selectTabLogins());
   });
 });

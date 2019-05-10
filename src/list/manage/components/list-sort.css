@@ -15,6 +15,7 @@
   background: url(/icons/arrow-dropdown.svg) right center no-repeat;
   padding-inline-end: 18px;
   border-radius: 0;
+  padding-left: 3px;
 }
 
 .select option {

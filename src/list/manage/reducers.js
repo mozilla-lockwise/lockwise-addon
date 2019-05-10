@@ -5,12 +5,11 @@
 import { combineReducers } from "redux";
 
 import * as actions from "../actions";
-import { cacheReducer, listReducer, tabsReducer, profileReducer,
+import { cacheReducer, listReducer, profileReducer,
        } from "../reducers";
 
 export function appReducer(state, action) {
   return combineReducers({
-    tabs: tabsReducer,
     profileWrap: profileReducer,
   })(state, action);
 }
