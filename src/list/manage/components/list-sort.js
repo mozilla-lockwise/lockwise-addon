@@ -17,7 +17,7 @@ export default class ListSort extends React.Component {
     super(props);
     this.state = {
       value: props.sort,
-      selectWidth: "65px"
+      selectWidth: "65px",
     };
     this.selectEl = React.createRef();
     this.handleChange = this.handleChange.bind(this);
