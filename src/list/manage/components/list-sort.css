@@ -4,6 +4,7 @@
 
 .label {
   color: #4a4a4f;
+  font-size: 12px;
 }
 
 .select {
@@ -16,6 +17,8 @@
   padding-inline-end: 18px;
   border-radius: 0;
   padding-left: 3px;
+  height: 33px;
+  min-width: 65px;
 }
 
 .select option {

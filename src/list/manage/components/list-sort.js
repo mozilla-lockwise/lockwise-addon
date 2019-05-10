@@ -8,23 +8,42 @@ import React from "react";
 
 import styles from "./list-sort.css";
 
+function calcSelectStyle(el) {
+  if (!el.options) {
+    return "65px";
+  }
+
+  return 20 + (el.options[el.selectedIndex].text.length * 8) + "px";
+}
+
 export default class ListSort extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       value: props.sort,
+      selectWidth: "65px",
     };
+    this.selectEl = null;
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentDidMount() {
+    // set initial select width
+    this.setState({selectWidth: calcSelectStyle(this.selectEl)});
   }
 
   handleChange(evt) {
     const value = evt.target.value;
     this.setState({ value });
     this.props.onChange(value);
+
+    // update select width
+    this.setState({selectWidth: calcSelectStyle(evt.target)});
   }
 
   render() {
     const { disabled } = this.props;
+    const { selectWidth } = this.state;
     return (
       <React.Fragment>
         <Localized id="sort-by">
@@ -32,8 +51,8 @@ export default class ListSort extends React.Component {
                  htmlFor="sort-options">sORT bY:</label>
         </Localized>
         <select id="listSortSelect" value={this.state.value}
-                className={styles.select}
-                onChange={this.handleChange}
+                className={styles.select} style={{width: selectWidth}}
+                onChange={this.handleChange} ref={node => (this.selectEl = node)}
                 disabled={disabled}>
           <Localized id="sort-by-name">
             <option value="name">nAMe</option>
