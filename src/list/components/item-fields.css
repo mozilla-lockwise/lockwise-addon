@@ -19,6 +19,13 @@
   font-weight: normal;
   text-decoration: none;
 }
+.origin-link:hover {
+  text-decoration: underline;
+}
+
+.origin-link:active {
+  color: #003eaa;
+}
 
 .input,
 .origin-input {
@@ -67,6 +74,7 @@
 .input-wrap {
   position: relative;
   display: inline-block;
+  margin-top: 32px;
 }
 
 .origin-input:focus:placeholder-shown ~ .info-msg {
