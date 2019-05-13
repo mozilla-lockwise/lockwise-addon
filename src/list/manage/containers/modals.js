@@ -77,6 +77,7 @@ export function ConnectDevice({profile, onClose, onDownloadClick, onSyncPrefsCli
       </DialogBox>
     );
   }
+  const completed = <Localized id="connection-complete"><span>(cOmPlEtE)</span></Localized>;
   return (
     <DialogBox {...props}
       buttons={[{name: "Close", theme: "primary", label: "Close"}]}
@@ -91,11 +92,7 @@ export function ConnectDevice({profile, onClose, onDownloadClick, onSyncPrefsCli
       </Localized>
       <ol>
         <li className={classNames([styles.connect, isComplete ? styles.complete : styles.incomplete])}>
-          { isComplete ? (
-            <Localized id="connect-a-firefox-account-complete"><h3>cOnNeCt a fIrEfOx aCcOuNt (cOmPlEtE)</h3></Localized>
-          ) : (
-            <Localized id="connect-a-firefox-account"><h3>cOnNeCt a fIrEfOx aCcOuNt</h3></Localized>
-          )}
+          <Localized id="connect-a-firefox-account"><h3>cOnNeCt a fIrEfOx aCcOuNt { isComplete ? completed : "" }</h3></Localized>
           <Localized id="sync-requires-account"
             signin={<a onClick={() => onSyncPrefsClick("connect-device-step-one")}></a>}>
             <p>tO SyNc yOuR LoGiNs tO AnOtHeR DeViCe, YoU WiLl nEeD To <signin>SiGn iN Or cReAtE A FiReFoX AcCoUnT</signin>.</p>

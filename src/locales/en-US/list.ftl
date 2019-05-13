@@ -198,8 +198,8 @@ download-mobile = Download the mobile app
 download-ios-android = { -product-full-name } is available on both iOS and Android. <learnmore>Click here</learnmore> to learn more and to send a link to your phone to download the app.
 before-access = Before you can access your logins on another device, you will need to connect a { -fxaccount-brand-name }.
 connect-a-firefox-account = Connect a { -fxaccount-brand-name }
-# Displayed after the connection has completed
-connect-a-firefox-account-complete = Connect a { -fxaccount-brand-name } (complete)
+# Displayed next to connect-a-firefox-account string after the user has logged in.
+connection-complete = (complete)
 sync-requires-account = To sync your logins to another device, you will need to <signin>sign in or create a { -product-full-name }</signin>.
 ensure-logins-checked = Ensure the “Logins” checkbox is selected in { -sync-brand-short-name } preferences
 setting-to-allow-sync = In order to allow your logins to be synced to other devices, this setting must be checked. <openprefs>Open { -sync-brand-short-name } preferences</openprefs></p>
