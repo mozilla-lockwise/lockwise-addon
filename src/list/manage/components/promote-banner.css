@@ -21,10 +21,6 @@
   margin: 0;
   margin-right: 15px;
 }
-.promotion .content .title,
-.promotion .content .details {
-  margin: 0 5px;
-}
 
 .promotion .content strong {
   font-weight: 500;
