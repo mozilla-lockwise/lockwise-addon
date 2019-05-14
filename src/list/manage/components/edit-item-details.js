@@ -74,8 +74,8 @@ export default class EditItemDetails extends React.Component {
               e.preventDefault();
               onSave(saveState);
             }}>
+        {isDuplicate && <DuplicateNotification title={(new URL(this.state.origin).hostname)} />}
         <header className="detail-title">
-        {isDuplicate && <DuplicateNotification title={(new URL(this.state.origin).hostname)}/>}
           {newItem ? (
             <Localized id={`item-details-heading-new`}>
               <h1>cREATe nEw eNTRy</h1>
