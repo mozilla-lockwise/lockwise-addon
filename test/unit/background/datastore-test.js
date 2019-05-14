@@ -270,6 +270,32 @@ describe("background > datastore", () => {
     expect(resultApiInfo.timePasswordChanged).to.not.be.undefined;
     expect(resultApiInfo).to.deep.equal(expectedApiInfo);
   });
+  it("allow an item to be added, massaging the hostname", async () => {
+    const info = {
+      title: "QUUX title",
+      hostname: "http://quux.example.com",
+      formSubmitURL: "http://quux.example.com",
+      httpRealm: null,
+      username: "QUUXuser",
+      password: "QUUXpass",
+      usernameField: "username",
+      passwordField: "password",
+      timeLastUsed: Date.now(),
+      timePasswordChanged: Date.now(),
+      timeCreated: Date.now(),
+      timesUsed: 0,
+    };
+    const item = convertInfo2Item(info);
+    info.hostname += "/";
+
+    const addedItem = await store.add(item);
+    const expectedItem = {
+      ...item,
+      id: addedItem.id,
+    };
+
+    expect(addedItem).to.deep.equal(expectedItem);
+  });
 
   it("allows an item to be updated", async () => {
     const id = "BAR";
