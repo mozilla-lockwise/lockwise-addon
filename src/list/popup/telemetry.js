@@ -15,8 +15,11 @@ export default (store) => (next) => (action) => {
       helpers.itemCopied(action, "itemDetailDoorhanger");
       break;
     case actions.LIST_ITEMS_COMPLETED:
-      const state = store.getState();
-      helpers.listShown(action, "itemListDoorhanger", state.cache.items);
+      // Accessing item info from the store requires waiting a turn.
+      setTimeout(() => {
+        const state = store.getState();
+        helpers.listShown(action, "itemListDoorhanger", state.cache.items);
+      }, 0);
       break;
     case actions.OPEN_WEBSITE:
       helpers.websiteOpened(action, "itemDetailDoorhanger");
