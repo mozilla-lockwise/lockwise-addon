@@ -155,7 +155,7 @@ sort-by-last-used = Last Used
 sort-by-last-changed = Last Changed
 
 
-## String used in pop-up
+## Strings used in pop-up
 
 manage-logins-button = Open { -fxlockwise-brand-short-name }
 
@@ -204,13 +204,13 @@ sync-requires-account = To sync your logins to another device, you will need to 
 ensure-logins-checked = Ensure the “Logins” checkbox is selected in { -sync-brand-short-name } preferences
 setting-to-allow-sync = In order to allow your logins to be synced to other devices, this setting must be checked. <openprefs>Open { -sync-brand-short-name } preferences</openprefs></p>
 
-banner-promote-device = <go>Take your passwords everywhere</go> - download our app for iOS or Android:
+banner-promote-device = <bold>Take your passwords everywhere</bold> - download our app for iOS or Android:
 
 banner-promote-device-app-store =
   .title = Download on the App Store
 banner-promote-device-play-store =
   .title = Get it on Google Play
 
-banner-promote-fxa = <go>Take your passwords everywhere</go> - create a { -fxaccount-brand-name } or Sign In to sync to { -fxlockwise-brand-short-name } on mobile:
+banner-promote-fxa = <bold>Take your passwords everywhere</bold> - create a { -fxaccount-brand-name } or Sign In to sync to { -fxlockwise-brand-short-name } on mobile:
 
 banner-promote-fxa-action-label = Sign In

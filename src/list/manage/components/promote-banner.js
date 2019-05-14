@@ -18,7 +18,7 @@ export function LocalizedPromotionBanner({l10nId, children}) {
   return (
     <Banner className={styles.promotion}>
       <Localized id={l10nId}
-                 go={ <strong /> }>
+                 bold={ <strong /> }>
         <p className={styles.content}>tAkE yOUr pAsSwOrDs eVeRyWhErE - dOwNlOaD oUr aPp</p>
       </Localized>
       {children}
