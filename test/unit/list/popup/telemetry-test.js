@@ -65,7 +65,7 @@ describe("list > popup > telemetryLogger middleware", () => {
     itemCopied.restore();
   });
 
-  it("record telemetry for showing a non-empty list of items", () => {
+  it("record telemetry for showing a non-empty list of items", (done) => {
     const listShown = sinon.spy(telemetry, "listShown");
     store.getState = sinon.stub().returns({
       list: {
@@ -79,8 +79,12 @@ describe("list > popup > telemetryLogger middleware", () => {
       type: actions.LIST_ITEMS_COMPLETED,
     };
     telemetryLogger(store)(next)(action);
-    expect(listShown).to.have.been.calledWith(action, "itemListDoorhanger", [item]);
-    listShown.restore();
+    // Wait a turn for the listener to be called.
+    setTimeout(() => {
+      expect(listShown).to.have.been.calledWith(action, "itemListDoorhanger", [item]);
+      listShown.restore();
+      done();
+    }, 0);
   });
 
   it("record telemetry for opening a website", async () => {
