@@ -7,7 +7,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { flattenItem } from "../../common";
-import { selectItem, copiedField } from "../../actions";
+import { selectItem, copiedField, openWebsite } from "../../actions";
 import AllItemsPanel from "./all-items-panel";
 import ItemDetailsPanel from "../components/item-details-panel";
 import { concealPassword, revealPassword } from "../../actions";
@@ -23,6 +23,7 @@ const ConnectedItemDetailsPanel = connect(
       const id = ownProps.item && ownProps.item.id;
       return dispatch(show ? revealPassword(id) : concealPassword(id));
     },
+    onOpenWebsite: () => { dispatch(openWebsite(ownProps.item)); },
   })
 )(ItemDetailsPanel);
 
