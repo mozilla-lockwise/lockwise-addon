@@ -202,7 +202,7 @@ connect-a-firefox-account = Connect a { -fxaccount-brand-name }
 connection-complete = (complete)
 sync-requires-account = To sync your logins to another device, you will need to <signin>sign in or create a { -fxlockwise-brand-name }</signin>.
 ensure-logins-checked = Ensure the “Logins” checkbox is selected in { -sync-brand-short-name } preferences
-setting-to-allow-sync = In order to allow your logins to be synced to other devices, this setting must be checked. <openprefs>Open { -sync-brand-short-name } preferences</openprefs></p>
+setting-to-allow-sync = In order to allow your logins to be synced to other devices, this setting must be checked. <go>Open { -sync-brand-short-name } preferences</go>
 
 banner-promote-device = <bold>Take your passwords everywhere</bold> - download our app for iOS or Android:
 

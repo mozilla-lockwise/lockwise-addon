@@ -103,8 +103,8 @@ export function ConnectDevice({profile, onClose, onDownloadClick, onSyncPrefsCli
             <h3>eNsUrE ThE &ldquo;lOgInS&rdquo;cHeCkBoX Is sElEcTeD In sYnC PrEfErEnCeS</h3>
           </Localized>
           <Localized id="setting-to-allow-sync"
-            openprefs={<a onClick={() => onSyncPrefsClick("connect-device-step-two")}></a>}>
-            <p>iN OrDeR To aLlOw yOuR LoGiNs tO Be sYnCeD To oThEr dEvIcEs, ThIs sEtTiNg mUsT Be cHeCkEd. <openprefs>oPeN SyNc pReFeReNcEs</openprefs></p>
+            go={<a onClick={() => onSyncPrefsClick("connect-device-step-two")}></a>}>
+            <p>iN OrDeR To aLlOw yOuR LoGiNs tO Be sYnCeD To oThEr dEvIcEs, ThIs sEtTiNg mUsT Be cHeCkEd. <go>oPeN SyNc pReFeReNcEs</go></p>
           </Localized>
         </li>
       </ol>
