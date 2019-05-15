@@ -66,6 +66,15 @@ export default class EditItemDetails extends React.Component {
     const {itemId, ...saveState} = this.state;
     const newItem = itemId === null;
     const isDuplicate = error && !!~error.message.indexOf("This login already exists");
+    const hostname = ((str) => {
+      try {
+        const url = new URL(str);
+        return url.hostname;
+      } catch (ex) {
+        // ignore error; present the "raw" value
+        return str;
+      }
+    })(this.state.origin);
 
     return (
       <form className={classNames([styles.itemDetails, styles.editing])}
@@ -74,7 +83,7 @@ export default class EditItemDetails extends React.Component {
               e.preventDefault();
               onSave(saveState);
             }}>
-        {isDuplicate && <DuplicateNotification title={(new URL(this.state.origin).hostname)} />}
+        {isDuplicate && <DuplicateNotification title={hostname} />}
         <header className="detail-title">
           {newItem ? (
             <Localized id={`item-details-heading-new`}>
