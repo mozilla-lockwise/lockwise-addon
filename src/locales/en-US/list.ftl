@@ -11,8 +11,8 @@
 ## - Translated.
 
 -firefox-brand-name = Firefox
--product-short-name = Lockwise
--product-full-name = Firefox Lockwise
+-fxlockwise-brand-short-name = Lockwise
+-fxlockwise-brand-name = Firefox Lockwise
 
 # “Account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
@@ -24,7 +24,7 @@
 
 header-logins-button = Logins
 header-app-title =
-  .title = { -product-full-name }
+  .title = { -fxlockwise-brand-name }
 
 profile-menu-account = Account
 profile-menu-sign-in = Sign in to { -sync-brand-short-name }
@@ -33,7 +33,7 @@ profile-menu-faq = FAQ
 profile-menu-feedback = Provide Feedback
 
 document =
-  .title = { -product-full-name }
+  .title = { -fxlockwise-brand-name }
 
 error-notification-sync = Unable to sync logins.
 error-notification-sync-button = Reconnect
@@ -98,7 +98,7 @@ account-summary-account = Account
 account-summary-options = Preferences
 account-summary-signout = Sign Out
 
-intro-page-header-title = { -product-full-name } for Desktop
+intro-page-header-title = { -fxlockwise-brand-name } for Desktop
 intro-page-header-subtitle =
   Welcome to better login management. Our desktop add-on brings many of
   the improvements seen in our mobile apps to your computer, with
@@ -112,18 +112,18 @@ intro-page-main-article-1-copy =
 intro-page-main-article-2-title =
   Quick access to your logins
 intro-page-main-article-2-copy =
-  Click the { -product-short-name } icon from the toolbar in { -firefox-brand-name } to bring up our
+  Click the { -fxlockwise-brand-short-name } icon from the toolbar in { -firefox-brand-name } to bring up our
   doorhanger to access your logins.
 intro-page-main-article-3-title =
   Create new logins manually
 intro-page-main-article-3-copy =
   With the addition of manual logins, you can now store any account
-  you want within { -product-short-name }.
+  you want within { -fxlockwise-brand-short-name }.
 
 intro-page-footer-heading =
   Not seeing your saved logins? Let us help.
 intro-page-footer-copy =
-  { -product-full-name } provides access to the logins you’ve saved to
+  { -fxlockwise-brand-name } provides access to the logins you’ve saved to
   { -firefox-brand-name } on your device. If your logins are stored on another device,
   you can sync your information to this device by signing in to or
   creating a { -fxaccount-brand-name }. <go>Learn More</go>
@@ -155,9 +155,9 @@ sort-by-last-used = Last Used
 sort-by-last-changed = Last Changed
 
 
-## String used in pop-up
+## Strings used in pop-up
 
-manage-logins-button = Open { -product-short-name }
+manage-logins-button = Open { -fxlockwise-brand-short-name }
 
 list-detail-button = Open Website
 
@@ -195,26 +195,22 @@ easily-access-logins = Easily gain access to your logins from any device.
 access-on-another-computer = Access on another computer
 simply-sign-in-other-device = Simply sign in to your { -fxaccount-brand-name } on your other device to sync your logins to that computer.
 download-mobile = Download the mobile app
-download-ios-android = { -product-full-name } is available on both iOS and Android. <learnmore>Click here</learnmore> to learn more and to send a link to your phone to download the app.
+download-ios-android = { -fxlockwise-brand-name } is available on both iOS and Android. <learnmore>Click here</learnmore> to learn more and to send a link to your phone to download the app.
 before-access = Before you can access your logins on another device, you will need to connect a { -fxaccount-brand-name }.
 connect-a-firefox-account = Connect a { -fxaccount-brand-name }
-# Displayed after the connection has completed
-connect-a-firefox-account-complete = Connect a { -fxaccount-brand-name } (complete)
-sync-requires-account = To sync your logins to another device, you will need to <signin>sign in or create a { -product-full-name }</signin>.
+# Displayed next to connect-a-firefox-account string after the user has logged in.
+connection-complete = (complete)
+sync-requires-account = To sync your logins to another device, you will need to <signin>sign in or create a { -fxlockwise-brand-name }</signin>.
 ensure-logins-checked = Ensure the “Logins” checkbox is selected in { -sync-brand-short-name } preferences
-setting-to-allow-sync = In order to allow your logins to be synced to other devices, this setting must be checked. <openprefs>Open { -sync-brand-short-name } preferences</openprefs></p>
+setting-to-allow-sync = In order to allow your logins to be synced to other devices, this setting must be checked. <go>Open { -sync-brand-short-name } preferences</go>
 
-banner-promote-device =
-  .title = Take your passwords everywhere
-  .details = download our app for iOS or Android:
+banner-promote-device = <bold>Take your passwords everywhere</bold> - download our app for iOS or Android:
 
 banner-promote-device-app-store =
   .title = Download on the App Store
 banner-promote-device-play-store =
   .title = Get it on Google Play
 
-banner-promote-fxa =
-  .title = Take your passwords everywhere
-  .details = create a { -fxaccount-brand-name } or Sign In to sync to { -product-short-name } on mobile:
+banner-promote-fxa = <bold>Take your passwords everywhere</bold> - create a { -fxaccount-brand-name } or Sign In to sync to { -fxlockwise-brand-short-name } on mobile:
 
 banner-promote-fxa-action-label = Sign In

@@ -14,44 +14,17 @@ import { classNames } from "../../../common";
 
 import styles from "./promote-banner.css";
 
-export function PromotionBanner({title, details, children}) {
+export function LocalizedPromotionBanner({l10nId, children}) {
   return (
     <Banner className={styles.promotion}>
-      <p className={styles.content}>
-        <strong className={styles.title}>{title}</strong>
-        &ndash;
-        <span className={styles.details}>{details}</span>
-      </p>
+      <Localized id={l10nId}
+                 bold={ <strong /> }>
+        <p className={styles.content}>tAkE yOUr pAsSwOrDs eVeRyWhErE - dOwNlOaD oUr aPp</p>
+      </Localized>
       {children}
     </Banner>
   );
 }
-
-PromotionBanner.propTypes = {
-  title: PropTypes.string.isRequired,
-  details: PropTypes.string.isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.shape({
-      type: PropTypes.oneOf([Button]),
-    }),
-    PropTypes.arrayOf(
-      PropTypes.shape({
-        type: PropTypes.oneOf([Button]),
-      }),
-    ),
-  ]).isRequired,
-};
-
-export function LocalizedPromotionBanner({l10nId, children}) {
-  return (
-    <Localized id={l10nId} attrs={{title: true, details: true}}>
-      <PromotionBanner title="tItLe" details="dEtAiLs">
-        {children}
-      </PromotionBanner>
-    </Localized>
-  );
-}
-
 LocalizedPromotionBanner.propTypes = {
   l10nId: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([
@@ -93,7 +66,7 @@ PromoteDeviceBanner.propTypes = {
 
 export function PromoteFxABanner({onAction}) {
   return (
-    <LocalizedPromotionBanner l10nId="banner-promote-fxa" onAction={onAction}>
+    <LocalizedPromotionBanner l10nId="banner-promote-fxa">
       <Localized id="banner-promote-fxa-action-label">
         <Button
           type="button" className={styles.action}
