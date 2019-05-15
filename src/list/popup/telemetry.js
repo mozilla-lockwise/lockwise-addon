@@ -30,8 +30,8 @@ export default (store) => (next) => (action) => {
       }
       break;
     case actions.SELECT_ITEM_STARTING:
-      if (action.item) {
-        helpers.itemSelected(action, "doorhanger");
+      if (action.id) {
+        helpers.itemSelected(action.id, "doorhanger");
       }
       break;
     }

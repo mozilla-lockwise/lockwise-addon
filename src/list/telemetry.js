@@ -24,11 +24,11 @@ const itemCopied = (action, object) => {
 };
 
 // object =  'manager' || 'doorhanger'
-const itemSelected = (action, object) => {
+const itemSelected = (itemid, object) => {
   recordEvent({
     method: "itemSelected",
     object,
-    extra: { itemid: action.item.id },
+    extra: { itemid },
   });
 };
 

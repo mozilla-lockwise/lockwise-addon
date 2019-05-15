@@ -98,8 +98,8 @@ export default (store) => (next) => (action) => {
         helpers.passwordRevealed(action, "itemDetailManager");
       break;
     case actions.SELECT_ITEM_STARTING:
-      if (action.item) {
-        helpers.itemSelected(action, "manager");
+      if (action.id) {
+        helpers.itemSelected(action.id, "manager");
       }
       break;
     case actions.SELECT_ITEM_COMPLETED:

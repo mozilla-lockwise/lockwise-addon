@@ -276,10 +276,10 @@ describe("list > manage > telemetryLogger middleware", () => {
     const itemSelected = sinon.spy(telemetry, "itemSelected");
     const action = {
       type: actions.SELECT_ITEM_STARTING,
-      item,
+      id: item.id,
     };
     telemetryLogger(store)(next)(action);
-    expect(itemSelected).to.have.been.calledWith(action, "manager");
+    expect(itemSelected).to.have.been.calledWith(item.id, "manager");
     itemSelected.restore();
   });
 

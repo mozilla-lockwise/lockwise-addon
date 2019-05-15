@@ -52,11 +52,7 @@ describe("list > shared telemetryLogger middleware", () => {
   });
 
   it("itemSelected", async () => {
-    const action = {
-      type: actions.SELECT_ITEM_STARTING,
-      item,
-    };
-    telemetryLogger.itemSelected(action, "manager");
+    telemetryLogger.itemSelected(item.id, "manager");
     expect(listener).to.have.been.calledWith({
       type: "telemetry_event",
       data: {
