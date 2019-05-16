@@ -91,6 +91,16 @@ export function convertItem2Info(item) {
   return info;
 }
 
+function extractOrigin(str) {
+  try {
+    const url = new URL(str);
+    return url.origin;
+  } catch (ex) {
+    // ignore failure  -- pretend it'll still save
+    return str;
+  }
+}
+
 class DataStore {
   constructor() {
     this._all = {};
@@ -122,6 +132,8 @@ class DataStore {
     let info = convertItem2Info(item);
     if (!info.hostname) {
       throw new TypeError("missing hostname");
+    } else {
+      info.hostname = extractOrigin(info.hostname);
     }
     if (!info.password) {
       throw new TypeError("missing password");
@@ -133,6 +145,8 @@ class DataStore {
     if (!info.formSubmitURL && !info.httpRealm) {
       // assume formSubmitURL === hostname
       info.formSubmitURL = info.hostname;
+    } else if (info.formSubmitURL) {
+      info.formSubmitURL = extractOrigin(info.formSubmitURL);
     }
 
     let added = {
