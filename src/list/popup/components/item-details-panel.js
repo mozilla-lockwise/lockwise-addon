@@ -6,14 +6,13 @@ import { Localized } from "fluent-react";
 import React from "react";
 import PropTypes from "prop-types";
 
-import { openWebsite } from "../../common";
 import Panel, { PanelHeader, PanelBody, PanelFooter,
                 PanelFooterButton } from "../../../widgets/panel";
 import { ItemFields } from "../../components/item-fields";
 
 import styles from "./item-details-panel.css";
 
-export default function ItemDetailsPanel({fields, onCopy, onBack, onReveal}) {
+export default function ItemDetailsPanel({fields, onCopy, onBack, onReveal, onOpenWebsite}) {
   return (
     <Panel>
       <Localized id="item-details-panel-title">
@@ -23,12 +22,12 @@ export default function ItemDetailsPanel({fields, onCopy, onBack, onReveal}) {
       </Localized>
 
       <PanelBody className={styles.panelBody}>
-        <ItemFields fields={fields} onCopy={onCopy} onReveal={onReveal} isPopup={true}/>
+        <ItemFields fields={fields} onCopy={onCopy} onReveal={onReveal} onOpenWebsite={onOpenWebsite} isPopup={true}/>
       </PanelBody>
 
       <PanelFooter border="floating">
         <Localized id="list-detail-button">
-          <PanelFooterButton onClick={() => openWebsite(fields.origin)} className={styles.panelFooterButton}>
+          <PanelFooterButton onClick={onOpenWebsite} className={styles.panelFooterButton}>
             oPEn wEBSITe
           </PanelFooterButton>
         </Localized>
@@ -42,4 +41,5 @@ ItemDetailsPanel.propTypes = {
   onCopy: PropTypes.func.isRequired,
   onBack: PropTypes.func.isRequired,
   onReveal: PropTypes.func.isRequired,
+  onOpenWebsite: PropTypes.func.isRequired,
 };

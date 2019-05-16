@@ -42,6 +42,10 @@ export default (store) => (next) => (action) => {
   case actions.OPEN_PLAY_STORE:
     openWebsite(urls.androidStore, false);
     break;
+  case actions.OPEN_WEBSITE:
+    const url = action.item.origins[0];
+    openWebsite(url, false);
+    break;
   }
   return next(action);
 };
