@@ -22,7 +22,7 @@ export default function ItemDetailsPanel({fields, onCopy, onBack, onReveal, onOp
       </Localized>
 
       <PanelBody className={styles.panelBody}>
-        <ItemFields fields={fields} onCopy={onCopy} onReveal={onReveal} isPopup={true}/>
+        <ItemFields fields={fields} onCopy={onCopy} onReveal={onReveal} onOpenWebsite={onOpenWebsite} isPopup={true}/>
       </PanelBody>
 
       <PanelFooter border="floating">

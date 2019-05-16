@@ -6,7 +6,6 @@ import { Localized } from "fluent-react";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { openWebsite } from "../common";
 import CopyToClipboardButton from "../../widgets/copy-to-clipboard-button";
 import FieldText from "../../widgets/field-text";
 import Input from "../../widgets/input";
@@ -25,11 +24,11 @@ const fieldsPropTypes = PropTypes.shape({
   password: PropTypes.string.isRequired,
 });
 
-export function ItemFields({fields, onCopy, isPopup, onReveal}) {
+export function ItemFields({fields, onCopy, isPopup, onReveal, onOpenWebsite}) {
   const originEl = isPopup ? (
       <h4 className={styles.popupOrigin}>{new URL(fields.origin).host}</h4>
   ) : (
-      <a className={styles.originLink} onClick={() => openWebsite(fields.origin)}>{fields.origin}</a>
+      <a className={styles.originLink} onClick={onOpenWebsite}>{fields.origin}</a>
   );
 
   const originLabel = isPopup ? null : (
@@ -40,7 +39,7 @@ export function ItemFields({fields, onCopy, isPopup, onReveal}) {
 
   const launchButton = isPopup ? null : (
       <Button theme="normal" title={"launch"}
-              onClick={() => openWebsite(fields.origin)}>
+              onClick={onOpenWebsite}>
       <Localized id="item-fields-origin-button">
       <span>lAUNCh</span>
       </Localized>
@@ -91,6 +90,7 @@ ItemFields.propTypes = {
   isPopup: PropTypes.bool,
   onCopy: PropTypes.func.isRequired,
   onReveal: PropTypes.func.isRequired,
+  onOpenWebsite: PropTypes.func.isRequired,
 };
 
 export class EditItemFields extends React.Component {

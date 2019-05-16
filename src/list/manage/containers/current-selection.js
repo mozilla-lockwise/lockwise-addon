@@ -10,6 +10,7 @@ import { flattenItem, unflattenItem } from "../../common";
 import {
   addItem, updateItem, requestRemoveItem, editCurrentItem, requestCancelEditing,
   editorChanged, copiedField, revealPassword, concealPassword, openFAQ,
+  openWebsite,
 } from "../../actions";
 import EditItemDetails from "../components/edit-item-details";
 import ItemDetails from "../components/item-details";
@@ -58,6 +59,7 @@ const ConnectedItemDetails = connect(
       dispatch(show ? revealPassword(ownProps.item && ownProps.item.id)
         : concealPassword(ownProps.item && ownProps.item.id));
     },
+    onOpenWebsite: () => { dispatch(openWebsite(ownProps.item)); },
   })
 )(ItemDetails);
 
