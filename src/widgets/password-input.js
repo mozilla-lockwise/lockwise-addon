@@ -17,6 +17,7 @@ export default class PasswordInput extends React.Component {
       className: PropTypes.string,
       monospace: PropTypes.bool,
       disabled: PropTypes.bool,
+      showPassword: PropTypes.bool,
       onReveal: PropTypes.func.isRequired,
     };
   }
@@ -31,17 +32,6 @@ export default class PasswordInput extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      showPassword: false,
-    };
-    this.showPassword = this.showPassword.bind(this);
-  }
-
-  showPassword(show) {
-    const {onReveal} = this.props;
-    this.setState({showPassword: show});
-    onReveal(show);
   }
 
   focus() {
@@ -49,10 +39,7 @@ export default class PasswordInput extends React.Component {
   }
 
   render() {
-    // onReveal isn't used here, but it needs to be removed from `...props`
-    // eslint-disable-next-line no-unused-vars
-    const {className, monospace, disabled, onReveal, ...props} = this.props;
-    const {showPassword} = this.state;
+    const {className, monospace, disabled, showPassword, onReveal, ...props} = this.props;
     const selectedIndex = showPassword ? 1 : 0;
 
     return (
@@ -67,12 +54,12 @@ export default class PasswordInput extends React.Component {
           <Localized id="password-input-show" attrs={{title: true}}>
             <button type="button" className={styles.showBtn} title="sHOw"
                     disabled={disabled}
-                    onClick={() => this.showPassword(true)}/>
+                    onClick={() => onReveal(true)}/>
           </Localized>
           <Localized id="password-input-hide" attrs={{title: true}}>
             <button type="button" className={styles.hideBtn} title="hIDe"
                     disabled={disabled}
-                    onClick={() => this.showPassword(false)}/>
+                    onClick={() => onReveal(false)}/>
           </Localized>
         </Stack>
       </div>

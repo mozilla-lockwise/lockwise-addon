@@ -95,18 +95,23 @@ export function listReducer(state = {
   switch (action.type) {
   case actions.ADD_ITEM_COMPLETED:
     if (action.interactive) {
-      return {...state, selectedItemId: action.item.id};
+      return {...state, selectedItemId: action.item.id, showPassword: false};
     }
     return state;
   case actions.SELECT_ITEM_STARTING:
-    return {...state, selectedItemId: action.id};
+    return {...state, selectedItemId: action.id, showPassword: false};
   case actions.START_NEW_ITEM:
-    return {...state, selectedItemId: NEW_ITEM_ID};
+    return {...state, selectedItemId: NEW_ITEM_ID, showPassword: false};
   case actions.CANCEL_EDITING:
     if (state.selectedItemId === NEW_ITEM_ID) {
-      return {...state, selectedItemId: null};
+      return {...state, selectedItemId: null, showPassword: false};
     }
-    return state;
+    return {...state, showPassword: false};
+  case actions.EDIT_CURRENT_ITEM:
+  case actions.CONCEAL_PASSWORD:
+    return {...state, showPassword: false};
+  case actions.REVEAL_PASSWORD:
+    return {...state, showPassword: true};
   case actions.FILTER_ITEMS:
     return {...state, filter: {
       query: action.filter,

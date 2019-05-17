@@ -12,7 +12,7 @@ import { ItemFields } from "../../components/item-fields";
 
 import styles from "./item-details-panel.css";
 
-export default function ItemDetailsPanel({fields, onCopy, onBack, onReveal, onOpenWebsite}) {
+export default function ItemDetailsPanel({fields, showPassword, onCopy, onBack, onReveal, onOpenWebsite}) {
   return (
     <Panel>
       <Localized id="item-details-panel-title">
@@ -22,7 +22,12 @@ export default function ItemDetailsPanel({fields, onCopy, onBack, onReveal, onOp
       </Localized>
 
       <PanelBody className={styles.panelBody}>
-        <ItemFields fields={fields} onCopy={onCopy} onReveal={onReveal} onOpenWebsite={onOpenWebsite} isPopup={true}/>
+        <ItemFields fields={fields}
+                    showPassword={showPassword}
+                    onCopy={onCopy}
+                    onReveal={onReveal}
+                    onOpenWebsite={onOpenWebsite}
+                    isPopup={true}/>
       </PanelBody>
 
       <PanelFooter border="floating">

@@ -15,6 +15,7 @@ import { concealPassword, revealPassword } from "../../actions";
 const ConnectedItemDetailsPanel = connect(
   (state, ownProps) => ({
     fields: flattenItem(ownProps.item),
+    showPassword: state.list.showPassword,
   }),
   (dispatch, ownProps) => ({
     onCopy: (field, toCopy) => { dispatch(copiedField(field, toCopy, ownProps.item)); },
