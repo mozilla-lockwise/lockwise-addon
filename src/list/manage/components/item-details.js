@@ -17,7 +17,7 @@ const dateOptions = {year: "numeric", month: "long", day: "numeric" };
 
 // Note: ItemDetails doesn't directly interact with items from the Lockwise
 // datastore. For that, please consult <../containers/current-item.js>.
-export default function ItemDetails({fields, onCopy, onEdit, onDelete, onReveal, onOpenWebsite}) {
+export default function ItemDetails({fields, showPassword, onCopy, onEdit, onDelete, onReveal, onOpenWebsite}) {
   const created = new Date(fields.timeCreated).toLocaleDateString(LOCALE, dateOptions);
   const modified = new Date(fields.timePasswordChanged).toLocaleDateString(LOCALE, dateOptions);
   const lastUsed = new Date(fields.timeLastUsed).toLocaleDateString(LOCALE, dateOptions);
@@ -40,7 +40,7 @@ export default function ItemDetails({fields, onCopy, onEdit, onDelete, onReveal,
         </Toolbar>
       </header>
 
-      <ItemFields fields={fields} onCopy={onCopy} onReveal={onReveal} onOpenWebsite={onOpenWebsite} />
+      <ItemFields fields={fields} showPassword={showPassword} onCopy={onCopy} onReveal={onReveal} onOpenWebsite={onOpenWebsite} />
 
       <div className={styles.metadata}>
         <hr/>

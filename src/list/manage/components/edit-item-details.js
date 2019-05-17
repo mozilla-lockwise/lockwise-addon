@@ -62,7 +62,7 @@ export default class EditItemDetails extends React.Component {
   }
 
   render() {
-    const {fields: { title }, onSave, onCancel, onDelete, onReveal, error} = this.props;
+    const {fields: { title }, showPassword, onSave, onCancel, onDelete, onReveal, error} = this.props;
     const {itemId, ...saveState} = this.state;
     const newItem = itemId === null;
     const isDuplicate = error && !!~error.message.indexOf("This login already exists");
@@ -104,6 +104,7 @@ export default class EditItemDetails extends React.Component {
           )}
         </header>
         <EditItemFields fields={this.state}
+                        showPassword={showPassword}
                         onReveal={onReveal}
                         onChange={(e) => this.handleChange(e)}/>
         <Toolbar className={styles.actions}>

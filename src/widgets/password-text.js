@@ -17,6 +17,7 @@ export default class PasswordText extends React.Component {
     return {
       className: PropTypes.string,
       value: PropTypes.string,
+      showPassword: PropTypes.bool,
       onReveal: PropTypes.func.isRequired,
     };
   }
@@ -30,23 +31,10 @@ export default class PasswordText extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      showPassword: false,
-    };
-  }
-
-  showPassword(show) {
-    const {onReveal} = this.props;
-    this.setState({showPassword: show});
-    onReveal(show);
   }
 
   render() {
-    // We don't need onReveal here, but need to exclude it from ...props.
-    // eslint-disable-next-line no-unused-vars
-    const {className, value, onReveal, ...props} = this.props;
-    const {showPassword} = this.state;
+    const {className, value, showPassword, onReveal, ...props} = this.props;
 
     return (
       <div {...props} className={classNames([
@@ -59,7 +47,7 @@ export default class PasswordText extends React.Component {
             {value}
             <Localized id="password-input-hide" attrs={{title: true}}>
               <button type="button" className={styles.hideBtn} title="hIDe"
-                      onClick={() => this.showPassword(false)}/>
+                      onClick={() => onReveal(false)}/>
             </Localized>
           </span>
         ) : (
@@ -67,7 +55,7 @@ export default class PasswordText extends React.Component {
             {PASSWORD_DOT.repeat(value.length)}
             <Localized id="password-input-show" attrs={{title: true}}>
               <button type="button" className={styles.showBtn} title="sHOw"
-                      onClick={() => this.showPassword(true)}/>
+                      onClick={() => onReveal(true)}/>
             </Localized>
           </span>
         )}

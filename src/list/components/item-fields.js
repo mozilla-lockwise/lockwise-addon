@@ -24,7 +24,7 @@ const fieldsPropTypes = PropTypes.shape({
   password: PropTypes.string.isRequired,
 });
 
-export function ItemFields({fields, onCopy, isPopup, onReveal, onOpenWebsite}) {
+export function ItemFields({fields, showPassword, onCopy, isPopup, onReveal, onOpenWebsite}) {
   const originEl = isPopup ? (
       <h4 className={styles.popupOrigin}>{new URL(fields.origin).host}</h4>
   ) : (
@@ -74,7 +74,7 @@ export function ItemFields({fields, onCopy, isPopup, onReveal, onOpenWebsite}) {
           <LabelText>pASSWORd</LabelText>
         </Localized>
         <div className={styles.inlineButton}>
-          <PasswordText data-name="password" value={fields.password} onReveal={onReveal} />
+          <PasswordText data-name="password" value={fields.password} showPassword={showPassword} onReveal={onReveal} />
           <Localized id="item-fields-copy-password">
             <CopyToClipboardButton value={fields.password} isPopup={isPopup}
                                    onCopy={toCopy => onCopy("password", toCopy)}/>
@@ -88,6 +88,7 @@ export function ItemFields({fields, onCopy, isPopup, onReveal, onOpenWebsite}) {
 ItemFields.propTypes = {
   fields: fieldsPropTypes,
   isPopup: PropTypes.bool,
+  showPassword: PropTypes.bool,
   onCopy: PropTypes.func.isRequired,
   onReveal: PropTypes.func.isRequired,
   onOpenWebsite: PropTypes.func.isRequired,
@@ -98,6 +99,7 @@ export class EditItemFields extends React.Component {
     return {
       itemId: PropTypes.string,
       fields: fieldsPropTypes.isRequired,
+      showPassword: PropTypes.bool,
       onChange: PropTypes.func.isRequired,
       onReveal: PropTypes.func.isRequired,
     };
@@ -114,7 +116,7 @@ export class EditItemFields extends React.Component {
   }
 
   render() {
-    const {fields, onChange, onReveal} = this.props;
+    const {fields, showPassword, onChange, onReveal} = this.props;
     const controlledProps = (name, maxLength = 500) => {
       return {name, value: fields[name],
               onChange: (e) => onChange(e),
@@ -164,6 +166,7 @@ export class EditItemFields extends React.Component {
           </Localized>
           <PasswordInput className={styles.password}
                          required
+                         showPassword={showPassword}
                          onReveal={onReveal}
                          {...controlledProps("password")}/>
         </label>

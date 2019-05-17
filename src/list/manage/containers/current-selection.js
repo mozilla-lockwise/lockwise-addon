@@ -21,6 +21,7 @@ const ConnectedEditItemDetails = connect(
   (state, ownProps) => ({
     itemId: ownProps.item ? ownProps.item.id : undefined,
     fields: ownProps.item ? flattenItem(ownProps.item) : undefined,
+    showPassword: state.list.showPassword,
   }),
   (dispatch, ownProps) => {
     let onSave;
@@ -50,6 +51,7 @@ const ConnectedEditItemDetails = connect(
 const ConnectedItemDetails = connect(
   (state, ownProps) => ({
     fields: flattenItem(ownProps.item),
+    showPassword: state.list.showPassword,
   }),
   (dispatch, ownProps) => ({
     onCopy: (field, toCopy) => { dispatch(copiedField(field, toCopy, ownProps.item)); },

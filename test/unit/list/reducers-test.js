@@ -390,6 +390,7 @@ describe("list > reducers", () => {
 
         expect(listReducer(undefined, action)).to.deep.equal({
           selectedItemId: "1",
+          showPassword: false,
           filter: {
             query: "",
             userEntered: true,
@@ -426,6 +427,7 @@ describe("list > reducers", () => {
 
       expect(listReducer(undefined, action)).to.deep.equal({
         selectedItemId: "1",
+        showPassword: false,
         filter: {
           query: "",
           userEntered: true,
@@ -440,6 +442,7 @@ describe("list > reducers", () => {
 
       expect(listReducer(undefined, action)).to.deep.equal({
         selectedItemId: NEW_ITEM_ID,
+        showPassword: false,
         filter: {
           query: "",
           userEntered: true,
@@ -462,6 +465,7 @@ describe("list > reducers", () => {
 
         expect(listReducer(state, action)).to.deep.equal({
           selectedItemId: null,
+          showPassword: false,
           filter: {
             query: "",
             userEntered: true,
@@ -483,6 +487,7 @@ describe("list > reducers", () => {
 
         expect(listReducer(state, action)).to.deep.equal({
           selectedItemId: "1",
+          showPassword: false,
           filter: {
             query: "",
             userEntered: true,
