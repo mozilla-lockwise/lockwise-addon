@@ -11,7 +11,7 @@ _Date: 2019-05-20_
 * Telemetry is properly recorded when interacting with the toolbar popup.
 * The password field is concealed whenever you select another item's details.
 * The website address now strips paths when saving, making it more compatible with Firefox's autofill/autocomplete support.
-* The localization is updated to better support localizers.
+* The default (en-US) localization is updated to better support localizers.
 
 ### Known Issues
 
