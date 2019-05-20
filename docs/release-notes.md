@@ -9,7 +9,7 @@ _Date: 2019-05-20_
 * Telemetry is now properly recorded whenever you open a website via Lockwise.
 * Telemetry is properly recorded now whenever you select to view an item's details.
 * Telemetry is properly recorded when interacting with the toolbar popup.
-* The password field is conceals whenever you select another item's details.
+* The password field is concealed whenever you select another item's details.
 * The website address now strips paths when saving, making it more compatible with Firefox's autofill/autocomplete support.
 * The localization is updated to better support localizers.
 
