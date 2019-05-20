@@ -2,7 +2,7 @@
   "title": "Firefox Lockwise",
   "name": "lockwise",
   "id": "lockbox@mozilla.com",
-  "version": "2.2.0-alpha",
+  "version": "2.2.1-alpha",
   "description": "Take your passwords everywhere.",
   "engines": {
     "firefox": ">= 67",
