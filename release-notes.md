@@ -1,5 +1,23 @@
 # Firefox Lockwise for Desktop Release Notes
 
+## 2.2.1-alpha
+
+_Date: 2019-05-20_
+
+### What's Fixed
+
+* Telemetry is now properly recorded whenever you open a website via Lockwise.
+* Telemetry is properly recorded now whenever you select to view an item's details.
+* Telemetry is properly recorded when interacting with the toolbar popup.
+* The password field is concealed whenever you select another item's details.
+* The website address now strips paths when saving, making it more compatible with Firefox's autofill/autocomplete support.
+* The default (en-US) localization is updated to better support localizers.
+
+### Known Issues
+
+* This extension may conflict with Master Password.  If you wish to use this extension, we recommend disabling Master Password, then disable/re-enable this extension before it will work correctly.
+* If "Ask to always save logins and passwords for websites" is enabled after the extension is loaded, you may be prompted by Firefox to save a login when adding or editing in the management interface.  As a workaround, you can disable then re-enable the extension to prevent this prompt.
+
 ## 2.2.0-alpha
 
 _Date: 2019-05-10_
