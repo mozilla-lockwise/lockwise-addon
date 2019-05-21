@@ -17,6 +17,16 @@ Before a release can be made, the following must be done:
 * You are an administrator of the project `lockbox-addon`
 * Your local git working copy has a remote named `upstream` pointing to `git@github.com:mozilla-lockbox/lockbox-addon.git`
 
+To merge the strings from localization:
+
+1. Update the `master` branch with the latest commits from the `pontoon` branch with a git merge and/or Pull Request.
+
+  * This way the translations from the Pontoon service are made available to the release.
+
+2. Update the `pontoon` branch with the latest commits from the `master` branch with a git merge and/or Pull Request
+
+  * This way the Pontoon service will only expose stable strings to translators
+
 To generate the next release binary:
 
 1. Update "version" in package.json (and package-lock.json)
