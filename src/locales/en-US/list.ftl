@@ -200,7 +200,7 @@ before-access = Before you can access your logins on another device, you will ne
 connect-a-firefox-account = Connect a { -fxaccount-brand-name }
 # Displayed next to connect-a-firefox-account string after the user has logged in.
 connection-complete = (complete)
-sync-requires-account = To sync your logins to another device, you will need to <signin>sign in or create a { -fxlockwise-brand-name }</signin>.
+sync-requires-account = To sync your logins to another device, you will need to <signin>sign in or create a { -fxaccount-brand-name }</signin>.
 ensure-logins-checked = Ensure the “Logins” checkbox is selected in { -sync-brand-short-name } preferences
 setting-to-allow-sync = In order to allow your logins to be synced to other devices, this setting must be checked. <go>Open { -sync-brand-short-name } preferences</go>
 
