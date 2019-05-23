@@ -44,7 +44,7 @@ export default (store) => (next) => (action) => {
     break;
   case actions.OPEN_WEBSITE:
     const url = action.item.origins[0];
-    openWebsite(url, actions.close);
+    openWebsite(url, action.close);
     break;
   }
   return next(action);
