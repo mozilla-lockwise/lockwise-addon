@@ -1,5 +1,20 @@
 # Firefox Lockwise for Desktop Release Notes
 
+## 2.2.2-alpha
+
+_Date: 2019-05-23_
+
+### What's Fixed
+
+* Reconnecting to Sync properly works now.
+* The doorhanger is properly closed when visiting a website.
+* The doorhanger allows for varying widths.
+
+### Known Issues
+
+* This extension may conflict with Master Password.  If you wish to use this extension, we recommend disabling Master Password, then disable/re-enable this extension before it will work correctly.
+* If "Ask to always save logins and passwords for websites" is enabled after the extension is loaded, you may be prompted by Firefox to save a login when adding or editing in the management interface.  As a workaround, you can disable then re-enable the extension to prevent this prompt.
+
 ## 2.2.1-alpha
 
 _Date: 2019-05-20_
@@ -74,4 +89,3 @@ This version no longer uses its own data store; any logins previously saved in L
 _Date: 2019-03-23_
 
 Got releases publishing from circleci builds
-
