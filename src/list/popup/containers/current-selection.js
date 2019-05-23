@@ -24,7 +24,7 @@ const ConnectedItemDetailsPanel = connect(
       const id = ownProps.item && ownProps.item.id;
       return dispatch(show ? revealPassword(id) : concealPassword(id));
     },
-    onOpenWebsite: () => { dispatch(openWebsite(ownProps.item)); },
+    onOpenWebsite: () => { dispatch(openWebsite(ownProps.item, true)); },
   })
 )(ItemDetailsPanel);
 

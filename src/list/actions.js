@@ -442,10 +442,11 @@ export function concealPassword(id) {
   };
 }
 
-export function openWebsite(item) {
+export function openWebsite(item, close) {
   return {
     type: OPEN_WEBSITE,
     item,
+    close,
   };
 }
 
