@@ -154,9 +154,14 @@ connect-another-device = Tokisäx jun chik okisab'äl
 easily-access-logins = Anin katok pa kitikirisaxik amolojri'ïl pa xab'achike okisab'äl.
 access-on-another-computer = Tok pa jun chik kematz'ib'
 simply-sign-in-other-device = Xa xe tatikirisaj molojri'ïl pa { -fxaccount-brand-name } pa ri jun chik awokisab'al richin ye'axïm ri kitikirisaxik molojri'ïl pa ri kematz'ib' ri'.
+download-mobile = Tiqasäx ri oyonib'äl chokoy
+download-ios-android = { -fxlockwise-brand-name } K'o pa iOS chuqa' pa Android. <learnmore>Tipitz'i wawe'</learnmore> richin netamäx ch'aqa' chik chuqa' nitaq jun ximonel pan awoyonib'al richin niqasäx ri chokoy.
+before-access = Chuwäch yatok pa kitikirisaxik amolojri'ïl pa jun chik okisab'äl, k'o chi yatok pa { -fxaccount-brand-name }.
 connect-a-firefox-account = Tokisäx pa { -fxaccount-brand-name }
 # Displayed next to connect-a-firefox-account string after the user has logged in.
 connection-complete = (tz'aqät)
+sync-requires-account = Richin ye'axïm ri kitikirisaxik amolojri'ïl pa jun chik okisab'äl, nik'atzin <signin>natikirisaj molojri'ïl o natz'ük jun { -fxaccount-brand-name }</signin>.
+ensure-logins-checked = Tajikib'a' chi ya'on retal ri “Kitikirisaxik molojri'ïl” pa{ -sync-brand-short-name } taq ajowab'äl
 banner-promote-device-app-store =
     .title = Tiqasäx pe pa ri App Store
 banner-promote-device-play-store =
