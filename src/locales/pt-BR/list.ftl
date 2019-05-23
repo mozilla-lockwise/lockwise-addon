@@ -143,3 +143,17 @@ access-on-another-computer = Acesse em outro computador
 simply-sign-in-other-device = Basta entrar na sua { -fxaccount-brand-name } em outro dispositivo para sincronizar suas contas com esse computador.
 download-mobile = Baixe o aplicativo para celular
 download-ios-android = O { -fxlockwise-brand-name } está disponível em iOS e Android. <learnmore>Clique aqui</learnmore> para saber mais e enviar um link para seu celular para baixar o aplicativo.
+before-access = Antes de poder acessar suas contas em outro dispositivo, você precisa conectar uma { -fxaccount-brand-name }.
+connect-a-firefox-account = Conectar uma { -fxaccount-brand-name }
+# Displayed next to connect-a-firefox-account string after the user has logged in.
+connection-complete = (concluído)
+sync-requires-account = Para sincronizar suas contas com outro dispositivo, você precisa <signin>entrar na sua { -fxaccount-brand-name }</signin>, ou criar uma.
+ensure-logins-checked = Verifique se está marcada a opção "Contas de acesso" nas preferências do { -sync-brand-short-name }
+setting-to-allow-sync = Para permitir que suas contas sejam sincronizadas com outros dispositivos, esta opção deve ser marcada. <go>Abra as preferências do { -sync-brand-short-name }</go>
+banner-promote-device = <bold>Tenha suas senhas em qualquer lugar</bold> - baixe nosso aplicativo para iOS ou Android:
+banner-promote-device-app-store =
+    .title = Baixe na App Store
+banner-promote-device-play-store =
+    .title = Baixe no Google Play
+banner-promote-fxa = <bold>Tenha suas senhas em qualquer lugar</bold> - crie uma { -fxaccount-brand-name } ou entre para sincronizar com o { -fxlockwise-brand-short-name } no celular:
+banner-promote-fxa-action-label = Entrar
