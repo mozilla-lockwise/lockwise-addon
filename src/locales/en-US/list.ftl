@@ -191,6 +191,8 @@ modal-delete = Delete this login?
   .cancelLabel = Cancel
 
 connect-another-device = Connect another device
+  .closeLabel = Close
+  .allSetLabel = All Set
 easily-access-logins = Easily gain access to your logins from any device.
 access-on-another-computer = Access on another computer
 simply-sign-in-other-device = Simply sign in to your { -fxaccount-brand-name } on your other device to sync your logins to that computer.
