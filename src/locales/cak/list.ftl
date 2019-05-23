@@ -80,11 +80,22 @@ account-summary-account = Rub'i' taqoya'l
 account-summary-options = Taq ajowab'äl
 account-summary-signout = Titz'apïx Molojri'ïl
 intro-page-header-title = { -fxlockwise-brand-name } richin Ajch'atal
+intro-page-header-subtitle =
+    Ütz apetik pa jun ütz runuk'samajixik rutikirisaxik molojri'ïl. Ri qatz'aqat richin kematz'ib' ruk'amon pe k'ïy
+    taq rutzil etz'eton pan oyonib'äl taq chokoy niya' pan akematz'ib'
+    jeb'ël kichajixik toq nitikirisäx molojri'ïl.
 intro-page-main-article-1-title = Aninäq ye'anuk'samajij ri kib'i' ataqoya'l
 intro-page-main-article-1-copy =
     Manta runuk'samaj jun chik ruwach'ulew toq yenuk'samajij ri kib'i'a ataqoya'l. Xeqab'än jujun taq wachinäq
     man k'ayew ta rik'in ri k'ak'a' ajch'atal qak'amal.
 intro-page-main-article-2-title = Chanin okem pa kitikirisaxik amolojri'ïl
+intro-page-main-article-2-copy =
+    Tapitz'a' ri { -fxlockwise-brand-short-name } ruwachib'al kikajtz'ik samajib'al pa { -firefox-brand-name } richin niwachin ri
+    ruchi' jay richin yatok pa kitikirisaxik amolojri'ïl.
+intro-page-main-article-3-title = Chi q'ab'aj titz'uk jun k'ak'a' kitikirisaxik molojri'ïl
+intro-page-main-article-3-copy =
+    Ri kitz'aqatisaxik pa kiyonil nikitikirisaj molojri'ïl, wakami nitikïr nuyäk xab'achike rub'i' taqoya'l
+    nawajo' pa { -fxlockwise-brand-short-name }.
 item-details-heading-new = Titz'uk K'ak'a' Rutikirixaxik Molojri'ïl
 item-details-heading-edit = Tinuk' Rub'anikil Rutikirisaxik Molojri'ïl
 item-details-edit = Tinuk'
