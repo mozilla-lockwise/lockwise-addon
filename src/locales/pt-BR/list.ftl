@@ -80,6 +80,14 @@ account-summary-account = Conta
 account-summary-options = Preferências
 account-summary-signout = Sair
 intro-page-header-title = { -fxlockwise-brand-name } para computador
+intro-page-header-subtitle = Boas-vindas ao gerenciamento de contas aprimorado. Nossa extensão para computador traz muitas melhorias vistas em nossos aplicativos móveis para seu computador, com maior controle sobre suas contas.
+intro-page-main-article-1-title = Fácil gerenciamento de suas contas
+intro-page-main-article-1-copy = Gerenciar suas contas não deve ser um bicho de sete cabeças. Facilitamos as coisas com nossa nova interface no computador.
+intro-page-main-article-2-title = Acesso rápido a suas contas
+intro-page-main-article-2-copy = Clique no ícone do { -fxlockwise-brand-short-name } na barra de ferramentas do { -firefox-brand-name } para abrir nosso painel de acesso a suas contas.
+intro-page-main-article-3-title = Criar novas contas manualmente
+intro-page-main-article-3-copy = Agora você pode salvar qualquer conta no { -fxlockwise-brand-short-name } inserindo as credenciais manualmente.
+intro-page-footer-heading = Suas contas salvas não aparecem? Deixe-nos ajudar.
 
 ## Strings used in pop-up
 
