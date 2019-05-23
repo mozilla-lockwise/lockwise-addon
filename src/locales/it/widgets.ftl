@@ -4,3 +4,13 @@
 
 copy-to-clipboard-button = Copia
 copy-to-clipboard-copied = ✔ Copiato
+filter-input-clear =
+    .title = Cancella
+modal-root =
+    .contentLabel = Finestra di dialogo modale
+password-input-show =
+    .title = Mostra
+password-input-hide =
+    .title = Nascondi
+panel-back-button =
+    .alt = Torna indietro
