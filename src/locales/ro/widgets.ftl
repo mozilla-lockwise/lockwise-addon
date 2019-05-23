@@ -2,15 +2,15 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-copy-to-clipboard-button = Copia
-copy-to-clipboard-copied = ✔ Copiato
+copy-to-clipboard-button = Copiază
+copy-to-clipboard-copied = ✔ Copiat
 filter-input-clear =
-    .title = Cancella
+    .title = Șterge
 modal-root =
-    .contentLabel = Finestra di dialogo modale
+    .contentLabel = Fereastră de dialog modal
 password-input-show =
-    .title = Mostra
+    .title = Afișează
 password-input-hide =
-    .title = Nascondi
+    .title = Ascunde
 panel-back-button =
-    .alt = Torna indietro
+    .alt = Înapoi

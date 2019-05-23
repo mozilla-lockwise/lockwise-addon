@@ -2,15 +2,15 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-copy-to-clipboard-button = Copia
-copy-to-clipboard-copied = ✔ Copiato
+copy-to-clipboard-button = Salin
+copy-to-clipboard-copied = ✔ Disalin
 filter-input-clear =
-    .title = Cancella
+    .title = Bersihkan
 modal-root =
-    .contentLabel = Finestra di dialogo modale
+    .contentLabel = Dialog modal
 password-input-show =
-    .title = Mostra
+    .title = Tampilkan
 password-input-hide =
-    .title = Nascondi
+    .title = Sembunyikan
 panel-back-button =
-    .alt = Torna indietro
+    .alt = Kembali
