@@ -13,6 +13,6 @@ export default connect(({
   hasProfileNeedsAttn,
 }),
   dispatch => ({
-    reconnectToSync: () => openSyncPrefs(),
+    reconnectToSync: () => dispatch(openSyncPrefs()),
   })
 )(SyncNotification);

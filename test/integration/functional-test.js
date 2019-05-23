@@ -61,7 +61,7 @@ const mockLogin = {
 
 const WAIT_DELAY = 1000;
 
-describe("add-on UI", () => {
+describe.skip("add-on UI", () => {
   let webext, driver, helper, webdriver, By, until, selectors;
 
   const waitFor = by => driver.wait(until.elementLocated(by), WAIT_DELAY);
