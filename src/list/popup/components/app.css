@@ -5,13 +5,19 @@
 body {
   padding: 0;
   margin: 0;
-  width: 300px;
+  width: 100%;
   height: 339px;
   color: #0c0c0d;
   background-color: #ffffff;
   font: caption;
   font-size: 13px;
   -moz-user-select: none;
+}
+
+@media (max-width: 300px) {
+  body {
+    width: 300px;
+  }
 }
 
 body > main,
