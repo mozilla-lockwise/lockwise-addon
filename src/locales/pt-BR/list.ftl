@@ -88,9 +88,58 @@ intro-page-main-article-2-copy = Clique no ícone do { -fxlockwise-brand-short-n
 intro-page-main-article-3-title = Criar novas contas manualmente
 intro-page-main-article-3-copy = Agora você pode salvar qualquer conta no { -fxlockwise-brand-short-name } inserindo as credenciais manualmente.
 intro-page-footer-heading = Suas contas salvas não aparecem? Deixe-nos ajudar.
+intro-page-footer-copy = O { -fxlockwise-brand-name } dá acesso às contas que você salvou no { -firefox-brand-name } em seu dispositivo. Caso suas contas estejam armazenadas em outro dispositivo, você pode sincronizar suas informações com este dispositivo entrando na sua { -fxaccount-brand-name }, ou criando uma. <go>Saiba mais</go>
+item-details-heading-new = Criar nova conta
+item-details-heading-edit = Editar detalhes da conta
+item-details-edit = Editar
+item-details-delete = Excluir
+item-details-save-new = Criar conta
+item-details-save-existing = Salvar alterações
+item-details-cancel = Cancelar
+item-details-created = Criada em: { $date }
+item-details-modified = Última modificação: { $date }
+item-details-last-used = Última utilização: { $date }
+# Variables:
+#   - $count (number): number of items in the list
+list-count =
+    { $count ->
+        [one] { $count } conta
+       *[other] { $count } contas
+    }
+sort-by = Ordenar por:
+sort-by-name = Nome
+sort-by-last-used = Última utilização
+sort-by-last-changed = Última alteração
 
 ## Strings used in pop-up
 
+manage-logins-button = Abrir { -fxlockwise-brand-short-name }
+list-detail-button = Abrir site
+default-banner = Contas usadas recentemente.
+# Variables:
+#   - $count (number): number of items in the list
+filtered-banner =
+    { $count ->
+        [one] { $count } conta encontrada
+       *[other] { $count } contas encontradas
+    }
+get-started-banner = Nenhuma conta encontrada.
+no-matching-banner = Nenhuma conta correspondente.
+no-results-banner = Não encontrada nenhuma conta do site atual.
+item-details-panel-title = Detalhes da conta
+navigate-panel-backwards = Voltar
 
 ## Strings used in dialog
 
+modal-cancel-editing = Há alterações não salvas. Descartar?
+    .confirmLabel = Descartar alterações
+    .cancelLabel = Voltar
+modal-delete = Excluir esta conta?
+    .confirmLabel = Excluir
+    .cancelLabel = Cancelar
+connect-another-device = Conectar outro dispositivo
+easily-access-logins = Acesse suas contas com facilidade em qualquer dispositivo.
+access-on-another-computer = Acesse em outro computador
+simply-sign-in-other-device = Basta entrar na sua { -fxaccount-brand-name } em outro dispositivo para sincronizar suas contas com esse computador.
+download-mobile = Baixe o aplicativo para celular
+download-ios-android = O { -fxlockwise-brand-name } está disponível em iOS e Android. <learnmore>Clique aqui</learnmore> para saber mais e enviar um link para seu celular para baixar o aplicativo.
