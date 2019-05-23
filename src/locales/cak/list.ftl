@@ -96,6 +96,12 @@ intro-page-main-article-3-title = Chi q'ab'aj titz'uk jun k'ak'a' kitikirisaxik 
 intro-page-main-article-3-copy =
     Ri kitz'aqatisaxik pa kiyonil nikitikirisaj molojri'ïl, wakami nitikïr nuyäk xab'achike rub'i' taqoya'l
     nawajo' pa { -fxlockwise-brand-short-name }.
+intro-page-footer-heading = ¿La man ye'atz'ët ta ri kitikirisaxik amolojri'ïl? Taya' q'ij richin yatqato'.
+intro-page-footer-copy =
+    { -fxlockwise-brand-name } nuya' pe okem pa kitikirisaxik amolojri'ïl e'ayakon pa
+    { -firefox-brand-name } pan awokisab'al. We ri kitikirisaxik amolojri'ïl eyakon pa jun chik okisab'äl,
+    yatikïr ye'axïm ri taq awetamab'al rik'in re okisab'äl re' rik'in natikirisaj molojri'ïl o
+    natz'ük jun { -fxaccount-brand-name }. <go>Tetamäx Ch'aqa' Chik</go>
 item-details-heading-new = Titz'uk K'ak'a' Rutikirixaxik Molojri'ïl
 item-details-heading-edit = Tinuk' Rub'anikil Rutikirisaxik Molojri'ïl
 item-details-edit = Tinuk'
@@ -138,10 +144,16 @@ navigate-panel-backwards = Titzolin
 
 ## Strings used in dialog
 
+modal-cancel-editing = E k'o taq jaloj man eyakon ta. ¿La yeyuj el?
+    .confirmLabel = Keyuj taq Jaloj
+    .cancelLabel = Titzolin
 modal-delete = ¿La niyuj re rutikirisaxik molojri'ïl re'?
     .confirmLabel = Tiyuj
     .cancelLabel = Tiq'at
 connect-another-device = Tokisäx jun chik okisab'äl
+easily-access-logins = Anin katok pa kitikirisaxik amolojri'ïl pa xab'achike okisab'äl.
+access-on-another-computer = Tok pa jun chik kematz'ib'
+simply-sign-in-other-device = Xa xe tatikirisaj molojri'ïl pa { -fxaccount-brand-name } pa ri jun chik awokisab'al richin ye'axïm ri kitikirisaxik molojri'ïl pa ri kematz'ib' ri'.
 connect-a-firefox-account = Tokisäx pa { -fxaccount-brand-name }
 # Displayed next to connect-a-firefox-account string after the user has logged in.
 connection-complete = (tz'aqät)
