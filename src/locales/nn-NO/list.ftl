@@ -36,7 +36,10 @@ error-notification-sync-button = Kople til på nytt
 error-notification-duplicate-link = <a>Gå til eksisterande innlogging?</a>
 all-items-get-started = Når du lagrar eit passord i { -firefox-brand-name }, vil det visast her.
 all-items-get-started-title = Fann ingen innloggingar.
+all-items-no-results-title = Ingen matchande innloggingar.
 all-items-no-results-footer = <go>Les meir</go>
+item-fields-title-input =
+    .placeholder = t.d. primærbank
 item-fields-origin = Nettadresse
 item-fields-origin-input =
     .placeholder = https://www.example.com
@@ -59,6 +62,7 @@ item-summary-copy-username = Kopier brukarnamn
 item-summary-copy-password = Kopier passord
     .title = Kopier passord til utklippstavla
 add-item-button = Ny innlogging
+send-feedback-button = Gje ei tilbakemelding
 toolbar-go-home = Heim
 toolbar-open-faq = Vanlege spørsmål (FAQ)
 account-summary-avatar =
@@ -66,6 +70,11 @@ account-summary-avatar =
 account-summary-account = Konto
 account-summary-options = Innstillingar
 account-summary-signout = Logg ut
+intro-page-header-title = { -fxlockwise-brand-name } for datamaskiner
+intro-page-main-article-1-title = Enkel handtering av kontoane dine
+intro-page-main-article-2-title = Rask tilgang til innloggingane dine
+intro-page-main-article-3-title = Lag nye innloggingar manuelt
+intro-page-footer-heading = Ser du ikkje dei lagra innloggingane dine? Lat oss hjelpe deg.
 item-details-heading-new = Lag ny innlogging
 item-details-edit = Rediger
 item-details-delete = Slett
@@ -92,8 +101,17 @@ sort-by-last-changed = Sist endra
 manage-logins-button = Opne { -fxlockwise-brand-short-name }
 list-detail-button = Opne nettstad
 default-banner = Nyleg brukte innloggingar.
+# Variables:
+#   - $count (number): number of items in the list
+filtered-banner =
+    { $count ->
+        [one] Fann { $count } innnlogging
+       *[other] Fann { $count } innloggingar
+    }
 get-started-banner = Fann ingen innloggingar.
+no-matching-banner = Ingen matchande innloggingar.
 no-results-banner = Fann ingen innloggingar for gjeldande nettstad.
+item-details-panel-title = Innloggingsdetaljar
 navigate-panel-backwards = Gå tilbake
 
 ## Strings used in dialog
@@ -102,6 +120,7 @@ modal-delete = Slette denne innlogginga?
     .confirmLabel = Slett
     .cancelLabel = Avbryt
 connect-another-device = Kople til ei anna eining
+access-on-another-computer = Tilgang på ei anna datamaskin
 download-mobile = Last ned mobilappen
 banner-promote-device-app-store =
     .title = Last ned frå App Store
