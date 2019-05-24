@@ -54,17 +54,34 @@ item-summary-new-title = Ny innlogging
 item-summary-no-title = (ingen tittel)
 item-summary-new-username = Skriv inn innloggingsopplysningar
 item-summary-no-username = (ingen brukarnamn)
+item-summary-copy-username = Kopier brukarnamn
+    .title = Kopier brukarnamn til utklippstavla
+item-summary-copy-password = Kopier passord
+    .title = Kopier passord til utklippstavla
+add-item-button = Ny innlogging
 toolbar-go-home = Heim
 toolbar-open-faq = Vanlege spørsmål (FAQ)
+account-summary-avatar =
+    .alt = Brukar-avatar
 account-summary-account = Konto
 account-summary-options = Innstillingar
 account-summary-signout = Logg ut
+item-details-heading-new = Lag ny innlogging
 item-details-edit = Rediger
 item-details-delete = Slett
 item-details-save-new = Opprett innlogging
 item-details-save-existing = Lagre endringar
 item-details-cancel = Avbryt
 item-details-created = Oppretta: { $date }
+item-details-modified = Sist endra: { $date }
+item-details-last-used = Sist brukt: { $date }
+# Variables:
+#   - $count (number): number of items in the list
+list-count =
+    { $count ->
+        [one] { $count } innlogging
+       *[other] { $count } innloggingar
+    }
 sort-by = SOrter etter:
 sort-by-name = Namn
 sort-by-last-used = Sist brukt
@@ -75,6 +92,8 @@ sort-by-last-changed = Sist endra
 manage-logins-button = Opne { -fxlockwise-brand-short-name }
 list-detail-button = Opne nettstad
 default-banner = Nyleg brukte innloggingar.
+get-started-banner = Fann ingen innloggingar.
+no-results-banner = Fann ingen innloggingar for gjeldande nettstad.
 navigate-panel-backwards = Gå tilbake
 
 ## Strings used in dialog
@@ -83,4 +102,9 @@ modal-delete = Slette denne innlogginga?
     .confirmLabel = Slett
     .cancelLabel = Avbryt
 connect-another-device = Kople til ei anna eining
+download-mobile = Last ned mobilappen
+banner-promote-device-app-store =
+    .title = Last ned frå App Store
+banner-promote-device-play-store =
+    .title = Last ned frå Google Play
 banner-promote-fxa-action-label = Logg inn
