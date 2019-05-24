@@ -87,7 +87,15 @@ intro-page-header-subtitle =
 intro-page-main-article-1-title = Enkel hantering av dina konton
 intro-page-main-article-2-title = Snabb åtkomst till dina inloggningar
 intro-page-main-article-3-title = Skapa nya inloggningar manuellt
+intro-page-main-article-3-copy =
+    Med tillägg av manuella inloggningar kan du nu spara vilket konto
+    som helst i { -fxlockwise-brand-short-name }
 intro-page-footer-heading = Ser du inte dina sparade inloggningar? Låt oss hjälpa till.
+intro-page-footer-copy =
+    { -fxlockwise-brand-name } ger åtkomst till inloggningarna du har sparat i
+    { -firefox-brand-name } på din enhet. Om dina inloggningar är lagrade på en annan enhet,
+    Du kan synkronisera din information till den här enheten genom att logga in på eller
+    skapa ett { -fxaccount-brand-name }. <go>Läs mer</go>
 item-details-heading-new = Skapa ny inloggning
 item-details-heading-edit = Redigera inloggningsuppgifter
 item-details-edit = Redigera
