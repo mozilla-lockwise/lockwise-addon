@@ -4,6 +4,8 @@
 
 copy-to-clipboard-button = Kopiera
 copy-to-clipboard-copied = ✔ Kopierad
+filter-input-clear =
+    .title = Rensa
 password-input-show =
     .title = Visa
 password-input-hide =
