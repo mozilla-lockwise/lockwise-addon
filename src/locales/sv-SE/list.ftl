@@ -130,6 +130,9 @@ navigate-panel-backwards = Gå tillbaka
 
 ## Strings used in dialog
 
+modal-cancel-editing = Osparade ändringar existerar. Kasta dem?
+    .confirmLabel = Kasta Ändringar
+    .cancelLabel = Gå Tillbaka
 modal-delete = Ta bort denna inloggning?
     .confirmLabel = Ta bort
     .cancelLabel = Avbryt
@@ -144,6 +147,8 @@ connect-a-firefox-account = Anslut ett { -fxaccount-brand-name }
 # Displayed next to connect-a-firefox-account string after the user has logged in.
 connection-complete = (slutför)
 sync-requires-account = För att synkronisera dina inloggningar till en annan enhet måste du <signin> logga in eller skapa ett { -fxaccount-brand-name } </signin>.
+ensure-logins-checked = Försäkra dig om att "Inloggningar"-rutan är vald i { -sync-brand-short-name } inställningarna
+setting-to-allow-sync = För att kunna tillåta dina inloggningar att bli synkroniserade till andra enheter måste denna inställning vara ikryssad. <go>Öppna { -sync-brand-short-name } inställningar</go>
 banner-promote-device = <bold> Ta med dina lösenord överallt</bold> - ladda ner vår app för iOS eller Android:
 banner-promote-device-app-store =
     .title = Hämta från App Store
