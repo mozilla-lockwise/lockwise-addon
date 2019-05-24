@@ -85,6 +85,9 @@ intro-page-header-subtitle =
     de förbättringar som du kan se i våra mobilappar till din dator med
     större kontroll över dina inloggningar.
 intro-page-main-article-1-title = Enkel hantering av dina konton
+intro-page-main-article-1-copy =
+    Att hantera dina konton ska inte vara raketforskning. Vi har gjort saker
+    enkelt med vårt nya skrivbordsgränssnitt.
 intro-page-main-article-2-title = Snabb åtkomst till dina inloggningar
 intro-page-main-article-3-title = Skapa nya inloggningar manuellt
 intro-page-main-article-3-copy =
