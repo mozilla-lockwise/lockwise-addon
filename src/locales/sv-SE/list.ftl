@@ -45,9 +45,54 @@ item-fields-password = Lösenord
 item-fields-notes = Anteckningar
 item-summary-new-title = Ny inloggning
 item-summary-no-title = (ingen titel)
+item-summary-new-username = Ange dina inloggningsuppgifter
+item-summary-no-username = (Inget användarnamn)
+add-item-button = Ny inloggning
+toolbar-go-home = Hem
+toolbar-open-faq = FAQ
+account-summary-avatar =
+    .alt = Användar avatar
+account-summary-account = Konto
+account-summary-options = Inställningar
+account-summary-signout = Logga ut
+intro-page-main-article-3-title = Skapa nya inloggningar manuellt
+item-details-heading-new = Skapa ny inloggning
+item-details-heading-edit = Redigera inloggningsuppgifter
+item-details-edit = Redigera
+item-details-delete = Ta bort
+item-details-save-new = Skapa inloggning
+item-details-save-existing = Spara ändringar
+item-details-cancel = Avbryt
+item-details-created = Skapad: { $date }
+item-details-modified = Senast ändrad: { $date }
+item-details-last-used = Senast använd: { $date }
+sort-by = Sortera efter:
+sort-by-name = Namn
+sort-by-last-used = Senast använd
+sort-by-last-changed = Senast ändrad
 
 ## Strings used in pop-up
 
+manage-logins-button = Öppna { -fxlockwise-brand-short-name }
+list-detail-button = Öppna webbplats
+default-banner = Nyligen använda inloggningar.
+get-started-banner = Inga inloggningar hittades
+no-matching-banner = Inga matchande inloggningar hittades.
+no-results-banner = Inga inloggningar hittades för aktuell webbplats.
+item-details-panel-title = inloggningsdetaljer
+navigate-panel-backwards = Gå tillbaka
 
 ## Strings used in dialog
 
+modal-delete = Ta bort denna inloggning?
+    .confirmLabel = Ta bort
+    .cancelLabel = Avbryt
+connect-another-device = Anslut en annan enhet
+access-on-another-computer = Åtkomst på en annan dator
+download-mobile = Ladda ner mobilappen
+connect-a-firefox-account = Anslut ett { -fxaccount-brand-name }
+banner-promote-device-app-store =
+    .title = Hämta från App Store
+banner-promote-device-play-store =
+    .title = Hämta från Google Play
+banner-promote-fxa-action-label = Logga in
