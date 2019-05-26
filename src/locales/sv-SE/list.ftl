@@ -31,7 +31,7 @@ profile-menu-faq = FAQ
 profile-menu-feedback = Ge återkoppling
 document =
     .title = { -fxlockwise-brand-name }
-error-notification-sync = Misslyckades synkronisera inloggningar.
+error-notification-sync = Det går inte att synkronisera inloggningar.
 error-notification-sync-button = Återanslut
 error-notification-duplicate = En inloggning för { $title } med det användarnamnet finns redan.
 error-notification-duplicate-link = <a>Gå till befintlig inloggning?</a>
@@ -46,7 +46,7 @@ item-fields-title-input =
 item-fields-origin = Webbadress
 item-fields-origin-input =
     .placeholder = https://www.example.com
-item-fields-origin-info-message = Se till att detta matchar den exakta domänen för den webbplats du refererar till ("https: //" ingår).
+item-fields-origin-info-message = Se till att detta matchar den exakta domänen för den webbplats du refererar till ("https://" ingår).
 item-fields-origin-button = Starta
 item-fields-username = Användarnamn
 item-fields-username-input =
@@ -68,20 +68,20 @@ item-summary-copy-password = Kopiera lösenord
 # Placeholder and accessibility label used in the field to filter existing
 # entries, i.e. search in the product database
 item-filter =
-    .placeholder = Sök Inloggningar
-    .aria-label = Sök Inloggningar
+    .placeholder = Sök inloggningar
+    .aria-label = Sök inloggningar
 add-item-button = Ny inloggning
-send-feedback-button = Ge Feedback
+send-feedback-button = Ge återkoppling
 toolbar-go-home = Hem
 toolbar-open-faq = FAQ
 account-summary-avatar =
-    .alt = Användar avatar
+    .alt = Användaravatar
 account-summary-account = Konto
 account-summary-options = Inställningar
 account-summary-signout = Logga ut
-intro-page-header-title = { -fxlockwise-brand-name } för Dator
+intro-page-header-title = { -fxlockwise-brand-name } för datorer
 intro-page-header-subtitle =
-    Välkommen till bättre inloggningshantering. Vårt skrivbordstillägg ger många av
+    Välkommen till bättre inloggningshantering. Vårt tillägg för datorer ger många av
     de förbättringar som du kan se i våra mobilappar till din dator med
     större kontroll över dina inloggningar.
 intro-page-main-article-1-title = Enkel hantering av dina konton
@@ -89,16 +89,16 @@ intro-page-main-article-1-copy =
     Att hantera dina konton ska inte vara raketforskning. Vi har gjort saker
     enkelt med vårt nya skrivbordsgränssnitt.
 intro-page-main-article-2-title = Snabb åtkomst till dina inloggningar
-intro-page-main-article-2-copy = Klicka på ikonen { -fxlockwise-brand-short-name } från verktygsfältet i { -firefox-brand-name } för att få fram våran pop out meny för att komma åt dina inloggningar.
+intro-page-main-article-2-copy = Klicka på ikonen { -fxlockwise-brand-short-name } från verktygsfältet i { -firefox-brand-name } för att visa vår dörrhängare för att komma åt dina inloggningar.
 intro-page-main-article-3-title = Skapa nya inloggningar manuellt
 intro-page-main-article-3-copy =
     Med tillägg av manuella inloggningar kan du nu spara vilket konto
-    som helst i { -fxlockwise-brand-short-name }
+    som helst i { -fxlockwise-brand-short-name }.
 intro-page-footer-heading = Ser du inte dina sparade inloggningar? Låt oss hjälpa till.
 intro-page-footer-copy =
     { -fxlockwise-brand-name } ger åtkomst till inloggningarna du har sparat i
     { -firefox-brand-name } på din enhet. Om dina inloggningar är lagrade på en annan enhet,
-    Du kan synkronisera din information till den här enheten genom att logga in på eller
+    kan du synkronisera din information till den här enheten genom att logga in på eller
     skapa ett { -fxaccount-brand-name }. <go>Läs mer</go>
 item-details-heading-new = Skapa ny inloggning
 item-details-heading-edit = Redigera inloggningsuppgifter
@@ -137,14 +137,14 @@ filtered-banner =
 get-started-banner = Inga inloggningar hittades
 no-matching-banner = Inga matchande inloggningar hittades.
 no-results-banner = Inga inloggningar hittades för aktuell webbplats.
-item-details-panel-title = inloggningsdetaljer
+item-details-panel-title = Inloggningsdetaljer
 navigate-panel-backwards = Gå tillbaka
 
 ## Strings used in dialog
 
-modal-cancel-editing = Osparade ändringar existerar. Kasta dem?
-    .confirmLabel = Kasta Ändringar
-    .cancelLabel = Gå Tillbaka
+modal-cancel-editing = Ändringar som inte sparats existerar. Släng dem?
+    .confirmLabel = Kasta ändringar
+    .cancelLabel = Gå tillbaka
 modal-delete = Ta bort denna inloggning?
     .confirmLabel = Ta bort
     .cancelLabel = Avbryt
@@ -158,13 +158,13 @@ before-access = Före du kan komma åt dina inloggningar på en annan enhet mås
 connect-a-firefox-account = Anslut ett { -fxaccount-brand-name }
 # Displayed next to connect-a-firefox-account string after the user has logged in.
 connection-complete = (slutför)
-sync-requires-account = För att synkronisera dina inloggningar till en annan enhet måste du <signin> logga in eller skapa ett { -fxaccount-brand-name } </signin>.
-ensure-logins-checked = Försäkra dig om att "Inloggningar"-rutan är vald i { -sync-brand-short-name } inställningarna
+sync-requires-account = För att synkronisera dina inloggningar till en annan enhet måste du <signin>logga in eller skapa ett { -fxaccount-brand-name }</signin>.
+ensure-logins-checked = Försäkra dig om att kryssrutan "Inloggningar" är vald i { -sync-brand-short-name } inställningar
 setting-to-allow-sync = För att kunna tillåta dina inloggningar att bli synkroniserade till andra enheter måste denna inställning vara ikryssad. <go>Öppna { -sync-brand-short-name } inställningar</go>
-banner-promote-device = <bold> Ta med dina lösenord överallt</bold> - ladda ner vår app för iOS eller Android:
+banner-promote-device = <bold>Ta med dina lösenord överallt</bold> - ladda ner vår app för iOS eller Android:
 banner-promote-device-app-store =
     .title = Hämta från App Store
 banner-promote-device-play-store =
     .title = Hämta från Google Play
-banner-promote-fxa = <bold> Ta med dina lösenord överallt</bold> - Skapa ett { -fxaccount-brand-name } eller Logga in för att synkronisera till { -fxlockwise-brand-short-name } på mobilen:
+banner-promote-fxa = <bold>Ta med dina lösenord överallt</bold> - Skapa ett { -fxaccount-brand-name } eller logga in för att synkronisera till { -fxlockwise-brand-short-name } på mobilen:
 banner-promote-fxa-action-label = Logga in
