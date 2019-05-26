@@ -160,3 +160,5 @@ banner-promote-device-app-store =
     .title = Töltse le az App Store-ból
 banner-promote-device-play-store =
     .title = Szerezze be a Google Playen
+banner-promote-fxa = <bold>Vigye magával a jelszavait mindenhová</bold> –hozzon létre egy { -fxaccount-brand-name }ot vagy jelentkezzen be, és szinkronizáljon a mobilos { -fxlockwise-brand-short-name } alkalmazásba:
+banner-promote-fxa-action-label = Bejelentkezés
