@@ -138,6 +138,7 @@ modal-delete = Slette denne innlogginga?
 connect-another-device = Kople til ei anna eining
 easily-access-logins = Få enkel tilgang til innloggingane dine frå kva som helst eining.
 access-on-another-computer = Tilgang på ei anna datamaskin
+simply-sign-in-other-device = Logg berre inn på { -fxaccount-brand-name }-en din på den andre eininga difor å synkronisere innloggingane dine til denne datamaskina.
 download-mobile = Last ned mobilappen
 download-ios-android = { -fxlockwise-brand-name } er tilgjengeleg på både iOS og Android. <learnmore>Klikk her</ learnmore> for å lese meir og sende ei lenke til mobilen din for å laste ned appen.
 connect-a-firefox-account = Kople til ein { -fxaccount-brand-name }
