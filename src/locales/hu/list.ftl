@@ -94,7 +94,15 @@ intro-page-main-article-2-copy =
     Kattintson a { -fxlockwise-brand-short-name } ikonra a { -firefox-brand-name } eszköztárán, hogy előhozza a
     bejelentkezései elérését.
 intro-page-main-article-3-title = Új bejelentkezések létrehozása kézzel
+intro-page-main-article-3-copy =
+    A bejelentkezések kézi hozzáadásával bármilyen fiókot
+    eltárolhat a { -fxlockwise-brand-short-name }ban.
 intro-page-footer-heading = Nem látja a mentett bejelentkezéseit? Hadd segítsünk.
+intro-page-footer-copy =
+    A { -fxlockwise-brand-name } könnyű hozzáférést ad az eszközén, a
+    { -firefox-brand-name }ban mentett bejelentkezéseihez. Ha azok egy másik eszközök
+    vannak mentve, akkor szinkronizálhatja azokat egy { -fxaccount-brand-name }
+    létrehozásával. <go>További információk</go>
 item-details-heading-new = Új bejelentkezés létrehozása
 item-details-heading-edit = Bejelentkezési adatok szerkesztése
 item-details-edit = Szerkesztés
@@ -155,6 +163,7 @@ connect-a-firefox-account = Egy { -fxaccount-brand-name } csatlakoztatása
 connection-complete = (kész)
 sync-requires-account = A bejelentkezései másik eszközre történő szinkronizálásához <signin>be kell jelentkeznie, vagy létre kell hoznia egy { -fxaccount-brand-name }ot</signin>.
 ensure-logins-checked = Győződjön meg róla, hogy a „Bejelentkezés” jelölőnégyzet be van-e jelölve a { -sync-brand-short-name } beállításaiban.
+setting-to-allow-sync = Ahhoz hogy a bejelentkezéseit szinkronizálja az egyéb eszközeivel, be kell kapcsolnia ezt a beállítást. <go>A { -sync-brand-short-name } beállítások megnyitása</go>
 banner-promote-device = <bold>Vigye magával a jelszavait mindenhová</bold> – töltse le az alkalmazásunkat iOS-re vagy Androidra:
 banner-promote-device-app-store =
     .title = Töltse le az App Store-ból
