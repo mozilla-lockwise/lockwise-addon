@@ -89,6 +89,7 @@ intro-page-main-article-1-copy =
     Att hantera dina konton ska inte vara raketforskning. Vi har gjort saker
     enkelt med vårt nya skrivbordsgränssnitt.
 intro-page-main-article-2-title = Snabb åtkomst till dina inloggningar
+intro-page-main-article-2-copy = Klicka på ikonen { -fxlockwise-brand-short-name } från verktygsfältet i { -firefox-brand-name } för att få fram våran pop out meny för att komma åt dina inloggningar.
 intro-page-main-article-3-title = Skapa nya inloggningar manuellt
 intro-page-main-article-3-copy =
     Med tillägg av manuella inloggningar kan du nu spara vilket konto
