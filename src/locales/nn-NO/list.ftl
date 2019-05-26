@@ -136,6 +136,7 @@ modal-delete = Slette denne innlogginga?
     .confirmLabel = Slett
     .cancelLabel = Avbryt
 connect-another-device = Kople til ei anna eining
+easily-access-logins = Få enkel tilgang til innloggingane dine frå kva som helst eining.
 access-on-another-computer = Tilgang på ei anna datamaskin
 download-mobile = Last ned mobilappen
 download-ios-android = { -fxlockwise-brand-name } er tilgjengeleg på både iOS og Android. <learnmore>Klikk her</ learnmore> for å lese meir og sende ei lenke til mobilen din for å laste ned appen.
