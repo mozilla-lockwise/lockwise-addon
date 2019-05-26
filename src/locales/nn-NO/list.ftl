@@ -129,6 +129,9 @@ navigate-panel-backwards = Gå tilbake
 
 ## Strings used in dialog
 
+modal-cancel-editing = Endringar som ikkje er lagra finst. Ikkje bruke dei?
+    .confirmLabel = Ikkje bruk endringar
+    .cancelLabel = Gå tilbake
 modal-delete = Slette denne innlogginga?
     .confirmLabel = Slett
     .cancelLabel = Avbryt
@@ -137,6 +140,8 @@ access-on-another-computer = Tilgang på ei anna datamaskin
 download-mobile = Last ned mobilappen
 download-ios-android = { -fxlockwise-brand-name } er tilgjengeleg på både iOS og Android. <learnmore>Klikk her</ learnmore> for å lese meir og sende ei lenke til mobilen din for å laste ned appen.
 connect-a-firefox-account = Kople til ein { -fxaccount-brand-name }
+# Displayed next to connect-a-firefox-account string after the user has logged in.
+connection-complete = (fullført)
 banner-promote-device-app-store =
     .title = Last ned frå App Store
 banner-promote-device-play-store =
