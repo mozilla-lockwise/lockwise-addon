@@ -85,6 +85,7 @@ intro-page-main-article-1-copy =
     Å handtere kontoane dine skal ikkje vere rakettforsking. Vi har gjort ting
     enkelt med det nye skriverbordgrensesnittet vårt.
 intro-page-main-article-2-title = Rask tilgang til innloggingane dine
+intro-page-main-article-2-copy = Klikk på ikonet { -fxlockwise-brand-short-name } frå verktøyfeltet i { -firefox-brand-name } for å vise dørhengaren vår, for tilgang til innloggingane dine.
 intro-page-main-article-3-title = Lag nye innloggingar manuelt
 intro-page-footer-heading = Ser du ikkje dei lagra innloggingane dine? Lat oss hjelpe deg.
 item-details-heading-new = Lag ny innlogging
@@ -141,12 +142,16 @@ access-on-another-computer = Tilgang på ei anna datamaskin
 simply-sign-in-other-device = Logg berre inn på { -fxaccount-brand-name }-en din på den andre eininga difor å synkronisere innloggingane dine til denne datamaskina.
 download-mobile = Last ned mobilappen
 download-ios-android = { -fxlockwise-brand-name } er tilgjengeleg på både iOS og Android. <learnmore>Klikk her</ learnmore> for å lese meir og sende ei lenke til mobilen din for å laste ned appen.
+before-access = Før du får tilgang til innloggingane dine på ei anna eining, må du kople deg til ein { -fxaccount-brand-name }.
 connect-a-firefox-account = Kople til ein { -fxaccount-brand-name }
 # Displayed next to connect-a-firefox-account string after the user has logged in.
 connection-complete = (fullført)
+sync-requires-account = For å synkronisere innloggingane dine til ei anna eining må du <signin>logge inn eller opprette ein { -fxaccount-brand-name }</signin>.
+ensure-logins-checked = Forsikre deg om at du har kryssa av for‹‹innloggingar›› i { -sync-brand-short-name }-innstillingane
 banner-promote-device = <bold>Ta med deg passorda dine overalt</bold> - last ned appen vår for iOS eller Android:
 banner-promote-device-app-store =
     .title = Last ned frå App Store
 banner-promote-device-play-store =
     .title = Last ned frå Google Play
+banner-promote-fxa = <bold>Ta med deg passorda dine overalt</bold> - Opprett ein { -fxaccount-brand-name } eller logg inn for å synkronisere til { -fxlockwise-brand-short-name } på mobilen:
 banner-promote-fxa-action-label = Logg inn
