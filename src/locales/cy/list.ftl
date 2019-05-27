@@ -84,9 +84,42 @@ intro-page-header-subtitle = Croeso i reoli mewngofnodi'n well. Mae ein hychwane
 intro-page-main-article-1-title = Rheolaeth hawdd o'ch cyfrifon
 intro-page-main-article-1-copy = Dylai rheoli eich cyfrifon ddim bod yn anodd. Rydym wedi gwneud pethau'n haws gyda'n rhyngwyneb bwrdd gwaith newydd.
 intro-page-main-article-2-title = Mynediad cyflym i'ch mewngofnodion
+intro-page-main-article-2-copy = Cliciwch ar yr eicon { -fxlockwise-brand-short-name } o'r bar offer yn { -firefox-brand-name } i agor eich mynediad i'ch mewngofnodion.
+intro-page-main-article-3-title = Crëwch gofnodion newydd â llaw
+intro-page-main-article-3-copy = Gydag ychwanegiadau mewngofnodion â llaw, gallwch storio unrhyw gyfrif yr hoffech chi yn  { -fxlockwise-brand-short-name }.
+intro-page-footer-heading = Ddim yn gweld eich mewngofnodion wedi'u cadw? Gadewch inni helpu.
+intro-page-footer-copy = Mae { -fxlockwise-brand-name } yn darparu mynediad i'r mewngofnodion rydych wedi eu cadw yn { -firefox-brand-name } ar eich dyfais. Os fydd eich mewngofnodion yn cael eu cadw ar ddyfais arall, gallwch chi gydweddu eich manylion â'r ddyfais hon drwy fewngofnodi neu greu { -fxaccount-brand-name }. <go> Dysgu Rhagor</go>
+item-details-heading-new = Creu Mewngofnod Newydd
+item-details-heading-edit = Golygu Manylion Mewngofnodi
+item-details-edit = Golygu
+item-details-delete = Dileu
+item-details-save-new = Creu Mewngofnod
+item-details-save-existing = Cadw Newidiadau
+item-details-cancel = Diddymu
+item-details-created = Crëwyd: { $date }
+item-details-modified = Newidiwyd Diwethaf: { $date }
+item-details-last-used = Defnyddiwyd Diwethaf: { $date }
+# Variables:
+#   - $count (number): number of items in the list
+list-count =
+    { $count ->
+        [zero] { $count } mewngofnodion
+        [one] { $count } mewngofnod
+        [two] { $count } mewngofnod
+        [few] { $count } mewngofnod
+        [many] { $count } mewngofnod
+       *[other] { $count } mewngofnod
+    }
+sort-by = Trefnu yn ôl:
+sort-by-name = Enw
+sort-by-last-used = Defnyddiwyd Diwethaf
+sort-by-last-changed = Newidiwyd Diwethaf
 
 ## Strings used in pop-up
 
+manage-logins-button = Agor { -fxlockwise-brand-short-name }
+list-detail-button = Agor Gwefan
+default-banner = Mewngofnodion a ddefnyddiwyd yn ddiweddar.
 
 ## Strings used in dialog
 
