@@ -149,6 +149,7 @@ connect-a-firefox-account = Kople til ein { -fxaccount-brand-name }
 connection-complete = (fullført)
 sync-requires-account = For å synkronisere innloggingane dine til ei anna eining må du <signin>logge inn eller opprette ein { -fxaccount-brand-name }</signin>.
 ensure-logins-checked = Forsikre deg om at du har kryssa av for‹‹innloggingar›› i { -sync-brand-short-name }-innstillingane
+setting-to-allow-sync = For at innloggingane dine skal kunne synkroniserast til andre einingar, må det kryssast av for denne innstillinga. <go>Opne { -sync-brand-short-name } innstillingar</go>
 banner-promote-device = <bold>Ta med deg passorda dine overalt</bold> - last ned appen vår for iOS eller Android:
 banner-promote-device-app-store =
     .title = Last ned frå App Store
