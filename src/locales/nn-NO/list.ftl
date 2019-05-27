@@ -80,6 +80,10 @@ account-summary-account = Konto
 account-summary-options = Innstillingar
 account-summary-signout = Logg ut
 intro-page-header-title = { -fxlockwise-brand-name } for datamaskiner
+intro-page-header-subtitle =
+    Velkomen til betre innloggingshandtering. Tillegget vårt for datamaskiner gjev mange av
+    dei forbetringane som du kan sjå i mobilappane våre til datamaskina di med
+    større kontroll over innloggingane dine.
 intro-page-main-article-1-title = Enkel handtering av kontoane dine
 intro-page-main-article-1-copy =
     Å handtere kontoane dine skal ikkje vere rakettforsking. Vi har gjort ting
@@ -89,6 +93,11 @@ intro-page-main-article-2-copy = Klikk på ikonet { -fxlockwise-brand-short-name
 intro-page-main-article-3-title = Lag nye innloggingar manuelt
 intro-page-main-article-3-copy = Med tillegginga av manuelle innloggingar, kan du no lagre kva som helst konto i { -fxlockwise-brand-short-name }.
 intro-page-footer-heading = Ser du ikkje dei lagra innloggingane dine? Lat oss hjelpe deg.
+intro-page-footer-copy =
+    { -fxlockwise-brand-name } gjev tilgang til innloggingane du har lagra i
+    { -firefox-brand-name } på eininga di. Om innloggingane dine er lagra på ei anna eining,
+    kan du synkronisere informasjonen din til denne eininga ved å logge inn på, eller
+    opprette ein { -fxaccount-brand-name }. <go>Les meir</go>
 item-details-heading-new = Lag ny innlogging
 item-details-heading-edit = Rediger innloggingsopplysningar
 item-details-edit = Rediger
