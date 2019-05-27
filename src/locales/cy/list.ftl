@@ -120,6 +120,48 @@ sort-by-last-changed = Newidiwyd Diwethaf
 manage-logins-button = Agor { -fxlockwise-brand-short-name }
 list-detail-button = Agor Gwefan
 default-banner = Mewngofnodion a ddefnyddiwyd yn ddiweddar.
+# Variables:
+#   - $count (number): number of items in the list
+filtered-banner =
+    { $count ->
+        [zero] Wedi canfod { $count } mewngofnod
+        [one] Wedi canfod { $count } mewngofnod
+        [two] Wedi canfod { $count } mewngofnod
+        [few] Wedi canfod { $count } mewngofnod
+        [many] Wedi canfod { $count } mewngofnod
+       *[other] Wedi canfod { $count } mewngofnod
+    }
+get-started-banner = Heb ganfod mewngofnodion.
+no-matching-banner = Dim cofnodion sy'n cyfateb.
+no-results-banner = Heb ddarganfod unrhyw fewngofnod ar gyfer y wefan gyfredol.
+item-details-panel-title = Manylion Mewngofnod
+navigate-panel-backwards = Nôl
 
 ## Strings used in dialog
 
+modal-cancel-editing = Mae newidiadau heb eu cadw'n bodoli. Eu dileu?
+    .confirmLabel = Dileu Newidiadau
+    .cancelLabel = Nôl
+modal-delete = Dileu'r mewngofnod?
+    .confirmLabel = Dileu
+    .cancelLabel = Diddymu
+connect-another-device = Cysylltu dyfais arall
+easily-access-logins = Cael mynediad hawdd i'ch cofnodiadau o unrhyw ddyfais.
+access-on-another-computer = Cael mynediad ar gyfrifiadur arall
+simply-sign-in-other-device = Mewngofnodwch i { -fxaccount-brand-name } ar eich dyfais arall i gydweddu eich mewngofnodion i'r cyfrifiadur hwnnw.
+download-mobile = Llwythwch yr ap symudol i lawr
+download-ios-android = Mae { -fxlockwise-brand-name } ar gael ar iOS ac Android. <learnmore> Cliciwch yma </learnmore> i ddysgu rhagor ac i anfon dolen i'ch ffôn i lwytho'r ap i lawr.
+before-access = Cyn y gallwch gael mynediad i'ch mewngofnodion ar ddyfais arall, bydd angen i chi gysylltu { -fxaccount-brand-name }.
+connect-a-firefox-account = Cysylltu { -fxaccount-brand-name }
+# Displayed next to connect-a-firefox-account string after the user has logged in.
+connection-complete = (cwblhawyd)
+sync-requires-account = I gydweddu'ch mewngofnodion i ddyfais arall, bydd angen i chi <signin>fewngofnodi neu greu { -fxaccount-brand-name }</signin>
+ensure-logins-checked = Sicrhewch fod y blwch ticio “Mewngofnodion” wedi'i ddewis yn newisiadau { -sync-brand-short-name }
+setting-to-allow-sync = Er mwyn caniatáu i'ch mewngofnodion gael eu cydweddu â dyfeisiau eraill, rhaid gwirio'r gosodiad hwn. <go>Agor Dewisiadau{ -sync-brand-short-name }</go>
+banner-promote-device = <bold>Ewch â'ch cyfrineiriau i bob man</bold> - llwythwch ein ap iOS neu Android i lawr:
+banner-promote-device-app-store =
+    .title = Llwythwch i lawr o'r App Store
+banner-promote-device-play-store =
+    .title = Estynnwch o Google Play
+banner-promote-fxa = <bold>Cymrwch eich cyfrineiriau i bob man</bold> - crëwch { -fxaccount-brand-name } neu fewngofnodwch i gydweddu â { -fxlockwise-brand-short-name } ar ffôn symudol:
+banner-promote-fxa-action-label = Mewngofnodi
