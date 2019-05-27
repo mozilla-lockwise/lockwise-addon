@@ -87,6 +87,7 @@ intro-page-main-article-1-copy =
 intro-page-main-article-2-title = Rask tilgang til innloggingane dine
 intro-page-main-article-2-copy = Klikk på ikonet { -fxlockwise-brand-short-name } frå verktøyfeltet i { -firefox-brand-name } for å vise dørhengaren vår, for tilgang til innloggingane dine.
 intro-page-main-article-3-title = Lag nye innloggingar manuelt
+intro-page-main-article-3-copy = Med tillegginga av manuelle innloggingar, kan du no lagre kva som helst konto i { -fxlockwise-brand-short-name }.
 intro-page-footer-heading = Ser du ikkje dei lagra innloggingane dine? Lat oss hjelpe deg.
 item-details-heading-new = Lag ny innlogging
 item-details-heading-edit = Rediger innloggingsopplysningar
