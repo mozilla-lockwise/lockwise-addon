@@ -144,6 +144,7 @@ download-ios-android = { -fxlockwise-brand-name } er tilgjengeleg på både iOS 
 connect-a-firefox-account = Kople til ein { -fxaccount-brand-name }
 # Displayed next to connect-a-firefox-account string after the user has logged in.
 connection-complete = (fullført)
+banner-promote-device = <bold>Ta med deg passorda dine overalt</bold> - last ned appen vår for iOS eller Android:
 banner-promote-device-app-store =
     .title = Last ned frå App Store
 banner-promote-device-play-store =
