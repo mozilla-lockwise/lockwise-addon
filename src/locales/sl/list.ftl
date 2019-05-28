@@ -33,6 +33,7 @@ document =
     .title = { -fxlockwise-brand-name }
 error-notification-sync-button = Ponovno poveži
 all-items-get-started-title = Ni prijav.
+all-items-get-started-footer = Ne vidite svojih shranjenih prijav? <go>Ugotovite, zakaj</go>
 all-items-no-results-footer = <go>Več o tem</go>
 item-fields-origin = Naslov spletnega mesta
 item-fields-origin-input =
