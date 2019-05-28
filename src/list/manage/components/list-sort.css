@@ -12,6 +12,7 @@
   appearance: none;
   -moz-appearance: none;
   border: none;
+  font-size: 12px;
   font-weight: bold;
   background: url(/icons/arrow-dropdown.svg) right center no-repeat;
   padding-inline-end: 18px;

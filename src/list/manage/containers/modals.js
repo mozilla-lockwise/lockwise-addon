@@ -38,15 +38,12 @@ export const CancelEditingModal = connect(
   }
 )(LocalizedConfirmDialog);
 
-export function ConnectDevice({profile, onClose, onDownloadClick, onSyncPrefsClick, ...props}) {
-  const isComplete = profile && profile.hasProfile && !profile.hasProfileNeedsAttn;
-
-  if (isComplete && profile.syncEnabled) {
-    return (
-      <DialogBox {...props}
-        buttons={[{name: "AllSet", label: "All Set", theme: "primary"}]}
-        onClick={() => {}}
-        onClose={onClose}>
+function ConnectDeviceAllSet({allSetLabel, onDownloadClick, onClose, ...props}) {
+  return (
+    <DialogBox {...props}
+      buttons={[{ name: "AllSet", label: allSetLabel, theme: "primary" }]}
+      onClick={() => { }}
+      onClose={onClose}>
       <div className={styles.connectDevice} >
         <Localized id="connect-another-device">
           <h1>cOnNeCt aNoThEr dEvIcE</h1>
@@ -74,42 +71,80 @@ export function ConnectDevice({profile, onClose, onDownloadClick, onSyncPrefsCli
           </li>
         </ul>
       </div>
-      </DialogBox>
-    );
-  }
+    </DialogBox>
+  );
+}
+ConnectDeviceAllSet.propTypes = {
+  closeLabel: PropTypes.string.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onDownloadClick: PropTypes.func.isRequired,
+};
+
+function ConnectDeviceSteps({isComplete, profile, closeLabel, onClose, onSyncPrefsClick, ...props}) {
   const completed = <Localized id="connection-complete"><span>(cOmPlEtE)</span></Localized>;
   return (
     <DialogBox {...props}
-      buttons={[{name: "Close", theme: "primary", label: "Close"}]}
-      onClick={() => {}}
+      buttons={[{ name: "Close", theme: "primary", label: closeLabel }]}
+      onClick={() => { }}
       onClose={onClose}>
-    <div className={styles.connectDevice} >
-      <Localized id="connect-another-device">
-        <h1>cOnNeCt aNoThEr dEvIcE</h1>
-      </Localized>
-      <Localized id="before-access">
-        <h2>bEfOrE YoU CaN AcCeSs yOuR LoGiNs oN AnOtHeR DeViCe, YoU WiLl nEeD To cOnNeCt a fIrEfOx aCcOuNt.</h2>
-      </Localized>
-      <ol>
-        <li className={classNames([styles.connect, isComplete ? styles.complete : styles.incomplete])}>
-          <Localized id="connect-a-firefox-account"><h3>cOnNeCt a fIrEfOx aCcOuNt { isComplete ? completed : "" }</h3></Localized>
-          <Localized id="sync-requires-account"
-            signin={<a onClick={() => onSyncPrefsClick("connect-device-step-one")}></a>}>
-            <p>tO SyNc yOuR LoGiNs tO AnOtHeR DeViCe, YoU WiLl nEeD To <signin>SiGn iN Or cReAtE A FiReFoX AcCoUnT</signin>.</p>
-          </Localized>
-        </li>
-        <li className={classNames([styles.sync, profile && profile.hasProfile && profile.syncEnabled ? styles.complete : styles.incomplete])}>
-          <Localized id="ensure-logins-checked">
-            <h3>eNsUrE ThE &ldquo;lOgInS&rdquo;cHeCkBoX Is sElEcTeD In sYnC PrEfErEnCeS</h3>
-          </Localized>
-          <Localized id="setting-to-allow-sync"
-            go={<a onClick={() => onSyncPrefsClick("connect-device-step-two")}></a>}>
-            <p>iN OrDeR To aLlOw yOuR LoGiNs tO Be sYnCeD To oThEr dEvIcEs, ThIs sEtTiNg mUsT Be cHeCkEd. <go>oPeN SyNc pReFeReNcEs</go></p>
-          </Localized>
-        </li>
-      </ol>
-    </div>
+      <div className={styles.connectDevice} >
+        <Localized id="connect-another-device">
+          <h1>cOnNeCt aNoThEr dEvIcE</h1>
+        </Localized>
+        <Localized id="before-access">
+          <h2>bEfOrE YoU CaN AcCeSs yOuR LoGiNs oN AnOtHeR DeViCe, YoU WiLl nEeD To cOnNeCt a fIrEfOx aCcOuNt.</h2>
+        </Localized>
+        <ol>
+          <li className={classNames([styles.connect, isComplete ? styles.complete : styles.incomplete])}>
+            <Localized id="connect-a-firefox-account"><h3>cOnNeCt a fIrEfOx aCcOuNt {isComplete ? completed : ""}</h3></Localized>
+            <Localized id="sync-requires-account"
+              signin={<a onClick={() => onSyncPrefsClick("connect-device-step-one")}></a>}>
+              <p>tO SyNc yOuR LoGiNs tO AnOtHeR DeViCe, YoU WiLl nEeD To <signin>SiGn iN Or cReAtE A FiReFoX AcCoUnT</signin>.</p>
+            </Localized>
+          </li>
+          <li className={classNames([styles.sync, profile && profile.hasProfile && profile.syncEnabled ? styles.complete : styles.incomplete])}>
+            <Localized id="ensure-logins-checked">
+              <h3>eNsUrE ThE &ldquo;lOgInS&rdquo;cHeCkBoX Is sElEcTeD In sYnC PrEfErEnCeS</h3>
+            </Localized>
+            <Localized id="setting-to-allow-sync"
+              go={<a onClick={() => onSyncPrefsClick("connect-device-step-two")}></a>}>
+              <p>iN OrDeR To aLlOw yOuR LoGiNs tO Be sYnCeD To oThEr dEvIcEs, ThIs sEtTiNg mUsT Be cHeCkEd. <go>oPeN SyNc pReFeReNcEs</go></p>
+            </Localized>
+          </li>
+        </ol>
+      </div>
     </DialogBox>
+  );
+}
+ConnectDeviceSteps.propTypes = {
+  isComplete: PropTypes.bool.isRequired,
+  profile: PropTypes.object.isRequired,
+  closeLabel: PropTypes.string.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onDownloadClick: PropTypes.func.isRequired,
+  onSyncPrefsClick: PropTypes.func.isRequired,
+};
+
+
+export function ConnectDevice({profile, onClose, onDownloadClick, onSyncPrefsClick, ...props}) {
+  const isComplete = profile && profile.hasProfile && !profile.hasProfileNeedsAttn;
+
+  if (isComplete && profile.syncEnabled) {
+    return (
+      <Localized id="connect-another-device-dialog" attrs={{ allSetLabel: true}}>
+        <ConnectDeviceAllSet allSetLabel="aLl sEt" onClose={onClose}
+                             onDownloadClick={onDownloadClick}
+                             {...props} />
+      </Localized>
+    );
+  }
+  return (
+    <Localized id="connect-another-device-dialog" attrs={{ closeLabel: true }}>
+      <ConnectDeviceSteps isComplete={isComplete} profile={profile}
+                          closeLabel="cLOSe" onClose={onClose}
+                          onSyncPrefsClick={onSyncPrefsClick}
+                          {...props} />
+    </Localized>
   );
 }
 

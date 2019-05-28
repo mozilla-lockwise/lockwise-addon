@@ -45,7 +45,6 @@ export default function ItemListPanel({className, inputRef, totalItemCount,
                    toolbarClassName={styles.filterToolbar}>
         <div className={styles.secondRow}>
           <ListSort sort={sort} {...props} />
-          <div className={styles.flexSpacer}></div>
           <ListCounter count={count} className={styles.listCounter} />
         </div>
       </PanelHeader>
