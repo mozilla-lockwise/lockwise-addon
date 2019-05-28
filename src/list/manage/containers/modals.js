@@ -131,7 +131,7 @@ export function ConnectDevice({profile, onClose, onDownloadClick, onSyncPrefsCli
 
   if (isComplete && profile.syncEnabled) {
     return (
-      <Localized id="connect-another-device" attrs={{ allSetLabel: true}}>
+      <Localized id="connect-another-device-dialog" attrs={{ allSetLabel: true}}>
         <ConnectDeviceAllSet allSetLabel="aLl sEt" onClose={onClose}
                              onDownloadClick={onDownloadClick}
                              {...props} />
@@ -139,7 +139,7 @@ export function ConnectDevice({profile, onClose, onDownloadClick, onSyncPrefsCli
     );
   }
   return (
-    <Localized id="connect-another-device" attrs={{ closeLabel: true }}>
+    <Localized id="connect-another-device-dialog" attrs={{ closeLabel: true }}>
       <ConnectDeviceSteps isComplete={isComplete} profile={profile}
                           closeLabel="cLOSe" onClose={onClose}
                           onSyncPrefsClick={onSyncPrefsClick}
