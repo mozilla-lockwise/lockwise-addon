@@ -1,4 +1,4 @@
-[![Build Status][travisci-image]][travisci-link]
+[![CircleCI][circleci-image]][circleci-link]
 [![codecov][codecov-image]][codecov-link]
 
 # Firefox Lockbox for Desktop
@@ -29,8 +29,8 @@ version 2.0][license-link].
 
 Note that some test fixtures use source code from third-party services, and are not subject to this license.
 
-[travisci-image]: https://travis-ci.org/mozilla-lockwise/lockwise-addon.svg?branch=master
-[travisci-link]: https://travis-ci.org/mozilla-lockwise/lockwise-addon
+[circleci-image]: https://circleci.com/gh/mozilla-lockwise/lockwise-addon.svg?style=svg
+[circleci-link]: https://circleci.com/gh/mozilla-lockwise/lockwise-addon
 [codecov-image]: https://codecov.io/gh/mozilla-lockwise/lockwise-addon/branch/master/graph/badge.svg
 [codecov-link]: https://codecov.io/gh/mozilla-lockwise/lockwise-addon
 [docs-link]: docs/
