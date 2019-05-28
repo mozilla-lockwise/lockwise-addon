@@ -46,10 +46,10 @@
 }
 
 .list-counter {
-  flex-grow: 0;
-  flex-shrink: 0;
+  flex: 1 1 auto;
   font-size: 12px;
   color: #4a4a4f;
+  text-align: right;
 }
 
 .empty {
