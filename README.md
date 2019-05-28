@@ -1,6 +1,5 @@
 [![Build Status][travisci-image]][travisci-link]
 [![codecov][codecov-image]][codecov-link]
-[![Waffle Board][waffle-image]][waffle-link]
 
 # Firefox Lockbox for Desktop
 
@@ -34,8 +33,6 @@ Note that some test fixtures use source code from third-party services, and are 
 [travisci-link]: https://travis-ci.org/mozilla-lockwise/lockwise-addon
 [codecov-image]: https://codecov.io/gh/mozilla-lockwise/lockwise-addon/branch/master/graph/badge.svg
 [codecov-link]: https://codecov.io/gh/mozilla-lockwise/lockwise-addon
-[waffle-image]: https://badge.waffle.io/mozilla-lockwise/lockwise-extension.svg?columns=In%20Progress
-[waffle-link]: https://waffle.io/mozilla-lockwise/lockwise-extension
 [docs-link]: docs/
 [org-website]: https://lockwise.firefox.com/
 [contributing-link]: docs/contributing.md
