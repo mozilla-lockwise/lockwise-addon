@@ -33,8 +33,13 @@ document =
     .title = { -fxlockwise-brand-name }
 error-notification-sync = 无法同步登录信息
 error-notification-sync-button = 重新连接
+all-items-get-started = 当您保存密码到 { -firefox-brand-name } 后，就会显示于此。
 all-items-get-started-title = 找不到登录信息。
+all-items-get-started-footer = 看不到您保存的登录信息？<go>寻找原因</go>
+all-items-no-results-title = 没有匹配的登录信息。
 all-items-no-results-footer = <go>详细了解</go>
+item-fields-title-input =
+    .placeholder = 例如：主要往来银行
 item-fields-origin = 网址
 item-fields-origin-input =
     .placeholder = https://www.example.com
@@ -68,8 +73,11 @@ account-summary-avatar =
 account-summary-options = 首选项
 account-summary-signout = 退出
 intro-page-header-title = { -fxlockwise-brand-name } 桌面版
+item-details-heading-new = 创建新的登录信息
+item-details-heading-edit = 编辑登录信息
 item-details-edit = 编辑
 item-details-delete = 删除
+item-details-save-new = 创建登录信息
 item-details-save-existing = 保存更改
 item-details-cancel = 取消
 item-details-created = 创建时间：{ $date }
@@ -98,12 +106,18 @@ filtered-banner =
        *[other] 找到 { $count } 条登录信息。
     }
 get-started-banner = 未找到登录信息。
-no-matching-banner = 无匹配的登录信息。
+no-matching-banner = 没有匹配的登录信息。
 item-details-panel-title = 登录详细信息
 navigate-panel-backwards = 返回
 
 ## Strings used in dialog
 
+modal-cancel-editing = 有尚未保存的更改，要丢弃吗？
+    .confirmLabel = 丢弃更改
+    .cancelLabel = 返回
+modal-delete = 删除此登录信息？
+    .confirmLabel = 删除
+    .cancelLabel = 取消
 connect-another-device = 连接其他设备
 download-mobile = 下载移动版 App
 connect-a-firefox-account = 连接 { -fxaccount-brand-name }
