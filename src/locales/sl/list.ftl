@@ -32,6 +32,8 @@ profile-menu-feedback = Povratne informacije
 document =
     .title = { -fxlockwise-brand-name }
 error-notification-sync-button = Ponovno poveži
+error-notification-duplicate = Prijava za { $title } s tem uporabniškim imenom že obstaja.
+all-items-get-started = Ko geslo shranite v { -firefox-brand-name }, se bo prikazalo tukaj.
 all-items-get-started-title = Ni prijav.
 all-items-get-started-footer = Ne vidite svojih shranjenih prijav? <go>Ugotovite, zakaj</go>
 all-items-no-results-footer = <go>Več o tem</go>
@@ -92,10 +94,14 @@ list-count =
 sort-by = Razvrsti po:
 sort-by-name = Ime
 sort-by-last-used = Nazadnje uporabljeno
+sort-by-last-changed = Nazadnje spremenjeno
 
 ## Strings used in pop-up
 
 manage-logins-button = Odpri { -fxlockwise-brand-short-name }
+list-detail-button = Odpri spletno mesto
+default-banner = Nedavno uporabljene prijave.
+no-results-banner = Za trenutno spletno mesto ni bilo najdenih prijav.
 item-details-panel-title = Podrobnosti prijave
 navigate-panel-backwards = Nazaj
 
@@ -107,4 +113,6 @@ modal-delete = Izbrišem to prijavo?
 connect-another-device = Poveži drugo napravo
 download-mobile = Prenesite mobilno aplikacijo
 connect-a-firefox-account = Povežite { -fxaccount-brand-name }
+banner-promote-device-app-store =
+    .title = Prenesite ga z App Stora
 banner-promote-fxa-action-label = Prijava
