@@ -45,20 +45,24 @@
 }
 
 .edit-button, .delete-button {
-  padding-left: 30px;
   font-size: 15px;
 }
-.edit-button {
-  background-image: url(/icons/edit.svg);
-  background-position: 25% 8px;
+.edit-button::before, .delete-button::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
   background-repeat: no-repeat;
+  padding-right: 8px;
+  vertical-align: sub;
+}
+.edit-button::before {
+  background-image: url(/icons/edit.svg);
 }
 
-.delete-button {
+.delete-button::before {
   background-image: url(/icons/delete.svg);
-  background-size: 16px;
-  background-position: 15% 8px;
-  background-repeat: no-repeat;
+  background-size: 105% 100%;
 }
 
 hr {
