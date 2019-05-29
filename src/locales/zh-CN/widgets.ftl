@@ -2,15 +2,15 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-copy-to-clipboard-button = Tiwachib'ëx
-copy-to-clipboard-copied = ✔ Xwachib'ëx
+copy-to-clipboard-button = 复制
+copy-to-clipboard-copied = ✔ 已复制
 filter-input-clear =
-    .title = Tijosq'ïx
+    .title = 清除
 modal-root =
-    .contentLabel = Modal ch'owen
+    .contentLabel = 对话框
 password-input-show =
-    .title = Tik'ut
+    .title = 显示
 password-input-hide =
-    .title = Tewäx
+    .title = 隐藏
 panel-back-button =
-    .alt = Titzolin
+    .alt = 返回
