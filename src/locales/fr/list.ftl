@@ -18,8 +18,8 @@
 # and kept in English.
 -fxaccount-brand-name =
     { $capitalization ->
-        [lowercase] compte Firefox
-       *[uppercase] Compte Firefox
+       *[lowercase] compte Firefox
+        [uppercase] Compte Firefox
     }
 
 ## All the following messages are localizable.
@@ -90,7 +90,15 @@ intro-page-main-article-1-copy = La gestion de vos comptes ne devrait pas être 
 intro-page-main-article-2-title = Accès rapide à vos identifiants
 intro-page-main-article-2-copy = Cliquez sur l’icône { -fxlockwise-brand-short-name } dans la barre d’outils de { -firefox-brand-name } pour afficher notre panneau d’accès à vos identifiants.
 intro-page-main-article-3-title = Ajout manuel de nouveaux identifiants
+intro-page-main-article-3-copy =
+    Avec l’ajout manuel d’identifiants, vous pouvez désormais stocker n’importe quel compte
+    de votre choix dans { -fxlockwise-brand-short-name }.
 intro-page-footer-heading = Vous ne voyez pas vos identifiants enregistrés ? Laissez-nous vous aider.
+intro-page-footer-copy =
+    { -fxlockwise-brand-name } donne accès aux identifiants enregistrés dans
+    { -firefox-brand-name } sur votre appareil. Si vos identifiants sont stockés sur un autre appareil,
+    vous pouvez synchroniser vos informations sur cet appareil en vous connectant ou
+    en créant un { -fxaccount-brand-name }. <go>En savoir plus</go>
 item-details-heading-new = Créer un nouvel identifiant
 item-details-heading-edit = Modifier les détails de l’identifiant
 item-details-edit = Modifier
@@ -139,12 +147,16 @@ modal-cancel-editing = Certaines modifications ne sont pas enregistrées. Les ab
 modal-delete = Supprimer cet identifiant ?
     .confirmLabel = Supprimer
     .cancelLabel = Annuler
+connect-another-device-dialog =
+    .closeLabel = Fermer
+    .allSetLabel = Terminer
 connect-another-device = Connecter un autre appareil
 easily-access-logins = Accédez facilement à vos identifiants depuis n’importe quel appareil.
 access-on-another-computer = Accès sur un autre ordinateur
 simply-sign-in-other-device = Il suffit de vous connecter à votre { -fxaccount-brand-name } sur votre autre appareil pour synchroniser vos identifiants de connexion avec cet ordinateur.
 download-mobile = Télécharger l’application mobile
 download-ios-android = { -fxlockwise-brand-name } est disponible sur iOS comme sur Android. <learnmore>Cliquez ici</learnmore> pour en savoir plus et pour envoyer un lien sur votre téléphone afin de télécharger l’application.
+before-access = Avant de pouvoir accéder à vos identifiants sur un autre appareil, vous devez vous connecter à un { -fxaccount-brand-name }.
 connect-a-firefox-account = Connectez-vous à un { -fxaccount-brand-name }
 # Displayed next to connect-a-firefox-account string after the user has logged in.
 connection-complete = (terminé)
@@ -156,4 +168,5 @@ banner-promote-device-app-store =
     .title = Télécharger dans l’App Store
 banner-promote-device-play-store =
     .title = Disponible sur Google Play
+banner-promote-fxa = <bold>Emportez vos mots de passe partout</bold> — créez un { -fxaccount-brand-name } ou connectez-vous pour lancer la synchronisation avec { -fxlockwise-brand-short-name } sur votre mobile :
 banner-promote-fxa-action-label = Connexion
