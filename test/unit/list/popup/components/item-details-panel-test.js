@@ -23,17 +23,19 @@ describe("list > popup > components > <ItemDetailsPanel/>", () => {
   };
 
   const onCopy = () => {};
+  function createWrapper(fields) {
+    return mountWithL10n(
+      <ItemDetailsPanel fields={fields} onBack={onBack} onCopy={onCopy} />
+    );
+  }
 
   let onBack, wrapper;
-
   beforeEach(() => {
     onBack = sinon.spy();
-    wrapper = mountWithL10n(
-      <ItemDetailsPanel fields={fields} onBack={onBack} onCopy={onCopy}/>
-    );
   });
 
   it("render fields", () => {
+    wrapper = createWrapper(fields);
     for (let i in fields) {
       if (i !== "password") {
         if (i === "origin") {
@@ -51,8 +53,32 @@ describe("list > popup > components > <ItemDetailsPanel/>", () => {
       }
     }
   });
+  it("render fields with non-URL", () => {
+    const altFields = {
+      ...fields,
+      origin: "origin",
+    };
+    wrapper = createWrapper(altFields);
+    for (let i in fields) {
+      if (i !== "password") {
+        if (i === "origin") {
+          // We display the origin as host in <ItemFilter/>
+          // when we are inside the panel. So check for that
+          // specifically here.
+          expect(wrapper.find(`[data-name="origin"]`).filterWhere((x) => {
+            return typeof x.type() !== "string";
+          })).to.have.text(altFields[i]);
+        } else {
+          expect(wrapper.find(`[data-name="${i}"]`).filterWhere((x) => {
+            return typeof x.type() !== "string";
+          })).to.have.text(altFields[i]);
+        }
+      }
+    }
+  });
 
   it("onBack called", () => {
+    wrapper = createWrapper(fields);
     wrapper.findWhere((x) => x.prop("id") === "item-details-panel-title")
            .find("button").simulate("click");
     expect(onBack).to.have.been.calledWith();

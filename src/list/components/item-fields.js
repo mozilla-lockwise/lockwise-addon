@@ -25,8 +25,17 @@ const fieldsPropTypes = PropTypes.shape({
 });
 
 export function ItemFields({fields, showPassword, onCopy, isPopup, onReveal, onOpenWebsite}) {
+  const originStr = ((val) => {
+    try {
+      val = new URL(val);
+      return val.host;
+    } catch (ex) {
+      // assume raw string is fine ...
+      return val;
+    }
+  })(fields.origin);
   const originEl = isPopup ? (
-      <h4 className={styles.popupOrigin}>{new URL(fields.origin).host}</h4>
+      <h4 className={styles.popupOrigin}>{originStr}</h4>
   ) : (
       <a className={styles.originLink} onClick={onOpenWebsite}>{fields.origin}</a>
   );
