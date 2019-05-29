@@ -101,6 +101,7 @@ sort-by-last-changed = Nazadnje spremenjeno
 manage-logins-button = Odpri { -fxlockwise-brand-short-name }
 list-detail-button = Odpri spletno mesto
 default-banner = Nedavno uporabljene prijave.
+get-started-banner = Ni najdenih prijav.
 no-results-banner = Za trenutno spletno mesto ni bilo najdenih prijav.
 item-details-panel-title = Podrobnosti prijave
 navigate-panel-backwards = Nazaj
