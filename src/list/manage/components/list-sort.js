@@ -15,6 +15,13 @@ function calcSelectStyle(el) {
 
   return 20 + (el.options[el.selectedIndex].text.length * 8) + "px";
 }
+function calcTitle(el) {
+  if (!el.options) {
+    return "";
+  }
+
+  return el.options[el.selectedIndex].text;
+}
 
 export default class ListSort extends React.Component {
   constructor(props) {
@@ -29,7 +36,10 @@ export default class ListSort extends React.Component {
 
   componentDidMount() {
     // set initial select width
-    this.setState({selectWidth: calcSelectStyle(this.selectEl)});
+    this.setState({
+      selectWidth: calcSelectStyle(this.selectEl),
+      selectTitle: calcTitle(this.selectEl),
+    });
   }
 
   handleChange(evt) {
@@ -38,19 +48,22 @@ export default class ListSort extends React.Component {
     this.props.onChange(value);
 
     // update select width
-    this.setState({selectWidth: calcSelectStyle(evt.target)});
+    this.setState({
+      selectWidth: calcSelectStyle(evt.target),
+      selectTitle: calcTitle(evt.target),
+    });
   }
 
   render() {
     const { disabled } = this.props;
-    const { selectWidth } = this.state;
+    const { selectWidth, selectTitle } = this.state;
     return (
       <React.Fragment>
         <Localized id="sort-by">
           <label className={styles.label}
                  htmlFor="sort-options">sORT bY:</label>
         </Localized>
-        <select id="listSortSelect" value={this.state.value}
+        <select id="listSortSelect" value={this.state.value} title={selectTitle}
                 className={styles.select} style={{width: selectWidth}}
                 onChange={this.handleChange} ref={node => (this.selectEl = node)}
                 disabled={disabled}>
