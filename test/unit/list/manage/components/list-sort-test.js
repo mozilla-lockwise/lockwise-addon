@@ -25,6 +25,7 @@ describe("list > manage > components > <ListSort />", () => {
         <ListSort onChange={onChange} value="name" sort="name" disabled={true} />
       );
       expect(wrapper.state().value).to.equal("name");
+      expect(wrapper.state().selectTitle).to.equal("nAMe");
       expect(wrapper.find("select").prop("disabled")).to.be.true;
     });
   });
@@ -52,8 +53,18 @@ describe("list > manage > components > <ListSort />", () => {
       );
     });
 
-    it("updates sort value on select change", () => {
-      wrapper.find("select").simulate("change", {target: {value: "last-used"}});
+    it("updates sort value and title on select change", () => {
+      wrapper.find("select").simulate("change", {
+        target: {
+          value: "last-used",
+          selectedIndex: 1,
+          options: [
+            { value: "name", text: "nAMe" },
+            { value: "last-used", text: "lASt uSEd" },
+            { value: "last-changed", text: "lASt cHANGEd" },
+          ],
+        },
+      });
       expect(onChange).to.have.callCount(1);
       expect(wrapper.state().value).to.equal("last-used");
     });

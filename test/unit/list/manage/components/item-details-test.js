@@ -23,7 +23,7 @@ const mockStore = configureStore(middlewares);
 describe("list > manage > components > <ItemDetails/>", () => {
   const fields = {
     title: "title",
-    origin: "origin",
+    origin: "https://example.com",
     username: "username",
     password: "password",
   };

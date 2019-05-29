@@ -3,5 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
  .add-item {
-     margin: 0 1.5em;
+     flex: 0 0 auto;
+     margin-left: 2em;
+     padding: 0px 2em;
+     min-width: 120px;
  }

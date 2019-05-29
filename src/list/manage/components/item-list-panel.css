@@ -46,7 +46,7 @@
 }
 
 .list-counter {
-  flex: 1 1 auto;
+  flex: 1 0 auto;
   font-size: 12px;
   color: #4a4a4f;
   text-align: right;
