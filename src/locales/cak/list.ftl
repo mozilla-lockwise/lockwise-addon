@@ -96,6 +96,12 @@ intro-page-main-article-3-title = Chi q'ab'aj titz'uk jun k'ak'a' kitikirisaxik 
 intro-page-main-article-3-copy =
     Ri kitz'aqatisaxik pa kiyonil nikitikirisaj molojri'ïl, wakami nitikïr nuyäk xab'achike rub'i' taqoya'l
     nawajo' pa { -fxlockwise-brand-short-name }.
+intro-page-footer-heading = ¿La man ye'atz'ët ta ri kitikirisaxik amolojri'ïl? Taya' q'ij richin yatqato'.
+intro-page-footer-copy =
+    { -fxlockwise-brand-name } nuya' pe okem pa kitikirisaxik amolojri'ïl e'ayakon pa
+    { -firefox-brand-name } pan awokisab'al. We ri kitikirisaxik amolojri'ïl eyakon pa jun chik okisab'äl,
+    yatikïr ye'axïm ri taq awetamab'al rik'in re okisab'äl re' rik'in natikirisaj molojri'ïl o
+    natz'ük jun { -fxaccount-brand-name }. <go>Tetamäx Ch'aqa' Chik</go>
 item-details-heading-new = Titz'uk K'ak'a' Rutikirixaxik Molojri'ïl
 item-details-heading-edit = Tinuk' Rub'anikil Rutikirisaxik Molojri'ïl
 item-details-edit = Tinuk'
@@ -138,15 +144,32 @@ navigate-panel-backwards = Titzolin
 
 ## Strings used in dialog
 
+modal-cancel-editing = E k'o taq jaloj man eyakon ta. ¿La yeyuj el?
+    .confirmLabel = Keyuj taq Jaloj
+    .cancelLabel = Titzolin
 modal-delete = ¿La niyuj re rutikirisaxik molojri'ïl re'?
     .confirmLabel = Tiyuj
     .cancelLabel = Tiq'at
+connect-another-device-dialog =
+    .closeLabel = Titz'apïx
+    .allSetLabel = Ütz Ronojel
 connect-another-device = Tokisäx jun chik okisab'äl
+easily-access-logins = Anin katok pa kitikirisaxik amolojri'ïl pa xab'achike okisab'äl.
+access-on-another-computer = Tok pa jun chik kematz'ib'
+simply-sign-in-other-device = Xa xe tatikirisaj molojri'ïl pa { -fxaccount-brand-name } pa ri jun chik awokisab'al richin ye'axïm ri kitikirisaxik molojri'ïl pa ri kematz'ib' ri'.
+download-mobile = Tiqasäx ri oyonib'äl chokoy
+download-ios-android = { -fxlockwise-brand-name } K'o pa iOS chuqa' pa Android. <learnmore>Tipitz'i wawe'</learnmore> richin netamäx ch'aqa' chik chuqa' nitaq jun ximonel pan awoyonib'al richin niqasäx ri chokoy.
+before-access = Chuwäch yatok pa kitikirisaxik amolojri'ïl pa jun chik okisab'äl, k'o chi yatok pa { -fxaccount-brand-name }.
 connect-a-firefox-account = Tokisäx pa { -fxaccount-brand-name }
 # Displayed next to connect-a-firefox-account string after the user has logged in.
 connection-complete = (tz'aqät)
+sync-requires-account = Richin ye'axïm ri kitikirisaxik amolojri'ïl pa jun chik okisab'äl, nik'atzin <signin>natikirisaj molojri'ïl o natz'ük jun { -fxaccount-brand-name }</signin>.
+ensure-logins-checked = Tajikib'a' chi ya'on retal ri “Kitikirisaxik molojri'ïl” pa{ -sync-brand-short-name } taq ajowab'äl
+setting-to-allow-sync = Richin niya' q'ij chi ri kitikirisaxik amolojri'ïl nikixïm ki' kik'in ch'aqa' chik taq okisab'äl, k'o chi niya' retal re nuk'ulem re'. <go>Tijaq { -sync-brand-short-name } taq ajowab'äl</go>
+banner-promote-device = <bold>Xab'akuchi' ke'ak'waj ri ewan taq atzij</bold> - taqasaj ri qachokoy richin iOS o Android:
 banner-promote-device-app-store =
     .title = Tiqasäx pe pa ri App Store
 banner-promote-device-play-store =
     .title = Tik'ul pe pa Google Play
+banner-promote-fxa = <bold>Xab'akuchi' ke'ak'waj ri ewan taq atzij</bold> - titz'uk jun { -fxaccount-brand-name } o Titikirisäx Molojri'ïl pa sync richin { -fxlockwise-brand-short-name } pan oyonib'äl:
 banner-promote-fxa-action-label = Titikirisäx Molojri'ïl

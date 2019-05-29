@@ -41,9 +41,12 @@ all-items-get-started-footer = Không thấy thông tin đăng nhập đã lưu 
 all-items-no-results = Nếu thông tin đăng nhập này được lưu trên thiết bị khác, hãy đảm bảo bạn đã đăng nhập và đồng bộ hóa trên thiết bị đó để xem tại đây.
 all-items-no-results-title = Không có thông tin đăng nhập phù hợp.
 all-items-no-results-footer = <go>Tìm hiểu thêm</go>
+item-fields-title-input =
+    .placeholder = ví dụ: ngân hàng chính
 item-fields-origin = Địa chỉ trang web
 item-fields-origin-input =
     .placeholder = https://www.example.com
+item-fields-origin-info-message = Nội dung của trường này phải giống hệt như tên miền tương ứng (bao gồm “https://”).
 item-fields-origin-button = Khởi chạy
 item-fields-username = Tên đăng nhập
 item-fields-username-input =
@@ -77,7 +80,14 @@ account-summary-account = Tài khoản
 account-summary-options = Tùy chỉnh
 account-summary-signout = Đăng xuất
 intro-page-header-title = { -fxlockwise-brand-name } cho máy tính để bàn
+intro-page-header-subtitle =
+    Chào mừng bạn đến quản lý đăng nhập tốt hơn. Tiện ích trên máy tính để bàn của chúng tôi mang đến
+    nhiều cải tiến được thấy trong các ứng dụng di động của chúng tôi cho máy tính của bạn, với
+    việc kiểm soát đăng nhập của bạn tốt hơn.
 intro-page-main-article-1-title = Quản lý tài khoản của bạn dễ dàng
+intro-page-main-article-1-copy =
+    Quản lý tài khoản của bạn không nên làm rối lên. Chúng tôi đã làm mọi thứ
+    dễ dàng với giao diện máy tính để bàn mới của chúng tôi.
 intro-page-main-article-2-title = Truy cập nhanh vào thông tin đăng nhập của bạn
 intro-page-main-article-2-copy =
     Nhấp vào biểu tượng { -fxlockwise-brand-short-name } từ thanh công cụ trong { -firefox-brand-name } để hiển thị
@@ -87,6 +97,11 @@ intro-page-main-article-3-copy =
     Với việc thêm thông tin đăng nhập thủ công, giờ đây bạn có thể lưu trữ bất kỳ tài khoản nào
     bạn muốn trong { -fxlockwise-brand-short-name }.
 intro-page-footer-heading = Không thấy thông tin đăng nhập đã lưu của bạn? Hãy để chúng tôi giúp.
+intro-page-footer-copy =
+    { -fxlockwise-brand-name } cung cấp quyền truy cập vào thông tin đăng nhập mà bạn đã lưu vào
+    { -firefox-brand-name } trên thiết bị của bạn. Nếu thông tin đăng nhập của bạn được lưu trữ trên thiết bị khác,
+    bạn có thể đồng bộ thông tin của mình với thiết bị này bằng cách đăng nhập hoặc
+    tạo { -fxaccount-brand-name }. <go>Tìm hiểu thêm</go>
 item-details-heading-new = Tạo đăng nhập mới
 item-details-heading-edit = Chỉnh sửa chi tiết đăng nhập
 item-details-edit = Chỉnh sửa
@@ -145,6 +160,7 @@ connect-a-firefox-account = Kết nối { -fxaccount-brand-name }
 connection-complete = (hoàn tất)
 sync-requires-account = Để đồng bộ hóa thông tin đăng nhập của bạn với một thiết bị khác, bạn sẽ cần <signin>đăng nhập hoặc tạo { -fxaccount-brand-name }</signin>.
 ensure-logins-checked = Đảm bảo hộp kiểm “Đăng nhập” được chọn trong tùy chọn { -sync-brand-short-name }
+setting-to-allow-sync = Để cho phép đăng nhập của bạn được đồng bộ hóa với các thiết bị khác, cài đặt này phải được kiểm tra. <go>Mở tùy chỉnh { -sync-brand-short-name }</go>
 banner-promote-device = <bold>Mang mật khẩu của bạn đi khắp mọi nơi</bold> - tải xuống ứng dụng của chúng tôi trên iOS hoặc Android:
 banner-promote-device-app-store =
     .title = Tải xuống trên App Store
