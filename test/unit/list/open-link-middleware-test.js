@@ -59,7 +59,7 @@ describe("list > manage > open-link-middleware", () => {
     });
     expect(listener).to.have.been.calledWith({
       type: "open_site",
-      url: "https://qsurvey.mozilla.com/s3/Lockbox-Input?ver=" + pkg.version,
+      url: "https://www.surveygizmo.com/s3/5036102/Lockwise-feedback?ver=" + pkg.version,
     });
   });
 
