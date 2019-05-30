@@ -8,7 +8,7 @@ import { openWebsite } from "./common";
 
 // TODO: Update these links?
 const urls = {
-  feedback: "https://qsurvey.mozilla.com/s3/Lockbox-Input?ver=" + version,
+  feedback: "https://www.surveygizmo.com/s3/5036102/Lockwise-feedback?ver=" + version,
   faq: "https://lockwise.firefox.com/faq.html",
   homepage: "https://lockwise.firefox.com",
   appStore: "https://app.adjust.com/eu4xdqg?redirect=https://itunes.apple.com/us/app/firefox-lockbox/id1314000270?mt=8",
