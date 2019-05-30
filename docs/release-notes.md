@@ -14,7 +14,7 @@ _Date: 2019-05-31_
 
 ### Known Issues
 
-* This extension is designed to work with Firefox release 67 or higher.  There are reports of it installing then crashing version 66.  This issue is tracked in ([BMO 1555734](https://bugzilla.mozilla.org/show_bug.cgi?id=1555734)).
+* This extension is designed to work with Firefox release 67 or higher.  There are reports of it installing then crashing in some versions of Firefox 66.  This issue is tracked in ([BMO 1555734](https://bugzilla.mozilla.org/show_bug.cgi?id=1555734)).
 * This extension may conflict with Master Password.  If you wish to use this extension, we recommend disabling Master Password, then disable/re-enable this extension before it will work correctly.
 * If "Ask to always save logins and passwords for websites" is enabled after the extension is loaded, you may be prompted by Firefox to save a login when adding or editing in the management interface.  As a workaround, you can disable then re-enable the extension to prevent this prompt.
 
