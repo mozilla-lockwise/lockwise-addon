@@ -122,9 +122,7 @@ jobs:
           name: "Publish Release on GitHub"
           command: |
             cd ~/project
-            VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]')
-            echo "Release ${VERSION}"
-            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./addons/lockwise-signed.xpi
+            ./bin/deploy-addon.sh
   build-documentation:
     docker:
       - image: python:3.7
