@@ -36,6 +36,7 @@ error-notification-duplicate = Prijava za { $title } s tem uporabniškim imenom 
 all-items-get-started = Ko geslo shranite v { -firefox-brand-name }, se bo prikazalo tukaj.
 all-items-get-started-title = Ni prijav.
 all-items-get-started-footer = Ne vidite svojih shranjenih prijav? <go>Ugotovite, zakaj</go>
+all-items-no-results-title = Ni ujemajočih se prijav.
 all-items-no-results-footer = <go>Več o tem</go>
 item-fields-origin = Naslov spletnega mesta
 item-fields-origin-input =
@@ -101,19 +102,37 @@ sort-by-last-changed = Nazadnje spremenjeno
 manage-logins-button = Odpri { -fxlockwise-brand-short-name }
 list-detail-button = Odpri spletno mesto
 default-banner = Nedavno uporabljene prijave.
+# Variables:
+#   - $count (number): number of items in the list
+filtered-banner =
+    { $count ->
+        [one] { $count } najdena prijava
+        [two] { $count } najdeni prijavi
+        [few] { $count } najdene prijave
+       *[other] { $count } najdenih prijav
+    }
 get-started-banner = Ni najdenih prijav.
+no-matching-banner = Ni ujemajočih se prijav.
 no-results-banner = Za trenutno spletno mesto ni bilo najdenih prijav.
 item-details-panel-title = Podrobnosti prijave
 navigate-panel-backwards = Nazaj
 
 ## Strings used in dialog
 
+modal-cancel-editing = Obstajajo neshranjene spremembe. Ali jih želite zavreči?
+    .confirmLabel = Zavrzi spremembe
+    .cancelLabel = Nazaj
 modal-delete = Izbrišem to prijavo?
     .confirmLabel = Izbriši
     .cancelLabel = Prekliči
+connect-another-device-dialog =
+    .closeLabel = Zapri
+    .allSetLabel = Končano
 connect-another-device = Poveži drugo napravo
 download-mobile = Prenesite mobilno aplikacijo
 connect-a-firefox-account = Povežite { -fxaccount-brand-name }
 banner-promote-device-app-store =
     .title = Prenesite ga z App Stora
+banner-promote-device-play-store =
+    .title = Prenesite ga z Google Play
 banner-promote-fxa-action-label = Prijava
