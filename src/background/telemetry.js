@@ -14,6 +14,9 @@ const TELEMETRY_CATEGORY = "lockboxv1";
 //  which seems like a code smell, while the action / middleware approach solves
 //  this nicely.
 
+let enabled = false;
+function getTelemetryEnabled() { return enabled; }
+
 function registerEvents() {
   const events = {
     "startup": {
@@ -146,6 +149,10 @@ function registerScalars() {
 
 async function recordEvent({ method, object, extra = null, value = null }) {
   let result;
+  if (!enabled) {
+    return result;
+  }
+
   // Note: 'extra' objects must have string values. Replace null with empty
   // string, and convert numbers to strings.
   if (extra) {
@@ -178,14 +185,19 @@ async function recordEvent({ method, object, extra = null, value = null }) {
 }
 
 function scalarSet({ name, value }) {
-  return browser.telemetry.scalarSet(`${TELEMETRY_CATEGORY}.${name}`, value);
+  return enabled && browser.telemetry.scalarSet(`${TELEMETRY_CATEGORY}.${name}`, value);
 }
 
 function scalarAdd({ name, value }) {
-  return browser.telemetry.scalarAdd(`${TELEMETRY_CATEGORY}.${name}`, value);
+  return enabled && browser.telemetry.scalarAdd(`${TELEMETRY_CATEGORY}.${name}`, value);
 }
 
-export function initializeTelemetry() {
+export function initializeTelemetry(force) {
+  if (!enabled && !force) {
+    return;
+  }
+
+  enabled = true;
   registerEvents();
   registerScalars();
 
@@ -195,5 +207,5 @@ export function initializeTelemetry() {
   });
 }
 
-const exported = { recordEvent, scalarSet, scalarAdd };
+const exported = { getTelemetryEnabled, recordEvent, scalarSet, scalarAdd };
 export default exported;
