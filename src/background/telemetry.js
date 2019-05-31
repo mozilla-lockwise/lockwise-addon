@@ -156,11 +156,13 @@ async function recordEvent({ method, object, extra = null, value = null }) {
   // Note: 'extra' objects must have string values. Replace null with empty
   // string, and convert numbers to strings.
   if (extra) {
+    extra = { ...extra };
     Object.keys(extra).forEach(key => {
-      if (extra[key] === null) {
+      if (key === "itemid") {
+        delete extra[key];
+      } else if (extra[key] === null) {
         extra[key] = "";
-      }
-      if (typeof extra[key] === "number") {
+      } else if (typeof extra[key] === "number") {
         extra[key] = extra[key].toString();
       }
     });
