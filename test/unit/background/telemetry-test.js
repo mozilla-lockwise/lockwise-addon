@@ -31,8 +31,13 @@ describe("background > telemetry", () => {
     spyEmbeddedRecordEvent.restore();
   });
 
-  it("registers for telemetry", () => {
+  it("does not register for telemetry unless forced", () => {
     initializeTelemetry();
+    expect(spyEvents).to.not.have.been.called;
+    expect(spyScalars).to.not.have.been.called;
+  });
+  it("registers for telemetry", () => {
+    initializeTelemetry(true);
     expect(spyEvents).to.have.been.calledWith("lockboxv1", {
       "startup": {
         methods: ["startup"],
@@ -140,7 +145,7 @@ describe("background > telemetry", () => {
 
     let caught = false;
     try {
-      initializeTelemetry();
+      initializeTelemetry(true);
     } catch (e) {
       caught = true;
     }
