@@ -47,7 +47,7 @@ item-fields-origin = Adresse der Website
 item-fields-origin-input =
     .placeholder = https://www.example.com
 item-fields-origin-info-message = Stellen Sie sicher, dass dies mit der genauen Domain der Website übereinstimmt, auf die Sie verweisen (inklusive „https: //“).
-item-fields-origin-button = Starten
+item-fields-origin-button = Öffnen
 item-fields-username = Benutzername
 item-fields-username-input =
     .placeholder = name@example.com
@@ -81,7 +81,7 @@ account-summary-options = Einstellungen
 account-summary-signout = Abmelden
 intro-page-header-title = { -fxlockwise-brand-name } für Desktop
 intro-page-header-subtitle =
-    Willkommen zur besseren Verwaltung von Zugangsdaten. Unser Desktop-Add-On bringt viele
+    Willkommen zur besseren Verwaltung von Zugangsdaten. Unser Desktop-Add-on bringt viele
     der Verbesserungen in unseren mobilen Apps auf Ihren Computer und bietet
     bessere Kontrolle über Ihre Zugangsdaten.
 intro-page-main-article-1-title = Einfache Verwaltung Ihrer Konten
@@ -116,7 +116,7 @@ item-details-last-used = Zuletzt verwendet: { $date }
 #   - $count (number): number of items in the list
 list-count =
     { $count ->
-        [one] { $count } Zugangsdatum
+        [one] { $count } Zugangsdaten
        *[other] { $count } Zugangsdaten
     }
 sort-by = Sortieren nach:
@@ -133,7 +133,7 @@ default-banner = Kürzlich verwendete Zugangsdaten.
 #   - $count (number): number of items in the list
 filtered-banner =
     { $count ->
-        [one] { $count } Zugangsdatum gefunden
+        [one] { $count } Zugangsdaten gefunden
        *[other] { $count } Zugangsdaten gefunden
     }
 get-started-banner = Keine Zugangsdaten gefunden.
@@ -158,14 +158,14 @@ easily-access-logins = Erhalten Sie von jedem Gerät aus Zugriff auf Ihre Zugang
 access-on-another-computer = Zugriff auf einem anderen Computer
 simply-sign-in-other-device = Melden Sie sich einfach mit Ihrem { -fxaccount-brand-name } auf Ihrem anderen Gerät an, um Ihre Zugangsdaten mit diesem Computer zu synchronisieren.
 download-mobile = App für Mobilgeräte herunterladen
-download-ios-android = { -fxlockwise-brand-name } ist sowohl für iOS als auch für Android verfügbar. <learnmore> Klicken Sie hier</ learnmore>, um mehr zu erfahren und einen Link zum Herunterladen der App an Ihr Handy zu senden.
+download-ios-android = { -fxlockwise-brand-name } ist sowohl für iOS als auch für Android verfügbar. <learnmore>Klicken Sie hier</ learnmore>, um mehr zu erfahren und einen Link zum Herunterladen der App an Ihr Handy zu senden.
 before-access = Bevor Sie auf einem anderen Gerät auf Ihre Anmeldungen zugreifen können, müssen Sie es mit einem { -fxaccount-brand-name } verbinden.
 connect-a-firefox-account = Verbindung mit einem { -fxaccount-brand-name } herstellen
 # Displayed next to connect-a-firefox-account string after the user has logged in.
 connection-complete = (Abgeschlossen)
 sync-requires-account = Um Ihre Zugangsdaten mit einem anderen Gerät zu synchronisieren, müssen Sie sich <signin>anmelden oder einen { -fxaccount-brand-name } erstellen</ signin>.
-ensure-logins-checked = Stellen Sie sicher, dass das Kontrollkästchen „Zugangsdaten“ in den { -sync-brand-short-name } -Einstellungen aktiviert ist
-setting-to-allow-sync = Damit Ihre Zugangsdaten mit anderen Geräten synchronisiert werden können, muss diese Einstellung aktiviert sein. <go> { -sync-brand-short-name } -Einstellungen öffnen</go>
+ensure-logins-checked = Stellen Sie sicher, dass das Kontrollkästchen „Zugangsdaten“ in den { -sync-brand-short-name }-Einstellungen aktiviert ist
+setting-to-allow-sync = Damit Ihre Zugangsdaten mit anderen Geräten synchronisiert werden können, muss diese Einstellung aktiviert sein. <go>{ -sync-brand-short-name }-Einstellungen öffnen</go>
 banner-promote-device = <bold>Nehmen Sie Ihre Passwörter überall mit hin</ bold> – laden Sie unsere App für iOS oder Android herunter:
 banner-promote-device-app-store =
     .title = Erhältlich im App Store
