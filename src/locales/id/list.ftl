@@ -154,6 +154,7 @@ connect-another-device-dialog =
 connect-another-device = Hubungkan perangkat lain
 easily-access-logins = Dapatkan akses ke log masuk Anda dengan mudah dari perangkat apa pun.
 access-on-another-computer = Akses di komputer lain
+simply-sign-in-other-device = Cukup masuk ke { -fxaccount-brand-name } Anda di perangkat lain untuk menyingkronkan log masuk Anda ke komputer tersebut.
 download-mobile = Unduh aplikasi mobile
 download-ios-android = { -fxlockwise-brand-name } tersedia di iOS dan Android. <learnmore>Klik di sini</learnmore> untuk mempelajari lebih lanjut dan mengrim tautan untuk mengunduh aplikasi ke ponsel Anda.
 before-access = Sebelum Anda dapat mengakses log masuk Anda di perangkat lain, Anda harus menghubungkan { -fxaccount-brand-name }.
@@ -161,6 +162,8 @@ connect-a-firefox-account = Hubungkan { -fxaccount-brand-name }
 # Displayed next to connect-a-firefox-account string after the user has logged in.
 connection-complete = (lengkap)
 sync-requires-account = Untuk menyinkronkan log masuk Anda ke perangkat lain, Anda perlu <signin>masuk atau buat akun{ -fxaccount-brand-name }</signin>.
+ensure-logins-checked = Pastikan kotak centang "Log masuk" dipilih dalam preferensi { -sync-brand-short-name }
+setting-to-allow-sync = Agar login Anda dapat disinkronkan ke perangkat lain, pengaturan ini harus diperiksa. <go>Buka preferensi { -sync-brand-short-name }</go>
 banner-promote-device = <bold>Bawa kta sandi Anda ke mana saja</bold> - Unduh aplikasi kami untuk iOS atau Android:
 banner-promote-device-app-store =
     .title = Unduh di App Store
