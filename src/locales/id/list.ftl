@@ -134,7 +134,10 @@ filtered-banner =
     { $count ->
        *[other] { $count } log masuk ditemukan
     }
-get-started-banner = Tidak ada log masuk ditemukan.
+get-started-banner = Log-masuk tidak ditemukan.
+no-matching-banner = Tidak ada log masuk yang cocok.
+no-results-banner = Tidak ditemukan log masuk untuk situs web saat ini.
+item-details-panel-title = Rincian Log Masuk
 navigate-panel-backwards = Kembali
 
 ## Strings used in dialog
@@ -142,11 +145,19 @@ navigate-panel-backwards = Kembali
 modal-delete = Hapus log-masuk ini?
     .confirmLabel = Hapus
     .cancelLabel = Batal
+connect-another-device-dialog =
+    .closeLabel = Tutup
+    .allSetLabel = Selesai
+connect-another-device = Hubungkan perangkat lain
+easily-access-logins = Dapatkan akses ke log masuk Anda dengan mudah dari perangkat apa pun.
 access-on-another-computer = Akses di komputer lain
 download-mobile = Unduh aplikasi mobile
+download-ios-android = { -fxlockwise-brand-name } tersedia di iOS dan Android. <learnmore>Klik di sini</learnmore> untuk mempelajari lebih lanjut dan mengrim tautan untuk mengunduh aplikasi ke ponsel Anda.
 connect-a-firefox-account = Hubungkan { -fxaccount-brand-name }
 # Displayed next to connect-a-firefox-account string after the user has logged in.
 connection-complete = (lengkap)
+sync-requires-account = Untuk menyinkronkan log masuk Anda ke perangkat lain, Anda perlu <signin>masuk atau buat akun{ -fxaccount-brand-name }</signin>.
+banner-promote-device = <bold>Bawa kta sandi Anda ke mana saja</bold> - Unduh aplikasi kami untuk iOS atau Android:
 banner-promote-device-app-store =
     .title = Unduh di App Store
 banner-promote-device-play-store =
