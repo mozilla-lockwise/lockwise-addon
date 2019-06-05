@@ -142,6 +142,9 @@ navigate-panel-backwards = Kembali
 
 ## Strings used in dialog
 
+modal-cancel-editing = Perubahan belum tersimpan. Batalkan perubahan?
+    .confirmLabel = Batalkan Perubahan
+    .cancelLabel = Kembali
 modal-delete = Hapus log-masuk ini?
     .confirmLabel = Hapus
     .cancelLabel = Batal
@@ -153,6 +156,7 @@ easily-access-logins = Dapatkan akses ke log masuk Anda dengan mudah dari perang
 access-on-another-computer = Akses di komputer lain
 download-mobile = Unduh aplikasi mobile
 download-ios-android = { -fxlockwise-brand-name } tersedia di iOS dan Android. <learnmore>Klik di sini</learnmore> untuk mempelajari lebih lanjut dan mengrim tautan untuk mengunduh aplikasi ke ponsel Anda.
+before-access = Sebelum Anda dapat mengakses log masuk Anda di perangkat lain, Anda harus menghubungkan { -fxaccount-brand-name }.
 connect-a-firefox-account = Hubungkan { -fxaccount-brand-name }
 # Displayed next to connect-a-firefox-account string after the user has logged in.
 connection-complete = (lengkap)
@@ -162,4 +166,5 @@ banner-promote-device-app-store =
     .title = Unduh di App Store
 banner-promote-device-play-store =
     .title = Dapatkan di Google Play
+banner-promote-fxa = <bold>Bawa kata sandi Anda ke mana saja</bold> - buat { -fxaccount-brand-name } atau Masuk untuk menyinkronkan ke { -fxlockwise-brand-short-name } di seluler:
 banner-promote-fxa-action-label = Masuk
