@@ -34,6 +34,7 @@ document =
 error-notification-sync = Prijav ni mogoče sinhronizirati.
 error-notification-sync-button = Ponovno poveži
 error-notification-duplicate = Prijava za { $title } s tem uporabniškim imenom že obstaja.
+error-notification-duplicate-link = <a>Grem na obstoječo prijavo?</a>
 all-items-get-started = Ko geslo shranite v { -firefox-brand-name }, se bo prikazalo tukaj.
 all-items-get-started-title = Ni prijav.
 all-items-get-started-footer = Ne vidite svojih shranjenih prijav? <go>Ugotovite, zakaj</go>
@@ -44,6 +45,7 @@ item-fields-title-input =
 item-fields-origin = Naslov spletnega mesta
 item-fields-origin-input =
     .placeholder = https://www.example.com
+item-fields-origin-info-message = Vnesite domeno spletnega mesta, na katero se sklicujete (vključno s "https://").
 item-fields-origin-button = Zaženi
 item-fields-username = Uporabniško ime
 item-fields-username-input =
@@ -62,6 +64,11 @@ item-summary-copy-username = Kopiraj uporabniško ime
     .title = Kopiraj uporabniško ime v odložišče
 item-summary-copy-password = Kopiraj geslo
     .title = Kopiraj geslo v odložišče
+# Placeholder and accessibility label used in the field to filter existing
+# entries, i.e. search in the product database
+item-filter =
+    .placeholder = Iskanje prijav
+    .aria-label = Iskanje prijav
 add-item-button = Nova prijava
 send-feedback-button = Povratne informacije
 toolbar-go-home = Domov
@@ -73,9 +80,20 @@ account-summary-options = Nastavitve
 account-summary-signout = Odjava
 intro-page-header-title = { -fxlockwise-brand-name } za namizja
 intro-page-main-article-1-title = Enostavno upravljanje računov
+intro-page-main-article-1-copy =
+    Upravljanje računov ne bi smelo biti pretežko. Z novim
+    namiznim vmesnikom smo poenostavili stvari.
 intro-page-main-article-2-title = Hiter dostop do vaših prijav
 intro-page-main-article-3-title = Ročno ustvari nove prijave
+intro-page-main-article-3-copy =
+    Z ročnim dodajanjem prijav lahko sedaj shranite
+    katerikoli račun v { -fxlockwise-brand-short-name }.
 intro-page-footer-heading = Ne vidite svojih shranjenih prijav? Naj vam pomagamo.
+intro-page-footer-copy =
+    { -fxlockwise-brand-name } omogoča dostop do prijav, ki ste jih shranili
+    v { -firefox-brand-name } na vaši napravi. Če so prijave shranjene na drugi napravi,
+    lahko podatke sinhronizirate s to napravo tako, da se prijavite
+    v { -fxaccount-brand-name }. <go>Več o tem</go>
 item-details-heading-new = Ustvari novo prijavo
 item-details-heading-edit = Uredi podatke za prijavo
 item-details-edit = Uredi
@@ -132,11 +150,22 @@ connect-another-device-dialog =
     .closeLabel = Zapri
     .allSetLabel = Končano
 connect-another-device = Poveži drugo napravo
+easily-access-logins = Enostavno dostopite do svojih prijav iz katerekoli naprave.
+access-on-another-computer = Dostop na drugem računalniku
+simply-sign-in-other-device = Prijavite se v svoj { -fxaccount-brand-name } na drugi napravi, da boste lahko sinhronizirali prijave s tem računalnikom.
 download-mobile = Prenesite mobilno aplikacijo
+download-ios-android = { -fxlockwise-brand-name } je na voljo za iOS in Android. <learnmore>Kliknite tukaj</learnmore>, če želite izvedeti več in poslati povezavo za prenos aplikacije na telefon.
+before-access = Za dostop do svojih prijav na drugi napravi povežite { -fxaccount-brand-name }.
 connect-a-firefox-account = Povežite { -fxaccount-brand-name }
+# Displayed next to connect-a-firefox-account string after the user has logged in.
+connection-complete = (končano)
+sync-requires-account = Če želite sinhronizirati prijave z drugo napravo, se morate <signin>prijaviti ali ustvariti { -fxaccount-brand-name }</signin>.
+ensure-logins-checked = Prepričajte se, da je izbrana možnost Prijave v nastavitvah { -sync-brand-short-name }.
+setting-to-allow-sync = Če želite omogočiti sinhronizacijo prijav z drugimi napravami, morate označiti to možnost. <go>Odpri nastavitve { -sync-brand-short-name }a</go>
 banner-promote-device = <bold>Vzemite gesla s seboj</bold> – prenesite aplikacijo za iOS ali Android:
 banner-promote-device-app-store =
     .title = Prenesite ga z App Stora
 banner-promote-device-play-store =
     .title = Prenesite ga z Google Play
+banner-promote-fxa = <bold>Vzemite gesla s seboj</bold> – ustvarite { -fxaccount-brand-name } ali se prijavite za sinhronizacijo v { -fxlockwise-brand-short-name } na telefonu:
 banner-promote-fxa-action-label = Prijava
