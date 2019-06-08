@@ -107,12 +107,23 @@ sort-by-last-changed = Τελευταία αλλαγή
 manage-logins-button = Άνοιγμα { -fxlockwise-brand-short-name }
 list-detail-button = Άνοιγμα ιστοσελίδας
 default-banner = Πρόσφατες συνδέσεις.
+# Variables:
+#   - $count (number): number of items in the list
+filtered-banner =
+    { $count ->
+        [one] Βρέθηκε { $count } σύνδεση
+       *[other] Βρέθηκαν { $count } συνδέσεις
+    }
 get-started-banner = Δεν βρέθηκαν συνδέσεις.
+no-matching-banner = Καμία αντιστοιχία συνδέσεων.
 item-details-panel-title = Λεπτομέρειες σύνδεσης
 navigate-panel-backwards = Επιστροφή
 
 ## Strings used in dialog
 
+modal-cancel-editing = Υπάρχουν μη αποθηκευμένες αλλαγές. Απόρριψη;
+    .confirmLabel = Απόρριψη αλλαγών
+    .cancelLabel = Επιστροφή
 modal-delete = Διαγραφή αυτής της σύνδεσης;
     .confirmLabel = Διαγραφή
     .cancelLabel = Ακύρωση
@@ -121,6 +132,7 @@ connect-another-device-dialog =
     .allSetLabel = Όλα έτοιμα
 connect-another-device = Σύνδεση άλλης συσκευής
 access-on-another-computer = Πρόσβαση σε άλλο υπολογιστή
+download-ios-android = Το { -fxlockwise-brand-name } είναι διαθέσιμο σε iOS και Android. <learnmore>Κάντε κλικ εδώ</learnmore> για να μάθετε περισσότερα και για να στείλετε ένα σύνδεσμο λήψης εφαρμογής στο τηλέφωνό σας.
 connect-a-firefox-account = Σύνδεση { -fxaccount-brand-name }
 # Displayed next to connect-a-firefox-account string after the user has logged in.
 connection-complete = (ολοκληρώθηκε)
