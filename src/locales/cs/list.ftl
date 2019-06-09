@@ -103,6 +103,7 @@ item-details-last-used = Naposledy použito: { $date }
 #   - $count (number): number of items in the list
 list-count =
     { $count ->
+        [zero] Žádné přihlašovací údaje
         [one] Jedny přihlašovací údaje
         [few] { $count } přihlašovací údaje
        *[other] { $count } přihlašovacích údajů
