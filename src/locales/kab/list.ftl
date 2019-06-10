@@ -38,6 +38,7 @@ error-notification-duplicate-link = <a>Kcem ɣer usulay yellan?</a>
 all-items-get-started = Tick iteskelseḍ awal uffir deg { -firefox-brand-name }, ad d-iban dagi.
 all-items-get-started-title = Ulac asulay yettwafen
 all-items-get-started-footer = Isulayen i teskelseḍ ur d-ttbanen ara dagi? <go>Wali acimi</go>
+all-items-no-results = Ma yella isulayen-a ttwaskelsen deg yibenk-nniḍen, ḍmen d akken teqqneḍ daɣen tremdeḍ amtawi-is akken ad b-banen dagi.
 all-items-no-results-title = Ulac asulay immenṭaḍen.
 all-items-no-results-footer = <go>Issin ugar</go>
 item-fields-title-input =
@@ -79,11 +80,23 @@ account-summary-account = Amiḍan
 account-summary-options = Ismenyifen
 account-summary-signout = Ffeɣ
 intro-page-header-title = { -fxlockwise-brand-name } i uselkim
+intro-page-header-subtitle = Ad tfarṣeḍ tagnit seg usefrek ufrin n yisulayen. Asiɣzef-nneɣ yettawi-d i uselkim-ik ddeqs n usnerni yellan deg yisnasen izirazen, s tɛessa meqqren n yisulayen-ik.
 intro-page-main-article-1-title = Asefrek fessusen n yimiḍanen-ik
 intro-page-main-article-1-copy = Asefrek n yimiḍanen-ik ur ila ara ad yili d taṛuẓi n uqerru. Nerra timsal fessus-it s ugrudem maynut deg uselkim.
 intro-page-main-article-2-title = Anekcum uzrib qer isulayen-ik
+intro-page-main-article-2-copy =
+    sit ɣef tignit { -fxlockwise-brand-short-name } deg ufegga n yifecka n { -firefox-brand-name } akken ad twaliḍ
+    agalis-nneɣ n unekcum ɣer yisulayen-ik.
 intro-page-main-article-3-title = Rnu isulayen imaynuten
+intro-page-main-article-3-copy =
+    S tmerna s ufus n yisulayen, ad tizmireḍ ad teskelseḍ yal amiḍan 
+    i tferneḍ deg { -fxlockwise-brand-short-name }.
 intro-page-footer-heading = Ur tettwaliḍ ara isulayen-ik yettwaskelsen? Eǧǧ-aɣ ad ak-nmudd afus.
+intro-page-footer-copy =
+    { -fxlockwise-brand-name } yettmuddu anekcum ɣer isulayen yettwaskelsen deg 
+    { -firefox-brand-name } ɣef yibenk-ik. Ma yella isulayen-ik ttwaskelsen deg yibenk-nniḍen,
+    tzemreḍ ad temtawiḍ talɣut ɣef yibenk-a s tuqqna neɣ s 
+    tmerna n umiḍan { -fxaccount-brand-name }. <go>Issin ugar</go>
 item-details-heading-new = Rnu asulay amaynut
 item-details-heading-edit = Ẓreg talqayt n usulay
 item-details-edit = Ẓreg
@@ -145,7 +158,9 @@ before-access = Send ad tizmired ad tekcmeḍ ɣer Avisulayen-ik deg yibenk-nni
 connect-a-firefox-account = Qqen ɣer { -fxaccount-brand-name }
 # Displayed next to connect-a-firefox-account string after the user has logged in.
 connection-complete = (immed)
+sync-requires-account = Aken ad mtawin yisulayen-ik ɣer yibenk-nniḍen, yessefk <signin>ad teqqneḍ neɣ ad ternuḍ  amiḍan { -fxaccount-brand-name }</signin>.
 ensure-logins-checked = Ḍmen d akken taxxam n ṛṛcem "Isulayen" tetwafren deg yismenyifen n { -sync-brand-short-name }
+setting-to-allow-sync = Akken ad teǧǧeḍ isulayen-ik ad mtawin d yibenkan-nniḍen, aɣewwaṛ-a ilaq ad yermed. <go>Ldid ismenyifen { -sync-brand-short-name }</go>
 banner-promote-device = <bold>Awi yid-k awalen-k uffiren</bold>  - Sider asnas-nneɣ iOS neɣ Android :
 banner-promote-device-app-store =
     .title = Sider si App Store
