@@ -17,7 +17,18 @@
           "optional": false,
           "description": "The hostname the login applies to. The hostname should be formatted as a URL. For example, 'https://site.com', 'http://site.com:1234', 'ftp://ftp.site.com'. (From nsILoginInfo.idl)"
         },
+        "origin": {
+          "type": "string",
+          "optional": true,
+          "description": "The origin the login applies to. The hostname should be formatted as a URL. For example, 'https://site.com', 'http://site.com:1234', 'ftp://ftp.site.com'. (From nsILoginInfo.idl)"
+        },
         "formSubmitURL": {
+          "type": "string",
+          "optional": true,
+          "default": null,
+          "description": "The URL a form-based login was submitted to. For logins obtained from HTML forms, this field is the |action| attribute from the |form| element, with the path removed. For example 'http://www.site.com'. Forms with no |action| attribute default to submitting to their origin URL, so we store that. For logins obtained from a HTTP or FTP protocol authentication, this field is NULL. (From nsILoginInfo.idl)"
+        },
+        "formActionOrigin": {
           "type": "string",
           "optional": true,
           "default": null,
@@ -85,7 +96,18 @@
           "optional": true,
           "description": "See Login type for description."
         },
+        "origin": {
+          "type": "string",
+          "optional": true,
+          "description": "See Login type for description."
+        },
         "formSubmitURL": {
+          "type": "string",
+          "optional": true,
+          "default": null,
+          "description": "See Login type for description."
+        },
+        "formActionOrigin": {
           "type": "string",
           "optional": true,
           "default": null,

@@ -5,6 +5,7 @@ const mockLogin = {
   timePasswordChanged: 1546291981955,
   timesUsed: 1,
   hostname: "https://example.com",
+  origin: "https://example.com",
   httpRealm: null,
   formSubmitURL: "https://example.com",
   usernameField: "username",
