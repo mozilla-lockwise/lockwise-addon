@@ -84,13 +84,18 @@ navigate-panel-backwards = Regreder
 
 ## Strings used in dialog
 
+modal-delete = Deler iste credential?
+    .confirmLabel = Deler
+    .cancelLabel = Cancellar
 connect-another-device = Connecte un altere apparato
 easily-access-logins = Accede facilemente a tu contos ab ulle apparato.
 access-on-another-computer = Accede sur un altere computator
+simply-sign-in-other-device = Accede l tu { -fxaccount-brand-name } sur un altere apparato pro synchronisar tu credentiales.
 download-mobile = Discargar le application mobile
 connect-a-firefox-account = Connecte a { -fxaccount-brand-name }
 # Displayed next to connect-a-firefox-account string after the user has logged in.
 connection-complete = (complete)
+banner-promote-device = <bold>Porta tu contrasignos sempre con te.</bold> Discarga nostre application pro iOS e Android.
 banner-promote-device-app-store =
     .title = Discarga lo ex App Store
 banner-promote-device-play-store =
