@@ -81,6 +81,7 @@ intro-page-header-title = { -fxlockwise-brand-name } i uselkim
 intro-page-main-article-1-title = Asefrek fessusen n yimiḍanen-ik
 intro-page-main-article-2-title = Anekcum uzrib qer isulayen-ik
 intro-page-main-article-3-title = Rnu isulayen imaynuten
+intro-page-footer-heading = Ur tettwaliḍ ara isulayen-ik yettwaskelsen? Eǧǧ-aɣ ad ak-nmudd afus.
 item-details-heading-new = Rnu asulay amaynut
 item-details-heading-edit = Ẓreg talqayt n usulay
 item-details-edit = Ẓreg
@@ -107,7 +108,18 @@ sort-by-last-changed = Abeddel aneggaru
 
 manage-logins-button = Ldi { -fxlockwise-brand-short-name }
 list-detail-button = Ldi asmel web
-default-banner = Isulayen yettwasqedcen taggar-a
+default-banner = Isulayen yettwasqedcen taggara-a
+# Variables:
+#   - $count (number): number of items in the list
+filtered-banner =
+    { $count ->
+        [one] { $count } n usulay yettwafen
+       *[other] { $count } n isulayen yettwafen
+    }
+get-started-banner = Ulac asulay yettwafen
+no-matching-banner = Ulac asulay yemmeṭaḍen
+no-results-banner = Ulac asulya yettwafen i usmel-agi web.
+item-details-panel-title = Talqayt n usulay
 navigate-panel-backwards = Uɣal
 
 ## Strings used in dialog
@@ -115,8 +127,27 @@ navigate-panel-backwards = Uɣal
 modal-cancel-editing = Kra n yibeddilen ur ttwaskelsen ara. Suref ?
     .confirmLabel = Suref abeddel
     .cancelLabel = Uɣal
+modal-delete = Kkes asulay-a?
+    .confirmLabel = Kkes
+    .cancelLabel = Sefsex
 connect-another-device-dialog =
     .closeLabel = Mdel
     .allSetLabel = Fak
 connect-another-device = Qqen ibenk-nniḍen
+easily-access-logins = Anekcum fessusen ɣer yisulayen-ik seg yal ibenk.
+access-on-another-computer = Kcem seg uselkim-nniḍen
+simply-sign-in-other-device = qqen kan ɣer { -fxaccount-brand-name } yinek deg yibenk-nniḍen akken ad mtawin isulayen-ik n tuqqna akked uselkim-a.
+download-mobile = Sider asnas aziraz
+download-ios-android = { -fxlockwise-brand-name } yelal deg iOS akked Android. <learnmore>Sit dagi</learnmore> akken ad tissineḍ ugar daɣen ad tazneḍ aseɣwen deg tiliɣri-ik akken ad tessidreḍ asnas.
+before-access = Send ad tizmired ad tekcmeḍ ɣer Avisulayen-ik deg yibenk-nniḍen, ilaq ad teqqneḍ ɣer { -fxaccount-brand-name }.
+connect-a-firefox-account = Qqen ɣer { -fxaccount-brand-name }
+# Displayed next to connect-a-firefox-account string after the user has logged in.
+connection-complete = (immed)
+ensure-logins-checked = Ḍmen d akken taxxam n ṛṛcem "Isulayen" tetwafren deg yismenyifen n { -sync-brand-short-name }
+banner-promote-device = <bold>Awi yid-k awalen-k uffiren</bold>  - Sider asnas-nneɣ iOS neɣ Android :
+banner-promote-device-app-store =
+    .title = Sider si App Store
+banner-promote-device-play-store =
+    .title = Yella di Google Play
+banner-promote-fxa = <bold>Awi yid-k awalen-ik uffiren deg yal amḍiq</bold> - rnu yiwen { -fxaccount-brand-name } neɣ qqen akken ad temtawiḍ d { -fxlockwise-brand-short-name } dege uziraz-ik :
 banner-promote-fxa-action-label = Kcem
