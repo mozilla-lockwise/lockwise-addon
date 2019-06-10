@@ -15,6 +15,12 @@
 
 ## All the following messages are localizable.
 
+-sync-brand-short-name = Sync
+header-logins-button = Authenticationes
+header-app-title =
+    .title = { -fxlockwise-brand-name }
+profile-menu-account = Conto
+profile-menu-sign-in = Accede a { -sync-brand-short-name }
 item-fields-password = Contrasigno
 toolbar-go-home = A casa
 toolbar-open-faq = Questiones frequente
@@ -28,4 +34,7 @@ sort-by-name = Nomine
 
 ## Strings used in dialog
 
+access-on-another-computer = Accede sur un altere computator
+# Displayed next to connect-a-firefox-account string after the user has logged in.
+connection-complete = (complete)
 banner-promote-fxa-action-label = Acceder
