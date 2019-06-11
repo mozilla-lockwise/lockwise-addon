@@ -14,7 +14,7 @@
         },
         "hostname": {
           "type": "string",
-          "optional": false,
+          "optional": true,
           "description": "The hostname the login applies to. The hostname should be formatted as a URL. For example, 'https://site.com', 'http://site.com:1234', 'ftp://ftp.site.com'. (From nsILoginInfo.idl)"
         },
         "origin": {
