@@ -17,7 +17,7 @@ export function convertInfo2Item(info) {
                 replace(/^www\d*\./, "");
 
   const id = info.guid;
-  const origins = [ info.hostname, info.formSubmitURL ].
+  const origins = [ info.hostname || info.origin, info.formSubmitURL || info.formActionOrigin ].
         filter((u) => !!u);
 
   const timeLastUsed = info.timeLastUsed;
@@ -54,8 +54,8 @@ export function convertItem2Info(item) {
   // item.id ==> info.guid
   // item.title ==> undefined
   // item.tags ==> undefined
-  // item.origins[0] ==> info.hostname
-  // item.origins[1] || null ==> info.formSubmitURL
+  // item.origins[0] ==> info.hostname || info.origin
+  // item.origins[1] || null ==> info.formSubmitURL || info.formActionOrigin
   // item.entry.kind ==> undefined
   // item.entry.username ==> info.username
   // item.entry.password ==> info.password
@@ -77,7 +77,9 @@ export function convertItem2Info(item) {
   let info = {
     guid,
     hostname,
+    origin: hostname,
     formSubmitURL,
+    formActionOrigin: formSubmitURL,
     httpRealm,
     username,
     password,
