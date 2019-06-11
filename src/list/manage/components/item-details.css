@@ -8,7 +8,7 @@
   display: flex;
   flex: 1 1 auto;
   flex-flow: column nowrap;
-  overflow: scroll;
+  overflow: auto;
   min-width: 500px;
 }
 
