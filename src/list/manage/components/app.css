@@ -47,7 +47,6 @@ body > main,
 
 .aside {
   grid-column: 1;
-  width: 320px;
   min-height: 0;
   display: flex;
   flex-grow: 0;
