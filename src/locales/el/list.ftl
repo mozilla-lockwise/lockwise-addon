@@ -132,6 +132,7 @@ connect-another-device-dialog =
     .allSetLabel = Όλα έτοιμα
 connect-another-device = Σύνδεση άλλης συσκευής
 access-on-another-computer = Πρόσβαση σε άλλο υπολογιστή
+download-mobile = Λήψη εφαρμογής κινητού
 download-ios-android = Το { -fxlockwise-brand-name } είναι διαθέσιμο σε iOS και Android. <learnmore>Κάντε κλικ εδώ</learnmore> για να μάθετε περισσότερα και για να στείλετε ένα σύνδεσμο λήψης εφαρμογής στο τηλέφωνό σας.
 connect-a-firefox-account = Σύνδεση { -fxaccount-brand-name }
 # Displayed next to connect-a-firefox-account string after the user has logged in.
