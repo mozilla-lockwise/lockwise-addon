@@ -15,12 +15,11 @@ export default (store) => (next) => (action) => {
         recordEvent({
           method: "itemAdd",
           object: "manager",
-          extra: { itemid: action.item.id },
         });
       }
       break;
     case actions.CONCEAL_PASSWORD:
-      helpers.passwordConcealed(action, "itemDetailManager");
+      helpers.passwordConcealed("itemDetailManager");
       break;
     case actions.COPIED_FIELD_COMPLETED:
       helpers.itemCopied(action, "itemDetailManager");
@@ -28,11 +27,9 @@ export default (store) => (next) => (action) => {
     case actions.EDIT_CURRENT_ITEM:
       // Accessing item info from the store requires waiting a turn.
       setTimeout(() => {
-        const state = store.getState();
         recordEvent({
           method: "show",
           object: "itemEdit",
-          extra: { itemid: state.list.selectedItemId },
         });
       }, 0);
       break;
@@ -41,7 +38,7 @@ export default (store) => (next) => (action) => {
       // In this case, it happens if the manage page is hard refreshed.
       setTimeout(() => {
         const state = store.getState();
-        helpers.listShown(action, "itemListManager", state.cache.items);
+        helpers.listShown("itemListManager", state.cache.items);
       }, 0);
       break;
     case actions.OPEN_FAQ:
@@ -83,35 +80,32 @@ export default (store) => (next) => (action) => {
       });
       break;
     case actions.OPEN_WEBSITE:
-      helpers.websiteOpened(action, "itemDetailManager");
+      helpers.websiteOpened("itemDetailManager");
       break;
     case actions.REMOVE_ITEM_COMPLETED:
       if (action.interactive && action.id) {
         recordEvent({
           method: "itemDelete",
           object: "manager",
-          extra: { itemid: action.id },
         });
       }
       break;
     case actions.REVEAL_PASSWORD:
-        helpers.passwordRevealed(action, "itemDetailManager");
+        helpers.passwordRevealed("itemDetailManager");
       break;
     case actions.SELECT_ITEM_STARTING:
       if (action.id) {
-        helpers.itemSelected(action.id, "manager");
+        helpers.itemSelected("manager");
       }
       break;
     case actions.SELECT_ITEM_COMPLETED:
-      helpers.itemShown(action, "itemDetailManager");
+      helpers.itemShown("itemDetailManager");
       break;
     case actions.SHOW_MODAL:
       if (action.id === "delete") {
-        const state = store.getState();
         recordEvent({
           method: "show",
           object: "deleteConfirm",
-          extra: { itemid: state.list.selectedItemId },
         });
       } else if (action.id === "connect-another-device") {
         recordEvent({
@@ -158,7 +152,6 @@ export default (store) => (next) => (action) => {
         recordEvent({
           method: "itemUpdate",
           object: "manager",
-          extra: { itemid: action.item.id },
         });
       }
       break;

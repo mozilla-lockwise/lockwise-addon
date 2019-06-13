@@ -55,7 +55,7 @@ describe("list > manage > telemetryLogger middleware", () => {
       data: {
         method: "itemAdd",
         object: "manager",
-        extra: { itemid: item.id },
+        extra: null,
         value: null,
       },
     });
@@ -76,7 +76,7 @@ describe("list > manage > telemetryLogger middleware", () => {
       id: item.id,
     };
     telemetryLogger(store)(next)(action);
-    expect(passwordConcealed).to.have.been.calledWith(action, "itemDetailManager");
+    expect(passwordConcealed).to.have.been.calledWith("itemDetailManager");
     passwordConcealed.restore();
   });
 
@@ -105,7 +105,7 @@ describe("list > manage > telemetryLogger middleware", () => {
         data: {
           method: "show",
           object: "itemEdit",
-          extra: { itemid: item.id },
+          extra: null,
           value: null,
         },
       });
@@ -129,7 +129,7 @@ describe("list > manage > telemetryLogger middleware", () => {
     telemetryLogger(store)(next)(action);
     // Wait a turn for the listener to be called.
     setTimeout(() => {
-      expect(listShown).to.have.been.calledWith(action, "itemListManager", [item]);
+      expect(listShown).to.have.been.calledWith("itemListManager", [item]);
       listShown.restore();
     }, 0);
   });
@@ -232,7 +232,7 @@ describe("list > manage > telemetryLogger middleware", () => {
       item,
     };
     telemetryLogger(store)(next)(action);
-    expect(websiteOpened).to.have.been.calledWith(action, "itemDetailManager");
+    expect(websiteOpened).to.have.been.calledWith("itemDetailManager");
     websiteOpened.restore();
   });
 
@@ -247,7 +247,7 @@ describe("list > manage > telemetryLogger middleware", () => {
       data: {
         method: "itemDelete",
         object: "manager",
-        extra: { itemid: item.id },
+        extra: null,
         value: null,
       },
     });
@@ -268,7 +268,7 @@ describe("list > manage > telemetryLogger middleware", () => {
       id: item.id,
     };
     telemetryLogger(store)(next)(action);
-    expect(passwordRevealed).to.have.been.calledWith(action, "itemDetailManager");
+    expect(passwordRevealed).to.have.been.calledWith("itemDetailManager");
     passwordRevealed.restore();
   });
 
@@ -279,7 +279,7 @@ describe("list > manage > telemetryLogger middleware", () => {
       id: item.id,
     };
     telemetryLogger(store)(next)(action);
-    expect(itemSelected).to.have.been.calledWith(item.id, "manager");
+    expect(itemSelected).to.have.been.calledWith("manager");
     itemSelected.restore();
   });
 
@@ -301,7 +301,7 @@ describe("list > manage > telemetryLogger middleware", () => {
       item,
     };
     telemetryLogger(store)(next)(action);
-    expect(itemShown).to.have.been.calledWith(action, "itemDetailManager");
+    expect(itemShown).to.have.been.calledWith("itemDetailManager");
     itemShown.restore();
   });
 
@@ -316,7 +316,7 @@ describe("list > manage > telemetryLogger middleware", () => {
       data: {
         method: "show",
         object: "deleteConfirm",
-        extra: { itemid: item.id },
+        extra: null,
         value: null,
       },
     });
@@ -408,7 +408,7 @@ describe("list > manage > telemetryLogger middleware", () => {
       data: {
         method: "itemUpdate",
         object: "manager",
-        extra: { itemid: item.id },
+        extra: null,
         value: null,
       },
     });
