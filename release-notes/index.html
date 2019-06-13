@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Release Notes - Lockbox Extension</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Release Notes";
+    var mkdocs_page_input_path = "release-notes.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Lockbox Extension</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Introduction</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Release Notes</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#firefox-lockwise-for-desktop-release-notes">Firefox Lockwise for Desktop Release Notes</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#223-alpha">2.2.3-alpha</a></li>
+        
+            <li><a class="toctree-l3" href="#222-alpha">2.2.2-alpha</a></li>
+        
+            <li><a class="toctree-l3" href="#221-alpha">2.2.1-alpha</a></li>
+        
+            <li><a class="toctree-l3" href="#220-alpha">2.2.0-alpha</a></li>
+        
+            <li><a class="toctree-l3" href="#known-issues_3">Known Issues</a></li>
+        
+            <li><a class="toctree-l3" href="#210-alpha">2.1.0-alpha</a></li>
+        
+            <li><a class="toctree-l3" href="#whats-fixed_4">What's Fixed</a></li>
+        
+            <li><a class="toctree-l3" href="#breaking-changes">Breaking Changes</a></li>
+        
+            <li><a class="toctree-l3" href="#200-alpha">2.0.0-alpha</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../contributing/">Contribute</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../metrics/">Telemetry and Metrics</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../SECURITY/">Mozilla Security</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Developer Guides</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../developer/install/">Build and Install</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../developer/releases/">Release Instructions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../developer/directory-structure/">Directory Structure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../developer/test-plan/">Test Plan</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../developer/test-plan-accessibility/">Test Plan - Accessibility</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../developer/test-plan-telemetry/">Test Plan - Telemetry</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Lockbox Extension</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Release Notes</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/mozilla-lockbox/lockbox-addon/edit/master/docs/release-notes.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="firefox-lockwise-for-desktop-release-notes">Firefox Lockwise for Desktop Release Notes</h1>
+<h2 id="223-alpha">2.2.3-alpha</h2>
+<p><em>Date: 2019-05-31</em></p>
+<h3 id="whats-new">What's New</h3>
+<ul>
+<li>Lockwise is now <em><strong>localized</strong></em> for a number of languages!</li>
+</ul>
+<h3 id="whats-fixed">What's Fixed</h3>
+<ul>
+<li>If one of your logins has an unexpected website address, Lockwise no longer stops working and instead displays the address as-is.</li>
+</ul>
+<h3 id="known-issues">Known Issues</h3>
+<ul>
+<li>There are reports of Firefox crashing with this extension installed, that appear to be due to telemetry-related issues.  For now, telemetry is disabled.  This issue is tracked in (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1555734">BMO 1555734</a>).</li>
+<li>This extension may conflict with Master Password.  If you wish to use this extension, we recommend disabling Master Password, then disable/re-enable this extension before it will work correctly.</li>
+<li>If "Ask to always save logins and passwords for websites" is enabled after the extension is loaded, you may be prompted by Firefox to save a login when adding or editing in the management interface.  As a workaround, you can disable then re-enable the extension to prevent this prompt.</li>
+</ul>
+<h2 id="222-alpha">2.2.2-alpha</h2>
+<p><em>Date: 2019-05-23</em></p>
+<h3 id="whats-fixed_1">What's Fixed</h3>
+<ul>
+<li>Reconnecting to Sync properly works now.</li>
+<li>The doorhanger is properly closed when visiting a website.</li>
+<li>The doorhanger allows for varying widths.</li>
+</ul>
+<h3 id="known-issues_1">Known Issues</h3>
+<ul>
+<li>This extension may conflict with Master Password.  If you wish to use this extension, we recommend disabling Master Password, then disable/re-enable this extension before it will work correctly.</li>
+<li>If "Ask to always save logins and passwords for websites" is enabled after the extension is loaded, you may be prompted by Firefox to save a login when adding or editing in the management interface.  As a workaround, you can disable then re-enable the extension to prevent this prompt.</li>
+</ul>
+<h2 id="221-alpha">2.2.1-alpha</h2>
+<p><em>Date: 2019-05-20</em></p>
+<h3 id="whats-fixed_2">What's Fixed</h3>
+<ul>
+<li>Telemetry is now properly recorded whenever you open a website via Lockwise.</li>
+<li>Telemetry is properly recorded now whenever you select to view an item's details.</li>
+<li>Telemetry is properly recorded when interacting with the toolbar popup.</li>
+<li>The password field is concealed whenever you select another item's details.</li>
+<li>The website address now strips paths when saving, making it more compatible with Firefox's autofill/autocomplete support.</li>
+<li>The default (en-US) localization is updated to better support localizers.</li>
+</ul>
+<h3 id="known-issues_2">Known Issues</h3>
+<ul>
+<li>This extension may conflict with Master Password.  If you wish to use this extension, we recommend disabling Master Password, then disable/re-enable this extension before it will work correctly.</li>
+<li>If "Ask to always save logins and passwords for websites" is enabled after the extension is loaded, you may be prompted by Firefox to save a login when adding or editing in the management interface.  As a workaround, you can disable then re-enable the extension to prevent this prompt.</li>
+</ul>
+<h2 id="220-alpha">2.2.0-alpha</h2>
+<p><em>Date: 2019-05-10</em></p>
+<p><em><strong>Firefox</strong> Lockbox</em> is now <em><strong>Firefox</strong> Lockwise</em>! With the new name also comes a new look!</p>
+<h3 id="whats-new_1">What's New</h3>
+<ul>
+<li>Updates the branding (name, logo, and icons) to Lockwise.</li>
+<li>Updates the look to focus on managing your logins.</li>
+<li>Added guidance for Lockwise connecting to other devices.</li>
+<li>Added support for auto-update</li>
+</ul>
+<h3 id="whats-fixed_3">What's Fixed</h3>
+<ul>
+<li>Changed the "Website Address" hints in "Create New Login" to be less proscriptive about the URL.</li>
+<li>Fixed cases where "This is a duplicate entry" error bubble was not properly dismissed.</li>
+<li>Fixed the sort by to properly remember its state across page loads.</li>
+<li>Fixed the management page to select the first login in the list when opened.</li>
+<li>Fixed the layout of the management interface to better handle narrow widths.</li>
+<li>Fixed "last updated" to change when you copy the password.</li>
+</ul>
+<h2 id="known-issues_3">Known Issues</h2>
+<ul>
+<li>If "Ask to always save logins and passwords for websites" is enabled after the extension is loaded, you may be prompted by Firefox to save a login when adding or editing in the management interface.  As a workaround, you can disable then re-enable the extension to prevent this prompt.</li>
+</ul>
+<h2 id="210-alpha">2.1.0-alpha</h2>
+<p><em>Date: 2019-04-19</em></p>
+<p>Building from the original experiment, this release gives you access to  -- and control over -- your logins already saved in Firefox.</p>
+<h3 id="whats-new_2">What's New</h3>
+<ul>
+<li>Uses the same data storage backend as Firefox!  View, create, change, and delete your logins here and have those changes take effect immediately in Firefox.</li>
+<li>Uses the same account backend as Firefox!  Your profile information shown here is always the same as the one you've signed into Firefox.</li>
+<li>Interested in better access on your Android or iOS device?  Click the "learn more" links throughout to get more information and instructions on how to get Lockbox for your phone or tablet.</li>
+</ul>
+<h2 id="whats-fixed_4">What's Fixed</h2>
+<ul>
+<li>You are now alerted to validation errors; missing a password, missing a website address, or accidentally adding the same login a second time.</li>
+</ul>
+<h2 id="breaking-changes">Breaking Changes</h2>
+<p>This version no longer uses its own data store; any logins previously saved in Lockbox are lost.</p>
+<h3 id="known-issues_4">Known Issues</h3>
+<ul>
+<li>Sometimes, the "This is a duplicate entry" error bubble is not properly dismissed.  However, changes are still saved.</li>
+<li>The profile menu action to "Connect another device" doesn't do anything yet.</li>
+</ul>
+<h2 id="200-alpha">2.0.0-alpha</h2>
+<p><em>Date: 2019-03-23</em></p>
+<p>Got releases publishing from circleci builds</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../contributing/" class="btn btn-neutral float-right" title="Contribute">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/mozilla-lockbox/lockbox-addon/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../contributing/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
