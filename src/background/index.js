@@ -13,7 +13,14 @@ import { initializeProfileInfo } from "./profile";
 
 Promise.resolve().then(async () => {
   await initializeEnvironment();
-  initializeTelemetry();
+
+  // The `shouldUseEmbedded()` check tells us if FF version is less than 68. It
+  // turns out there is another bug (1555734) that has nothing to do with whether
+  // or not we need to use the embedded `recordEvent`, but does require that we
+  // only enable telemetry for 68+. Hence, despite the misleading name, it's the
+  // right function to call here.
+  const enableTelemetry = !(await browser.experiments.temptelemetry.shouldUseEmbedded());
+  initializeTelemetry(enableTelemetry);
   initializeMessagePorts();
   await initializeDataStore();
   await initializeProfileInfo();
