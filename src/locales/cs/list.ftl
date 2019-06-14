@@ -47,7 +47,7 @@ item-fields-origin = Adresa serveru
 item-fields-origin-input =
     .placeholder = https://www.example.com
 item-fields-origin-info-message = Ujistěte se, že adresa přesně odpovídá doméně serveru (včetně protokolu „https://“).
-item-fields-origin-button = Spustit
+item-fields-origin-button = Otevřít
 item-fields-username = Uživatelské jméno
 item-fields-username-input =
     .placeholder = vase-adresa@example.com
@@ -103,6 +103,7 @@ item-details-last-used = Naposledy použito: { $date }
 #   - $count (number): number of items in the list
 list-count =
     { $count ->
+        [zero] Žádné přihlašovací údaje
         [one] Jedny přihlašovací údaje
         [few] { $count } přihlašovací údaje
        *[other] { $count } přihlašovacích údajů
