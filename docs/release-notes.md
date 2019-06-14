@@ -6,7 +6,7 @@ _Date: 2019-06-14_
 
 ### What's New
 
-* Localization support for Indonesian (id) is added.
+* Localization support is added for Czech (cs), Kabyle (kab), and Indonesian (id).
 
 ### What's Fixed
 
