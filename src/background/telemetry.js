@@ -28,37 +28,37 @@ function registerEvents() {
     "itemAdd": {
       methods: ["itemAdd"],
       objects: ["manager", "doorhanger"],
-      extra_keys: ["itemid"],
+      extra_keys: [],
       record_on_release: true,
     },
     "itemUpdate": {
       methods: ["itemUpdate"],
       objects: ["manager", "doorhanger"],
-      extra_keys: ["itemid"],
+      extra_keys: [],
       record_on_release: true,
     },
     "itemDelete": {
       methods: ["itemDelete"],
       objects: ["manager", "doorhanger"],
-      extra_keys: ["itemid"],
+      extra_keys: [],
       record_on_release: true,
     },
     "itemSelected": {
       methods: ["itemSelected"],
       objects: ["manager", "doorhanger"],
-      extra_keys: ["itemid"],
+      extra_keys: [],
       record_on_release: true,
     },
     "copyPassword": {
       methods: ["copyPassword"],
       objects: ["itemDetailManager", "itemDetailDoorhanger"],
-      extra_keys: ["itemid"],
+      extra_keys: [],
       record_on_release: true,
     },
     "copyUsername": {
       methods: ["copyUsername"],
       objects: ["itemDetailManager", "itemDetailDoorhanger"],
-      extra_keys: ["itemid"],
+      extra_keys: [],
       record_on_release: true,
     },
     "click": {
@@ -88,25 +88,25 @@ function registerEvents() {
         "deleteConfirm",
         "connectAnotherDevice",
       ],
-      extra_keys: ["itemid"],
+      extra_keys: [],
       record_on_release: true,
     },
     "openWebsite": {
       methods: ["openWebsite"],
       objects: ["itemDetailManager", "itemDetailDoorhanger"],
-      extra_keys: ["itemid"],
+      extra_keys: [],
       record_on_release: true,
     },
     "concealPassword": {
       methods: ["concealPassword"],
       objects: ["itemDetailManager", "itemDetailDoorhanger"],
-      extra_keys: ["itemid"],
+      extra_keys: [],
       record_on_release: true,
     },
     "revealPassword": {
       methods: ["revealPassword"],
       objects: ["itemDetailManager", "itemDetailDoorhanger"],
-      extra_keys: ["itemid"],
+      extra_keys: [],
       record_on_release: true,
     },
   };
@@ -156,11 +156,13 @@ async function recordEvent({ method, object, extra = null, value = null }) {
   // Note: 'extra' objects must have string values. Replace null with empty
   // string, and convert numbers to strings.
   if (extra) {
+    extra = { ...extra };
     Object.keys(extra).forEach(key => {
-      if (extra[key] === null) {
+      if (key === "itemid") {
+        delete extra[key];
+      } else if (extra[key] === null) {
         extra[key] = "";
-      }
-      if (typeof extra[key] === "number") {
+      } else if (typeof extra[key] === "number") {
         extra[key] = extra[key].toString();
       }
     });

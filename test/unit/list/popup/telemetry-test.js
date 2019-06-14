@@ -48,7 +48,7 @@ describe("list > popup > telemetryLogger middleware", () => {
       id: item.id,
     };
     telemetryLogger(store)(next)(action);
-    expect(passwordConcealed).to.have.been.calledWith(action, "itemDetailDoorhanger");
+    expect(passwordConcealed).to.have.been.calledWith("itemDetailDoorhanger");
     passwordConcealed.restore();
   });
 
@@ -81,7 +81,7 @@ describe("list > popup > telemetryLogger middleware", () => {
     telemetryLogger(store)(next)(action);
     // Wait a turn for the listener to be called.
     setTimeout(() => {
-      expect(listShown).to.have.been.calledWith(action, "itemListDoorhanger", [item]);
+      expect(listShown).to.have.been.calledWith("itemListDoorhanger", [item]);
       listShown.restore();
       done();
     }, 0);
@@ -94,7 +94,7 @@ describe("list > popup > telemetryLogger middleware", () => {
       item,
     };
     telemetryLogger(store)(next)(action);
-    expect(websiteOpened).to.have.been.calledWith(action, "itemDetailDoorhanger");
+    expect(websiteOpened).to.have.been.calledWith("itemDetailDoorhanger");
     websiteOpened.restore();
   });
 
@@ -105,7 +105,7 @@ describe("list > popup > telemetryLogger middleware", () => {
       id: item.id,
     };
     telemetryLogger(store)(next)(action);
-    expect(passwordRevealed).to.have.been.calledWith(action, "itemDetailDoorhanger");
+    expect(passwordRevealed).to.have.been.calledWith("itemDetailDoorhanger");
     passwordRevealed.restore();
   });
 
@@ -116,7 +116,7 @@ describe("list > popup > telemetryLogger middleware", () => {
       id: item.id,
     };
     telemetryLogger(store)(next)(action);
-    expect(itemSelected).to.have.been.calledWith(item.id, "doorhanger");
+    expect(itemSelected).to.have.been.calledWith("doorhanger");
     itemSelected.restore();
   });
 
@@ -128,7 +128,7 @@ describe("list > popup > telemetryLogger middleware", () => {
       item,
     };
     telemetryLogger(store)(next)(action);
-    expect(itemShown).to.have.been.calledWith(action, "itemDetailDoorhanger");
+    expect(itemShown).to.have.been.calledWith("itemDetailDoorhanger");
     itemShown.restore();
   });
 });

@@ -9,7 +9,7 @@ export default (store) => (next) => (action) => {
   try {
     switch (action.type) {
     case actions.CONCEAL_PASSWORD:
-      helpers.passwordConcealed(action, "itemDetailDoorhanger");
+      helpers.passwordConcealed("itemDetailDoorhanger");
       break;
     case actions.COPIED_FIELD_COMPLETED:
       helpers.itemCopied(action, "itemDetailDoorhanger");
@@ -18,23 +18,23 @@ export default (store) => (next) => (action) => {
       // Accessing item info from the store requires waiting a turn.
       setTimeout(() => {
         const state = store.getState();
-        helpers.listShown(action, "itemListDoorhanger", state.cache.items);
+        helpers.listShown("itemListDoorhanger", state.cache.items);
       }, 0);
       break;
     case actions.OPEN_WEBSITE:
-      helpers.websiteOpened(action, "itemDetailDoorhanger");
+      helpers.websiteOpened("itemDetailDoorhanger");
       break;
     case actions.REVEAL_PASSWORD:
-      helpers.passwordRevealed(action, "itemDetailDoorhanger");
+      helpers.passwordRevealed("itemDetailDoorhanger");
       break;
     case actions.SELECT_ITEM_COMPLETED:
       if (action.item) {
-        helpers.itemShown(action, "itemDetailDoorhanger");
+        helpers.itemShown("itemDetailDoorhanger");
       }
       break;
     case actions.SELECT_ITEM_STARTING:
       if (action.id) {
-        helpers.itemSelected(action.id, "doorhanger");
+        helpers.itemSelected("doorhanger");
       }
       break;
     }

@@ -14,7 +14,6 @@ const itemCopied = (action, object) => {
     recordEvent({
       method,
       object,
-      extra: { itemid: action.item.id },
     });
     scalarAdd({
       name: "loginsAccessed",
@@ -24,25 +23,23 @@ const itemCopied = (action, object) => {
 };
 
 // object =  'manager' || 'doorhanger'
-const itemSelected = (itemid, object) => {
+const itemSelected = (object) => {
   recordEvent({
     method: "itemSelected",
     object,
-    extra: { itemid },
   });
 };
 
 // object = "itemDetailManager" || "itemDetailDoorhanger"
-const itemShown = (action, object, itemid) => {
+const itemShown = (object) => {
   recordEvent({
     method: "show",
     object,
-    extra: { itemid: action.item.id },
   });
 };
 
 // object = "itemListManager" || "itemListDoorhanger"
-const listShown = (action, object, list) => {
+const listShown = (object, list) => {
   const hasLogins = !!list.length;
   recordEvent({
     method: "show",
@@ -52,20 +49,18 @@ const listShown = (action, object, list) => {
 };
 
 // object = "itemDetailManager" || "itemDetailDoorhanger"
-const passwordConcealed = (action, object) => {
+const passwordConcealed = (object) => {
   recordEvent({
     method: "concealPassword",
     object,
-    extra: { itemid: action.id },
   });
 };
 
 // object = "itemDetailManager" || "itemDetailDoorhanger"
-const passwordRevealed = (action, object) => {
+const passwordRevealed = (object) => {
   recordEvent({
     method: "revealPassword",
     object,
-    extra: { itemid: action.id },
   });
   scalarAdd({
     name: "loginsAccessed",
@@ -74,11 +69,10 @@ const passwordRevealed = (action, object) => {
 };
 
 // object = "itemDetailManager" || "itemDetailDoorhanger"
-const websiteOpened = (action, object) => {
+const websiteOpened = (object) => {
   recordEvent({
     method: "openWebsite",
     object,
-    extra: { itemid: action.item.id },
   });
 };
 
