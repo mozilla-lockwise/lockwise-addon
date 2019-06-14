@@ -1,5 +1,19 @@
 # Firefox Lockwise for Desktop Release Notes
 
+## 2.2.4-alpha
+
+_Date: 2019-06-14_
+
+### What's New
+
+* Localization support for Indonesian (id) is added.
+
+### What's Fixed
+
+* Telemetry is re-enabled for Firefox versions 68 and higher.
+* A number of localizations have been improved.
+* Scroll bars are no longer displayed unless needed.
+
 ## 2.2.3-alpha
 
 _Date: 2019-05-31_
