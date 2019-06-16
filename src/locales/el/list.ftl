@@ -80,7 +80,14 @@ account-summary-account = Λογαριασμός
 account-summary-options = Προτιμήσεις
 account-summary-signout = Αποσύνδεση
 intro-page-header-title = { -fxlockwise-brand-name } για υπολογιστές
+intro-page-header-subtitle =
+    Καλωσορίσατε στην καλύτερη διαχείριση συνδέσεων. Το πρόσθετο για υπολογιστές περιέχει πολλές
+    από τις βελτιώσεις των εφαρμογών για κινητά, με
+    καλύτερο έλεγχο των συνδέσεών σας.
 intro-page-main-article-1-title = Εύκολη διαχείριση των λογαριασμών σας
+intro-page-main-article-1-copy =
+    Η διαχείριση των λογαριασμών σας δεν θα έπρεπε να είναι πυρηνική φυσική. Κάναμε
+    τα πάντα πιο εύκολα με το νέο περιβάλλον χρήσης για υπολογιστές.
 intro-page-main-article-2-title = Γρήγορη πρόσβαση στις συνδέσεις σας
 intro-page-main-article-3-title = Χειροκίνητη δημιουργία νέων συνδέσεων
 intro-page-footer-heading = Δεν βλέπετε τις αποθηκευμένες σας συνδέσεις; Αφήστε μας να βοηθήσουμε.
@@ -140,9 +147,13 @@ easily-access-logins = Εύκολη πρόσβαση στις συνδέσεις
 access-on-another-computer = Πρόσβαση σε άλλο υπολογιστή
 download-mobile = Λήψη εφαρμογής κινητού
 download-ios-android = Το { -fxlockwise-brand-name } είναι διαθέσιμο σε iOS και Android. <learnmore>Κάντε κλικ εδώ</learnmore> για να μάθετε περισσότερα και για να στείλετε ένα σύνδεσμο λήψης εφαρμογής στο τηλέφωνό σας.
+before-access = Πριν μπορέσετε να προσπελάσετε τις συνδέσεις σας σε κάποια άλλη συσκευή, θα πρέπει να συνδεθείτε σε ένα { -fxaccount-brand-name }.
 connect-a-firefox-account = Σύνδεση { -fxaccount-brand-name }
 # Displayed next to connect-a-firefox-account string after the user has logged in.
 connection-complete = (ολοκληρώθηκε)
+sync-requires-account = Για να συγχρονίσετε τις συνδέσεις σας σε άλλη συσκευή, θα πρέπει να <signin>συνδεθείτε ή να δημιουργήσετε ένα { -fxaccount-brand-name }</signin>.
+ensure-logins-checked = Βεβαιωθείτε ότι είναι ενεργή η επιλογή “Συνδέσεις” στις προτιμήσεις { -sync-brand-short-name }
+setting-to-allow-sync = Για να επιτραπεί ο συγχρονισμός των συνδέσεών σας με άλλες συσκευές, πρέπει να ενεργοποιηθεί αυτή η ρύθμιση. <go>Άνοιγμα προτιμήσεων { -sync-brand-short-name }</go>
 banner-promote-device = <bold>Πάρτε τους κωδικούς πρόσβασής σας παντού</bold> - κάντε λήψη της εφαρμογής μας για iOS ή Android:
 banner-promote-device-app-store =
     .title = Λήψη στο App Store
