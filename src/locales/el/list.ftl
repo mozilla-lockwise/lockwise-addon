@@ -89,8 +89,19 @@ intro-page-main-article-1-copy =
     Η διαχείριση των λογαριασμών σας δεν θα έπρεπε να είναι πυρηνική φυσική. Κάναμε
     τα πάντα πιο εύκολα με το νέο περιβάλλον χρήσης για υπολογιστές.
 intro-page-main-article-2-title = Γρήγορη πρόσβαση στις συνδέσεις σας
+intro-page-main-article-2-copy =
+    Κάντε κλικ στο εικονίδιο του { -fxlockwise-brand-short-name } στη γραμμή εργαλείων του { -firefox-brand-name } για να εμφανίσετε την
+    πινακίδα για πρόσβαση στις συνδέσεις σας.
 intro-page-main-article-3-title = Χειροκίνητη δημιουργία νέων συνδέσεων
+intro-page-main-article-3-copy =
+    Με την προσθήκη χειροκίνητων συνδέσεων, μπορείτε πλέον να αποθηκεύσετε όποιο λογαριασμό
+    θέλετε μέσω του { -fxlockwise-brand-short-name }.
 intro-page-footer-heading = Δεν βλέπετε τις αποθηκευμένες σας συνδέσεις; Αφήστε μας να βοηθήσουμε.
+intro-page-footer-copy =
+    Το { -fxlockwise-brand-name } παρέχει πρόσβαση στις συνδέσεις που έχετε αποθηκεύσει στο
+    { -firefox-brand-name } της συσκευής σας. Αν οι συνδέσεις σας αποθηκεύονται σε μια άλλη συσκευή,
+    μπορείτε να συγχρονίσετε τις πληροφορίες σας σε αυτή τη συσκευή κάνοντας σύνδεση ή
+    δημιουργώντας ένα { -fxaccount-brand-name }. <go>Μάθετε περισσότερα</go>
 item-details-heading-new = Δημιουργία νέας σύνδεσης
 item-details-heading-edit = Επεξεργασία λεπτομερειών σύνδεσης
 item-details-edit = Επεξεργασία
@@ -145,6 +156,7 @@ connect-another-device-dialog =
 connect-another-device = Σύνδεση άλλης συσκευής
 easily-access-logins = Εύκολη πρόσβαση στις συνδέσεις σας από κάθε συσκευή.
 access-on-another-computer = Πρόσβαση σε άλλο υπολογιστή
+simply-sign-in-other-device = Συνδεθείτε απλά στο { -fxaccount-brand-name } σας στην άλλη σας συσκευή για να συγχρονίσετε τις συνδέσεις σας σε εκείνο τον υπολογιστή.
 download-mobile = Λήψη εφαρμογής κινητού
 download-ios-android = Το { -fxlockwise-brand-name } είναι διαθέσιμο σε iOS και Android. <learnmore>Κάντε κλικ εδώ</learnmore> για να μάθετε περισσότερα και για να στείλετε ένα σύνδεσμο λήψης εφαρμογής στο τηλέφωνό σας.
 before-access = Πριν μπορέσετε να προσπελάσετε τις συνδέσεις σας σε κάποια άλλη συσκευή, θα πρέπει να συνδεθείτε σε ένα { -fxaccount-brand-name }.
