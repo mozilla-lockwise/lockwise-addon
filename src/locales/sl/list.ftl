@@ -38,6 +38,7 @@ error-notification-duplicate-link = <a>Grem na obstoječo prijavo?</a>
 all-items-get-started = Ko geslo shranite v { -firefox-brand-name }, se bo prikazalo tukaj.
 all-items-get-started-title = Ni prijav.
 all-items-get-started-footer = Ne vidite svojih shranjenih prijav? <go>Ugotovite, zakaj</go>
+all-items-no-results = Če je ta prijava shranjena v drugi napravi, se prijavite vanjo in omogočite sinhronizacijo, da se bo prijava prikazala tukaj.
 all-items-no-results-title = Ni ujemajočih se prijav.
 all-items-no-results-footer = <go>Več o tem</go>
 item-fields-title-input =
@@ -79,6 +80,10 @@ account-summary-account = Račun
 account-summary-options = Nastavitve
 account-summary-signout = Odjava
 intro-page-header-title = { -fxlockwise-brand-name } za namizja
+intro-page-header-subtitle =
+    Dobrodošli v boljšem upravljanju prijav. Naš dodatek na namizja prinaša veliko
+    izboljšav, ki jih že poznate iz naših mobilnih aplikacij, z večjim
+    nadzorom nad vašimi prijavami.
 intro-page-main-article-1-title = Enostavno upravljanje računov
 intro-page-main-article-1-copy =
     Upravljanje računov ne bi smelo biti pretežko. Z novim
