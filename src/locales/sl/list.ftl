@@ -89,6 +89,9 @@ intro-page-main-article-1-copy =
     Upravljanje računov ne bi smelo biti pretežko. Z novim
     namiznim vmesnikom smo poenostavili stvari.
 intro-page-main-article-2-title = Hiter dostop do vaših prijav
+intro-page-main-article-2-copy =
+    V { -firefox-brand-name }ovi orodni vrstici kliknite ikono { -fxlockwise-brand-short-name }, da odprete
+    meni za dostop do svojih prijav.
 intro-page-main-article-3-title = Ročno ustvari nove prijave
 intro-page-main-article-3-copy =
     Z ročnim dodajanjem prijav lahko sedaj shranite
