@@ -115,7 +115,7 @@ list-count =
         [one] { $count } innlogging
        *[other] { $count } innloggingar
     }
-sort-by = SOrter etter:
+sort-by = Sorter etter:
 sort-by-name = Namn
 sort-by-last-used = Sist brukt
 sort-by-last-changed = Sist endra
