@@ -23,6 +23,9 @@ const DEFAULT_PREFS = {
 const ENV_BINARY = "LOCKBOX_FIREFOX_BINARY";
 const ENV_HEADLESS = "LOCKBOX_FIREFOX_HEADLESS";
 
+// fixup 'Aurora' (Developer Edition) name ...
+firefox.Channel.AURORA.darwin_ = "/Applications/Firefox Developer Edition.app/Contents/MacOS/firefox-bin";
+
 export class WebExtensionDriver {
   constructor(manifest, opts) {
     this.manifest = manifest;

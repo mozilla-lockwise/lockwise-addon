@@ -65,7 +65,7 @@ jobs:
           command: |
             sudo apt-get install libgtk-3-dev libdbus-glib-1-2
             sudo npm i -g get-firefox
-            get-firefox --branch nightly --platform linux --extract --target ~/
+            get-firefox --branch devedition --platform linux --extract --target ~/
             echo 'export PATH="$HOME/firefox:$PATH"' >> $BASH_ENV
       - run:
           name: Verify Firefox
