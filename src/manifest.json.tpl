@@ -16,7 +16,7 @@
     "gecko": {
       "id": "{{id}}",
       "strict_min_version": "67.0",
-      "strict_max_version": "69.0",
+      "strict_max_version": "69.*",
       "update_url": "https://lockwise.firefox.com/addon/updates.json"
     }
   },
