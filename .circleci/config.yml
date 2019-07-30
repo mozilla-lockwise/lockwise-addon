@@ -65,7 +65,7 @@ jobs:
           command: |
             sudo apt-get install libgtk-3-dev libdbus-glib-1-2 python-pip
             sudo pip install mozdownload
-            mozdownload --application devedition --platform linux --version latest-beta
+            mozdownload --application devedition --version latest-beta
             tar -C $HOME -xjf devedition-*.tar.bz2
             rm -rf devedition-*.tar.bz2
             echo 'export PATH="$HOME/firefox:$PATH"' >> $BASH_ENV
