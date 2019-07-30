@@ -64,8 +64,10 @@ jobs:
           name: Install Firefox
           command: |
             sudo apt-get install libgtk-3-dev libdbus-glib-1-2
-            sudo npm i -g get-firefox
-            get-firefox --branch devedition --platform linux --extract --target ~/
+            sudo pip install mozdownload
+            mozdownload --application devedition --platform linux --version latest-beta
+            tar -C $HOME -xjf devedition-*.tar.bz2
+            rm -rf devedition-*.tar.bz2
             echo 'export PATH="$HOME/firefox:$PATH"' >> $BASH_ENV
       - run:
           name: Verify Firefox
