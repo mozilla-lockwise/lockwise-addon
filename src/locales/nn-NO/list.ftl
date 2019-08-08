@@ -25,7 +25,7 @@ header-logins-button = Innloggingar
 header-app-title =
     .title = { -fxlockwise-brand-name }
 profile-menu-account = Konto
-profile-menu-sign-in = Logga in på { -sync-brand-short-name }
+profile-menu-sign-in = Logg in på { -sync-brand-short-name }
 profile-menu-connect = Kople til ei eining
 profile-menu-faq = Vanlege spørsmål (FAQ)
 profile-menu-feedback = Gje tilbakemelding
@@ -115,7 +115,7 @@ list-count =
         [one] { $count } innlogging
        *[other] { $count } innloggingar
     }
-sort-by = SOrter etter:
+sort-by = Sorter etter:
 sort-by-name = Namn
 sort-by-last-used = Sist brukt
 sort-by-last-changed = Sist endra

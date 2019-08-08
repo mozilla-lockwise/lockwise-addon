@@ -80,10 +80,28 @@ account-summary-account = Λογαριασμός
 account-summary-options = Προτιμήσεις
 account-summary-signout = Αποσύνδεση
 intro-page-header-title = { -fxlockwise-brand-name } για υπολογιστές
+intro-page-header-subtitle =
+    Καλωσορίσατε στην καλύτερη διαχείριση συνδέσεων. Το πρόσθετο για υπολογιστές περιέχει πολλές
+    από τις βελτιώσεις των εφαρμογών για κινητά, με
+    καλύτερο έλεγχο των συνδέσεών σας.
 intro-page-main-article-1-title = Εύκολη διαχείριση των λογαριασμών σας
+intro-page-main-article-1-copy =
+    Η διαχείριση των λογαριασμών σας δεν θα έπρεπε να είναι πυρηνική φυσική. Κάναμε
+    τα πάντα πιο εύκολα με το νέο περιβάλλον χρήσης για υπολογιστές.
 intro-page-main-article-2-title = Γρήγορη πρόσβαση στις συνδέσεις σας
+intro-page-main-article-2-copy =
+    Κάντε κλικ στο εικονίδιο του { -fxlockwise-brand-short-name } στη γραμμή εργαλείων του { -firefox-brand-name } για να εμφανίσετε την
+    πινακίδα για πρόσβαση στις συνδέσεις σας.
 intro-page-main-article-3-title = Χειροκίνητη δημιουργία νέων συνδέσεων
+intro-page-main-article-3-copy =
+    Με την προσθήκη χειροκίνητων συνδέσεων, μπορείτε πλέον να αποθηκεύσετε όποιο λογαριασμό
+    θέλετε μέσω του { -fxlockwise-brand-short-name }.
 intro-page-footer-heading = Δεν βλέπετε τις αποθηκευμένες σας συνδέσεις; Αφήστε μας να βοηθήσουμε.
+intro-page-footer-copy =
+    Το { -fxlockwise-brand-name } παρέχει πρόσβαση στις συνδέσεις που έχετε αποθηκεύσει στο
+    { -firefox-brand-name } της συσκευής σας. Αν οι συνδέσεις σας αποθηκεύονται σε μια άλλη συσκευή,
+    μπορείτε να συγχρονίσετε τις πληροφορίες σας σε αυτή τη συσκευή κάνοντας σύνδεση ή
+    δημιουργώντας ένα { -fxaccount-brand-name }. <go>Μάθετε περισσότερα</go>
 item-details-heading-new = Δημιουργία νέας σύνδεσης
 item-details-heading-edit = Επεξεργασία λεπτομερειών σύνδεσης
 item-details-edit = Επεξεργασία
@@ -138,11 +156,16 @@ connect-another-device-dialog =
 connect-another-device = Σύνδεση άλλης συσκευής
 easily-access-logins = Εύκολη πρόσβαση στις συνδέσεις σας από κάθε συσκευή.
 access-on-another-computer = Πρόσβαση σε άλλο υπολογιστή
+simply-sign-in-other-device = Συνδεθείτε απλά στο { -fxaccount-brand-name } σας στην άλλη σας συσκευή για να συγχρονίσετε τις συνδέσεις σας σε εκείνο τον υπολογιστή.
 download-mobile = Λήψη εφαρμογής κινητού
 download-ios-android = Το { -fxlockwise-brand-name } είναι διαθέσιμο σε iOS και Android. <learnmore>Κάντε κλικ εδώ</learnmore> για να μάθετε περισσότερα και για να στείλετε ένα σύνδεσμο λήψης εφαρμογής στο τηλέφωνό σας.
+before-access = Πριν μπορέσετε να προσπελάσετε τις συνδέσεις σας σε κάποια άλλη συσκευή, θα πρέπει να συνδεθείτε σε ένα { -fxaccount-brand-name }.
 connect-a-firefox-account = Σύνδεση { -fxaccount-brand-name }
 # Displayed next to connect-a-firefox-account string after the user has logged in.
 connection-complete = (ολοκληρώθηκε)
+sync-requires-account = Για να συγχρονίσετε τις συνδέσεις σας σε άλλη συσκευή, θα πρέπει να <signin>συνδεθείτε ή να δημιουργήσετε ένα { -fxaccount-brand-name }</signin>.
+ensure-logins-checked = Βεβαιωθείτε ότι είναι ενεργή η επιλογή “Συνδέσεις” στις προτιμήσεις { -sync-brand-short-name }
+setting-to-allow-sync = Για να επιτραπεί ο συγχρονισμός των συνδέσεών σας με άλλες συσκευές, πρέπει να ενεργοποιηθεί αυτή η ρύθμιση. <go>Άνοιγμα προτιμήσεων { -sync-brand-short-name }</go>
 banner-promote-device = <bold>Πάρτε τους κωδικούς πρόσβασής σας παντού</bold> - κάντε λήψη της εφαρμογής μας για iOS ή Android:
 banner-promote-device-app-store =
     .title = Λήψη στο App Store
