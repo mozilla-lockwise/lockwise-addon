@@ -1,5 +1,23 @@
 # Firefox Lockwise for Desktop Release Notes
 
+## 2.2.5-alpha
+
+_Date: 2019-08-10_
+
+**‼ IMPORTANT ‼**
+
+This add-on is being sunsetted as of Firefox version 70, as its features are now present in `about:logins`.
+
+### What's Fixed
+
+* Various locales have been updated.
+
+### Known Issues
+
+* There are reports of Firefox crashing with this extension installed, that appear to be due to telemetry-related issues.  For now, telemetry is disabled when run in Firefox 67.  This issue is tracked in ([BMO 1555734](https://bugzilla.mozilla.org/show_bug.cgi?id=1555734)).
+* This extension may conflict with Master Password.  If you wish to use this extension, we recommend disabling Master Password, then disable/re-enable this extension before it will work correctly.
+* If "Ask to always save logins and passwords for websites" is enabled after the extension is loaded, you may be prompted by Firefox to save a login when adding or editing in the management interface.  As a workaround, you can disable then re-enable the extension to prevent this prompt.
+
 ## 2.2.4-alpha
 
 _Date: 2019-06-14_

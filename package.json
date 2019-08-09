@@ -2,7 +2,7 @@
   "title": "Firefox Lockwise",
   "name": "lockwise",
   "id": "lockbox@mozilla.com",
-  "version": "2.2.4-alpha",
+  "version": "2.2.5-alpha",
   "description": "Take your passwords everywhere. Note this functionality is built into Firefox 70 and above, so this add-on is capped to versions 69 and lower.",
   "engines": {
     "firefox": ">= 67",
