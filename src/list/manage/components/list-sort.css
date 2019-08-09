@@ -10,7 +10,6 @@
 
 .select {
   flex: 0 1 auto;
-  
   color: #0c0c0d;
   text-overflow: ellipsis;
   appearance: none;
@@ -22,7 +21,6 @@
   padding-inline-end: 18px;
   border-radius: 0;
   padding-left: 3px;
-  height: 33px;
   min-width: 65px;
 }
 
