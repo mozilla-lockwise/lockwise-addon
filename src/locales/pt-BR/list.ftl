@@ -125,7 +125,7 @@ filtered-banner =
     }
 get-started-banner = Nenhuma conta encontrada.
 no-matching-banner = Nenhuma conta correspondente.
-no-results-banner = Não encontrada nenhuma conta do site atual.
+no-results-banner = Não foi encontrada nenhuma conta do site atual.
 item-details-panel-title = Detalhes da conta
 navigate-panel-backwards = Voltar
 
