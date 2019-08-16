@@ -155,4 +155,5 @@ banner-promote-device-app-store =
     .title = Discarga lo ex App Store
 banner-promote-device-play-store =
     .title = Discarga lo ex Google Play
+banner-promote-fxa = <bold>Porta ubique con te tu contrasignos.</bold> Crea un { -fxaccount-brand-name } o accede pro syncronisar { -fxlockwise-brand-short-name } sur tu apparato mobile:
 banner-promote-fxa-action-label = Acceder
