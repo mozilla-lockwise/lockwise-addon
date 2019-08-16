@@ -84,7 +84,11 @@ intro-page-header-subtitle = Benvenite al melior gestion de accesso. Nostre addi
 intro-page-main-article-1-title = Gestion facile de tu contos
 intro-page-main-article-1-copy = Gerer tu contos non deberea esser scientia del missiles. Nos ha rendite le cosas facile con nostre nove interfacie de scriptorio.
 intro-page-main-article-2-title = Accesso rapide a tu credentiales
+intro-page-main-article-2-copy = Clicca le { -fxlockwise-brand-short-name } icone del barra del instrumentos in { -firefox-brand-name } pro visualisar nostre pannello de accesso a tu credentiales.
 intro-page-main-article-3-title = Crear nove accessos manualmente
+intro-page-main-article-3-copy = Tu pote ora reservar ulle conto que tu desira intra { -fxlockwise-brand-short-name }, con le addition manual de credentiales.
+intro-page-footer-heading = Non vide tu credentiales salvate? Lassa nos te adjutar
+intro-page-footer-copy = { -fxlockwise-brand-name } forni accesso al credentiales salvate in { -firefox-brand-name } sur tu apparato. Si tu credentiales es immagazinate sur un altere apparato, tu pote synchronisar tu informationes a iste dispositivo per lo acceder o per le creation de un { -fxaccount-brand-name }. <go>Saper plus</go>
 item-details-heading-new = Crear nove accesso
 item-details-heading-edit = Redige detalios del credentiales
 item-details-edit = Rediger
@@ -127,6 +131,9 @@ navigate-panel-backwards = Regreder
 
 ## Strings used in dialog
 
+modal-cancel-editing = Cambiamentos non salvate existe. Refusar los?
+    .confirmLabel = Refusar le modificationes
+    .cancelLabel = Retornar
 modal-delete = Deler iste credential?
     .confirmLabel = Deler
     .cancelLabel = Cancellar
