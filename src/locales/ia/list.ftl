@@ -142,6 +142,7 @@ easily-access-logins = Accede facilemente a tu contos ab ulle apparato.
 access-on-another-computer = Accede sur un altere computator
 simply-sign-in-other-device = Accede l tu { -fxaccount-brand-name } sur un altere apparato pro synchronisar tu credentiales.
 download-mobile = Discargar le application mobile
+download-ios-android = { -fxlockwise-brand-name } es disponibile sur ambe iOS e Android.<learnmore>Clicca ci</learnmore> pro saper plus e pro inviar un ligamine a tu telephono pro discargar le application.
 connect-a-firefox-account = Connecte a { -fxaccount-brand-name }
 # Displayed next to connect-a-firefox-account string after the user has logged in.
 connection-complete = (complete)
