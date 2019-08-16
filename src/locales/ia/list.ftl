@@ -143,9 +143,13 @@ access-on-another-computer = Accede sur un altere computator
 simply-sign-in-other-device = Accede l tu { -fxaccount-brand-name } sur un altere apparato pro synchronisar tu credentiales.
 download-mobile = Discargar le application mobile
 download-ios-android = { -fxlockwise-brand-name } es disponibile sur ambe iOS e Android.<learnmore>Clicca ci</learnmore> pro saper plus e pro inviar un ligamine a tu telephono pro discargar le application.
+before-access = Ante que tu pote acceder a tu credentiales sur un altere dispositivo, tu debera connecter te a { -fxaccount-brand-name }.
 connect-a-firefox-account = Connecte a { -fxaccount-brand-name }
 # Displayed next to connect-a-firefox-account string after the user has logged in.
 connection-complete = (complete)
+sync-requires-account = Pro synchronisar tu credentiales a un altere dispositivo, tu debera  <signin>acceder o crear un { -fxaccount-brand-name }</signin>.
+ensure-logins-checked = Assecura te que le quadrato de selection “Credentiales” es seligite in le preferentias de { -sync-brand-short-name }
+setting-to-allow-sync = Pro consentir tu credentiales sia synchronisate a altere apparatos, iste configuration debe ser verificate. <go>Aperir preferentias de { -sync-brand-short-name }</go>
 banner-promote-device = <bold>Porta tu contrasignos sempre con te.</bold> Discarga nostre application pro iOS e Android.
 banner-promote-device-app-store =
     .title = Discarga lo ex App Store
