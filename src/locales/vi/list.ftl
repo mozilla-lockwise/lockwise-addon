@@ -168,6 +168,6 @@ banner-promote-device = <bold>Mang mật khẩu của bạn đi khắp mọi nơ
 banner-promote-device-app-store =
     .title = Tải xuống trên App Store
 banner-promote-device-play-store =
-    .title = Tải về trên Google Play
+    .title = Tải xuống trên Google Play
 banner-promote-fxa = <bold>Mang mật khẩu của bạn đi khắp mọi nơi</bold> - tạo { -fxaccount-brand-name } hoặc Đăng nhập để đồng bộ hóa với { -fxlockwise-brand-short-name } trên thiết bị di động:
 banner-promote-fxa-action-label = Đăng nhập
