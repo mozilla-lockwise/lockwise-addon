@@ -5,7 +5,7 @@
 copy-to-clipboard-button = Copiar
 copy-to-clipboard-copied = ✔ Copiate
 filter-input-clear =
-    .title = Clarar
+    .title = Vacuar
 modal-root =
     .contentLabel = Fenestra de dialogo modal
 password-input-show =
