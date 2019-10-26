@@ -52,19 +52,19 @@ item-fields-username = Nomine del usator
 item-fields-username-input =
     .placeholder = name@example.com
 item-fields-copy-username =
-    .title = Copiar le nomine de usator in le area de transferentia
+    .title = Copiar le nomine de usator al area de transferentia
 item-fields-password = Contrasigno
 item-fields-copy-password =
-    .title = Copiar le contrasignor in le area de transferentia
+    .title = Copiar le contrasigno al area de transferentia
 item-fields-notes = Notas
 item-summary-new-title = Nove accesso
 item-summary-no-title = (sin titulo)
 item-summary-new-username = Insere tu credentiales de accesso
 item-summary-no-username = (nulle nomine de usator)
-item-summary-copy-username = Copiar le nomine de usator
-    .title = Copia le nomine de usator in le area de transferentia
-item-summary-copy-password = Copiar le contrasigno
-    .title = Copia le contrasigno in le area de transferentia
+item-summary-copy-username = Copiar nomine de usator
+    .title = Copiar le nomine de usator al area de transferentia
+item-summary-copy-password = Copiar contrasigno
+    .title = Copiar le contrasigno al area de transferentia
 # Placeholder and accessibility label used in the field to filter existing
 # entries, i.e. search in the product database
 item-filter =
