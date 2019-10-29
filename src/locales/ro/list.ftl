@@ -160,5 +160,5 @@ banner-promote-device-app-store =
     .title = Descarcă de pe App Store
 banner-promote-device-play-store =
     .title = Acum pe Google Play
-banner-promote-fxa = <bold>Ia cu tine parolele oriunde</bold> - creează un { -fxaccount-brand-name } sau autentifică-te pentru a sincroniza { -fxlockwise-brand-short-name } pe dispozitivul mobil:
+banner-promote-fxa = <bold>Ia-ți cu tine parolele oriunde</bold> - creează un { -fxaccount-brand-name } sau autentifică-te pentru a sincroniza { -fxlockwise-brand-short-name } pe dispozitivul mobil:
 banner-promote-fxa-action-label = Autentificare
