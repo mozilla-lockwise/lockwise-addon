@@ -1,4 +1,4 @@
-# Welcome to Lockbox's extension documentation!
+# Welcome to Lockwise's extension documentation!
 
 You can read this documentation [online][online-docs-link] or by browsing the
 [`docs` directory on GitHub][repo-docs-link].
