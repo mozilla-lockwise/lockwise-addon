@@ -56,4 +56,4 @@ To generate the next release binary:
 
 5. Send an announcement to the team (e.g., via Slack team channel)
 
-[releases]: https://github.com/mozilla-lockbox/lockbox-addon/releases
+[releases]: https://github.com/mozilla-lockwise/lockwise-addon/releases
