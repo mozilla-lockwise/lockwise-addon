@@ -51,39 +51,39 @@ jobs:
       - run:
           name: update-npm
           command: 'sudo npm install -g npm@6.7'
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - run:
-          name: install-npm
-          command: npm ci
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
-      - run:
-          name: Install Firefox
-          command: |
-            sudo apt-get install libgtk-3-dev libdbus-glib-1-2 python-pip
-            sudo pip install mozdownload
-            mozdownload --application devedition --version latest-beta
-            tar -C $HOME -xjf devedition-*.tar.bz2
-            rm -rf devedition-*.tar.bz2
-            echo 'export PATH="$HOME/firefox:$PATH"' >> $BASH_ENV
-      - run:
-          name: Verify Firefox
-          command: |
-            firefox --version
-      - run:
-          name: test
-          command: npm test
-      - run:
-          name: coverage
-          command: npm run codecov
-      - run:
-          name: integration test
-          command: npm run integration
-          environment:
-            LOCKBOX_FIREFOX_HEADLESS: "1"
+      # - restore_cache:
+      #     key: dependency-cache-{{ checksum "package.json" }}
+      # - run:
+      #     name: install-npm
+      #     command: npm ci
+      # - save_cache:
+      #     key: dependency-cache-{{ checksum "package.json" }}
+      #     paths:
+      #       - ./node_modules
+      # - run:
+      #     name: Install Firefox
+      #     command: |
+      #       sudo apt-get install libgtk-3-dev libdbus-glib-1-2 python-pip
+      #       sudo pip install mozdownload
+      #       mozdownload --application devedition --version 67.0b4
+      #       tar -C $HOME -xjf devedition-*.tar.bz2
+      #       rm -rf devedition-*.tar.bz2
+      #       echo 'export PATH="$HOME/firefox:$PATH"' >> $BASH_ENV
+      # - run:
+      #     name: Verify Firefox
+      #     command: |
+      #       firefox --version
+      # - run:
+      #     name: test
+      #     command: npm test
+      # - run:
+      #     name: coverage
+      #     command: npm run codecov
+      # - run:
+      #     name: integration test
+      #     command: npm run integration
+      #     environment:
+      #       LOCKBOX_FIREFOX_HEADLESS: "1"
   package-addon-production:
     docker:
       - image: circleci/node
