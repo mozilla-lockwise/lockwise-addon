@@ -71,7 +71,7 @@ npm run run -- -p PROFILE --keep-profile-changes
 The PROFILE value may be a profile name or the path to the profile.
 
 Now, when you run using this profile, any data or settings you make to the
-browser itself or in Lockbox will be available for future runs.
+browser itself or in Lockwise will be available for future runs.
 
 ## Setting npm run flags 
 
