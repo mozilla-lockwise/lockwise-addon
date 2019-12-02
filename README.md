@@ -1,7 +1,7 @@
 [![CircleCI][circleci-image]][circleci-link]
 [![codecov][codecov-image]][codecov-link]
 
-# Firefox Lockbox for Desktop
+# Firefox Lockwise for Desktop
 
 The Firefox Addon repository for [Firefox Lockwise][org-website].
 
