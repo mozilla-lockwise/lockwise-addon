@@ -1,6 +1,6 @@
-# Telemetry Test Plan: Lockbox-extension
+# Telemetry Test Plan: Lockwise-extension
 
-Given the importance the Lockbox team places on actionable user telemetry, ensuring confidence in the fidelity of that data is vital. Coverage aspects are broken into two distinct areas: test automation and manual testing.
+Given the importance the Lockwise team places on actionable user telemetry, ensuring confidence in the fidelity of that data is vital. Coverage aspects are broken into two distinct areas: test automation and manual testing.
 
 ## Unit tests
 
@@ -20,4 +20,4 @@ Product Integrity will investigate options for automating these tests into the i
 
 ## Metrics being gathered
 
-For a comprehensive list of metrics being gathered review the [Lockbox Telemetry Plan](/metrics/).
+For a comprehensive list of metrics being gathered review the [Lockwise Telemetry Plan](/metrics/).
