@@ -16,7 +16,44 @@
 -fxlockwise-brand-name = Firefox Lockwise
 # “Account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
--fxaccount-brand-name = Firefox Account
+-fxaccount-brand-name =
+    { $case ->
+       *[nom]
+            { $capitalization ->
+               *[upper] Účet Firefoxu
+                [lower] účet Firefoxu
+            }
+        [gen]
+            { $capitalization ->
+               *[upper] Účtu Firefoxu
+                [lower] účtu Firefoxu
+            }
+        [dat]
+            { $capitalization ->
+               *[upper] Účtu Firefoxu
+                [lower] účtu Firefoxu
+            }
+        [acc]
+            { $capitalization ->
+               *[upper] Účet Firefoxu
+                [lower] účet Firefoxu
+            }
+        [voc]
+            { $capitalization ->
+               *[upper] Účte Firefoxu
+                [lower] účte Firefoxu
+            }
+        [loc]
+            { $capitalization ->
+               *[upper] Účtu Firefoxu
+                [lower] účtu Firefoxu
+            }
+        [ins]
+            { $capitalization ->
+               *[upper] Účtem Firefoxu
+                [lower] účtem Firefoxu
+            }
+    }
 
 ## All the following messages are localizable.
 
@@ -148,10 +185,10 @@ connect-another-device-dialog =
 connect-another-device = Připojte další zařízení
 easily-access-logins = Získejte snadný přístup k vašim přihlašovacím údajům z jakéhokoliv zařízení.
 access-on-another-computer = Přístup z dalšího počítače
-simply-sign-in-other-device = Pro synchronizaci vašich přihlašovacích údajů s dalším počítačem se na něm stačí přihlásit vaším účtem Firefoxu.
+simply-sign-in-other-device = Pro synchronizaci vašich přihlašovacích údajů s dalším počítačem se na něm stačí přihlásit svým { -fxaccount-brand-name(case: "ins", capitalization: "lower") }.
 download-mobile = Stáhněte si mobilní aplikaci
 download-ios-android = Aplikace { -fxlockwise-brand-name } je dostupná pro iOS a Android. Nechte si <learnmore>poslat odkaz</learnmore> ke stažení aplikace do svého telefonu.
-before-access = Pro přístup k vašim přihlašovacím údajům z ostatních zařízení se nejdříve přihlaste svým účtem Firefoxu.
+before-access = Pro přístup k vašim přihlašovacím údajům z ostatních zařízení se nejdříve přihlaste svým { -fxaccount-brand-name(case: "ins", capitalization: "lower") }.
 connect-a-firefox-account = Připojte svůj { -fxaccount-brand-name }
 # Displayed next to connect-a-firefox-account string after the user has logged in.
 connection-complete = (dokončeno)
