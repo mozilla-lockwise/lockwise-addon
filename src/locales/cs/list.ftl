@@ -159,11 +159,13 @@ default-banner = Nedávno používané přihlašovací údaje.
 #   - $count (number): number of items in the list
 filtered-banner =
     { $count ->
+        [0] Nenalezeny žádné přihlašovací údaje
         [one] Nalezeny jedny přihlašovací údaje
         [2] Nalezeny dvoje přihlašovací údaje
         [3] Nalezeny troje přihlašovací údaje
         [4] Nalezeny čtvery přihlašovací údaje
-       *[other] Nalezeno { $count } přihlašovacích údajů
+        [few] Nalezeny { $count } přihlašovací údaje
+       *[other] Nalezeny { $count } přihlašovacích údajů
     }
 get-started-banner = Nenalezeny žádné přihlašovací údaje.
 no-matching-banner = Nenalezeny žádné přihlašovací údaje.
