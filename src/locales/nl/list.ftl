@@ -59,7 +59,7 @@ item-fields-copy-password =
 item-fields-notes = Opmerkingen
 item-summary-new-title = Nieuwe aanmelding
 item-summary-no-title = (geen titel)
-item-summary-new-username = Voer uw aameldgegevens in
+item-summary-new-username = Voer uw aanmeldgegevens in
 item-summary-no-username = (geen gebruikersnaam)
 item-summary-copy-username = Gebruikersnaam kopiëren
     .title = Gebruikersnaam kopiëren naar klembord
@@ -79,7 +79,7 @@ account-summary-avatar =
 account-summary-account = Account
 account-summary-options = Voorkeuren
 account-summary-signout = Afmelden
-intro-page-header-title = { -fxlockwise-brand-name } voor Desktop
+intro-page-header-title = { -fxlockwise-brand-name } voor desktop
 intro-page-header-subtitle =
     Welkom bij beter aanmeldbeheer. Onze desktop-add-on brengt veel van
     de verbeteringen zoals in onze mobiele apps naar uw computer, met
