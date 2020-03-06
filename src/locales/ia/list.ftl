@@ -127,7 +127,7 @@ get-started-banner = Nulle credentiales trovate
 no-matching-banner = Nulle credentiales concordante.
 no-results-banner = Nulle credentiales trovate pro le sito actual.
 item-details-panel-title = Detalios del credentiales
-navigate-panel-backwards = Regreder
+navigate-panel-backwards = Retornar
 
 ## Strings used in dialog
 

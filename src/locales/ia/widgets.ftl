@@ -13,4 +13,4 @@ password-input-show =
 password-input-hide =
     .title = Celar
 panel-back-button =
-    .alt = Regreder
+    .alt = Retornar
