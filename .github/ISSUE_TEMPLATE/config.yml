@@ -1,0 +1,10 @@
+contact_links:
+  - name: Firefox Desktop Password Management UI Bugs
+    url: https://bugzilla.mozilla.org/enter_bug.cgi?product=Firefox&component=about:logins
+    about: Issues or enhancements managing Logins and Passwords (about:logins) in Firefox Desktop
+  - name: Firefox Password Manager Website Compatibility Bugs
+    url: https://bugzilla.mozilla.org/enter_bug.cgi?product=Toolkit&component=Password%20Manager:%20Site%20Compatibility
+    about: Issues with the Firefox password manager working on a specific website. One website per bug please.
+  - name: Firefox Password Manager Bugs
+    url: https://bugzilla.mozilla.org/enter_bug.cgi?product=Toolkit&component=Password%20Manager
+    about: Issues or enhancements filling or saving logins, not specific to a certain website.
