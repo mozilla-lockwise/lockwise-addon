@@ -41,8 +41,8 @@ Once you have a patch ready:
 
 [community-guidelines]: https://www.mozilla.org/about/governance/policies/participation/
 [etiquette-guidelines]: https://bugzilla.mozilla.org/page.cgi?id=etiquette.html
-[new-issue]: https://github.com/mozilla-lockbox/lockbox-addon/issues/new
-[github-repos]: https://github.com/orgs/mozilla-lockbox/
-[issues-list]: https://github.com/mozilla-lockbox/lockbox-addon/issues
+[new-issue]: https://github.com/mozilla-lockwise/lockwise-addon/issues/new
+[github-repos]: https://github.com/orgs/mozilla-lockwise/
+[issues-list]: https://github.com/mozilla-lockwise/lockwise-addon/issues
 [waffle]: https://waffle.io/mozilla-lockbox/lockbox-extension
-[good-first-issues]: https://github.com/mozilla-lockbox/lockbox-addon/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22
+[good-first-issues]: https://github.com/mozilla-lockwise/lockwise-addon/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22
