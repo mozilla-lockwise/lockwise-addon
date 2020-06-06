@@ -38,6 +38,6 @@ Fetches the item with ID `id` from the datastore. Returns the item object in the
 
 Record a telemetry event with method `method`, object `object`, and extra `extra` (value is `null`).
 
-## `telemetry_add"
+## `telemetry_add`
 
 Increment a telemetry counter with `name` by some `value`.
